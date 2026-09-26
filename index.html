@@ -20,7 +20,7 @@
 <body>
 
   <main class="site-shell">
-    <!-- CINEMATIC SCROLL RIG HERO -->
+    <!-- CINEMATIC SCROLL RIG HERO (INTACT HERO BANNER) -->
     <section class="cinema-scroll" id="cinema" aria-label="Atelier Jaipur cinematic scroll story">
       <div class="stage">
         <div class="world">
@@ -38,6 +38,7 @@
               <a href="#cinema">The Villa</a>
               <a href="#about-founder">Principal</a>
               <a href="#transformation">Before & After</a>
+              <a href="#materials">Materials</a>
               <a href="#portfolio">Curated Spaces</a>
               <a href="#consultation">Bespoke Inquiry</a>
             </nav>
@@ -121,7 +122,7 @@
           <!-- Hero Architectural Title -->
           <h1 class="hero-title">ATELIER</h1>
 
-          <!-- Splitframe entry portals (Palatial Fluted Entrance Gates parting into the luxury interior) -->
+          <!-- Splitframe entry portals -->
           <div class="scene-img splitframe-img splitframe-left">
             <div class="portal-arch-texture"></div>
             <div class="portal-gold-frame"></div>
@@ -140,7 +141,7 @@
           <div class="shade"></div>
         </div>
 
-        <!-- Room 1 Walkthrough: Grand Foyer & Villa Entrance Overview -->
+        <!-- Room 1 Walkthrough: Grand Foyer Overview -->
         <section class="Hero-copy" aria-label="Atelier Jaipur overview">
           <p>Where timeless Rajasthani grandeur meets contemporary European minimalism. Step inside bespoke sanctuaries sculpted for discerning living.</p>
           <div class="hero-tags" aria-label="Atelier Jaipur highlights">
@@ -150,7 +151,7 @@
           </div>
         </section>
 
-        <!-- Room 2 Walkthrough: The Grand Double-Height Living Hall & Gourmet Kitchen -->
+        <!-- Room 2 Walkthrough: Living Hall & Gourmet Suite -->
         <section class="story-panel story-panel-bridge" aria-label="Living hall details">
           <h2>The Living Hall & Gourmet Suite</h2>
           <p>A panoramic union of bookmatched Italian marble, customized warm cove luminescence, and open-concept culinary masteries sculpted for intimate hosting.</p>
@@ -166,7 +167,7 @@
           </dl>
         </section>
 
-        <!-- Room 3 Walkthrough: Master Haven & Acoustic Cinema Lounge -->
+        <!-- Room 3 Walkthrough: Master Suite & Acoustic Cinema -->
         <section class="story-panel story-panel-Dukan" aria-label="Master suite details">
           <h2>The Master Suite & Acoustic Cinema</h2>
           <p>Calm tactile velvets, acoustic fluted timber panels, and ambient automated scenes crafted to transition seamlessly from morning serenity to private midnight screenings.</p>
@@ -178,10 +179,13 @@
       </div>
     </section>
 
+    <!-- CONTENT STREAM (LIGHT WHITE THEME WITH INTERIOR DESIGNER IMAGE OVERLAY) -->
     <div class="content-stream">
+      <!-- Background Interior Designer Studio Overlay Image -->
+      <div class="designer-bg-overlay"></div>
 
       <!-- SECTION: ABOUT THE FOUNDER / PRINCIPAL DESIGNER -->
-      <section class="section-wrap" id="about-founder">
+      <section class="section-wrap reveal-on-scroll" id="about-founder">
         <div class="about-founder-grid">
           <div class="founder-media-stack">
             <div class="founder-image-frame">
@@ -218,15 +222,96 @@
               </div>
             </div>
 
-            <button class="consult-btn-nav" style="background:var(--gold-accent); color:#000;" onclick="document.getElementById('consultation').scrollIntoView({behavior:'smooth'})">
+            <button class="consult-btn-nav" style="background:var(--ink); color:#ffffff;" onclick="document.getElementById('consultation').scrollIntoView({behavior:'smooth'})">
               Schedule Studio Rendezvous
             </button>
           </div>
         </div>
       </section>
 
+      <!-- NEW SECTION: INTERIOR DESIGN MATERIAL & TEXTURE CAROUSEL SHOWCASE -->
+      <section class="section-wrap reveal-on-scroll" id="materials">
+        <div class="section-header-flex">
+          <div>
+            <span class="section-tagline">TACTILE PALETTE</span>
+            <h2 class="section-headline">Architectural Materials Showcase</h2>
+            <p class="section-subtext">Swipe through our curated library of hand-selected marbles, acoustic velvets, and solid joinery finishes.</p>
+          </div>
+          <div class="carousel-nav-buttons">
+            <button class="caro-btn caro-prev" id="matPrev" aria-label="Previous Material"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="caro-btn caro-next" id="matNext" aria-label="Next Material"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <div class="materials-carousel-wrapper">
+          <div class="materials-track" id="materialsTrack">
+            
+            <div class="material-card">
+              <div class="mat-img-box">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Statuario Marble" />
+                <span class="mat-tag">STONE</span>
+              </div>
+              <div class="mat-info">
+                <h4>Bookmatched Statuario Marble</h4>
+                <p>Quarried in Carrara, Italy. Hand-polished slab veining curated for double-height foyer walls and kitchen islands.</p>
+                <span class="mat-spec"><i class="fa-solid fa-check"></i> High Polish Finish • Zero Absorption</span>
+              </div>
+            </div>
+
+            <div class="material-card">
+              <div class="mat-img-box">
+                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" alt="Fluted Walnut" />
+                <span class="mat-tag">WOODWORK</span>
+              </div>
+              <div class="mat-info">
+                <h4>Fluted American Dark Walnut</h4>
+                <p>Precision-milled acoustic wood paneling with integrated concealed LED strip channels for bedroom headboards.</p>
+                <span class="mat-spec"><i class="fa-solid fa-check"></i> Sound Absorption Class A</span>
+              </div>
+            </div>
+
+            <div class="material-card">
+              <div class="mat-img-box">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Emerald Velvet" />
+                <span class="mat-tag">TEXTILE</span>
+              </div>
+              <div class="mat-info">
+                <h4>Micro-Perforated Emerald Velvet</h4>
+                <p>Ultra-dense luxury upholstery fabric tailored for Dolby Atmos home cinema recliners and acoustic wall panels.</p>
+                <span class="mat-spec"><i class="fa-solid fa-check"></i> 100,000 Rub Martindale</span>
+              </div>
+            </div>
+
+            <div class="material-card">
+              <div class="mat-img-box">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Brushed Brass" />
+                <span class="mat-tag">METALS</span>
+              </div>
+              <div class="mat-info">
+                <h4>Hand-Brushed Champagne Brass</h4>
+                <p>Custom-cast brass trim inlays, door pull handles, and floating stair railings sealed with anti-tarnish lacquer.</p>
+                <span class="mat-spec"><i class="fa-solid fa-check"></i> Custom Artisan Castings</span>
+              </div>
+            </div>
+
+            <div class="material-card">
+              <div class="mat-img-box">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Sandstone Jali" />
+                <span class="mat-tag">HERITAGE CRAFT</span>
+              </div>
+              <div class="mat-info">
+                <h4>Hand-Carved Makrana Sandstone Jali</h4>
+                <p>Intricate geometric lattice screens crafted by master Rajasthani stonemasons for biophilic daylight diffusion.</p>
+                <span class="mat-spec"><i class="fa-solid fa-check"></i> Artisanal Heritage Heirloom</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- SECTION: BEFORE & AFTER TRANSFORMATION (Interactive Drag Comparison) -->
-      <section class="section-wrap" id="transformation">
+      <section class="section-wrap reveal-on-scroll" id="transformation">
         <div style="text-align: center; max-width: 760px; margin: 0 auto 36px;">
           <span class="section-tagline">Spatial Metamorphosis</span>
           <h2 class="section-headline">From Bare Concrete to Pure Luxury</h2>
@@ -259,7 +344,7 @@
       </section>
 
       <!-- SECTION: CURATED SPACES & PORTFOLIO -->
-      <section class="section-wrap" id="portfolio">
+      <section class="section-wrap reveal-on-scroll" id="portfolio">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
           <div>
             <span class="section-tagline">Curated Spaces</span>
@@ -349,73 +434,159 @@
         </div>
       </section>
 
-      <!-- SECTION: CLIENT TESTIMONIALS & ACCOLADES -->
-      <section class="section-wrap" style="background: var(--bg-surface-elevated); border-radius: 36px; border: 1px solid var(--border-subtle); margin-top: 40px;">
-        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
-          <span class="section-tagline">Client Accolades</span>
-          <h2 class="section-headline">Words from Our Patrons</h2>
-          <p class="section-subtext" style="margin: 0 auto;">Discerning homeowners, hoteliers, and collectors share their turnkey transformation journeys.</p>
+      <!-- NEW SECTION: INTERIOR DESIGN CAROUSEL SLIDER (DESIGN REALMS) -->
+      <section class="section-wrap reveal-on-scroll" id="realms-carousel-section">
+        <div class="section-header-flex">
+          <div>
+            <span class="section-tagline">INTERIOR DESIGN TYPOLOGIES</span>
+            <h2 class="section-headline">Curated Design Realms Carousel</h2>
+            <p class="section-subtext">Explore multi-room interior typologies crafted for seamless indoor-outdoor living.</p>
+          </div>
+          <div class="carousel-nav-buttons">
+            <button class="caro-btn caro-prev" id="realmPrev" aria-label="Previous Realm"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="caro-btn caro-next" id="realmNext" aria-label="Next Realm"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
         </div>
 
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <div>
-              <div class="stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <div class="realms-carousel-wrapper">
+          <div class="realms-track" id="realmsTrack">
+            
+            <article class="realm-card">
+              <div class="realm-img-holder">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Living Salon" />
+                <span class="realm-badge">Living Salon</span>
               </div>
-              <p class="quote-text">
-                "Ar. Devika and her team didn’t just design our 9,000 sq.ft penthouse in C-Scheme; they elevated how our entire family lives. The lighting cues and bespoke joinery are pure poetry."
-              </p>
-            </div>
-            <div class="client-profile">
-              <img class="client-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Rajiv Singhania" />
-              <div class="client-meta">
-                <h5>Rajiv Singhania</h5>
-                <span>Founder, Singhania Estates</span>
+              <div class="realm-body">
+                <h3>Double-Height Grand Living Salons</h3>
+                <p>Monumental stone fireplaces, floor-to-ceiling glass, and custom brass ring chandeliers designed for regal entertaining.</p>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <div class="testimonial-card">
-            <div>
-              <div class="stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <article class="realm-card">
+              <div class="realm-img-holder">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Chef Kitchen" />
+                <span class="realm-badge">Culinary Atelier</span>
               </div>
-              <p class="quote-text">
-                "Finding a studio capable of honoring ancestral Rajasthani stone craft while engineering modern home automation felt impossible until we collaborated with Atelier Jaipur."
-              </p>
-            </div>
-            <div class="client-profile">
-              <img class="client-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Meera Khandelwal" />
-              <div class="client-meta">
-                <h5>Meera Khandelwal</h5>
-                <span>Heritage Hotelier</span>
+              <div class="realm-body">
+                <h3>Bespoke Italian Gourmet Kitchens</h3>
+                <p>Integrated quartz prep stations, concealed appliance larders, and motorized downdraft ventilation.</p>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <div class="testimonial-card">
-            <div>
-              <div class="stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <article class="realm-card">
+              <div class="realm-img-holder">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Master Suite" />
+                <span class="realm-badge">Master Bedroom</span>
               </div>
-              <p class="quote-text">
-                "The acoustic private theatre and chef’s kitchen are nothing short of Michelin-star luxury. Their 3D walkthrough was executed with 100% fidelity on site."
-              </p>
-            </div>
-            <div class="client-profile">
-              <img class="client-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Vikramaditya Jain" />
-              <div class="client-meta">
-                <h5>Vikramaditya Jain</h5>
-                <span>Collector & Industrialist</span>
+              <div class="realm-body">
+                <h3>Serene Master Bed Sanctuaries</h3>
+                <p>Fluted acoustic walnut headboards, integrated walk-in spa wardrobes, and motorized linen blackout drapes.</p>
+              </div>
+            </article>
+
+            <article class="realm-card">
+              <div class="realm-img-holder">
+                <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Acoustic Cinema" />
+                <span class="realm-badge">Acoustic Cinema</span>
+              </div>
+              <div class="realm-body">
+                <h3>Dolby Atmos Private Theatres</h3>
+                <p>Zero-vibration room isolation, custom emerald velvet recliners, and calibrated surround sound acoustics.</p>
+              </div>
+            </article>
+
+            <article class="realm-card">
+              <div class="realm-img-holder">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Reflecting Courtyard" />
+                <span class="realm-badge">Courtyard Pavilion</span>
+              </div>
+              <div class="realm-body">
+                <h3>Reflecting Pool Water Courtyards</h3>
+                <p>Sunken conversation lounges enclosed by tranquil water bodies, marble planters, and Rajasthani Jali screens.</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CLIENT TESTIMONIALS & ACCOLADES CAROUSEL -->
+      <section class="section-wrap reveal-on-scroll" style="background: #ffffff; border-radius: 36px; border: 1px solid var(--border-subtle); margin-top: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.04);">
+        <div class="section-header-flex">
+          <div>
+            <span class="section-tagline">CLIENT ACCOLADES</span>
+            <h2 class="section-headline">Words from Our Patrons</h2>
+            <p class="section-subtext">Discerning homeowners, hoteliers, and collectors share their turnkey transformation journeys.</p>
+          </div>
+          <div class="carousel-nav-buttons">
+            <button class="caro-btn caro-prev" id="testPrev" aria-label="Previous Testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="caro-btn caro-next" id="testNext" aria-label="Next Testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <div class="testimonials-carousel-wrapper">
+          <div class="testimonial-grid" id="testimonialTrack">
+            
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                  "Ar. Devika and her team didn’t just design our 9,000 sq.ft penthouse in C-Scheme; they elevated how our entire family lives. The lighting cues and bespoke joinery are pure poetry."
+                </p>
+              </div>
+              <div class="client-profile">
+                <img class="client-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Rajiv Singhania" />
+                <div class="client-meta">
+                  <h5>Rajiv Singhania</h5>
+                  <span>Founder, Singhania Estates</span>
+                </div>
               </div>
             </div>
+
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                  "Finding a studio capable of honoring ancestral Rajasthani stone craft while engineering modern home automation felt impossible until we collaborated with Atelier Jaipur."
+                </p>
+              </div>
+              <div class="client-profile">
+                <img class="client-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Meera Khandelwal" />
+                <div class="client-meta">
+                  <h5>Meera Khandelwal</h5>
+                  <span>Heritage Hotelier</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                  "The acoustic private theatre and chef’s kitchen are nothing short of Michelin-star luxury. Their 3D walkthrough was executed with 100% fidelity on site."
+                </p>
+              </div>
+              <div class="client-profile">
+                <img class="client-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Vikramaditya Jain" />
+                <div class="client-meta">
+                  <h5>Vikramaditya Jain</h5>
+                  <span>Collector & Industrialist</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
-      <section class="section-wrap" id="faqs">
+      <section class="section-wrap reveal-on-scroll" id="faqs">
         <div style="text-align: center; max-width: 680px; margin: 0 auto;">
           <span class="section-tagline">Client Guidance</span>
           <h2 class="section-headline">Frequently Inquired</h2>
@@ -466,13 +637,13 @@
       </section>
 
       <!-- SECTION: DESIGN JOURNAL & BLOGS -->
-      <section class="section-wrap" id="journal">
+      <section class="section-wrap reveal-on-scroll" id="journal">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
           <div>
             <span class="section-tagline">Design Journal</span>
             <h2 class="section-headline" style="margin-bottom: 0;">Editorial Perspectives</h2>
           </div>
-          <a href="#consultation" class="note-button" style="margin-top: 0; padding: 0 24px;">
+          <a href="#consultation" class="note-button" style="margin-top: 0; padding: 0 24px; background:var(--ink); color:#ffffff;">
             <span>Browse All Articles</span> <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -514,7 +685,7 @@
       </section>
 
       <!-- SECTION: BESPOKE CONSULTATION BOOKING & CONTACT FORM -->
-      <section class="section-wrap" id="consultation">
+      <section class="section-wrap reveal-on-scroll" id="consultation">
         <div class="contact-card-box">
           <div class="contact-left">
             <span class="section-tagline">Private Appointment</span>
@@ -629,6 +800,7 @@
               <li><a href="#cinema">The Villa Entrance</a></li>
               <li><a href="#about-founder">Principal Designer</a></li>
               <li><a href="#transformation">Before & After</a></li>
+              <li><a href="#materials">Materials Library</a></li>
               <li><a href="#portfolio">Curated Realms</a></li>
               <li><a href="#journal">Design Editorial</a></li>
             </ul>
@@ -647,7 +819,7 @@
 
           <div class="footer-col">
             <h5>Design Journal</h5>
-            <p style="color:var(--paper-dim); font-size:13.5px; margin-bottom:14px;">Receive our seasonal monograph on architectural textures and spatial curation.</p>
+            <p style="color:#555555; font-size:13.5px; margin-bottom:14px;">Receive our seasonal monograph on architectural textures and spatial curation.</p>
             <div class="newsletter-box">
               <input type="email" id="newsletterEmail" placeholder="Enter private email..." />
               <button onclick="handleNewsletter()">Join Private Gazette</button>

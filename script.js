@@ -1,8 +1,12 @@
 /* ==========================================================================
-   ATELIER JAIPUR — CINEMATIC PARALLAX & INTERACTIVE SCRIPT
+   ATELIER JAIPUR — CINEMATIC PARALLAX & INTERACTIVE CAROUSEL SCRIPT
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // --------------------------------------------------------------------------
+  // 1. HERO BANNER CINEMATIC PARALLAX SCROLL ENGINE
+  // --------------------------------------------------------------------------
   const section = document.querySelector(".cinema-scroll");
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -137,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     root.style.setProperty("--sights-top", `${sightsParentTop.toFixed(2)}px`);
     root.style.setProperty("--sights-screen-top", `${sightsScreenTop.toFixed(2)}px`);
 
-    /* Continue loop if motion or inertia is ongoing */
     if (
       Math.abs(smoothScroll - targetScroll) > 0.08 ||
       Math.abs(mouseX - targetMouseX) > 0.001 ||
@@ -158,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!sightsTrack) return;
     sightsTrack.replaceChildren();
 
-    // 3 identical sets for infinite wrap
     for (let setIndex = 0; setIndex < 3; setIndex++) {
       originalCards.forEach((card, cardIndex) => {
         const clone = card.cloneNode(true);
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     sightCards = Array.from(sightsTrack.querySelectorAll(".sight-card"));
-    activeSight = originalSightCount; // middle set focus
+    activeSight = originalSightCount;
 
     sightCards.forEach(card => {
       card.addEventListener("click", () => selectSightCard(card));
@@ -227,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* Event Listeners */
+  /* Event Listeners for Hero Stage */
   window.addEventListener("scroll", requestTick, { passive: true });
   window.addEventListener("resize", () => {
     updateSightSlider();
@@ -245,9 +247,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupSightSlider();
   requestTick();
+
+  // --------------------------------------------------------------------------
+  // 2. SCROLL ENTRANCE REVEAL ANIMATION (INTERSECTION OBSERVER)
+  // --------------------------------------------------------------------------
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // --------------------------------------------------------------------------
+  // 3. MATERIALS SHOWCASE CAROUSEL ENGINE
+  // --------------------------------------------------------------------------
+  const materialsTrack = document.getElementById('materialsTrack');
+  const matPrev = document.getElementById('matPrev');
+  const matNext = document.getElementById('matNext');
+  let matIndex = 0;
+
+  function updateMaterialsCarousel() {
+    if (!materialsTrack) return;
+    const cards = materialsTrack.querySelectorAll('.material-card');
+    if (!cards.length) return;
+    
+    const cardWidth = cards[0].getBoundingClientRect().width + 24; // width + gap
+    const maxIndex = cards.length - Math.floor(materialsTrack.parentElement.offsetWidth / cardWidth);
+    const clampedIndex = Math.max(0, Math.min(matIndex, Math.max(0, maxIndex)));
+    matIndex = clampedIndex;
+
+    materialsTrack.style.transform = `translateX(-${matIndex * cardWidth}px)`;
+  }
+
+  if (matPrev && matNext) {
+    matPrev.addEventListener('click', () => {
+      matIndex--;
+      updateMaterialsCarousel();
+    });
+    matNext.addEventListener('click', () => {
+      matIndex++;
+      updateMaterialsCarousel();
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 4. DESIGN REALMS CAROUSEL ENGINE
+  // --------------------------------------------------------------------------
+  const realmsTrack = document.getElementById('realmsTrack');
+  const realmPrev = document.getElementById('realmPrev');
+  const realmNext = document.getElementById('realmNext');
+  let realmIndex = 0;
+
+  function updateRealmsCarousel() {
+    if (!realmsTrack) return;
+    const cards = realmsTrack.querySelectorAll('.realm-card');
+    if (!cards.length) return;
+    
+    const cardWidth = cards[0].getBoundingClientRect().width + 28;
+    const maxIndex = cards.length - Math.floor(realmsTrack.parentElement.offsetWidth / cardWidth);
+    const clampedIndex = Math.max(0, Math.min(realmIndex, Math.max(0, maxIndex)));
+    realmIndex = clampedIndex;
+
+    realmsTrack.style.transform = `translateX(-${realmIndex * cardWidth}px)`;
+  }
+
+  if (realmPrev && realmNext) {
+    realmPrev.addEventListener('click', () => {
+      realmIndex--;
+      updateRealmsCarousel();
+    });
+    realmNext.addEventListener('click', () => {
+      realmIndex++;
+      updateRealmsCarousel();
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 5. TESTIMONIALS CAROUSEL ENGINE
+  // --------------------------------------------------------------------------
+  const testimonialTrack = document.getElementById('testimonialTrack');
+  const testPrev = document.getElementById('testPrev');
+  const testNext = document.getElementById('testNext');
+  let testIndex = 0;
+
+  function updateTestimonialsCarousel() {
+    if (!testimonialTrack) return;
+    const cards = testimonialTrack.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+    
+    const cardWidth = cards[0].getBoundingClientRect().width + 32;
+    const maxIndex = cards.length - Math.floor(testimonialTrack.parentElement.offsetWidth / cardWidth);
+    const clampedIndex = Math.max(0, Math.min(testIndex, Math.max(0, maxIndex)));
+    testIndex = clampedIndex;
+
+    testimonialTrack.style.transform = `translateX(-${testIndex * cardWidth}px)`;
+  }
+
+  if (testPrev && testNext) {
+    testPrev.addEventListener('click', () => {
+      testIndex--;
+      updateTestimonialsCarousel();
+    });
+    testNext.addEventListener('click', () => {
+      testIndex++;
+      updateTestimonialsCarousel();
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    updateMaterialsCarousel();
+    updateRealmsCarousel();
+    updateTestimonialsCarousel();
+  });
+
 });
 
-/* Before and After Interactive Drag */
+// --------------------------------------------------------------------------
+// 6. INTERACTIVE BEFORE & AFTER SLIDER DRAG
+// --------------------------------------------------------------------------
 const compSlider = document.getElementById('comparisonSlider');
 const beforeWrap = document.getElementById('beforeImageWrapper');
 const beforeImg = document.getElementById('beforeImg');
@@ -283,7 +411,6 @@ if (compSlider) {
     setComparisonPosition(e.clientX);
   });
 
-  // Touch support for mobile devices
   compSlider.addEventListener('touchstart', (e) => {
     isDragging = true;
     setComparisonPosition(e.touches[0].clientX);
@@ -295,7 +422,9 @@ if (compSlider) {
   }, { passive: true });
 }
 
-/* Portfolio Category Filter */
+// --------------------------------------------------------------------------
+// 7. PORTFOLIO FILTER & FAQ ACCORDION INTERACTION
+// --------------------------------------------------------------------------
 function filterPortfolio(category, btn) {
   const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(b => b.classList.remove('active'));
@@ -311,7 +440,6 @@ function filterPortfolio(category, btn) {
   });
 }
 
-/* FAQ Accordion Toggle */
 function toggleFaq(button) {
   const item = button.parentElement;
   const isOpen = item.classList.contains('is-open');
@@ -323,7 +451,9 @@ function toggleFaq(button) {
   }
 }
 
-/* Interactive Toast feedback */
+// --------------------------------------------------------------------------
+// 8. TOAST NOTIFICATION & FORM SUBMISSIONS
+// --------------------------------------------------------------------------
 function showToast(message) {
   const toast = document.getElementById('toast');
   const toastText = document.getElementById('toastText');
@@ -336,7 +466,6 @@ function showToast(message) {
   }
 }
 
-/* Consultation Form Submission */
 function handleConsultationSubmit(e) {
   e.preventDefault();
   const name = document.getElementById('fullName').value;
@@ -344,7 +473,6 @@ function handleConsultationSubmit(e) {
   e.target.reset();
 }
 
-/* Newsletter Gazette Submission */
 function handleNewsletter() {
   const email = document.getElementById('newsletterEmail').value;
   if (email && email.includes('@')) {
