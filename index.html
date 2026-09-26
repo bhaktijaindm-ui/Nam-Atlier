@@ -3,656 +3,673 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE JAIPUR ATELIER — Palatial Architecture & Luxury Interior Design</title>
-  <meta name="description" content="Crafting timeless luxury residences, palatial archways, chef's kitchens, and acoustic private cinema lounges." />
-  
-  <!-- Preconnect to Google Fonts -->
+  <title>ATELIER JAIPUR — Haute Interior Architecture & Design</title>
+  <meta name="description" content="Cinematic architectural interior design studio creating bespoke luxury residences, modern havelis, and turnkey sanctuaries." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+
+  <!-- Google Fonts for Editorial Luxury Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for refined iconography -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <main class="site-shell">
-    
-    <!-- 3D CINEMATIC SCROLL HERO SECTION -->
-    <section class="cinema-scroll" id="cinema" aria-label="Interior Design Cinematic Scroll Walkthrough">
+    <!-- CINEMATIC SCROLL RIG HERO -->
+    <section class="cinema-scroll" id="cinema" aria-label="Atelier Jaipur cinematic scroll story">
       <div class="stage">
         <div class="world">
+          <!-- Sky / Farthest background layer (Palatial Villa Facade) -->
+          <img class="scene-img sky-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85" alt="Palatial Luxury Villa Facade" />
           
-          <!-- Layer 0: Villa Facade / Exterior -->
-          <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85" 
-            alt="Palatial Luxury Villa Facade" 
-            class="scene-img sky-img" 
-          />
-
-          <!-- Sticky Header Navigation -->
-          <header class="site-header">
-            <a href="#" class="site-logo">THE JAIPUR ATELIER</a>
-            <nav class="site-nav">
-              <a href="#spaces">Spaces</a>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#about">About</a>
-              <a href="#contact">Contact</a>
+          <!-- Site Header with Branding & Navigation -->
+          <header class="site-header" aria-label="Primary navigation">
+            <a href="#cinema" class="site-logo">
+              ATELIER JAIPUR
+              <span class="tag">Studio</span>
+            </a>
+            
+            <nav class="site-nav" aria-label="Main menu">
+              <a href="#cinema">The Villa</a>
+              <a href="#about-founder">Principal</a>
+              <a href="#transformation">Before & After</a>
+              <a href="#portfolio">Curated Spaces</a>
+              <a href="#consultation">Bespoke Inquiry</a>
             </nav>
-            <button class="consultation-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Book Consultation ↗</button>
+
+            <div class="header-actions">
+              <button class="consult-btn-nav" onclick="document.getElementById('consultation').scrollIntoView({behavior:'smooth'})">
+                Consult
+              </button>
+            </div>
           </header>
 
-          <!-- Back Stack: Ambient Glow & Master Cinema Backplate -->
+          <!-- Back Stack (Internal living hall, glow, and architectural depths) -->
           <div class="back-stack">
-            <img 
-              src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85" 
-              alt="Ambient Architectural Warm Glow" 
-              class="scene-img back-img back-glow" 
-            />
+            <!-- Ambient architectural warm glow -->
+            <img class="scene-img back-img back-four" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=85" alt="Ambient Architectural Glow" />
             
-            <!-- Projects Showcase Carousel Slider -->
-            <section class="sights-slider" aria-label="Signature Design Projects">
-              <div class="sights-track" id="sightsTrack">
-                <!-- 18 Cards (3 Cloned Sets of 6 Items) inserted dynamically via JS -->
+            <!-- Sights Slider containing Signature Interior Design Projects -->
+            <section class="sights-slider" aria-label="Signature interior design projects slider">
+              <div class="sights-track">
+                <!-- Project Card 1: Obsidian Penthouse -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open The Obsidian Penthouse card">
+                  <span class="sight-kicker">Penthouse • C-Scheme</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Penthouse" />
+                  <h3>The Obsidian Penthouse</h3>
+                  <p>Double-height fluted marble foyer, tailored acoustic ceilings, and brass lounge detailing.</p>
+                </article>
+
+                <!-- Project Card 2: The Rosewood Villa -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open The Rosewood Villa card">
+                  <span class="sight-kicker">Private Estate • Civil Lines</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=400&q=80" alt="Rosewood Villa" />
+                  <h3>The Rosewood Villa</h3>
+                  <p>Warm European oak herringbone, bespoke Italian chef's island, and monolithic stone fireplace.</p>
+                </article>
+
+                <!-- Project Card 3: Amber Heritage Suite -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Amber Heritage Suite card">
+                  <span class="sight-kicker">Heritage Haveli • Amber Road</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80" alt="Amber Suite" />
+                  <h3>Amber Heritage Suite</h3>
+                  <p>Revitalized royal frescoes, hand-cut Thikri glass mosaics, and contemporary velvet arches.</p>
+                </article>
+
+                <!-- Project Card 4: Minimalist Zen Sanctuary -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Minimalist Zen Sanctuary card">
+                  <span class="sight-kicker">Wellness Residence • Jagatpura</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=400&q=80" alt="Zen Sanctuary" />
+                  <h3>Minimalist Zen Sanctuary</h3>
+                  <p>Textured micro-cement walls, recessed cove mood lighting, and indoor courtyards with water bodies.</p>
+                </article>
+
+                <!-- Project Card 5: Marble Courtyard Residence -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open The Marble Courtyard card">
+                  <span class="sight-kicker">Modern Palace • Raja Park</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80" alt="Marble Haven" />
+                  <h3>Marble Courtyard Haven</h3>
+                  <p>Statuario bookmatched marble walls, champagne gold chandeliers, and panoramic glass vistas.</p>
+                </article>
+
+                <!-- Project Card 6: Velvet Cinema Lounge -->
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open The Velvet Cinema Lounge card">
+                  <span class="sight-kicker">Entertainment Suite • Malviya Nagar</span>
+                  <img class="sight-pin" src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=400&q=80" alt="Velvet Cinema" />
+                  <h3>The Velvet Cinema Lounge</h3>
+                  <p>Custom 9.2.4 Dolby Atmos private acoustic auditorium with motorized plush leather recliners.</p>
+                </article>
               </div>
             </section>
 
-            <img 
-              src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2000&q=85" 
-              alt="Deep Master Suite & Acoustic Cinema Backplate" 
-              class="scene-img back-img back-interior" 
-            />
+            <!-- Mid-back layer: Deep Master Suite & Acoustic Cinema Backplate -->
+            <img class="scene-img back-img back-Dukan" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2400&q=85" alt="Master Suite Deep Interior" />
           </div>
 
-          <!-- Sights Controls -->
-          <div class="sights-controls" id="sightsControls">
-            <button class="sight-nav sight-prev" id="sightPrev" aria-label="Previous Project">←</button>
-            <button class="sight-nav sight-next" id="sightNext" aria-label="Next Project">→</button>
+          <!-- Slider Controls -->
+          <div class="sights-controls" aria-label="Slider controls">
+            <button class="sight-nav sight-prev" aria-label="Previous sight">←</button>
+            <button class="sight-nav sight-next" aria-label="Next sight">→</button>
+            <span class="slider-hint-text">Signature Portfolio • Swipe or Click</span>
           </div>
 
-          <!-- Hero Main Title -->
-          <h1 class="hero-title">SANCTUARY</h1>
+          <!-- Hero Architectural Title -->
+          <h1 class="hero-title">ATELIER</h1>
 
-          <!-- Splitframe Entrance Portals (Left & Right Arch Doors) -->
+          <!-- Splitframe entry portals (Palatial Fluted Entrance Gates parting into the luxury interior) -->
           <div class="scene-img splitframe-img splitframe-left">
-            <div class="arch-door-texture"></div>
-            <div class="arch-door-trim"></div>
+            <div class="portal-arch-texture"></div>
+            <div class="portal-gold-frame"></div>
           </div>
           <div class="scene-img splitframe-img splitframe-right">
-            <div class="arch-door-texture"></div>
-            <div class="arch-door-trim"></div>
+            <div class="portal-arch-texture"></div>
+            <div class="portal-gold-frame"></div>
           </div>
-
-          <!-- Layer 6: Double-Height Grand Living Hall Foreground -->
-          <img 
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=85" 
-            alt="Double-Height Grand Living Hall" 
-            class="scene-img hall-img" 
-          />
-
-          <!-- Layer 3: Chef's Kitchen Mid-Back -->
-          <img 
-            src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=2000&q=85" 
-            alt="Chef's Kitchen & Dining Area" 
-            class="scene-img kitchen-img" 
-          />
-
-          <!-- Ambient Vignette & Shadow Shade Layer -->
+          
+          <!-- Foreground architectural terrace and Grand Living Hall colonnade -->
+          <img class="scene-img bridge-img" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=85" alt="Grand Double-Height Living Hall" />
+          
+          <!-- Frame-two: Chef's Kitchen & Dining Chamber Close-up -->
+          <img class="scene-img frame-two-img" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=2400&q=85" alt="Chef's Kitchen & Dining Chamber" />
+          
           <div class="shade"></div>
+        </div>
 
-        </div> <!-- /world -->
-
-        <!-- Hero Initial Copy -->
-        <section class="Hero-copy">
-          <p>From palatial facades to bespoke interior sanctuaries — crafting timeless residences, private home cinemas, and double-height living spaces.</p>
-          <div class="hero-tags">
-            <span>Palatial Arches</span>
-            <span>Chef's Kitchens</span>
-            <span>Acoustic Cinema Lounges</span>
+        <!-- Room 1 Walkthrough: Grand Foyer & Villa Entrance Overview -->
+        <section class="Hero-copy" aria-label="Atelier Jaipur overview">
+          <p>Where timeless Rajasthani grandeur meets contemporary European minimalism. Step inside bespoke sanctuaries sculpted for discerning living.</p>
+          <div class="hero-tags" aria-label="Atelier Jaipur highlights">
+            <span>Bespoke Architecture</span>
+            <span>Turnkey Interiors</span>
+            <span>Artisanal Heritage</span>
           </div>
         </section>
 
-        <!-- Story Panel 1: The Grand Living Hall -->
-        <section class="story-panel story-panel-hall">
-          <span class="story-badge">ARCHITECTURAL HIGHLIGHT</span>
-          <h2>The Grand Living Hall</h2>
-          <p>Double-height stone facades, customized brass ring chandeliers, and custom emerald velvet seating designed for lavish gatherings.</p>
+        <!-- Room 2 Walkthrough: The Grand Double-Height Living Hall & Gourmet Kitchen -->
+        <section class="story-panel story-panel-bridge" aria-label="Living hall details">
+          <h2>The Living Hall & Gourmet Suite</h2>
+          <p>A panoramic union of bookmatched Italian marble, customized warm cove luminescence, and open-concept culinary masteries sculpted for intimate hosting.</p>
           <dl class="facts">
-            <div class="fact-item">
-              <dt>18 FT</dt>
-              <dd>Ceiling Height</dd>
+            <div>
+              <dt>180+</dt>
+              <dd>Turnkey Mansions & Penthouses Completed</dd>
             </div>
-            <div class="fact-item">
-              <dt>100%</dt>
-              <dd>Bespoke Italian Marble</dd>
+            <div>
+              <dt>14 Yrs</dt>
+              <dd>Of Curating Uncompromising Architectural Luxury</dd>
             </div>
           </dl>
         </section>
 
-        <!-- Story Panel 2: Master Suites & Acoustic Cinema -->
-        <section class="story-panel story-panel-rooms">
-          <span class="story-badge">PRIVATE SANCTUARIES</span>
-          <h2>Master Suites & Acoustic Cinema</h2>
-          <p>Private acoustic home theatres with zero-vibration isolation, and serene master bed suites framed with fluted walnut paneling.</p>
-          <button class="note-button" onclick="document.getElementById('spaces').scrollIntoView({behavior: 'smooth'})">Explore Curated Rooms ↗</button>
+        <!-- Room 3 Walkthrough: Master Haven & Acoustic Cinema Lounge -->
+        <section class="story-panel story-panel-Dukan" aria-label="Master suite details">
+          <h2>The Master Suite & Acoustic Cinema</h2>
+          <p>Calm tactile velvets, acoustic fluted timber panels, and ambient automated scenes crafted to transition seamlessly from morning serenity to private midnight screenings.</p>
+          <button class="note-button" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+            <span aria-hidden="true">↗</span>
+            <span>Explore Curated Residences</span>
+          </button>
         </section>
-
-      </div> <!-- /stage -->
-    </section> <!-- /cinema-scroll -->
-
-    <!-- ABOUT PRINCIPAL DESIGNER SECTION -->
-    <section class="about-section" id="about">
-      <div class="container about-grid">
-        <div class="about-image-wrapper">
-          <img 
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" 
-            alt="Principal Designer & Lead Architect" 
-            class="about-portrait"
-          />
-          <div class="experience-badge">
-            <span class="exp-number">12+</span>
-            <span class="exp-label">Years of Mastery</span>
-          </div>
-        </div>
-
-        <div class="about-content">
-          <span class="section-tag">STUDIO PHILOSOPHY</span>
-          <h2 class="section-title">Precision Engineering Meets Emotional Minimalism</h2>
-          <p class="about-bio">
-            Founded by Vikramaditya Rathore, <strong>The Jaipur Atelier</strong> bridges ancient Indian regal proportions with contemporary European interior architecture. Every space we design is an acoustic sanctuary, built to endure generations through uncompromising material selection and tailored craftsmanship.
-          </p>
-          
-          <div class="stats-row">
-            <div class="stat-card">
-              <span class="stat-value">150+</span>
-              <span class="stat-desc">Turnkey Palatial Estates</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">14</span>
-              <span class="stat-desc">International Design Awards</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">0.0%</span>
-              <span class="stat-desc">Acoustic Compromise</span>
-            </div>
-          </div>
-
-          <div class="press-mentions">
-            <span class="press-title">Featured In</span>
-            <div class="press-logos">
-              <span>Architectural Digest</span>
-              <span>Elle Decor</span>
-              <span>Vogue Living</span>
-              <span>Wallpaper*</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- INTERACTIVE BEFORE & AFTER TRANSFORMATION SLIDER -->
-    <section class="transformation-section" id="transformation">
-      <div class="container">
-        <div class="section-header-center">
-          <span class="section-tag">CRAFT & TRANSFORMATION</span>
-          <h2 class="section-title">From Concrete Shell to Palatial Reality</h2>
-          <p class="section-subtitle">Drag the divider to witness how we transform bare structural concrete into double-height luxury sanctuaries.</p>
-        </div>
+    <div class="content-stream">
 
-        <div class="before-after-wrapper" id="beforeAfterSlider">
-          <!-- After Image (Base Layer) -->
-          <div class="ba-layer ba-after">
-            <img 
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85" 
-              alt="Finished Bespoke Luxury Marble Living Hall" 
-            />
-            <span class="ba-label label-after">AFTER: Completed Residence</span>
-          </div>
-
-          <!-- Before Image (Clipped Overlay Layer) -->
-          <div class="ba-layer ba-before" id="beforeLayer">
-            <img 
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85" 
-              alt="Bare Shell RCC Structural Concrete" 
-            />
-            <span class="ba-label label-before">BEFORE: Bare Structural Shell</span>
-          </div>
-
-          <!-- Handle Line & Knob -->
-          <div class="ba-handle" id="baHandle">
-            <div class="ba-handle-line"></div>
-            <div class="ba-handle-knob">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>
-              </svg>
+      <!-- SECTION: ABOUT THE FOUNDER / PRINCIPAL DESIGNER -->
+      <section class="section-wrap" id="about-founder">
+        <div class="about-founder-grid">
+          <div class="founder-media-stack">
+            <div class="founder-image-frame">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="Principal Designer Ar. Devika Rathore" />
             </div>
-          </div>
-          
-          <input type="range" min="0" max="100" value="50" class="ba-range-input" id="baRangeInput" aria-label="Before and After Image Comparison Slider" />
-        </div>
-      </div>
-    </section>
-
-    <!-- CURATED SPACES GALLERY SECTION -->
-    <section class="spaces-section" id="spaces">
-      <div class="container">
-        <div class="spaces-header">
-          <div>
-            <span class="section-tag">CURATED PORTFOLIO</span>
-            <h2 class="section-title">Architectural Spaces & Typologies</h2>
-          </div>
-
-          <!-- Filter Pills -->
-          <div class="filter-pills" id="galleryFilters">
-            <button class="pill-btn active" data-filter="all">All Spaces</button>
-            <button class="pill-btn" data-filter="living">Living Halls</button>
-            <button class="pill-btn" data-filter="culinary">Culinary</button>
-            <button class="pill-btn" data-filter="bedroom">Master Suites</button>
-            <button class="pill-btn" data-filter="cinema">Cinema Lounges</button>
-          </div>
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid" id="spacesGallery">
-          
-          <article class="gallery-card" data-category="living">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Double-Height Monolithic Hall" />
-              <span class="card-category">Living Hall</span>
-            </div>
-            <div class="card-body">
-              <h3>The Monolithic Atrium</h3>
-              <p>18-foot ceiling heights with fluted travertine walls and floating cantilevered brass stairs.</p>
-              <div class="card-meta">
-                <span>Location: New Delhi</span>
-                <span>Area: 3,400 sq.ft</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="gallery-card" data-category="culinary">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="Chef's Kitchen Island" />
-              <span class="card-category">Culinary</span>
-            </div>
-            <div class="card-body">
-              <h3>Bespoke Dark Oak Kitchen</h3>
-              <p>Seamless quartz island with hidden motorized downdraft vents and concealed spice larders.</p>
-              <div class="card-meta">
-                <span>Location: Mumbai</span>
-                <span>Area: 1,200 sq.ft</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="gallery-card" data-category="cinema">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=1200&q=80" alt="Private Cinema Lounge" />
-              <span class="card-category">Cinema Lounge</span>
-            </div>
-            <div class="card-body">
-              <h3>Dolby Atmos Velvet Lounge</h3>
-              <p>9.4.4 custom speaker arrays embedded behind acoustically transparent emerald velvet micro-perforated panels.</p>
-              <div class="card-meta">
-                <span>Location: Jaipur</span>
-                <span>Capacity: 12 Seats</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="gallery-card" data-category="bedroom">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80" alt="Master Suite Bedroom" />
-              <span class="card-category">Master Suite</span>
-            </div>
-            <div class="card-body">
-              <h3>Amber Serenity Master Suite</h3>
-              <p>Fluted walnut acoustic headboard wall with indirect warm lighting and integrated walk-in spa wardrobing.</p>
-              <div class="card-meta">
-                <span>Location: Bengaluru</span>
-                <span>Area: 1,850 sq.ft</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="gallery-card" data-category="living">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80" alt="Indoor Outdoor Pavilion" />
-              <span class="card-category">Living Hall</span>
-            </div>
-            <div class="card-body">
-              <h3>The Reflecting Pool Pavilion</h3>
-              <p>Floor-to-ceiling motorized slimline glass sliders opening into a tranquil courtyard reflection pool.</p>
-              <div class="card-meta">
-                <span>Location: Udaipur</span>
-                <span>Area: 4,200 sq.ft</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="gallery-card" data-category="bedroom">
-            <div class="card-media">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Palatial Master Penthouse" />
-              <span class="card-category">Master Suite</span>
-            </div>
-            <div class="card-body">
-              <h3>Rajput Monolith Penthouse</h3>
-              <p>Hand-carved sandstone screen partitions paired with modern Italian minimalist leather furnishings.</p>
-              <div class="card-meta">
-                <span>Location: London</span>
-                <span>Area: 5,600 sq.ft</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CLIENT TESTIMONIALS SECTION -->
-    <section class="testimonials-section" id="portfolio">
-      <div class="container">
-        <div class="section-header-center">
-          <span class="section-tag">PATRON REVIEWS</span>
-          <h2 class="section-title">Words From Our Discerning Clients</h2>
-        </div>
-
-        <div class="testimonials-grid">
-          
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote-text">
-              "The Jaipur Atelier transformed our bare 14,000 sq.ft shell into an architectural masterpiece. The double-height living hall chandelier and acoustic cinema are beyond anything we envisioned."
-            </p>
-            <div class="client-info">
-              <div class="client-avatar">RK</div>
-              <div>
-                <h4 class="client-name">Rajesh K. Singhania</h4>
-                <span class="client-title">Owner, The Obsidian Villa (New Delhi)</span>
-              </div>
+            <div class="founder-badge-card">
+              <div class="num">14+</div>
+              <div class="label">Years of Haute Living Design</div>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote-text">
-              "Their obsession with acoustic isolation in our home cinema was remarkable. Zero vibration transfers to the master suite above, and the custom emerald velvet recliners are pure luxury."
-            </p>
-            <div class="client-info">
-              <div class="client-avatar">AM</div>
-              <div>
-                <h4 class="client-name">Ananya & Madhav Mehta</h4>
-                <span class="client-title">Rosewood Estate (Mumbai)</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote-text">
-              "Working with Vikramaditya was effortless. Turnkey delivery was completed on schedule down to the last custom brass handle and hand-picked Italian marble slab."
-            </p>
-            <div class="client-info">
-              <div class="client-avatar">SL</div>
-              <div>
-                <h4 class="client-name">Siddharth Oberoi</h4>
-                <span class="client-title">Heritage Penthouse (London)</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- INTERACTIVE FAQ ACCORDION SECTION -->
-    <section class="faq-section" id="faq">
-      <div class="container">
-        <div class="faq-layout">
-          <div class="faq-intro">
-            <span class="section-tag">INFORMATION & PROCESS</span>
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p>Everything you need to know about our turnkey design methodology, 3D walkthroughs, and material sourcing.</p>
-          </div>
-
-          <div class="faq-accordion" id="faqAccordion">
+          <div class="founder-info">
+            <span class="section-tagline">Principal Architect & Founder</span>
+            <h3>Ar. Devika Rathore</h3>
+            <span class="founder-role">Founder, Creative Director — Atelier Jaipur</span>
             
-            <div class="faq-item">
-              <button class="faq-trigger" aria-expanded="false">
-                <span>What is the typical timeline for a turnkey luxury residence?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-panel">
-                <div class="faq-content">
-                  <p>Our turnkey projects range between 6 to 14 months, depending on scope and customization depth. Phase 1 (Architectural 3D VR & Spatial Planning) takes 4-6 weeks, followed by precise material procurement and millwork crafting before site assembly.</p>
-                </div>
+            <p class="founder-bio">
+              "We believe a home is not merely decorated; it is composed like classical music. Every stone tells a story of the earth, every beam of light influences your state of mind, and every handcrafted texture honors Jaipur’s rich artisanal soul."
+            </p>
+            <p class="founder-bio">
+              Trained in Milan and rooted in Rajasthan's royal aesthetics, Devika merges ancient Thikri mirror craft and jali geometry with ultra-clean modern silhouettes, delivering turnkey sanctuaries that stand as timeless works of art.
+            </p>
+
+            <div class="founder-pillars">
+              <div class="pillar-item">
+                <i class="fa-solid fa-gem"></i>
+                <h5>Rare Material Sourcing</h5>
+                <p>Direct marble quarry curation from Makrana and Carrara, tailored brass casting, and seasoned teak.</p>
+              </div>
+              <div class="pillar-item">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <h5>Turnkey Precision</h5>
+                <p>3D photorealistic visualization, MEP engineering, and immaculate on-site execution down to the millimeter.</p>
               </div>
             </div>
 
-            <div class="faq-item">
-              <button class="faq-trigger" aria-expanded="false">
-                <span>How does the 3D VR Walkthrough process work?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-panel">
-                <div class="faq-content">
-                  <p>Before touching a single brick, we create a 1:1 photorealistic digital twin of your property. You can explore your residence in virtual reality, test natural lighting at different hours of the day, and evaluate custom marble veining and velvet textures in real-time.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-trigger" aria-expanded="false">
-                <span>Where do you source your marbles and interior joinery materials?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-panel">
-                <div class="faq-content">
-                  <p>We source structural marble directly from premier quarries in Carrara (Italy) and Makrana (Rajasthan). All custom joinery uses solid dark oak, fluted walnut, and German Blum/Hettich concealed soft-close hardware engineered for lifetime durability.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-trigger" aria-expanded="false">
-                <span>Do you execute private acoustic home cinema installations?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-panel">
-                <div class="faq-content">
-                  <p>Yes. Our in-house acoustic engineers design zero-vibration decoupled room-within-a-room cinema lounges equipped with Dolby Atmos 9.4.4 sound calibration, micro-perforated acoustic velvet walling, and automated climate control.</p>
-                </div>
-              </div>
-            </div>
-
+            <button class="consult-btn-nav" style="background:var(--gold-accent); color:#000;" onclick="document.getElementById('consultation').scrollIntoView({behavior:'smooth'})">
+              Schedule Studio Rendezvous
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- EDITORIAL JOURNAL BLOG SECTION -->
-    <section class="journal-section" id="journal">
-      <div class="container">
-        <div class="spaces-header">
-          <div>
-            <span class="section-tag">EDITORIAL JOURNAL</span>
-            <h2 class="section-title">Design Notes & Architectural Essays</h2>
+      <!-- SECTION: BEFORE & AFTER TRANSFORMATION (Interactive Drag Comparison) -->
+      <section class="section-wrap" id="transformation">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 36px;">
+          <span class="section-tagline">Spatial Metamorphosis</span>
+          <h2 class="section-headline">From Bare Concrete to Pure Luxury</h2>
+          <p class="section-subtext" style="margin: 0 auto;">
+            Drag the divider to observe how our architectural interventions transform raw structural brickwork into a symphony of warm lighting, curated acoustics, and bespoke finishings.
+          </p>
+        </div>
+
+        <!-- Interactive Comparison Slider -->
+        <div class="comparison-container" id="comparisonSlider">
+          <!-- Transformed Room (AFTER) -->
+          <div class="comparison-img-wrapper after-wrap">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=80" alt="Turnkey Transformed Luxury Interior" />
+            <span class="comparison-badge after-badge">Turnkey Designed Interior</span>
           </div>
-          <a href="#contact" class="journal-link">View All Articles ↗</a>
+
+          <!-- Raw Bare Room (BEFORE) -->
+          <div class="comparison-img-wrapper before-wrap" id="beforeImageWrapper">
+            <img id="beforeImg" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80" alt="Raw Unfinished Space Before Interior Design" />
+            <span class="comparison-badge before-badge">Raw Shell Construction</span>
+          </div>
+
+          <!-- Divider Handle -->
+          <div class="comparison-slider-handle" id="sliderHandle">
+            <div class="handle-pill">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CURATED SPACES & PORTFOLIO -->
+      <section class="section-wrap" id="portfolio">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-tagline">Curated Spaces</span>
+            <h2 class="section-headline" style="margin-bottom: 0;">Signature Living Realms</h2>
+          </div>
+          <div class="portfolio-filters" style="margin: 0;">
+            <button class="filter-btn active" onclick="filterPortfolio('all', this)">All Realms</button>
+            <button class="filter-btn" onclick="filterPortfolio('living', this)">Living Salons</button>
+            <button class="filter-btn" onclick="filterPortfolio('kitchen', this)">Culinary</button>
+            <button class="filter-btn" onclick="filterPortfolio('bedroom', this)">Master Suites</button>
+            <button class="filter-btn" onclick="filterPortfolio('theatre', this)">Cinema Lounges</button>
+          </div>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid" style="margin-top: 48px;">
+          <!-- Item 1 -->
+          <div class="portfolio-card" data-category="living">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Living Salon" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Living Salon</span>
+              <h4>The Auric Pavilion</h4>
+              <p>Double-height fluted walnut walls with custom curved linen sofas and brass suspension fixtures.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="portfolio-card" data-category="kitchen">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Culinary Atelier</span>
+              <h4>Monolithic Quartz Island</h4>
+              <p>Concealed induction cooking, motorized bronze fluted glass cabinetry, and ambient under-counter glow.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="portfolio-card" data-category="bedroom">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Master Suite" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Master Suite</span>
+              <h4>Sanctuary of Sand & Stone</h4>
+              <p>Acoustic fabric headboards stretching wall-to-wall, automated linen drapes, and ensuite limestone tub.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="portfolio-card" data-category="theatre">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Private Cinema" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Cinema Lounge</span>
+              <h4>Midnight Acoustic Vault</h4>
+              <p>Suede acoustic baffling, starlight fiber-optic ceiling, and multi-tiered motorized leather chaises.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="portfolio-card" data-category="living">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Dining Hall" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Living & Banquet</span>
+              <h4>The Travertine Gallery</h4>
+              <p>Hand-carved twelve-seater marble table flanked by floor-to-ceiling glass looking onto water courtyards.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="portfolio-card" data-category="bedroom">
+            <div class="portfolio-thumb">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Guest Haven" />
+            </div>
+            <div class="portfolio-content">
+              <span class="cat">Master Suite</span>
+              <h4>The Royal Amber Alcove</h4>
+              <p>Contemporary jali screens acting as light filters, warm brass bedside pendants, and curated antique rugs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CLIENT TESTIMONIALS & ACCOLADES -->
+      <section class="section-wrap" style="background: var(--bg-surface-elevated); border-radius: 36px; border: 1px solid var(--border-subtle); margin-top: 40px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <span class="section-tagline">Client Accolades</span>
+          <h2 class="section-headline">Words from Our Patrons</h2>
+          <p class="section-subtext" style="margin: 0 auto;">Discerning homeowners, hoteliers, and collectors share their turnkey transformation journeys.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Ar. Devika and her team didn’t just design our 9,000 sq.ft penthouse in C-Scheme; they elevated how our entire family lives. The lighting cues and bespoke joinery are pure poetry."
+              </p>
+            </div>
+            <div class="client-profile">
+              <img class="client-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Rajiv Singhania" />
+              <div class="client-meta">
+                <h5>Rajiv Singhania</h5>
+                <span>Founder, Singhania Estates</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Finding a studio capable of honoring ancestral Rajasthani stone craft while engineering modern home automation felt impossible until we collaborated with Atelier Jaipur."
+              </p>
+            </div>
+            <div class="client-profile">
+              <img class="client-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Meera Khandelwal" />
+              <div class="client-meta">
+                <h5>Meera Khandelwal</h5>
+                <span>Heritage Hotelier</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "The acoustic private theatre and chef’s kitchen are nothing short of Michelin-star luxury. Their 3D walkthrough was executed with 100% fidelity on site."
+              </p>
+            </div>
+            <div class="client-profile">
+              <img class="client-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Vikramaditya Jain" />
+              <div class="client-meta">
+                <h5>Vikramaditya Jain</h5>
+                <span>Collector & Industrialist</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
+      <section class="section-wrap" id="faqs">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <span class="section-tagline">Client Guidance</span>
+          <h2 class="section-headline">Frequently Inquired</h2>
+          <p class="section-subtext" style="margin: 0 auto;">Everything you need to know about commissioning a turnkey luxury interior project with Atelier Jaipur.</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item is-open">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is included in your full turnkey interior architecture service?
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Our turnkey scope spans comprehensive spatial planning, custom architectural drawings, MEP engineering, high-fidelity 3D photorealistic renderings, material procurement from quarries and global mills, custom furniture design, and dedicated on-site project management through white-glove handover.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is the typical timeline for an estate or villa transformation?
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Comprehensive turnkey design and construction typically ranges between 5 to 10 months depending on space scale, structural modifications, and custom artisan craftwork. An exact critical-path milestone chart is presented prior to agreement.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Can we experience 3D architectural visual walkthroughs before execution?
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Yes. We provide complete cinematic 3D walkthroughs, tactile physical material boards (marble samples, fabric swatches, wood finishes), and lighting simulation so you experience every texture before construction begins.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Do you undertake projects outside of Jaipur?
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Yes. Alongside Jaipur, our studio frequently undertakes luxury residential penthouses, boutique hospitality suites, and private farmhouses across Udaipur, Delhi NCR, Mumbai, and Goa.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: DESIGN JOURNAL & BLOGS -->
+      <section class="section-wrap" id="journal">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-tagline">Design Journal</span>
+            <h2 class="section-headline" style="margin-bottom: 0;">Editorial Perspectives</h2>
+          </div>
+          <a href="#consultation" class="note-button" style="margin-top: 0; padding: 0 24px;">
+            <span>Browse All Articles</span> <span aria-hidden="true">→</span>
+          </a>
         </div>
 
         <div class="journal-grid">
-          
           <article class="journal-card">
-            <div class="journal-thumb">
-              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Acoustic Cinema Engineering" />
-              <span class="journal-date">OCTOBER 2026 • 6 MIN READ</span>
+            <div class="journal-media">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Lighting design blog" />
             </div>
             <div class="journal-body">
-              <h3>The Physics of Acoustic Home Theatres</h3>
-              <p>Exploring floating concrete floor slabs, mass-loaded vinyl dampening, and custom room modes for zero-resonance cinematic audio.</p>
+              <span class="journal-date">Architectural Lighting • 5 min read</span>
+              <h4>The Hierarchy of Luminescence: Sculpting Emotion with Indirect Light</h4>
+              <p>Why harsh downlights destroy luxury spaces, and how 2700K concealed warm coves transform ambient acoustics.</p>
             </div>
           </article>
 
           <article class="journal-card">
-            <div class="journal-thumb">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Warm Minimalism vs Rajput Motifs" />
-              <span class="journal-date">SEPTEMBER 2026 • 8 MIN READ</span>
+            <div class="journal-media">
+              <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80" alt="Materiality blog" />
             </div>
             <div class="journal-body">
-              <h3>Warm Minimalism vs Classical Rajput Motifs</h3>
-              <p>How hand-carved Jali screens and fluted sandstone pillars can harmoniously co-exist inside contemporary open-plan villas.</p>
+              <span class="journal-date">Materiality • 7 min read</span>
+              <h4>Breathing Stone: Integrating Raw Travertine & Thikri Inlay in Modern Mansions</h4>
+              <p>Merging heritage Rajasthani craftsmanship with minimalist Italian stone proportions for tactile elegance.</p>
             </div>
           </article>
 
           <article class="journal-card">
-            <div class="journal-thumb">
-              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Double-Height Living Spaces" />
-              <span class="journal-date">AUGUST 2026 • 5 MIN READ</span>
+            <div class="journal-media">
+              <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80" alt="Biophilic design blog" />
             </div>
             <div class="journal-body">
-              <h3>Mastering Double-Height Living Spaces</h3>
-              <p>Proportional scaling of customized ring chandeliers, monumental stone fireplaces, and floor-to-ceiling acoustic drapes.</p>
+              <span class="journal-date">Spatial Wellness • 4 min read</span>
+              <h4>Courtyards of Stillness: Biophilic Micro-climates in Urban Rajasthan</h4>
+              <p>Designing internal water reflections and jali cross-breeze corridors that cool residences naturally.</p>
             </div>
           </article>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- BESPOKE CONSULTATION BOOKING FORM SECTION -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="contact-wrapper">
-          <div class="contact-info">
-            <span class="section-tag">PROJECT ENQUIRIES</span>
-            <h2 class="section-title">Begin Your Architectural Journey</h2>
-            <p>We accept a limited commission of 8 palatial residences annually to preserve our uncompromising standard of craftsmanship.</p>
-            
-            <div class="contact-details">
-              <div class="c-detail">
-                <span class="c-label">ATELIER DIRECT</span>
-                <span class="c-val">+91 141 278 9000 / concierge@jaipuratelier.com</span>
+      <!-- SECTION: BESPOKE CONSULTATION BOOKING & CONTACT FORM -->
+      <section class="section-wrap" id="consultation">
+        <div class="contact-card-box">
+          <div class="contact-left">
+            <span class="section-tagline">Private Appointment</span>
+            <h3>Let Us Curate Your Next Sanctuary</h3>
+            <p>
+              Whether you are acquiring a bare-shell villa, restoring a heritage haveli, or redesigning an expansive penthouse, our principal architects are available for private consultations.
+            </p>
+
+            <div class="studio-touchpoint">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Design Studio & Archive</strong>
+                <span>Atelier Jaipur, 42 Prithviraj Road, C-Scheme, Jaipur, Rajasthan 302001</span>
               </div>
-              <div class="c-detail">
-                <span class="c-label">GLOBAL OFFICES</span>
-                <span class="c-val">Jaipur • Mumbai • London • Dubai</span>
+            </div>
+
+            <div class="studio-touchpoint">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Private Concierge</strong>
+                <span>+91 (141) 289-4400 / +91 98290 01122</span>
+              </div>
+            </div>
+
+            <div class="studio-touchpoint">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Direct Studio Inquiries</strong>
+                <span>concierge@atelierjaipur.com</span>
+              </div>
+            </div>
+
+            <div class="studio-touchpoint">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <strong>Studio Hours</strong>
+                <span>Monday – Saturday: 10:00 AM – 7:00 PM (By Prior Appointment)</span>
               </div>
             </div>
           </div>
 
-          <form class="contact-form" id="consultationForm" onsubmit="event.preventDefault(); submitForm();">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fullName">Full Name *</label>
-                <input type="text" id="fullName" required placeholder="e.g. Maharani Gayatri Devi" />
+          <!-- Interactive Form -->
+          <div class="contact-right">
+            <form id="consultationForm" onsubmit="handleConsultationSubmit(event)">
+              <div class="form-group-grid">
+                <div class="form-field">
+                  <label for="fullName">Your Full Name</label>
+                  <input type="text" id="fullName" placeholder="e.g. Vikram Singhania" required />
+                </div>
+                <div class="form-field">
+                  <label for="phone">Phone / WhatsApp</label>
+                  <input type="tel" id="phone" placeholder="+91 98000 00000" required />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="emailAddr">Email Address *</label>
-                <input type="email" id="emailAddr" required placeholder="e.g. patron@estate.com" />
+
+              <div class="form-group-grid">
+                <div class="form-field">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="name@domain.com" required />
+                </div>
+                <div class="form-field">
+                  <label for="spaceType">Residence Type</label>
+                  <select id="spaceType">
+                    <option value="Penthouse">Luxury Penthouse</option>
+                    <option value="Villa">Independent Villa / Kothi</option>
+                    <option value="Farmhouse">Estate / Luxury Farmhouse</option>
+                    <option value="Hospitality">Boutique Resort / Suite</option>
+                  </select>
+                </div>
               </div>
+
+              <div class="form-group-grid">
+                <div class="form-field">
+                  <label for="city">Project Location</label>
+                  <input type="text" id="city" placeholder="e.g. Jaipur, C-Scheme / Delhi" required />
+                </div>
+                <div class="form-field">
+                  <label for="budget">Investment Scope</label>
+                  <select id="budget">
+                    <option value="50L-1Cr">₹50 Lacs – ₹1 Crore</option>
+                    <option value="1Cr-3Cr">₹1 Crore – ₹3 Crores</option>
+                    <option value="3Cr-5Cr+">₹3 Crores – ₹5 Crores+</option>
+                    <option value="Ultra">Ultra-Luxury Custom Architectural Commission</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" style="margin-bottom: 20px;">
+                <label for="vision">Your Architectural Vision & Desired Timeline</label>
+                <textarea id="vision" placeholder="Describe the rooms, scale, preferred aesthetic (warm minimalism, royal modern, fluted marble)..."></textarea>
+              </div>
+
+              <button type="submit" class="submit-consult-btn">
+                Request Studio Consultation & 3D Walkthrough
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <h4 class="font-serif-display">ATELIER JAIPUR</h4>
+            <p>Haute interior architecture & bespoke turnkey sanctuaries. Crafting residences that stand as timeless heirlooms in Rajasthan and worldwide.</p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Exploration</h5>
+            <ul>
+              <li><a href="#cinema">The Villa Entrance</a></li>
+              <li><a href="#about-founder">Principal Designer</a></li>
+              <li><a href="#transformation">Before & After</a></li>
+              <li><a href="#portfolio">Curated Realms</a></li>
+              <li><a href="#journal">Design Editorial</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Signature Realms</h5>
+            <ul>
+              <li><a href="#portfolio">Double-Height Living</a></li>
+              <li><a href="#portfolio">Italian Gourmet Kitchens</a></li>
+              <li><a href="#portfolio">Master Bed Chambers</a></li>
+              <li><a href="#portfolio">Acoustic Private Theatres</a></li>
+              <li><a href="#portfolio">Courtyard Water Bodies</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Design Journal</h5>
+            <p style="color:var(--paper-dim); font-size:13.5px; margin-bottom:14px;">Receive our seasonal monograph on architectural textures and spatial curation.</p>
+            <div class="newsletter-box">
+              <input type="email" id="newsletterEmail" placeholder="Enter private email..." />
+              <button onclick="handleNewsletter()">Join Private Gazette</button>
             </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phoneNumber">Phone Number *</label>
-                <input type="tel" id="phoneNumber" required placeholder="+91 98765 43210" />
-              </div>
-              <div class="form-group">
-                <label for="projectType">Project Typology *</label>
-                <select id="projectType" required>
-                  <option value="" disabled selected>Select Space Type</option>
-                  <option value="villa">Palatial Villa / Estate</option>
-                  <option value="penthouse">Double-Height Penthouse</option>
-                  <option value="cinema">Acoustic Private Cinema</option>
-                  <option value="turnkey">Full Turnkey Renovation</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="sqft">Estimated Area (Sq. Ft)</label>
-                <input type="number" id="sqft" placeholder="e.g. 10000" />
-              </div>
-              <div class="form-group">
-                <label for="budget">Investment Tier</label>
-                <select id="budget">
-                  <option value="tier1">$250,000 – $500,000</option>
-                  <option value="tier2" selected>$500,000 – $1,500,000</option>
-                  <option value="tier3">$1,500,000+</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Project Description & Timeline</label>
-              <textarea id="message" rows="4" placeholder="Share your architectural vision, site location, or target completion dates..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Request Private Consultation ↗</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="footer-logo">THE JAIPUR ATELIER</a>
-          <p class="footer-tagline">Architectural Interior Design & Palatial Residences</p>
+          </div>
         </div>
 
-        <div class="footer-nav-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#cinema">Hero Walkthrough</a></li>
-            <li><a href="#about">Studio Philosophy</a></li>
-            <li><a href="#spaces">Curated Spaces</a></li>
-            <li><a href="#portfolio">Client Testimonials</a></li>
-            <li><a href="#contact">Private Consultation</a></li>
-          </ul>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Atelier Jaipur Architecture & Interiors. All rights reserved.</span>
+          <span>Crafted for Discerning Spaces • Jaipur, India</span>
         </div>
+      </footer>
 
-        <div class="footer-nav-col">
-          <h4>Atelier Locations</h4>
-          <p>Civil Lines, Jaipur 302006, Rajasthan, India</p>
-          <p>Mayfair, London W1J 7NT, United Kingdom</p>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4>Newsletter</h4>
-          <p>Subscribe to our quarterly architectural publication.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to The Jaipur Atelier Journal.');">
-            <input type="email" placeholder="Enter your email..." required />
-            <button type="submit">→</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-bottom container">
-        <p>© 2026 THE JAIPUR ATELIER. All Rights Reserved.</p>
-        <div class="footer-socials">
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Architectural Digest</a>
-        </div>
-      </div>
-    </footer>
-
+    </div>
   </main>
 
-  <!-- Consultation Confirmation Modal -->
-  <div class="modal-overlay" id="confirmModal">
-    <div class="modal-card">
-      <span class="modal-icon">✦</span>
-      <h3>Consultation Request Received</h3>
-      <p>Thank you. A senior architectural director from The Jaipur Atelier will review your project details and contact you within 24 hours.</p>
-      <button class="modal-close-btn" onclick="closeModal()">Close Window</button>
-    </div>
+  <!-- Interactive Toast Notification -->
+  <div class="toast-msg" id="toast">
+    <i class="fa-solid fa-circle-check" style="color: var(--gold-accent); font-size: 20px;"></i>
+    <span id="toastText">Consultation request received. Our studio concierge will contact you within 24 hours.</span>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
