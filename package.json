@@ -1,29 +1,5 @@
 {
   "name": "nam-atelier",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "echo 'Serving static site'",
-    "build": "echo 'Static site ready for Vercel'",
-    "start": "echo 'Serving static site'"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.11.17",
-    "gsap": "^3.12.5",
-    "lucide-react": "^0.468.0",
-    "motion": "^11.11.17",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.5.5"
-  },
-  "devDependencies": {
-    "@types/node": "^20.17.9",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16",
-    "typescript": "^5.7.2"
-  }
+  "private": true
 }
