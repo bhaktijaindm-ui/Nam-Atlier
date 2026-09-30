@@ -35,13 +35,24 @@ function initVideoScrubbing() {
 
   if (!cinemaSection || !video) return;
 
-  // Ensure video is muted for frame-accurate scroll scrubbing
+  // Ensure video is muted and playsinline for frame-accurate scroll scrubbing
   video.muted = true;
-  video.pause();
+  video.playsInline = true;
+  
+  // Pause video so scroll scrubbing controls frame playback directly
+  if (!isUserPlaying && !video.paused) {
+    try { video.pause(); } catch(e) {}
+  }
+  
+  // Pre-trigger video loading if metadata hasn't loaded yet
+  if (video.readyState === 0) {
+    video.load();
+  }
 
   function updateVideoScrub() {
     const rect = cinemaSection.getBoundingClientRect();
     const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
+    if (totalScrollableHeight <= 0) return;
     
     // Calculate scroll fraction (0.0 to 1.0)
     let scrollFraction = -rect.top / totalScrollableHeight;
@@ -105,18 +116,32 @@ function initVideoScrubbing() {
     }
 
     // Update target video playback time based on scroll position if not playing manually
-    if (video.duration && !isUserPlaying) {
-      videoScrubTargetTime = scrollFraction * video.duration;
+    const duration = video.duration || 0;
+    if (duration > 0 && !isUserPlaying) {
+      videoScrubTargetTime = scrollFraction * duration;
     }
   }
 
-  // 60FPS LERP animation loop to eliminate frame jumps
+  // Handle metadata & loaded events
+  video.addEventListener('loadedmetadata', updateVideoScrub);
+  video.addEventListener('loadeddata', updateVideoScrub);
+  video.addEventListener('canplay', updateVideoScrub);
+
+  // 60FPS LERP animation loop for smooth frame-accurate seeking
   function renderLoop() {
-    if (video.duration) {
+    const duration = video.duration || 0;
+    if (duration > 0) {
       if (!isUserPlaying) {
-        videoScrubCurrentTime += (videoScrubTargetTime - videoScrubCurrentTime) * 0.12;
-        if (Math.abs(videoScrubTargetTime - videoScrubCurrentTime) > 0.001) {
-          video.currentTime = videoScrubCurrentTime;
+        const delta = videoScrubTargetTime - videoScrubCurrentTime;
+        if (Math.abs(delta) > 0.001) {
+          videoScrubCurrentTime += delta * 0.25;
+          if (!video.seeking) {
+            try {
+              video.currentTime = videoScrubCurrentTime;
+            } catch(e) {
+              // Ignore transient seek errors during rapid scrolling
+            }
+          }
         }
       } else {
         videoScrubCurrentTime = video.currentTime;
@@ -124,8 +149,8 @@ function initVideoScrubbing() {
 
       // Update Digital Time Counter (e.g., "00:12 / 00:33")
       if (timeCounter) {
-        const curSec = Math.floor(video.currentTime);
-        const durSec = Math.floor(video.duration);
+        const curSec = Math.floor(video.currentTime || 0);
+        const durSec = Math.floor(duration);
         timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
       }
     }
@@ -380,6 +405,8 @@ function handleConsultSubmit(event) {
   closeModal('consultModal');
   showToast(`Thank you ${name}! We will call you back at ${phone}.`);
   event.target.reset();
+}
+
 /* 9. ACTIVE NAV SCROLL TRACKER */
 function initScrollNav() {
   const sections = document.querySelectorAll('section[id], footer[id]');
