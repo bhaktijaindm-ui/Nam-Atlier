@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details — NAM Atelier | 3D Architecture &amp; Interiors</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Dedicated Page Styling for Portfolio Detail */
+    .portfolio-detail-hero {
+      padding: 9rem 2rem 4rem;
+      background: var(--bg-sand);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Dancing Letters Physics Interactive Header Container */
+    .dancing-title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0 0.5rem;
+      user-select: none;
+      perspective: 1000px;
+    }
+
+    .dancing-char {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      cursor: pointer;
+      transition: transform 0.15s ease, color 0.2s ease;
+      transform-style: preserve-3d;
+    }
+
+    .dancing-char:hover {
+      color: var(--accent-terracotta);
+      animation: rubberBand 0.8s ease-in-out;
+    }
+
+    @keyframes rubberBand {
+      0% { transform: scale(1); }
+      30% { transform: scaleX(1.25) scaleY(0.75); }
+      40% { transform: scaleX(0.75) scaleY(1.25); }
+      50% { transform: scaleX(1.15) scaleY(0.85); }
+      65% { transform: scaleX(0.95) scaleY(1.05); }
+      75% { transform: scaleX(1.05) scaleY(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    .project-hero-media {
+      max-width: 1200px;
+      margin: 3rem auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 2rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .meta-item h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-terracotta);
+      margin-bottom: 0.35rem;
+    }
+
+    .meta-item p {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-charcoal);
+    }
+
+    .specs-content-section {
+      max-width: 1200px;
+      margin: 0 auto 6rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 991px) {
+      .specs-content-section {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .specs-text-box h3 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--text-charcoal);
+      margin-bottom: 1.25rem;
+    }
+
+    .specs-text-box p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .palette-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .palette-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-sand);
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+    }
+
+    .swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-project-row {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .nav-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-charcoal);
+      transition: color 0.2s ease;
+    }
+
+    .nav-project-btn:hover {
+      color: var(--accent-terracotta);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="glass-header" id="navbar">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">NAM</div>
+        <div class="brand-text">
+          <span class="brand-name">NAM ATELIER</span>
+          <span class="brand-tagline">3D Architecture &amp; Civil Studio</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Studio</a>
+        <a href="index.html#portfolio" class="active">Portfolio</a>
+        <a href="service-detail.html?service=civil">Services</a>
+        <a href="index.html#testimonials">Endorsements</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+917710152917" class="btn-call">
+          <i class="fa-solid fa-phone"></i> +91 77101 52917
+        </a>
+        <a href="index.html#contact" class="btn-inquire">INQUIRE STUDIO</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PORTFOLIO DETAIL HERO -->
+  <section class="portfolio-detail-hero">
+    <span class="section-subtitle" id="projCategory">3D ARCHITECTURAL RESIDENCE</span>
+    
+    <!-- Dancing Letters Physics Title -->
+    <div class="dancing-title-container" id="dancingTitleContainer">
+      <!-- Animated Characters generated by JS -->
+    </div>
+
+    <p class="section-desc" id="projTagline">Explore the structural details, material palette, and 3D renders of this bespoke sanctuary.</p>
+
+    <!-- Main Render Media -->
+    <div class="project-hero-media">
+      <img id="projHeroImage" src="nam_living_render.jpg" alt="Signature Project Render" />
+    </div>
+
+    <!-- Metadata Grid -->
+    <div class="project-meta-grid">
+      <div class="meta-item">
+        <h5>LOCATION</h5>
+        <p id="projLocation">South Model Gram, Ludhiana</p>
+      </div>
+      <div class="meta-item">
+        <h5>TOTAL AREA</h5>
+        <p id="projArea">4,500 Sq.Ft</p>
+      </div>
+      <div class="meta-item">
+        <h5>CIVIL EXECUTION</h5>
+        <p>Udhay Seth</p>
+      </div>
+      <div class="meta-item">
+        <h5>3D SPATIAL DESIGN</h5>
+        <p>Mudita D Seth</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS & MATERIAL PALETTE CONTENT -->
+  <section class="specs-content-section">
+    <div class="specs-text-box">
+      <h3 id="projDetailHeading">Architectural Blueprint &amp; Civil Narrative</h3>
+      <p id="projDetailDesc1">
+        At NAM Atelier, every structural element is calculated in 3D photorealism before site groundbreaking begins. This residence features double-height cantilever ceilings, concealed HVAC slot diffusers, and monolithic stone flooring engineered to withstand Punjab's thermal cycles.
+      </p>
+      <p id="projDetailDesc2">
+        Custom Italian joinery was sourced with German Blum hardware integration. Civil execution on-site achieved 100% geometric alignment with the approved 3D VR walkthrough.
+      </p>
+
+      <div style="margin-top: 2.5rem;">
+        <a href="index.html#contact" class="btn-inquire" style="padding: 14px 28px; font-size: 0.9rem;">BOOK CONSULTATION FOR YOUR VILLA ↗</a>
+      </div>
+    </div>
+
+    <!-- Material Swatches -->
+    <div class="specs-sidebar">
+      <h4 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-charcoal); margin-bottom: 1.25rem;">Curated Material Palette</h4>
+      
+      <div class="palette-list" id="paletteContainer">
+        <div class="palette-card">
+          <div class="swatch" style="background: #D8C4B6;"></div>
+          <div>
+            <h5 style="font-size: 0.95rem; font-weight: 600; color: var(--text-charcoal);">Monolithic Travertine Stone</h5>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Honed Italian cream marble</p>
+          </div>
+        </div>
+
+        <div class="palette-card">
+          <div class="swatch" style="background: #3D2C24;"></div>
+          <div>
+            <h5 style="font-size: 0.95rem; font-weight: 600; color: var(--text-charcoal);">Fluted Dark Walnut Oak</h5>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Acoustic wall panelling</p>
+          </div>
+        </div>
+
+        <div class="palette-card">
+          <div class="swatch" style="background: #C8A97E;"></div>
+          <div>
+            <h5 style="font-size: 0.95rem; font-weight: 600; color: var(--text-charcoal);">Brushed Champagne Brass</h5>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Custom metal inlays &amp; trims</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION BETWEEN PROJECTS -->
+  <div class="nav-project-row">
+    <a href="portfolio-detail.html?project=rosewood" class="nav-project-btn">
+      <i class="fa-solid fa-arrow-left"></i> Previous: Rosewood Villa
+    </a>
+    <a href="portfolio-detail.html?project=cinema" class="nav-project-btn">
+      Next: Velvet Cinema Lounge <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="signature-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-mark">NAM</div>
+          <div class="brand-text">
+            <span class="brand-name">NAM ATELIER</span>
+            <span class="brand-tagline">3D Architecture &amp; Civil Studio</span>
+          </div>
+        </a>
+        <p class="footer-desc">Crafting photorealistic 3D architectural narratives and executing turnkey civil construction across Ludhiana &amp; Amritsar.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NAM Atelier. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR DYNAMIC PROJECT ROUTING & DANCING LETTERS -->
+  <script>
+    const projectsData = {
+      obsidian: {
+        title: "OBSIDIAN PENTHOUSE",
+        category: "PENTHOUSE INTERIOR",
+        tagline: "Double-height monolithic stone living hall with floating staircase and custom cove lighting.",
+        image: "nam_living_render.jpg",
+        location: "South Model Gram, Ludhiana",
+        area: "4,500 Sq.Ft",
+        desc1: "Designed for seamless luxury, the Obsidian Penthouse pairs raw travertine slab cladding with warm recessed LED cove illumination. Every dimension was verified via 3D BIM rendering before civil masonry began.",
+        desc2: "Features motorized smart blinds, hidden acoustic cinema speakers, and bespoke Italian furniture sourcing."
+      },
+      sanctuary: {
+        title: "VILLA SANCTUARY",
+        category: "RESIDENTIAL VILLA",
+        tagline: "European-inspired palatial sanctuary featuring sunken courtyard and glass portals.",
+        image: "nam_living_render.jpg",
+        location: "Mall Road, Amritsar",
+        area: "6,200 Sq.Ft",
+        desc1: "A masterclass in warm minimalism. Villa Sanctuary integrates expansive floor-to-ceiling glass portals connecting the double-height living hall to a peaceful reflecting pool.",
+        desc2: "Turnkey civil execution led by Udhay Seth guaranteed zero structural deviation from Mudita D Seth's 3D renders."
+      },
+      rosewood: {
+        title: "THE ROSEWOOD VILLA",
+        category: "CHEF'S KITCHEN",
+        tagline: "Fluted dark oak joinery with integrated quartz island and smart preparation station.",
+        image: "nam_kitchen_render.jpg",
+        location: "Green Avenue, Amritsar",
+        area: "1,200 Sq.Ft Kitchen Suite",
+        desc1: "Engineered with German Blum hardware and custom fluted dark oak cabinetry. The central quartz island serves as both a high-capacity culinary station and an intimate breakfast bar.",
+        desc2: "Concealed appliance garages and integrated linear lighting ensure a clean, uncluttered visual rhythm."
+      },
+      cinema: {
+        title: "VELVET CINEMA LOUNGE",
+        category: "ACOUSTIC THEATRE",
+        tagline: "Dolby Atmos 9.4.4 private theatre with motorized emerald recliners and acoustic panels.",
+        image: "https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80",
+        location: "Civil Lines, Ludhiana",
+        area: "850 Sq.Ft Acoustic Room",
+        desc1: "Engineered with floating room-within-a-room acoustic isolation to achieve zero sound transmission leakage into main living suites.",
+        desc2: "Features 4K laser projection, custom velvet acoustic wall baffles, and motorized ergonomic reclining seats."
+      },
+      bedroom: {
+        title: "AMBER HERITAGE SUITE",
+        category: "MASTER BEDROOM",
+        tagline: "Bespoke brass inlays, fluted acoustic bedhead, and integrated walk-in spa wardrobe.",
+        image: "nam_bedroom_render.jpg",
+        location: "Ranjit Avenue, Amritsar",
+        area: "950 Sq.Ft Master Suite",
+        desc1: "Combining tactile brass metal inlays with soft ambient headboard backlighting. The suite transitions seamlessly into a private marble spa wardrobe.",
+        desc2: "Designed for restorative acoustics and tailored thermal comfort."
+      },
+      marble: {
+        title: "THE MARBLE RESIDENCE",
+        category: "TURNKEY ESTATE",
+        tagline: "A 14,000 sq.ft palatial estate combining Rajput arches with Milanese minimalism.",
+        image: "nam_commercial_render.jpg",
+        location: "Sarabha Nagar, Ludhiana",
+        area: "14,000 Sq.Ft Palatial Estate",
+        desc1: "A landmark architectural achievement. Combining grand arched colonnades with sleek Milanese interior styling.",
+        desc2: "Full turnkey civil contracting executed by NAM Atelier from bare RCC ground to final interior handover."
+      }
+    };
+
+    function renderDancingTitle(titleText) {
+      const container = document.getElementById('dancingTitleContainer');
+      container.innerHTML = '';
+      
+      titleText.split('').forEach((char, idx) => {
+        const span = document.createElement('span');
+        span.className = 'dancing-char';
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        
+        span.addEventListener('click', () => {
+          span.style.animation = 'none';
+          span.offsetHeight; // trigger reflow
+          span.style.animation = 'rubberBand 0.8s ease-in-out';
+        });
+        
+        container.appendChild(span);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectKey = urlParams.get('project') || 'obsidian';
+      const data = projectsData[projectKey] || projectsData['obsidian'];
+
+      document.getElementById('projCategory').textContent = data.category;
+      document.getElementById('projTagline').textContent = data.tagline;
+      document.getElementById('projHeroImage').src = data.image;
+      document.getElementById('projLocation').textContent = data.location;
+      document.getElementById('projArea').textContent = data.area;
+      document.getElementById('projDetailDesc1').textContent = data.desc1;
+      document.getElementById('projDetailDesc2').textContent = data.desc2;
+
+      renderDancingTitle(data.title);
+    });
+  </script>
+</body>
+</html>

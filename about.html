@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — NAM Atelier | Architectural &amp; 3D Interior Design Studio</title>
+  <meta name="description" content="Meet Udhay Seth & Mudita D Seth, founders of NAM Atelier. Exploring our 2020-2026 studio timeline combining civil engineering mastery with photorealistic 3D spatial design in Ludhiana & Amritsar." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    /* Dedicated Page Specific Styles for About Us & Timeline */
+    .about-page-hero {
+      padding: 9rem 2rem 5rem;
+      background: var(--bg-sand);
+      text-align: center;
+      position: relative;
+    }
+    
+    .about-page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 500;
+      color: var(--text-charcoal);
+      margin: 1rem 0;
+      line-height: 1.15;
+    }
+    
+    .about-page-hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+    
+    /* Interactive Horizontal Journey Timeline Section */
+    .journey-section {
+      background: #FFFFFF;
+      padding: 6rem 2rem;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .timeline-track-container {
+      max-width: 1280px;
+      margin: 3rem auto 0;
+      position: relative;
+    }
+
+    .timeline-horizontal-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-terracotta);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .timeline-nodes-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 991px) {
+      .timeline-nodes-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .timeline-horizontal-line {
+        display: none;
+      }
+    }
+
+    .timeline-node-card {
+      background: var(--bg-sand);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 1.75rem 1.25rem;
+      position: relative;
+      transition: all 0.35s ease;
+    }
+
+    .timeline-node-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-terracotta);
+      box-shadow: 0 16px 36px rgba(30, 26, 22, 0.1);
+    }
+
+    .node-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent-terracotta);
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 0 0 2px var(--accent-terracotta);
+      margin: 0 auto 1rem;
+    }
+
+    .node-year {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-charcoal);
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+
+    .node-month {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-terracotta);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .node-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="glass-header" id="navbar">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">NAM</div>
+        <div class="brand-text">
+          <span class="brand-name">NAM ATELIER</span>
+          <span class="brand-tagline">3D Architecture &amp; Civil Studio</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Studio</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="service-detail.html?service=civil">Services</a>
+        <a href="index.html#testimonials">Endorsements</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+917710152917" class="btn-call">
+          <i class="fa-solid fa-phone"></i> +91 77101 52917
+        </a>
+        <a href="index.html#contact" class="btn-inquire">INQUIRE STUDIO</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT HERO SECTION -->
+  <section class="about-page-hero">
+    <div class="section-subtitle">OUR STORY &amp; FOUNDERS</div>
+    <h1>Where 3D Vision Meets Civil Engineering Precision</h1>
+    <p>Combining creative interior architecture with hands-on civil engineering mastery across Ludhiana &amp; Amritsar.</p>
+  </section>
+
+  <!-- STUDIO JOURNEY TIMELINE (2020 - 2026) -->
+  <section class="journey-section">
+    <div class="section-header text-center">
+      <span class="section-subtitle">STUDIO STORYLINE</span>
+      <h2 class="section-title">2020 — 2026 Experience Timeline</h2>
+      <p class="section-desc">Trace the evolution of NAM Atelier from early BIM 3D thesis research to turnkey luxury palatial executions.</p>
+    </div>
+
+    <div class="timeline-track-container">
+      <div class="timeline-horizontal-line"></div>
+      
+      <div class="timeline-nodes-grid">
+        
+        <!-- Node 1 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2020</div>
+          <div class="node-month">March</div>
+          <p class="node-desc">NAM Atelier founded in Ludhiana focusing on 3D BIM modeling &amp; structural precision.</p>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2020</div>
+          <div class="node-month">November</div>
+          <p class="node-desc">Civil engineering workflow standardized for zero site tolerance variance on bare RCC shells.</p>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2021</div>
+          <div class="node-month">July</div>
+          <p class="node-desc">First luxury palatial villa project completed in Amritsar with custom travertine marble.</p>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2022</div>
+          <div class="node-month">October</div>
+          <p class="node-desc">Launched Italian joinery &amp; German Blum hardware integration partnership.</p>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2023</div>
+          <div class="node-month">April</div>
+          <p class="node-desc">Integrated Dolby Atmos acoustic cinema engineering into high-end residential estates.</p>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2025</div>
+          <div class="node-month">September</div>
+          <p class="node-desc">3D VR walkthrough client studio opened in South Model Gram, Ludhiana.</p>
+        </div>
+
+        <!-- Node 7 -->
+        <div class="timeline-node-card">
+          <div class="node-dot"></div>
+          <div class="node-year">2026</div>
+          <div class="node-month">May</div>
+          <p class="node-desc">Expanded turnkey civil contracting &amp; 3D spatial design studio across Punjab.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPAL FOUNDERS SHOWCASE -->
+  <section class="principals-section" style="background: var(--bg-sand); padding: 6rem 2rem;">
+    <div class="principals-container" style="max-width: 1240px; margin: 0 auto;">
+      <div class="section-header text-center" style="margin-bottom: 4rem;">
+        <span class="section-subtitle">STUDIO LEADERSHIP</span>
+        <h2 class="section-title">Meet the Founders of NAM Atelier</h2>
+        <p class="section-desc">Combining creative interior architecture with hands-on civil engineering mastery.</p>
+      </div>
+
+      <div class="principals-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 3rem;">
+        
+        <!-- Founder 1 -->
+        <div class="principal-card" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
+          <div class="principal-details">
+            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-charcoal); margin-bottom: 0.25rem;">Udhay Seth</h3>
+            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Principal Civil Constructor</span>
+            <p class="principal-bio" style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+              Specializing in structural execution, site coordination, and turnkey civil contracting. Udhay ensures that every 3D render translated onto site meets exact architectural tolerance and structural longevity.
+            </p>
+            <div class="principal-contact-action" style="display: flex; gap: 1rem; align-items: center;">
+              <a href="tel:+917710152917" class="btn-call" style="padding: 10px 20px; font-size: 0.9rem;">
+                <i class="fa-solid fa-phone"></i> +91 77101 52917
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founder 2 -->
+        <div class="principal-card" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
+          <div class="principal-details">
+            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-charcoal); margin-bottom: 0.25rem;">Mudita D Seth</h3>
+            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Lead Interior Designer</span>
+            <p class="principal-bio" style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+              Spearheading interior spatial design, 3D visualization, material curation, and color theory. Mudita crafts serene luxury environments that blend modern warm minimalism with functional elegance.
+            </p>
+            <div class="principal-contact-action" style="display: flex; gap: 1rem; align-items: center;">
+              <a href="tel:+918968155070" class="btn-call" style="padding: 10px 20px; font-size: 0.9rem;">
+                <i class="fa-solid fa-phone"></i> +91 89681 55070
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="signature-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-mark">NAM</div>
+          <div class="brand-text">
+            <span class="brand-name">NAM ATELIER</span>
+            <span class="brand-tagline">3D Architecture &amp; Civil Studio</span>
+          </div>
+        </a>
+        <p class="footer-desc">Crafting photorealistic 3D architectural narratives and executing turnkey civil construction across Ludhiana &amp; Amritsar.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NAM Atelier. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
