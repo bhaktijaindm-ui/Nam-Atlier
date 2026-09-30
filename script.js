@@ -612,3 +612,17 @@ function toggleFaq(btn) {
     item.classList.add('active');
   }
 }
+
+// Global Window Exports for HTML Inline Event Handlers
+window.jumpToMilestone = jumpToMilestone;
+window.togglePlayPause = togglePlayPause;
+window.toggleMute = toggleMute;
+window.toggleFullScreen = toggleFullScreen;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.openProjectModal = openProjectModal;
+window.handleConsultSubmit = handleConsultSubmit;
+window.toggleFaq = toggleFaq;
+window.openTestimonialModal = openTestimonialModal;
+window.closeTestimonialModal = closeTestimonialModal;
+
