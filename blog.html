@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal &amp; Architectural Insights — NAM Atelier</title>
+  <meta name="description" content="Architectural essays, 3D interior design guides, civil engineering methodologies, and material selection insights by Udhay Seth & Mudita D Seth." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .blog-hero {
+      padding: 9rem 2rem 5rem;
+      background: linear-gradient(180deg, var(--bg-sand) 0%, var(--bg-alabaster) 100%);
+      text-align: center;
+      position: relative;
+    }
+
+    .blog-hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .blog-hero-title {
+      font-family: var(--font-serif);
+      font-size: 3.6rem;
+      font-weight: 500;
+      color: var(--text-charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+    }
+
+    .blog-hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* Filter Bar */
+    .blog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .blog-filter-btn {
+      padding: 0.65rem 1.4rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .blog-filter-btn:hover, .blog-filter-btn.active {
+      background: var(--accent-sage);
+      color: #FFFFFF;
+      border-color: var(--accent-sage);
+      box-shadow: 0 4px 14px rgba(77, 104, 90, 0.25);
+    }
+
+    /* Blog Grid */
+    .blog-grid-section {
+      max-width: 1320px;
+      margin: 0 auto 6rem;
+      padding: 0 2rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blog-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-elevated);
+      border-color: var(--border-glass-gold);
+    }
+
+    .blog-card-img-wrapper {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .blog-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .blog-card:hover .blog-card-img {
+      transform: scale(1.08);
+    }
+
+    .blog-category-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(30, 26, 22, 0.75);
+      backdrop-filter: blur(10px);
+      color: var(--accent-gold);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(200, 169, 126, 0.4);
+    }
+
+    .blog-card-body {
+      padding: 2rem 1.75rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 0.85rem;
+    }
+
+    .blog-meta i {
+      color: var(--accent-terracotta);
+    }
+
+    .blog-title {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--text-charcoal);
+      margin-bottom: 0.85rem;
+    }
+
+    .blog-excerpt {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .blog-author-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-sage);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .author-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-charcoal);
+    }
+
+    .read-more-link {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-sage);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Newsletter Box */
+    .newsletter-section {
+      background: #191612;
+      color: #FFFFFF;
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .newsletter-box {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .newsletter-title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--text-primary-serif);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-desc {
+      font-size: 0.98rem;
+      color: var(--text-secondary-body);
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex-grow: 1;
+      padding: 0.85rem 1.25rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .newsletter-btn {
+      background: var(--accent-gold);
+      color: #1E1E1E;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .newsletter-btn:hover {
+      background: #FFFFFF;
+    }
+
+    /* Modal Article Reader */
+    .article-modal-content {
+      max-width: 850px;
+      width: 90vw;
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      max-height: 85vh;
+      overflow-y: auto;
+      color: var(--text-charcoal);
+    }
+
+    .modal-article-header {
+      margin-bottom: 2rem;
+    }
+
+    .modal-article-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .modal-article-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      line-height: 1.15;
+      color: var(--text-charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .modal-article-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 2rem;
+    }
+
+    .modal-article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .modal-article-body p {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-wrapper">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="site-header" style="position: sticky; top: 0; background: rgba(15, 15, 15, 0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-symbol">
+            <span>N</span>
+            <div class="diamond-accent"></div>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NAM ATELIER</span>
+            <span class="brand-sub-pill">STUDIO</span>
+          </div>
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About Studio</a>
+          <a href="portfolio-detail.html" class="nav-link">3D Portfolio</a>
+          <a href="service-detail.html" class="nav-link">Services</a>
+          <a href="blog.html" class="nav-link active">Journal</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
+            Inquire Studio
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO HEADER -->
+    <section class="blog-hero">
+      <span class="blog-hero-tag">ARCHITECTURAL ESSAYS &amp; MATERIAL ESSENCE</span>
+      <h1 class="blog-hero-title">Journal &amp; Design Insights</h1>
+      <p class="blog-hero-subtitle">
+        Exploring spatial light, material synthesis, zero-tolerance civil masonry, and 3D architectural rendering methodologies by Udhay Seth &amp; Mudita D Seth.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="blog-filters">
+        <button class="blog-filter-btn active" data-filter="all">All Insights</button>
+        <button class="blog-filter-btn" data-filter="material">Material Selection</button>
+        <button class="blog-filter-btn" data-filter="civil">Civil Engineering</button>
+        <button class="blog-filter-btn" data-filter="render">3D Visualization</button>
+        <button class="blog-filter-btn" data-filter="lighting">Lighting &amp; Acoustics</button>
+      </div>
+    </section>
+
+    <!-- BLOG GRID -->
+    <section class="blog-grid-section">
+      <div class="blog-grid">
+
+        <!-- Article 1 -->
+        <article class="blog-card" data-category="material" onclick="openBlogArticle(0)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">Material Selection</span>
+            <img src="nam_kitchen_render.jpg" alt="Statuario Marble & Travertine" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Sept 28, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+            </div>
+            <h2 class="blog-title">Selecting Statuario vs. Travertine: Marble Curation for Villa Porticos</h2>
+            <p class="blog-excerpt">
+              A comprehensive study on vein continuity, porosity treatments, and bookmatched stone sourcing for double-height entrances.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar">MDS</div>
+                <span class="author-name">Mudita D Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card" data-category="civil" onclick="openBlogArticle(1)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">Civil Engineering</span>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zero-Tolerance Masonry" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Sept 22, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 7 min read</span>
+            </div>
+            <h2 class="blog-title">Zero-Tolerance Civil Engineering: Translating 3D Renders onto RCC Shells</h2>
+            <p class="blog-excerpt">
+              How structural laser alignment and precise MEP conduit planning eliminate costly site variations during concrete pouring.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
+                <span class="author-name">Udhay Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card" data-category="lighting" onclick="openBlogArticle(2)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">Lighting &amp; Acoustics</span>
+            <img src="nam_bedroom_render.jpg" alt="Ambient Cove Lighting" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Sept 15, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            </div>
+            <h2 class="blog-title">Acoustic Cinema Isolation in Luxury Residential Palaces</h2>
+            <p class="blog-excerpt">
+              Engineering zero-vibration subwoofers and floating decoupled walls for Dolby Atmos home theater suites.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar">MDS</div>
+                <span class="author-name">Mudita D Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="blog-card" data-category="render" onclick="openBlogArticle(3)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">3D Visualization</span>
+            <img src="nam_living_render.jpg" alt="Photorealistic 3D Renders" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Sept 04, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+            </div>
+            <h2 class="blog-title">Raytracing Sunlight &amp; Spatial Light Synthesis in 4K Renders</h2>
+            <p class="blog-excerpt">
+              Calculating true sun angles across Ludhiana and Amritsar to simulate natural light distribution throughout seasons.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar">MDS</div>
+                <span class="author-name">Mudita D Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="blog-card" data-category="material" onclick="openBlogArticle(4)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">Material Selection</span>
+            <img src="nam_commercial_render.jpg" alt="German Blum Hardware" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Aug 29, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+            </div>
+            <h2 class="blog-title">German Blum Hardware &amp; Custom Ergonomic Joinery Curation</h2>
+            <p class="blog-excerpt">
+              Designing soft-close motorized pocket doors and concealed storage for clutter-free luxury culinary kitchens.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
+                <span class="author-name">Udhay Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="blog-card" data-category="civil" onclick="openBlogArticle(5)">
+          <div class="blog-card-img-wrapper">
+            <span class="blog-category-badge">Civil Engineering</span>
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Cantilever Stairs Structural Engineering" class="blog-card-img" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> Aug 18, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <h2 class="blog-title">Floating Cantilever Staircases: Load Calculations &amp; Steel Anchorage</h2>
+            <p class="blog-excerpt">
+              The physics behind floating wooden stair steps embedded directly into RCC spine walls without visible ground supports.
+            </p>
+            <div class="blog-author-row">
+              <div class="author-info">
+                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
+                <span class="author-name">Udhay Seth</span>
+              </div>
+              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter-section">
+      <div class="newsletter-box">
+        <h2 class="newsletter-title">Subscribe to Studio Insights</h2>
+        <p class="newsletter-desc">Receive exclusive monthly architectural essays, material monographs, and 3D render breakdowns delivered to your inbox.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+          <input type="email" required placeholder="Enter your email address..." class="newsletter-input" />
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="signature-footer" style="background: #0D0B0A; color: #FFFFFF; padding: 4rem 2.5rem 2rem;">
+      <div class="footer-container" style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 2.5rem;">
+          <div class="brand-logo">
+            <div class="brand-symbol"><span>N</span><div class="diamond-accent"></div></div>
+            <div class="brand-text">
+              <span class="brand-name">NAM ATELIER</span>
+              <span class="brand-sub-pill">STUDIO</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 2rem;">
+            <a href="index.html" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7);">Home</a>
+            <a href="about.html" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7);">About Studio</a>
+            <a href="portfolio-detail.html" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7);">3D Portfolio</a>
+            <a href="service-detail.html" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7);">Services</a>
+            <a href="blog.html" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-gold);">Journal</a>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: rgba(255,255,255,0.5);">
+          <p>&copy; 2026 NAM Atelier. All rights reserved by Udhay Seth &amp; Mudita D Seth.</p>
+          <p>Ludhiana &amp; Amritsar, Punjab</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ARTICLE READER MODAL -->
+  <div class="modal-overlay" id="blogArticleModal">
+    <div class="article-modal-content">
+      <button class="modal-close-btn" onclick="closeBlogArticle()">&times;</button>
+      <div class="modal-article-header">
+        <span class="modal-article-tag" id="articleModalCategory">Material Selection</span>
+        <h2 class="modal-article-title" id="articleModalTitle">Article Title</h2>
+        <div class="blog-meta" id="articleModalMeta">
+          <span>By Mudita D Seth</span> • <span>Sept 28, 2026</span> • <span>5 min read</span>
+        </div>
+      </div>
+      <img id="articleModalImg" src="nam_kitchen_render.jpg" alt="Article Cover" class="modal-article-img" />
+      <div class="modal-article-body" id="articleModalBody">
+        <p>Loading article content...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal-overlay" id="consultModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
+      <div class="modal-header text-center">
+        <span class="card-tag-pill"><span class="gold-dot"></span> ARCHITECTURAL CONSULTATION</span>
+        <h3 class="modal-title">Book Studio Appointment</h3>
+        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting.</p>
+      </div>
+      <form onsubmit="handleConsultSubmit(event)" class="modal-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="phoneNum">Mobile / WhatsApp</label>
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input" />
+        </div>
+        <button type="submit" class="btn btn-inquire-pill" style="width: 100%; margin-top: 1rem;">Confirm Consultation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const articlesData = [
+      {
+        category: "Material Selection",
+        title: "Selecting Statuario vs. Travertine: Marble Curation for Villa Porticos",
+        date: "Sept 28, 2026",
+        readTime: "5 min read",
+        author: "Mudita D Seth",
+        img: "nam_kitchen_render.jpg",
+        content: `
+          <p>When curating marble for double-height entrances and open-plan living rooms, the choice between Italian Statuario and Roman Travertine defines the architectural atmosphere of the residence.</p>
+          <p>Statuario marble offers crisp light reflectance with bold grey-blue veining, ideal for dramatic foyer backdrops and cantilevers. Travertine, by contrast, brings warm tactile porosity, acoustic dampening, and earthy luxury.</p>
+          <p>At NAM Atelier, every slab is bookmatched in 4K 3D CAD renders prior to site delivery, ensuring that vein lines flow continuously across floor joints and wall cladding.</p>
+        `
+      },
+      {
+        category: "Civil Engineering",
+        title: "Zero-Tolerance Civil Engineering: Translating 3D Renders onto RCC Shells",
+        date: "Sept 22, 2026",
+        readTime: "7 min read",
+        author: "Udhay Seth",
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>Architectural beauty relies heavily on civil precision. A minor variance of 15mm in ceiling height can throw off custom joinery, cove lighting channels, and wall paneling alignment.</p>
+          <p>By implementing 3D BIM structural layout verification before shuttering and concrete pouring, our civil construction team achieves zero-tolerance precision on bare brick shells in Ludhiana and Amritsar.</p>
+        `
+      },
+      {
+        category: "Lighting & Acoustics",
+        title: "Acoustic Cinema Isolation in Luxury Residential Palaces",
+        date: "Sept 15, 2026",
+        readTime: "4 min read",
+        author: "Mudita D Seth",
+        img: "nam_bedroom_render.jpg",
+        content: `
+          <p>Private home theaters require precise decibel dampening to prevent sound leakage into neighboring master bedrooms. Decoupled floating studs, dense acoustic mineral wool, and acoustic fabric paneling form the cornerstone of sound design.</p>
+          <p>Every Dolby Atmos speaker angle is computed during our initial 3D rendering phase, delivering immersive cinematic audio with zero structural vibration.</p>
+        `
+      },
+      {
+        category: "3D Visualization",
+        title: "Raytracing Sunlight & Spatial Light Synthesis in 4K Renders",
+        date: "Sept 04, 2026",
+        readTime: "6 min read",
+        author: "Mudita D Seth",
+        img: "nam_living_render.jpg",
+        content: `
+          <p>Natural daylight alters how materials look throughout the day. By simulating exact solar trajectories for Punjab coordinates, our 3D renders reveal how morning glare, afternoon coves, and evening accent lights illuminate room surfaces.</p>
+        `
+      },
+      {
+        category: "Material Selection",
+        title: "German Blum Hardware & Custom Ergonomic Joinery Curation",
+        date: "Aug 29, 2026",
+        readTime: "5 min read",
+        author: "Udhay Seth",
+        img: "nam_commercial_render.jpg",
+        content: `
+          <p>Luxury kitchens require silent, effortless movement. We integrate German Blum AVENTOS lift systems and motorized SERVO-DRIVE drawers into bespoke teak and fluted sage cabinetry.</p>
+        `
+      },
+      {
+        category: "Civil Engineering",
+        title: "Floating Cantilever Staircases: Load Calculations & Steel Anchorage",
+        date: "Aug 18, 2026",
+        readTime: "8 min read",
+        author: "Udhay Seth",
+        img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>Floating stairs create spatial transparency in modern villas. Heavy structural steel brackets anchored deep within reinforced concrete RCC columns allow teak steps to float effortlessly without floor pillars.</p>
+        `
+      }
+    ];
+
+    function openBlogArticle(idx) {
+      const modal = document.getElementById('blogArticleModal');
+      const data = articlesData[idx];
+      if (!modal || !data) return;
+
+      document.getElementById('articleModalCategory').textContent = data.category;
+      document.getElementById('articleModalTitle').textContent = data.title;
+      document.getElementById('articleModalMeta').innerHTML = `By <strong>${data.author}</strong> • ${data.date} • ${data.readTime}`;
+      document.getElementById('articleModalImg').src = data.img;
+      document.getElementById('articleModalBody').innerHTML = data.content;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlogArticle() {
+      const modal = document.getElementById('blogArticleModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      showToast(`Subscribed ${input.value} to NAM Atelier Journal!`);
+      e.target.reset();
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.blog-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        document.querySelectorAll('.blog-card').forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -6,8 +6,11 @@
     { "src": "/", "dest": "/index.html" },
     { "src": "/index", "dest": "/index.html" },
     { "src": "/about", "dest": "/about.html" },
+    { "src": "/portfolio", "dest": "/portfolio-detail.html" },
     { "src": "/portfolio-detail", "dest": "/portfolio-detail.html" },
+    { "src": "/services", "dest": "/service-detail.html" },
     { "src": "/service-detail", "dest": "/service-detail.html" },
+    { "src": "/blog", "dest": "/blog.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ],
   "headers": [
