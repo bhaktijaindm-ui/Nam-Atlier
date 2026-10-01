@@ -454,11 +454,18 @@ function initSightsSlider() {
 function initBeforeAfterSlider() {
   const slider = document.getElementById('baSlider');
   const beforeImg = document.getElementById('baBefore');
+  const beforeTag = beforeImg ? beforeImg.querySelector('img') : null;
   const handle = document.getElementById('baHandle');
 
   if (!slider || !beforeImg || !handle) return;
 
   let isDragging = false;
+
+  function updateBeforeWidth() {
+    if (beforeTag && slider) {
+      beforeTag.style.width = `${slider.offsetWidth}px`;
+    }
+  }
 
   function setSliderPosition(x) {
     const rect = slider.getBoundingClientRect();
@@ -468,7 +475,11 @@ function initBeforeAfterSlider() {
     const percentage = (offsetX / rect.width) * 100;
     beforeImg.style.width = `${percentage}%`;
     handle.style.left = `${percentage}%`;
+    updateBeforeWidth();
   }
+
+  window.addEventListener('resize', updateBeforeWidth);
+  updateBeforeWidth();
 
   slider.addEventListener('mousedown', (e) => {
     isDragging = true;
