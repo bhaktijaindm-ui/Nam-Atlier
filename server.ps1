@@ -12,6 +12,7 @@ try {
         $context = $listener.GetContext()
         $request = $context.Request
         $response = $context.Response
+        $fileStream = $null
         
         try {
             $rawPath = [System.Uri]::UnescapeDataString($request.Url.LocalPath)
@@ -68,7 +69,6 @@ try {
                     $response.ContentLength64 = $fileLength
                     $fileStream.CopyTo($response.OutputStream)
                 }
-                $fileStream.Close()
             } else {
                 $response.StatusCode = 404
                 $buffer = [System.Text.Encoding]::UTF8.GetBytes("404 Not Found")
@@ -76,11 +76,14 @@ try {
                 $response.OutputStream.Write($buffer, 0, $buffer.Length)
             }
         } catch {
-            Write-Host "Error serving request: $_"
+            # Quietly swallow client disconnects during video streaming / seek aborts
         } finally {
-            $response.Close()
+            if ($null -ne $fileStream) {
+                try { $fileStream.Close(); $fileStream.Dispose() } catch {}
+            }
+            try { $response.Close() } catch {}
         }
     }
 } finally {
-    $listener.Stop()
+    try { $listener.Stop() } catch {}
 }
