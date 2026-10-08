@@ -142,33 +142,36 @@
 <body>
 
   <!-- NAVIGATION HEADER -->
-  <header class="site-header" style="position: sticky; top: 0; background: rgba(15, 15, 15, 0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+  <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <a href="index.html" class="brand-logo">
-        <div class="brand-symbol">
-          <span>N</span>
-          <div class="diamond-accent"></div>
-        </div>
-        <div class="brand-text">
-          <span class="brand-name">NAM ATELIER</span>
-          <span class="brand-sub-pill">STUDIO</span>
-        </div>
-      </a>
+      
+      <!-- LEFT BRAND & SUB-NAV STACK (MATCHES SCREENSHOT EXACTLY) -->
+      <div class="header-brand-nav-stack">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-symbol">
+            <span>N</span>
+            <div class="diamond-accent"></div>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NAM ATELIER</span>
+          </div>
+        </a>
 
-      <nav class="main-nav" aria-label="Main Navigation">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link active">About Studio</a>
-        <a href="portfolio-detail.html" class="nav-link">3D Portfolio</a>
-        <a href="service-detail.html" class="nav-link">Services</a>
-        <a href="blog.html" class="nav-link">Journal</a>
-        <a href="index.html#contact" class="nav-link">Contact</a>
-      </nav>
+        <nav class="main-nav" aria-label="Main Navigation">
+          <a href="about.html" class="nav-link active">ABOUT STUDIO</a>
+          <a href="portfolio-detail.html" class="nav-link">3D PORTFOLIO</a>
+          <a href="service-detail.html" class="nav-link">SERVICES</a>
+          <a href="blog.html" class="nav-link">JOURNAL</a>
+        </nav>
+      </div>
 
+      <!-- RIGHT ACTION PILL BUTTON -->
       <div class="header-actions">
         <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
-          Inquire Studio
+          INQUIRE STUDIO
         </button>
       </div>
+
     </div>
   </header>
 
