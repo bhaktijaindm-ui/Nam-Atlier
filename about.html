@@ -299,21 +299,150 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="signature-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <a href="index.html" class="brand-logo">
-          <div class="logo-mark">NAM</div>
-          <div class="brand-text">
-            <span class="brand-name">NAM ATELIER</span>
-            <span class="brand-tagline">3D Architecture &amp; Civil Studio</span>
+  <!-- SIGNATURE LUXURY FOOTER (MATCHES USER SCREENSHOT EXACTLY ACROSS ALL PAGES) -->
+  <footer class="signature-luxury-footer" id="footer">
+    <div class="footer-outer-wrapper">
+      <div class="footer-split-grid">
+        
+        <!-- LEFT CARD: WHITE LUXURY ARCHITECTURAL CARD -->
+        <div class="footer-left-card">
+          <div class="card-diamond-corner top-left"></div>
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-left"></div>
+          <div class="card-diamond-corner bottom-right"></div>
+
+          <div class="footer-card-header">
+            <h2 class="footer-brand-name">NAM ATELIER</h2>
+            <span class="footer-brand-pill">ARCHITECTURAL &amp; 3D INTERIOR STUDIO</span>
+            <div class="footer-card-divider"></div>
           </div>
-        </a>
-        <p class="footer-desc">Crafting photorealistic 3D architectural narratives and executing turnkey civil construction across Ludhiana &amp; Amritsar.</p>
+
+          <div class="footer-directors-block">
+            <span class="directors-label">STUDIO DIRECTORS</span>
+
+            <!-- Director 1 -->
+            <div class="director-row">
+              <div class="director-info">
+                <strong class="director-name">Udhay Seth</strong>
+                <span class="director-tag">PRINCIPAL CIVIL CONSTRUCTOR</span>
+              </div>
+              <div class="director-phone-box">
+                <a href="tel:+917710152917" class="director-phone">+91 77101 52917</a>
+                <button class="copy-icon-btn" onclick="copyToClipboard('+917710152917', 'Udhay Seth\'s Phone Number')" title="Copy Phone Number">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Director 2 -->
+            <div class="director-row">
+              <div class="director-info">
+                <strong class="director-name">Mudita D Seth</strong>
+                <span class="director-tag">LEAD INTERIOR DESIGNER</span>
+              </div>
+              <div class="director-phone-box">
+                <a href="tel:+918968155070" class="director-phone">+91 89681 55070</a>
+                <button class="copy-icon-btn" onclick="copyToClipboard('+918968155070', 'Mudita D Seth\'s Phone Number')" title="Copy Phone Number">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-dotted-divider"></div>
+
+          <!-- Email & Location -->
+          <div class="footer-reach-block">
+            <div class="reach-line">
+              <i class="fa-regular fa-envelope reach-icon"></i>
+              <a href="mailto:naminterior9@gmail.com" class="reach-email">naminterior9@gmail.com</a>
+              <button class="copy-icon-btn" onclick="copyToClipboard('naminterior9@gmail.com', 'Studio Email')" title="Copy Email">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+            <div class="reach-line">
+              <i class="fa-solid fa-location-dot reach-icon"></i>
+              <span class="reach-location">Ludhiana | Amritsar, Punjab, India</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT CARD: SAGE GREEN PANEL & QR CODE -->
+        <div class="footer-right-sage-panel">
+          <div class="sage-header">
+            <div class="insta-tag-wrap">
+              <i class="fa-brands fa-instagram"></i>
+              <span>@nam_atelier</span>
+            </div>
+            <span class="scan-tag">SCAN TO CONNECT</span>
+          </div>
+
+          <!-- Crisp QR Code Card -->
+          <div class="sage-qr-white-card">
+            <svg viewBox="0 0 200 200" class="qr-vector-svg" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#FFFFFF" rx="12"/>
+              
+              <!-- Corner Targets -->
+              <rect x="15" y="15" width="45" height="45" rx="8" fill="#1E1E1E"/>
+              <rect x="23" y="23" width="29" height="29" rx="4" fill="#FFFFFF"/>
+              <rect x="30" y="30" width="15" height="15" rx="2.5" fill="#E38F56"/>
+
+              <rect x="140" y="15" width="45" height="45" rx="8" fill="#1E1E1E"/>
+              <rect x="148" y="23" width="29" height="29" rx="4" fill="#FFFFFF"/>
+              <rect x="155" y="30" width="15" height="15" rx="2.5" fill="#E38F56"/>
+
+              <rect x="15" y="140" width="45" height="45" rx="8" fill="#1E1E1E"/>
+              <rect x="23" y="148" width="29" height="29" rx="4" fill="#FFFFFF"/>
+              <rect x="30" y="155" width="15" height="15" rx="2.5" fill="#E38F56"/>
+
+              <!-- Matrix Elements -->
+              <rect x="70" y="20" width="12" height="22" fill="#1E1E1E" rx="2"/>
+              <rect x="92" y="15" width="16" height="12" fill="#4D685A" rx="2"/>
+              <rect x="115" y="25" width="12" height="25" fill="#1E1E1E" rx="2"/>
+              
+              <rect x="20" y="70" width="20" height="12" fill="#4D685A" rx="2"/>
+              <rect x="50" y="75" width="15" height="15" fill="#1E1E1E" rx="2"/>
+              <rect x="75" y="70" width="25" height="12" fill="#E38F56" rx="2"/>
+              <rect x="110" y="65" width="20" height="20" fill="#1E1E1E" rx="2"/>
+              <rect x="140" y="75" width="15" height="12" fill="#4D685A" rx="2"/>
+              <rect x="165" y="70" width="15" height="20" fill="#1E1E1E" rx="2"/>
+
+              <!-- Instagram Center Emblem -->
+              <rect x="80" y="80" width="40" height="40" rx="10" fill="#1E1E1E"/>
+              <rect x="86" y="86" width="28" height="28" rx="7" fill="#FFFFFF"/>
+              <circle cx="100" cy="100" r="7" fill="#1E1E1E"/>
+              <circle cx="108" cy="92" r="2.5" fill="#E38F56"/>
+
+              <!-- Lower Pattern -->
+              <rect x="70" y="130" width="15" height="25" fill="#1E1E1E" rx="2"/>
+              <rect x="95" y="140" width="20" height="12" fill="#4D685A" rx="2"/>
+              <rect x="125" y="125" width="15" height="30" fill="#1E1E1E" rx="2"/>
+              <rect x="150" y="140" width="25" height="15" fill="#E38F56" rx="2"/>
+              
+              <rect x="20" y="115" width="15" height="15" fill="#1E1E1E" rx="2"/>
+              <rect x="45" y="120" width="15" height="12" fill="#4D685A" rx="2"/>
+              <rect x="75" y="165" width="30" height="15" fill="#1E1E1E" rx="2"/>
+              <rect x="115" y="165" width="20" height="15" fill="#4D685A" rx="2"/>
+              <rect x="145" y="165" width="20" height="20" fill="#1E1E1E" rx="2"/>
+            </svg>
+          </div>
+        </div>
+
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 NAM Atelier. All rights reserved.</p>
+
+      <!-- BOTTOM UNIFIED BAR -->
+      <div class="footer-unified-bottom-bar">
+        <div class="bottom-inner">
+          <nav class="footer-nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Studio</a>
+            <a href="portfolio-detail.html">3D Portfolio</a>
+            <a href="service-detail.html">Services</a>
+            <a href="blog.html">Journal</a>
+            <a href="index.html#contact">Contact</a>
+          </nav>
+          <p class="copyright-text">&copy; 2026 <strong>NAM Atelier</strong>. All rights reserved by Udhay Seth &amp; Mudita D Seth.</p>
+        </div>
       </div>
     </div>
   </footer>
