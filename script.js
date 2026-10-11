@@ -459,19 +459,39 @@ function handleConsultSubmit(event) {
   event.target.reset();
 }
 
-/* 9. ACTIVE NAV SCROLL TRACKER & HEADER SCROLL STATE */
+/* 9. ACTIVE NAV SCROLL TRACKER & HEADER HIDE/SHOW STATE */
 function initScrollNav() {
   const sections = document.querySelectorAll('section[id], footer[id]');
   const navLinks = document.querySelectorAll('.main-nav .nav-link');
   const header = document.getElementById('siteHeader');
+  const cinemaSection = document.querySelector('.cinema-scroll');
 
   window.addEventListener('scroll', () => {
-    // Header appearance toggle when scrolling past initial hero top
     if (header) {
-      if (window.scrollY > 80) {
-        header.classList.add('scrolled');
+      if (cinemaSection) {
+        const heroBottom = cinemaSection.offsetTop + cinemaSection.offsetHeight;
+        const scrollY = window.scrollY;
+
+        if (scrollY > 60 && scrollY < heroBottom - 100) {
+          // Inside the hero scroll zone → hide header completely
+          header.classList.add('header-hidden');
+          header.classList.remove('scrolled');
+        } else if (scrollY >= heroBottom - 100) {
+          // Past the hero → show header as fixed frosted glass bar
+          header.classList.remove('header-hidden');
+          header.classList.add('scrolled');
+        } else {
+          // At very top (initial view) → show normal glass header
+          header.classList.remove('header-hidden');
+          header.classList.remove('scrolled');
+        }
       } else {
-        header.classList.remove('scrolled');
+        // No hero section on this page → always show header
+        if (window.scrollY > 80) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
       }
     }
 

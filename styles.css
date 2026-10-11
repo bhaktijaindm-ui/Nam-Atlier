@@ -127,21 +127,40 @@ img, video {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: none !important;
+  background: rgba(15, 15, 15, 0.30) !important;
+  backdrop-filter: blur(18px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
   padding: 1.4rem 2.5rem;
-  transition: background 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease,
+              background 0.35s ease,
+              padding 0.35s ease,
+              box-shadow 0.35s ease;
 }
 
+/* HIDDEN STATE: Header slides up & fades out when inside hero banner scroll */
+.site-header.header-hidden {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* SCROLLED STATE: Header reappears as fixed frosted glass bar after hero */
 .site-header.scrolled {
   position: fixed;
-  background: rgba(15, 15, 15, 0.92) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  top: 0;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(12, 12, 12, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   padding: 0.85rem 2.5rem;
 }
 
