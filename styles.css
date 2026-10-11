@@ -133,8 +133,8 @@ img, video {
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 60px;
-  padding: 0.5rem 2rem;
+  border-radius: 22px;
+  padding: 0.85rem 2.5rem;
   opacity: 1;
   pointer-events: auto;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
@@ -168,9 +168,9 @@ img, video {
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 60px;
+  border-radius: 22px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 2px 12px rgba(0, 0, 0, 0.2);
-  padding: 0.5rem 2rem;
+  padding: 0.75rem 2.5rem;
 }
 
 /* For standalone subpages without hero video */
@@ -187,31 +187,30 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
 }
 
-/* Brand & Nav: Logo + links in a single horizontal row */
+/* Brand & Nav: Logo on top, menu below — both equally aligned */
 .header-brand-nav-stack {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.8rem;
-  width: auto;
-  max-width: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  width: 360px;
+  max-width: 55%;
 }
 
 .brand-logo {
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  width: 100%;
   text-decoration: none;
   line-height: 1;
-  flex-shrink: 0;
 }
 
 .official-brand-logo-img {
-  width: auto;
-  max-width: 200px;
-  height: 28px;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  max-height: 42px;
   object-fit: contain;
   object-position: left center;
   display: block;
@@ -227,7 +226,9 @@ body:not(:has(.cinema-scroll)) .site-header {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 360px;
   margin: 0;
   padding: 0;
 }
@@ -2752,21 +2753,22 @@ body:not(:has(.cinema-scroll)) .site-header {
     display: none !important;
   }
 
-  /* MOBILE COMPACT GLASS PILL HEADER */
+  /* MOBILE COMPACT GLASS HEADER */
   .site-header {
     width: 96% !important;
-    padding: 0.4rem 1rem !important;
+    padding: 0.5rem 1.2rem !important;
     top: 0.35rem !important;
-    border-radius: 50px !important;
+    border-radius: 18px !important;
   }
 
   .header-brand-nav-stack {
+    width: auto !important;
+    max-width: 160px !important;
     gap: 0 !important;
   }
 
   .official-brand-logo-img {
-    height: 22px !important;
-    max-width: 140px !important;
+    max-height: 24px !important;
   }
 
   .btn-inquire-pill {
