@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try { initAnimatedTestimonials(); } catch(e) { console.error('Animated Testimonials Error:', e); }
 });
 
-/* 1. MASTER VIDEO LERP SCRUBBING & TIMELINE SELECTOR ENGINE */
-let videoScrubTargetTime = 0;
-let videoScrubCurrentTime = 0;
+/* 1. MASTER VIDEO SCROLL-SCRUBBING & TIMELINE SELECTOR ENGINE */
 let isUserPlaying = false;
 
 const sectionLabelsMap = {
@@ -35,28 +33,78 @@ function initVideoScrubbing() {
 
   if (!cinemaSection || !video) return;
 
-  // Ensure video is muted and playsinline for frame-accurate scroll scrubbing
+  // Strict initial lock: video must never autoplay or loop
   video.muted = true;
   video.playsInline = true;
-  
-  // Pause video so scroll scrubbing controls frame playback directly
-  if (!isUserPlaying && !video.paused) {
-    try { video.pause(); } catch(e) {}
+  video.removeAttribute('autoplay');
+  video.removeAttribute('loop');
+  try { video.pause(); } catch(e) {}
+
+  // Enforce pause if browser attempts automatic playback
+  video.addEventListener('play', () => {
+    if (!isUserPlaying) {
+      try { video.pause(); } catch(e) {}
+    }
+  });
+
+  let pendingSeekTime = null;
+  let isSeeking = false;
+  let seekTimeout = null;
+
+  function performSeek(time) {
+    const duration = video.duration || 0;
+    if (duration <= 0 || isNaN(duration)) return;
+    const clampedTime = Math.max(0, Math.min(duration - 0.05, time));
+
+    if (!isSeeking) {
+      isSeeking = true;
+      try {
+        video.currentTime = clampedTime;
+      } catch(e) {
+        isSeeking = false;
+      }
+      clearTimeout(seekTimeout);
+      seekTimeout = setTimeout(() => {
+        isSeeking = false;
+        if (pendingSeekTime !== null && !isUserPlaying) {
+          const next = pendingSeekTime;
+          pendingSeekTime = null;
+          performSeek(next);
+        }
+      }, 250);
+    } else {
+      pendingSeekTime = clampedTime;
+    }
   }
-  
-  // Pre-trigger video loading if metadata hasn't loaded yet
-  if (video.readyState === 0) {
-    video.load();
+
+  video.addEventListener('seeked', () => {
+    isSeeking = false;
+    clearTimeout(seekTimeout);
+    if (timeCounter && video.duration > 0) {
+      const curSec = Math.floor(video.currentTime || 0);
+      const durSec = Math.floor(video.duration);
+      timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
+    }
+    if (pendingSeekTime !== null && !isUserPlaying) {
+      const next = pendingSeekTime;
+      pendingSeekTime = null;
+      if (Math.abs(video.currentTime - next) > 0.015) {
+        performSeek(next);
+      }
+    }
+  });
+
+  function getScrollFraction() {
+    const rect = cinemaSection.getBoundingClientRect();
+    const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
+    if (totalScrollableHeight <= 0) return 0;
+    const fraction = -rect.top / totalScrollableHeight;
+    return Math.max(0, Math.min(1, fraction));
   }
 
   function updateVideoScrub() {
-    const rect = cinemaSection.getBoundingClientRect();
-    const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
-    if (totalScrollableHeight <= 0) return;
-    
-    // Calculate scroll fraction (0.0 to 1.0)
-    let scrollFraction = -rect.top / totalScrollableHeight;
-    scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+    const scrollFraction = getScrollFraction();
+    const duration = video.duration || 0;
 
     // Update bottom timeline progress fill bar
     if (timelineProgressFill) {
@@ -74,11 +122,7 @@ function initVideoScrubbing() {
       }
     }
 
-    // Determine active milestone based on scroll progress:
-    // Milestone 1: 0% - 20%
-    // Milestone 2: 20% - 50%
-    // Milestone 3: 50% - 75%
-    // Milestone 4: 75% - 100%
+    // Determine active milestone based on scroll progress
     let activeStop = 1;
     if (scrollFraction >= 0.75) {
       activeStop = 4;
@@ -115,52 +159,60 @@ function initVideoScrubbing() {
       barSectionLabel.textContent = sectionLabelsMap[activeStop];
     }
 
-    // Update target video playback time based on scroll position if not playing manually
-    const duration = video.duration || 0;
-    if (duration > 0 && !isUserPlaying) {
-      videoScrubTargetTime = scrollFraction * duration;
+    // Directly bind video frame to current scroll fraction
+    if (!isUserPlaying && duration > 0) {
+      const targetTime = scrollFraction * duration;
+      performSeek(targetTime);
+    }
+
+    // Update Digital Time Counter (e.g., "00:12 / 00:33")
+    if (timeCounter && duration > 0) {
+      const curSec = Math.floor(video.currentTime || 0);
+      const durSec = Math.floor(duration);
+      timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
     }
   }
 
-  // Handle metadata & loaded events
-  video.addEventListener('loadedmetadata', updateVideoScrub);
-  video.addEventListener('loadeddata', updateVideoScrub);
-  video.addEventListener('canplay', updateVideoScrub);
-
-  // 60FPS LERP animation loop for smooth frame-accurate seeking
-  function renderLoop() {
-    const duration = video.duration || 0;
-    if (duration > 0) {
-      if (!isUserPlaying) {
-        const delta = videoScrubTargetTime - videoScrubCurrentTime;
-        if (Math.abs(delta) > 0.001) {
-          videoScrubCurrentTime += delta * 0.25;
-          if (!video.seeking) {
-            try {
-              video.currentTime = videoScrubCurrentTime;
-            } catch(e) {
-              // Ignore transient seek errors during rapid scrolling
-            }
-          }
-        }
-      } else {
-        videoScrubCurrentTime = video.currentTime;
-      }
-
-      // Update Digital Time Counter (e.g., "00:12 / 00:33")
-      if (timeCounter) {
-        const curSec = Math.floor(video.currentTime || 0);
-        const durSec = Math.floor(duration);
-        timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
-      }
-    }
-    requestAnimationFrame(renderLoop);
+  // Pre-trigger video loading if metadata hasn't loaded yet
+  if (video.readyState === 0) {
+    video.load();
   }
 
-  window.addEventListener('scroll', updateVideoScrub, { passive: true });
+  video.addEventListener('loadedmetadata', () => {
+    try { video.pause(); } catch(e) {}
+    updateVideoScrub();
+  });
+  video.addEventListener('loadeddata', () => {
+    try { video.pause(); } catch(e) {}
+    updateVideoScrub();
+  });
+  video.addEventListener('canplay', () => {
+    try { video.pause(); } catch(e) {}
+    updateVideoScrub();
+  });
+
+  // RAF-throttled scroll handler for instant responsiveness with zero jank
+  let isScrollScheduled = false;
+  function onScroll() {
+    if (isUserPlaying) {
+      isUserPlaying = false;
+      try { video.pause(); } catch(e) {}
+      const btn = document.getElementById('playPauseBtn');
+      if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+    if (!isScrollScheduled) {
+      isScrollScheduled = true;
+      requestAnimationFrame(() => {
+        updateVideoScrub();
+        isScrollScheduled = false;
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', updateVideoScrub);
 
-  requestAnimationFrame(renderLoop);
+  // Initial synchronization
   updateVideoScrub();
 }
 
