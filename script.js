@@ -459,12 +459,22 @@ function handleConsultSubmit(event) {
   event.target.reset();
 }
 
-/* 9. ACTIVE NAV SCROLL TRACKER */
+/* 9. ACTIVE NAV SCROLL TRACKER & HEADER SCROLL STATE */
 function initScrollNav() {
   const sections = document.querySelectorAll('section[id], footer[id]');
   const navLinks = document.querySelectorAll('.main-nav .nav-link');
+  const header = document.getElementById('siteHeader');
 
   window.addEventListener('scroll', () => {
+    // Header appearance toggle when scrolling past initial hero top
+    if (header) {
+      if (window.scrollY > 80) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
     let current = '';
     const scrollPos = window.scrollY + 200;
 
@@ -480,7 +490,7 @@ function initScrollNav() {
         link.classList.add('active');
       }
     });
-  });
+  }, { passive: true });
 }
 
 /* 10. PROJECTS SHOWCASE CAROUSEL SLIDER HANDLER */
