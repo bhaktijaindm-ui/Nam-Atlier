@@ -119,107 +119,115 @@ img, video {
 }
 
 /* ==========================================================================
-   HEADER NAVIGATION BAR (TRANSPARENT FLOATING HEADER WITH SUB-NAV UNDER LOGO)
+   HEADER NAVIGATION BAR — COMPACT FLOATING GLASS PILL
    ========================================================================== */
 .site-header {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 94%;
+  max-width: 1320px;
   z-index: 1000;
-  background: rgba(15, 15, 15, 0.30) !important;
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
-  padding: 1.4rem 2.5rem;
-  transform: translateY(0);
+  background: rgba(15, 15, 15, 0.25);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 60px;
+  padding: 0.5rem 2rem;
   opacity: 1;
   pointer-events: auto;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.4s ease,
               background 0.35s ease,
               padding 0.35s ease,
-              box-shadow 0.35s ease;
+              box-shadow 0.35s ease,
+              border-radius 0.35s ease,
+              width 0.35s ease,
+              top 0.35s ease;
 }
 
 /* HIDDEN STATE: Header slides up & fades out when inside hero banner scroll */
 .site-header.header-hidden {
-  transform: translateY(-110%);
+  transform: translateX(-50%) translateY(-140%);
   opacity: 0;
   pointer-events: none;
 }
 
-/* SCROLLED STATE: Header reappears as fixed frosted glass bar after hero */
+/* SCROLLED STATE: Fixed compact frosted glass pill after hero */
 .site-header.scrolled {
   position: fixed;
-  top: 0;
-  transform: translateY(0);
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
   opacity: 1;
   pointer-events: auto;
-  background: rgba(12, 12, 12, 0.88) !important;
-  backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  padding: 0.85rem 2.5rem;
+  width: 92%;
+  max-width: 1280px;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 60px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 2px 12px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 2rem;
 }
 
-/* For standalone subpages without hero video, give header a dark backdrop */
+/* For standalone subpages without hero video */
 body:not(:has(.cinema-scroll)) .site-header {
-  background: rgba(15, 15, 15, 0.92) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(12, 12, 12, 0.82);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .header-inner {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
-/* Brand & Menu Stack: Logo full above menu, equal width and full alignment */
+/* Brand & Nav: Logo + links in a single horizontal row */
 .header-brand-nav-stack {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.55rem;
-  width: 380px;
-  max-width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.8rem;
+  width: auto;
+  max-width: none;
 }
 
 .brand-logo {
-  display: block;
-  width: 100%;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .official-brand-logo-img {
-  width: 100%;
-  max-width: 380px;
-  height: auto;
-  max-height: 52px;
+  width: auto;
+  max-width: 200px;
+  height: 28px;
   object-fit: contain;
   object-position: left center;
   display: block;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.5));
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .brand-logo:hover .official-brand-logo-img {
-  opacity: 0.92;
+  opacity: 0.9;
   transform: translateY(-1px);
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 380px;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -2744,21 +2752,21 @@ body:not(:has(.cinema-scroll)) .site-header {
     display: none !important;
   }
 
-  /* TRANSPARENT MOBILE HEADER */
+  /* MOBILE COMPACT GLASS PILL HEADER */
   .site-header {
-    padding: 0.75rem 1rem;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    width: 96% !important;
+    padding: 0.4rem 1rem !important;
+    top: 0.35rem !important;
+    border-radius: 50px !important;
   }
 
   .header-brand-nav-stack {
-    width: auto !important;
-    max-width: 200px !important;
+    gap: 0 !important;
   }
 
   .official-brand-logo-img {
-    max-height: 32px !important;
+    height: 22px !important;
+    max-width: 140px !important;
   }
 
   .btn-inquire-pill {
