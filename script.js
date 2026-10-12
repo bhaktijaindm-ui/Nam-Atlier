@@ -176,66 +176,8 @@ function initVideoScrubbing() {
     }
   }
 
-  // Ensure browser initiates decode and autoplay of first frame
-  if (video.readyState === 0) {
-    try { video.load(); } catch(e) {}
-  }
-
-  // Handle autonomous playback updates
-  video.addEventListener('timeupdate', () => {
-    const duration = video.duration || 0;
-    if (duration <= 0) return;
-
-    if (timeCounter) {
-      const curSec = Math.floor(video.currentTime || 0);
-      const durSec = Math.floor(duration);
-      timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
-    }
-
-    // If video is playing autonomously, advance the timeline bar and active milestone card
-    if (!video.paused) {
-      const fraction = Math.max(0, Math.min(1, video.currentTime / duration));
-      if (timelineProgressFill) {
-        timelineProgressFill.style.width = `${(fraction * 100).toFixed(1)}%`;
-      }
-
-      let activeStop = 1;
-      if (fraction >= 0.75) {
-        activeStop = 4;
-      } else if (fraction >= 0.50) {
-        activeStop = 3;
-      } else if (fraction >= 0.20) {
-        activeStop = 2;
-      } else {
-        activeStop = 1;
-      }
-
-      if (activeStop !== currentActiveStop) {
-        currentActiveStop = activeStop;
-        milestoneCards.forEach(card => {
-          const cardStop = parseInt(card.getAttribute('data-milestone'));
-          if (cardStop === activeStop) {
-            card.classList.add('active');
-          } else {
-            card.classList.remove('active');
-          }
-        });
-
-        timelinePills.forEach(pill => {
-          const pillStop = parseInt(pill.getAttribute('data-stop'));
-          if (pillStop === activeStop) {
-            pill.classList.add('active');
-          } else {
-            pill.classList.remove('active');
-          }
-        });
-
-        if (barSectionLabel && sectionLabelsMap[activeStop]) {
-          barSectionLabel.textContent = sectionLabelsMap[activeStop];
-        }
-      }
-    }
-  });
+  // Ensure video is paused on load so it only responds to user scrolling
+  video.pause();
 
   video.addEventListener('play', () => {
     const btn = document.getElementById('playPauseBtn');
@@ -247,42 +189,15 @@ function initVideoScrubbing() {
     if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
   });
 
-  // Safe autoplay attempt on load with muted configuration
-  function attemptAutoplay() {
-    video.muted = true;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        const btn = document.getElementById('playPauseBtn');
-        if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-      }).catch(() => {
-        // Autoplay blocked by browser policy; user interaction will start playback
-        const btn = document.getElementById('playPauseBtn');
-        if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
-      });
-    }
-  }
-
   video.addEventListener('loadedmetadata', () => {
     updateVideoScrub();
-    attemptAutoplay();
   });
   video.addEventListener('loadeddata', () => {
     updateVideoScrub();
-    attemptAutoplay();
   });
   video.addEventListener('canplay', () => {
     updateVideoScrub();
-    attemptAutoplay();
   });
-
-  // If user clicks anywhere on stage or presses play, resume playback seamlessly
-  cinemaSection.addEventListener('click', (e) => {
-    if (e.target.closest('.bar-controls') || e.target.closest('.timeline-pill') || e.target.closest('.btn-inquire-pill')) return;
-    if (video.paused) {
-      video.play().catch(() => {});
-    }
-  }, { passive: true });
 
   // RAF-throttled scroll handler for instant responsiveness with zero jank
   let isScrollScheduled = false;
@@ -302,9 +217,8 @@ function initVideoScrubbing() {
     updateVideoScrub();
   }, { passive: true });
 
-  // Initial synchronization and autoplay attempt
+  // Initial synchronization with current scroll position
   updateVideoScrub();
-  attemptAutoplay();
 }
 
 function formatTime(seconds) {
