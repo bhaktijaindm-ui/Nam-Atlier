@@ -59,9 +59,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   background-color: #000000;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -282,6 +282,15 @@ body:not(:has(.cinema-scroll)) .site-header {
 .header-actions {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav-drawer {
+  display: none;
 }
 
 .btn-inquire-pill {
@@ -2891,6 +2900,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   .header-actions {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
   }
 
   .btn-inquire-pill {
@@ -2903,13 +2913,147 @@ body:not(:has(.cinema-scroll)) .site-header {
     white-space: nowrap;
   }
 
+  /* MOBILE HAMBURGER TOGGLE BUTTON */
+  .mobile-menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-menu-toggle:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
   .main-nav {
     display: none !important;
   }
 
+  /* MOBILE LUXURY NAVIGATION DRAWER */
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(8, 8, 8, 0.96);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2rem 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.35s step-end,
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-nav-drawer.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s step-start,
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .mobile-drawer-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #141414;
+    border: 1px solid var(--border-dark);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-drawer-close:hover {
+    background: #222222;
+    color: var(--accent-gold);
+  }
+
+  .mobile-drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin: auto 0;
+  }
+
+  .mobile-drawer-link {
+    font-family: var(--font-serif);
+    font-size: 1.85rem;
+    color: rgba(255, 255, 255, 0.88);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-drawer-link:hover,
+  .mobile-drawer-link.active {
+    color: var(--accent-gold);
+    padding-left: 0.5rem;
+  }
+
+  .mobile-drawer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .mobile-drawer-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem;
+    background: var(--accent-gold);
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+  }
+
   /* MOBILE STAGE & HERO BANNER FULL VIEW FIX */
   .cinema-scroll {
-    height: 380vh; /* Smooth responsive scrubbing height on mobile */
+    height: 180vh; /* Effortless natural scrubbing height on mobile: no scroll-trapping */
+    touch-action: pan-y;
   }
 
   .stage {
@@ -2920,6 +3064,7 @@ body:not(:has(.cinema-scroll)) .site-header {
     top: 0;
     width: 100%;
     overflow: hidden;
+    touch-action: pan-y;
   }
 
   .video-stage {
@@ -2928,6 +3073,7 @@ body:not(:has(.cinema-scroll)) .site-header {
     width: 100%;
     height: 100%;
     z-index: 1;
+    pointer-events: none;
   }
 
   .hero-video {
@@ -2935,6 +3081,7 @@ body:not(:has(.cinema-scroll)) .site-header {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    pointer-events: none;
   }
 
   /* STRICT MOBILE STAGE & BOTTOM-ALIGNED COMPACT GLASS CARD TOUCHING SCREEN BOTTOM */
@@ -2951,6 +3098,7 @@ body:not(:has(.cinema-scroll)) .site-header {
     z-index: 20;
     pointer-events: none;
     box-sizing: border-box;
+    touch-action: pan-y;
   }
 
   .glass-content-card,
@@ -2967,15 +3115,16 @@ body:not(:has(.cinema-scroll)) .site-header {
     border-radius: 18px !important;
     
     /* Frosted Luxury Glass Blur */
-    background: rgba(18, 16, 14, 0.65) !important;
+    background: rgba(18, 16, 14, 0.72) !important;
     backdrop-filter: blur(20px) saturate(140%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
     
     z-index: 30;
-    pointer-events: auto;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    pointer-events: none;
+    touch-action: pan-y;
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
   }
 
   .glass-content-card.active,
@@ -2983,6 +3132,7 @@ body:not(:has(.cinema-scroll)) .site-header {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
   }
 
   .card-tag-pill {

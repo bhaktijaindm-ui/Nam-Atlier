@@ -14,10 +14,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- FontAwesome Icons (Asynchronous non-blocking) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
 
-  <link rel="stylesheet" href="styles.css?v=3.0" />
+  <link rel="stylesheet" href="styles.css?v=3.1" />
 
   <style>
     .blog-hero {
@@ -387,10 +387,50 @@
           <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
             INQUIRE STUDIO
           </button>
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
 
       </div>
     </header>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-brand">
+          <img src="nam_logo_white.png" alt="NAM Atelier Logo" class="official-brand-logo-img" style="max-height: 28px;" />
+        </div>
+        <button class="mobile-drawer-close" aria-label="Close Navigation Menu" onclick="toggleMobileMenu(true)">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="mobile-drawer-links" aria-label="Mobile Navigation">
+        <a href="index.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+          <span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+        </a>
+        <a href="about.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+          <span>About Studio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+        </a>
+        <a href="portfolio-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+          <span>3D Portfolio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+        </a>
+        <a href="service-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+          <span>Services &amp; Civil</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+        </a>
+        <a href="blog.html" class="mobile-drawer-link active" onclick="toggleMobileMenu(true)">
+          <span>Editorial Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+        </a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <button class="mobile-drawer-btn" onclick="toggleMobileMenu(true); openModal('consultModal');">
+          Commission Studio <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">&copy; 2026 NAM Atelier. Udhay Seth &amp; Mudita D Seth</p>
+      </div>
+    </div>
 
     <!-- HERO HEADER -->
     <section class="blog-hero">
@@ -418,7 +458,7 @@
         <article class="blog-card" data-category="material" onclick="openBlogArticle(0)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">Material Selection</span>
-            <img src="nam_kitchen_render.jpg" alt="Statuario Marble & Travertine" class="blog-card-img" />
+            <img src="nam_kitchen_render.jpg" alt="Statuario Marble & Travertine" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -444,7 +484,7 @@
         <article class="blog-card" data-category="civil" onclick="openBlogArticle(1)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">Civil Engineering</span>
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zero-Tolerance Masonry" class="blog-card-img" />
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zero-Tolerance Masonry" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -470,7 +510,7 @@
         <article class="blog-card" data-category="lighting" onclick="openBlogArticle(2)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">Lighting &amp; Acoustics</span>
-            <img src="nam_bedroom_render.jpg" alt="Ambient Cove Lighting" class="blog-card-img" />
+            <img src="nam_bedroom_render.jpg" alt="Ambient Cove Lighting" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -496,7 +536,7 @@
         <article class="blog-card" data-category="render" onclick="openBlogArticle(3)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">3D Visualization</span>
-            <img src="nam_living_render.jpg" alt="Photorealistic 3D Renders" class="blog-card-img" />
+            <img src="nam_living_render.jpg" alt="Photorealistic 3D Renders" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -522,7 +562,7 @@
         <article class="blog-card" data-category="material" onclick="openBlogArticle(4)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">Material Selection</span>
-            <img src="nam_commercial_render.jpg" alt="German Blum Hardware" class="blog-card-img" />
+            <img src="nam_commercial_render.jpg" alt="German Blum Hardware" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -548,7 +588,7 @@
         <article class="blog-card" data-category="civil" onclick="openBlogArticle(5)">
           <div class="blog-card-img-wrapper">
             <span class="blog-category-badge">Civil Engineering</span>
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Cantilever Stairs Structural Engineering" class="blog-card-img" />
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Cantilever Stairs Structural Engineering" class="blog-card-img" loading="lazy" decoding="async" />
           </div>
           <div class="blog-card-body">
             <div class="blog-meta">
@@ -899,5 +939,8 @@
       });
     });
   </script>
+
+  <!-- SHARED SCRIPTS -->
+  <script src="script.js?v=3.1" defer></script>
 </body>
 </html>

@@ -9,19 +9,16 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Outfit (Crisp Geometric Sans), & Playfair Display -->
+  <!-- Google Fonts: Cormorant Garamond, Outfit, & Playfair Display with display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- FontAwesome Icons (Asynchronous non-blocking load) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
-  <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <link rel="stylesheet" href="styles.css?v=3.0" />
+  <link rel="stylesheet" href="styles.css?v=3.1" />
 </head>
 <body>
 
@@ -45,7 +42,7 @@
       <!-- LEFT BRAND & SUB-NAV STACK (MATCHES SCREENSHOT EXACTLY) -->
       <div class="header-brand-nav-stack">
         <a href="index.html" class="brand-logo" title="NAM Atelier Studio">
-          <img src="nam_logo_white.png" alt="NAM Atelier Official Logo" class="official-brand-logo-img" />
+          <img src="nam_logo_white.png" alt="NAM Atelier Official Logo" class="official-brand-logo-img" width="360" height="42" />
         </a>
 
         <nav class="main-nav" aria-label="Main Navigation">
@@ -56,15 +53,55 @@
         </nav>
       </div>
 
-      <!-- RIGHT ACTION PILL BUTTON -->
+      <!-- RIGHT ACTION PILL BUTTON & MOBILE TOGGLE -->
       <div class="header-actions">
         <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
           INQUIRE STUDIO
+        </button>
+        <button class="mobile-menu-toggle" aria-label="Open Mobile Menu" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
         </button>
       </div>
 
     </div>
   </header>
+
+  <!-- LUXURY MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo" onclick="toggleMobileMenu(true)">
+        <img src="nam_logo_white.png" alt="NAM Atelier Logo" class="official-brand-logo-img" style="max-height: 28px;" />
+      </a>
+      <button class="mobile-drawer-close" aria-label="Close Mobile Menu" onclick="toggleMobileMenu(true)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="mobile-drawer-links" aria-label="Mobile Navigation">
+      <a href="index.html" class="mobile-drawer-link active" onclick="toggleMobileMenu(true)">
+        <span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="about.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>About Studio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="portfolio-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>3D Portfolio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="service-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>Services &amp; Civil</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="blog.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>Editorial Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+      <button class="mobile-drawer-btn" onclick="toggleMobileMenu(true); openModal('consultModal');">
+        Commission Studio <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">&copy; 2026 NAM Atelier. Udhay Seth &amp; Mudita D Seth</p>
+    </div>
+  </div>
 
   <div class="site-wrapper">
 
@@ -74,7 +111,7 @@
 
         <!-- FULL-BLEED AMBIENT VILLA WALKTHROUGH VIDEO -->
         <div class="video-stage">
-          <video id="heroVideo" class="hero-video" preload="auto" muted playsinline webkit-playsinline>
+          <video id="heroVideo" class="hero-video" preload="metadata" muted playsinline webkit-playsinline>
             <source src="1010.mp4" type="video/mp4" />
           </video>
           <div class="hero-vignette"></div>
@@ -326,7 +363,7 @@
             <!-- Right Column: Studio Showcase Card & Founder Metrics -->
             <div class="about-media-col">
               <div class="about-photo-wrapper">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="NAM Atelier Studio Luxury Villa Architecture" class="about-photo" />
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="NAM Atelier Studio Luxury Villa Architecture" class="about-photo" loading="lazy" decoding="async" />
                 
                 <div class="about-badge-floating">
                   <span class="badge-num">12+</span>
@@ -417,7 +454,7 @@
             <!-- Card 1 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Obsidian Penthouse" />
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Obsidian Penthouse" loading="lazy" decoding="async" />
                 <span class="sight-badge">Penthouse Interior</span>
               </div>
               <div class="sight-body">
@@ -433,7 +470,7 @@
             <!-- Card 2 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="The Rosewood Villa" />
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="The Rosewood Villa" loading="lazy" decoding="async" />
                 <span class="sight-badge">Chef's Kitchen</span>
               </div>
               <div class="sight-body">
@@ -449,7 +486,7 @@
             <!-- Card 3 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="The Velvet Cinema Lounge" />
+                <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="The Velvet Cinema Lounge" loading="lazy" decoding="async" />
                 <span class="sight-badge">Acoustic Theatre</span>
               </div>
               <div class="sight-body">
@@ -465,7 +502,7 @@
             <!-- Card 4 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Amber Heritage Suite" />
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Amber Heritage Suite" loading="lazy" decoding="async" />
                 <span class="sight-badge">Master Bedroom</span>
               </div>
               <div class="sight-body">
@@ -481,7 +518,7 @@
             <!-- Card 5 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Zen Courtyard Pavilion" />
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Zen Courtyard Pavilion" loading="lazy" decoding="async" />
                 <span class="sight-badge">Indoor-Outdoor</span>
               </div>
               <div class="sight-body">
@@ -497,7 +534,7 @@
             <!-- Card 6 -->
             <article class="sight-card">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="The Marble Residence" />
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="The Marble Residence" loading="lazy" decoding="async" />
                 <span class="sight-badge">Turnkey Estate</span>
               </div>
               <div class="sight-body">
@@ -528,12 +565,12 @@
 
         <div class="ba-slider-container" id="baSlider">
           <div class="ba-img ba-after">
-            <img src="nam_living_render.jpg" alt="Finished Bespoke Luxury Living Room" />
+            <img src="nam_living_render.jpg" alt="Finished Bespoke Luxury Living Room" loading="lazy" decoding="async" />
             <span class="ba-label label-after">FINISHED 3D LUXURY</span>
           </div>
 
           <div class="ba-img ba-before" id="baBefore">
-            <img src="nam_living_before_shell.png" alt="Raw Bare Shell RCC Structure" />
+            <img src="nam_living_before_shell.png" alt="Raw Bare Shell RCC Structure" loading="lazy" decoding="async" />
             <span class="ba-label label-before">RAW RCC BARE SHELL</span>
           </div>
 
@@ -569,7 +606,7 @@
           <!-- Item 1 -->
           <article class="portfolio-card" data-category="3d-render residential">
             <div class="card-media">
-              <img src="nam_living_render.jpg" alt="Villa Sanctuary Living Room" class="card-img" />
+              <img src="nam_living_render.jpg" alt="Villa Sanctuary Living Room" class="card-img" loading="lazy" decoding="async" />
               <div class="blueprint-reveal-overlay">
                 <div class="reveal-content">
                   <span class="reveal-badge">3D Render</span>
@@ -593,7 +630,7 @@
           <!-- Item 2 -->
           <article class="portfolio-card" data-category="3d-render residential turnkey">
             <div class="card-media">
-              <img src="nam_kitchen_render.jpg" alt="Travertine Kitchen Suite" class="card-img" />
+              <img src="nam_kitchen_render.jpg" alt="Travertine Kitchen Suite" class="card-img" loading="lazy" decoding="async" />
               <div class="blueprint-reveal-overlay">
                 <div class="reveal-content">
                   <span class="reveal-badge">Turnkey &amp; 3D</span>
@@ -617,7 +654,7 @@
           <!-- Item 3 -->
           <article class="portfolio-card" data-category="residential turnkey">
             <div class="card-media">
-              <img src="nam_bedroom_render.jpg" alt="Master Suite Sanctuary" class="card-img" />
+              <img src="nam_bedroom_render.jpg" alt="Master Suite Sanctuary" class="card-img" loading="lazy" decoding="async" />
               <div class="blueprint-reveal-overlay">
                 <div class="reveal-content">
                   <span class="reveal-badge">Residential</span>
@@ -641,7 +678,7 @@
           <!-- Item 4 -->
           <article class="portfolio-card" data-category="commercial 3d-render">
             <div class="card-media">
-              <img src="nam_commercial_render.jpg" alt="Executive Studio Workspace" class="card-img" />
+              <img src="nam_commercial_render.jpg" alt="Executive Studio Workspace" class="card-img" loading="lazy" decoding="async" />
               <div class="blueprint-reveal-overlay">
                 <div class="reveal-content">
                   <span class="reveal-badge">Commercial</span>
@@ -836,10 +873,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(0)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Vikramaditya Sharma" />
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Vikramaditya Sharma" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"nam atelier transformed our 12,000 sq.ft bare shell into a breathtaking european-inspired sanctuary..."</p>
                   <p class="card-name">vikramaditya sharma.</p>
@@ -851,10 +888,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(1)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Kanika Mehra" />
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Kanika Mehra" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"the spatial flow and material selection curated by mudita d seth are extraordinary..."</p>
                   <p class="card-name">kanika mehra.</p>
@@ -866,10 +903,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(2)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Harpreet Singh Dhillon" />
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Harpreet Singh Dhillon" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"udhay seth's turnkey civil execution and engineering rigor are unmatched across punjab..."</p>
                   <p class="card-name">harpreet singh dhillon.</p>
@@ -881,10 +918,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(3)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Dr. Arjun & Meera Kapoor" />
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Dr. Arjun & Meera Kapoor" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"the 3d bim walkthrough allowed us to preview every lighting circuit and custom counter before pouring concrete..."</p>
                   <p class="card-name">dr. arjun &amp; meera kapoor.</p>
@@ -896,10 +933,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(4)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Fatima Al-Jamil" />
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Fatima Al-Jamil" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"managing a luxury estate build remotely was effortless with nam atelier. weekly 3d site updates..."</p>
                   <p class="card-name">fatima al-jamil.</p>
@@ -911,10 +948,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(5)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Rajiv & Ananya Kapoor" />
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Rajiv & Ananya Kapoor" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"nam atelier transformed our 5,000 sq.ft bare brick shell into a breathtaking european-inspired sanctuary..."</p>
                   <p class="card-name">rajiv &amp; ananya kapoor.</p>
@@ -926,10 +963,10 @@
               <div class="testi-card-item" onclick="openTestimonialModal(6)">
                 <div class="testi-card-inner">
                   <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Texture" />
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
                   </div>
                   <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Siddharth Malhotra" />
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Siddharth Malhotra" loading="lazy" decoding="async" />
                   </div>
                   <p class="card-quote">"the dolby atmos acoustic cinema lounge engineered by udhay &amp; mudita is the highlight of our home..."</p>
                   <p class="card-name">siddharth malhotra.</p>
@@ -1029,7 +1066,7 @@
         <div class="journal-grid">
           <article class="journal-card">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Physics of Acoustic Home Theatres" />
+              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Physics of Acoustic Home Theatres" loading="lazy" decoding="async" />
             </div>
             <div class="journal-content">
               <span class="journal-meta">May 2026 • 6 min read</span>
@@ -1040,7 +1077,7 @@
 
           <article class="journal-card">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Warm Minimalism vs Rajput Motifs" />
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Warm Minimalism vs Rajput Motifs" loading="lazy" decoding="async" />
             </div>
             <div class="journal-content">
               <span class="journal-meta">July 2026 • 8 min read</span>
@@ -1051,7 +1088,7 @@
 
           <article class="journal-card">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Curating Travertine Marble" />
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Curating Travertine Marble" loading="lazy" decoding="async" />
             </div>
             <div class="journal-content">
               <span class="journal-meta">Sept 2026 • 5 min read</span>
@@ -1376,6 +1413,6 @@
     <span id="toastMsg">Action completed successfully!</span>
   </div>
 
-  <script src="script.js?v=2.4"></script>
+  <script src="script.js?v=3.1" defer></script>
 </body>
 </html>

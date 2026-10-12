@@ -39,14 +39,25 @@ function initVideoScrubbing() {
   video.setAttribute('playsinline', '');
   video.setAttribute('webkit-playsinline', '');
 
-  let pendingSeekTime = null;
   let isSeeking = false;
-  let seekTimeout = null;
+  let pendingSeekTime = null;
+  let cachedTotalScrollable = 0;
+  let cachedOffsetTop = 0;
+  let currentActiveStop = 1;
+
+  function measureCinema() {
+    cachedOffsetTop = cinemaSection.offsetTop;
+    cachedTotalScrollable = cinemaSection.offsetHeight - window.innerHeight;
+  }
+  measureCinema();
 
   function performSeek(time) {
     const duration = video.duration || 0;
     if (duration <= 0 || isNaN(duration)) return;
     const clampedTime = Math.max(0, Math.min(duration - 0.05, time));
+
+    // Avoid unnecessary seek calls if difference is negligible (< 0.04s)
+    if (Math.abs(video.currentTime - clampedTime) < 0.04) return;
 
     if (!isSeeking) {
       isSeeking = true;
@@ -59,16 +70,6 @@ function initVideoScrubbing() {
       } catch(e) {
         try { video.currentTime = clampedTime; } catch(err) {}
       }
-
-      clearTimeout(seekTimeout);
-      seekTimeout = setTimeout(() => {
-        isSeeking = false;
-        if (pendingSeekTime !== null && !isUserPlaying) {
-          const next = pendingSeekTime;
-          pendingSeekTime = null;
-          performSeek(next);
-        }
-      }, 120);
     } else {
       pendingSeekTime = clampedTime;
     }
@@ -76,7 +77,6 @@ function initVideoScrubbing() {
 
   video.addEventListener('seeked', () => {
     isSeeking = false;
-    clearTimeout(seekTimeout);
     if (timeCounter && video.duration > 0) {
       const curSec = Math.floor(video.currentTime || 0);
       const durSec = Math.floor(video.duration);
@@ -85,17 +85,14 @@ function initVideoScrubbing() {
     if (pendingSeekTime !== null && !isUserPlaying) {
       const next = pendingSeekTime;
       pendingSeekTime = null;
-      if (Math.abs(video.currentTime - next) > 0.015) {
-        performSeek(next);
-      }
+      performSeek(next);
     }
   });
 
   function getScrollFraction() {
-    const rect = cinemaSection.getBoundingClientRect();
-    const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
-    if (totalScrollableHeight <= 0) return 0;
-    const fraction = -rect.top / totalScrollableHeight;
+    if (cachedTotalScrollable <= 0) return 0;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const fraction = (scrollY - cachedOffsetTop) / cachedTotalScrollable;
     return Math.max(0, Math.min(1, fraction));
   }
 
@@ -131,29 +128,31 @@ function initVideoScrubbing() {
       activeStop = 1;
     }
 
-    // Update Left Content Card Swapping with smooth fade/slide
-    milestoneCards.forEach(card => {
-      const cardStop = parseInt(card.getAttribute('data-milestone'));
-      if (cardStop === activeStop) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
-      }
-    });
+    // Update card milestones only when state changes to prevent unnecessary DOM mutations
+    if (activeStop !== currentActiveStop) {
+      currentActiveStop = activeStop;
 
-    // Update Right Timeline Selector Pills
-    timelinePills.forEach(pill => {
-      const pillStop = parseInt(pill.getAttribute('data-stop'));
-      if (pillStop === activeStop) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
-    });
+      milestoneCards.forEach(card => {
+        const cardStop = parseInt(card.getAttribute('data-milestone'));
+        if (cardStop === activeStop) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
 
-    // Update Bottom Bar Label
-    if (barSectionLabel && sectionLabelsMap[activeStop]) {
-      barSectionLabel.textContent = sectionLabelsMap[activeStop];
+      timelinePills.forEach(pill => {
+        const pillStop = parseInt(pill.getAttribute('data-stop'));
+        if (pillStop === activeStop) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      if (barSectionLabel && sectionLabelsMap[activeStop]) {
+        barSectionLabel.textContent = sectionLabelsMap[activeStop];
+      }
     }
 
     // Directly bind video frame to current scroll fraction
@@ -162,7 +161,7 @@ function initVideoScrubbing() {
       performSeek(targetTime);
     }
 
-    // Update Digital Time Counter (e.g., "00:12 / 00:33")
+    // Update Digital Time Counter
     if (timeCounter && duration > 0) {
       const curSec = Math.floor(video.currentTime || 0);
       const durSec = Math.floor(duration);
@@ -170,20 +169,9 @@ function initVideoScrubbing() {
     }
   }
 
-  // Pre-trigger video loading if metadata hasn't loaded yet
-  if (video.readyState === 0) {
-    video.load();
-  }
-
-  video.addEventListener('loadedmetadata', () => {
-    updateVideoScrub();
-  });
-  video.addEventListener('loadeddata', () => {
-    updateVideoScrub();
-  });
-  video.addEventListener('canplay', () => {
-    updateVideoScrub();
-  });
+  video.addEventListener('loadedmetadata', updateVideoScrub);
+  video.addEventListener('loadeddata', updateVideoScrub);
+  video.addEventListener('canplay', updateVideoScrub);
 
   // RAF-throttled scroll handler for instant responsiveness with zero jank
   let isScrollScheduled = false;
@@ -204,7 +192,10 @@ function initVideoScrubbing() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', updateVideoScrub);
+  window.addEventListener('resize', () => {
+    measureCinema();
+    updateVideoScrub();
+  }, { passive: true });
 
   // Initial synchronization
   updateVideoScrub();
@@ -456,55 +447,92 @@ function handleConsultSubmit(event) {
 /* 9. ACTIVE NAV SCROLL TRACKER & HEADER HIDE/SHOW STATE */
 function initScrollNav() {
   const sections = document.querySelectorAll('section[id], footer[id]');
-  const navLinks = document.querySelectorAll('.main-nav .nav-link');
+  const navLinks = document.querySelectorAll('.main-nav .nav-link, .mobile-drawer-link');
   const header = document.getElementById('siteHeader');
   const cinemaSection = document.querySelector('.cinema-scroll');
 
-  window.addEventListener('scroll', () => {
-    if (header) {
-      if (cinemaSection) {
-        const heroBottom = cinemaSection.offsetTop + cinemaSection.offsetHeight;
-        const scrollY = window.scrollY;
+  let cachedHeroBottom = 0;
+  let sectionPositions = [];
 
-        if (scrollY > 60 && scrollY < heroBottom - 100) {
-          // Inside the hero scroll zone → hide header completely
-          header.classList.add('header-hidden');
-          header.classList.remove('scrolled');
-        } else if (scrollY >= heroBottom - 100) {
-          // Past the hero → show header as fixed frosted glass bar
-          header.classList.remove('header-hidden');
-          header.classList.add('scrolled');
-        } else {
-          // At very top (initial view) → show normal glass header
-          header.classList.remove('header-hidden');
-          header.classList.remove('scrolled');
-        }
-      } else {
-        // No hero section on this page → always show header
-        if (window.scrollY > 80) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
+  function cacheNavPositions() {
+    if (cinemaSection) {
+      cachedHeroBottom = cinemaSection.offsetTop + cinemaSection.offsetHeight;
     }
-
-    let current = '';
-    const scrollPos = window.scrollY + 200;
-
+    sectionPositions = [];
     sections.forEach(sec => {
-      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
-        current = sec.getAttribute('id');
-      }
+      sectionPositions.push({
+        id: sec.getAttribute('id'),
+        top: sec.offsetTop,
+        bottom: sec.offsetTop + sec.offsetHeight
+      });
     });
+  }
+  cacheNavPositions();
+  window.addEventListener('resize', cacheNavPositions, { passive: true });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+  let navScheduled = false;
+  window.addEventListener('scroll', () => {
+    if (navScheduled) return;
+    navScheduled = true;
+    requestAnimationFrame(() => {
+      navScheduled = false;
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (header) {
+        if (cinemaSection) {
+          if (scrollY > 60 && scrollY < cachedHeroBottom - 100) {
+            header.classList.add('header-hidden');
+            header.classList.remove('scrolled');
+          } else if (scrollY >= cachedHeroBottom - 100) {
+            header.classList.remove('header-hidden');
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('header-hidden');
+            header.classList.remove('scrolled');
+          }
+        } else {
+          if (scrollY > 80) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+      }
+
+      const scrollPos = scrollY + 200;
+      let current = '';
+      for (let i = 0; i < sectionPositions.length; i++) {
+        const sec = sectionPositions[i];
+        if (scrollPos >= sec.top && scrollPos < sec.bottom) {
+          current = sec.id;
+          break;
+        }
+      }
+
+      if (current) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          } else if (link.getAttribute('href')?.startsWith('#')) {
+            link.classList.remove('active');
+          }
+        });
       }
     });
   }, { passive: true });
+}
+
+/* 9B. MOBILE NAVIGATION DRAWER TOGGLE */
+function toggleMobileMenu(forceClose = false) {
+  const drawer = document.getElementById('mobileNavDrawer');
+  if (!drawer) return;
+  if (forceClose || drawer.classList.contains('active')) {
+    drawer.classList.remove('active');
+    document.body.style.overflow = '';
+  } else {
+    drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 /* 10. PROJECTS SHOWCASE CAROUSEL SLIDER HANDLER */
