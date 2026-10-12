@@ -28,7 +28,7 @@
     
     .about-page-hero h1 {
       font-family: var(--font-serif);
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 500;
       color: var(--text-charcoal);
       margin: 1rem 0;
@@ -36,7 +36,7 @@
     }
     
     .about-page-hero p {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--text-muted);
       max-width: 800px;
       margin: 0 auto 2.5rem;
@@ -483,6 +483,29 @@
       </div>
     </div>
   </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal-overlay" id="consultModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
+      <div class="modal-header text-center">
+        <span class="card-tag-pill"><span class="gold-dot"></span> ARCHITECTURAL CONSULTATION</span>
+        <h3 class="modal-title">Book Studio Appointment</h3>
+        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting.</p>
+      </div>
+      <form onsubmit="handleConsultSubmit(event)" class="modal-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="phoneNum">Mobile / WhatsApp</label>
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input" />
+        </div>
+        <button type="submit" class="btn btn-inquire-pill" style="width: 100%; margin-top: 1rem;">Confirm Consultation</button>
+      </form>
+    </div>
+  </div>
 
   <!-- SCRIPTS -->
   <script src="script.js?v=3.1" defer></script>

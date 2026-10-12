@@ -40,7 +40,7 @@
     .dancing-char {
       display: inline-block;
       font-family: var(--font-serif);
-      font-size: 4rem;
+      font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 700;
       color: var(--text-charcoal);
       cursor: pointer;
@@ -74,7 +74,7 @@
 
     .project-hero-media img {
       width: 100%;
-      height: 600px;
+      height: clamp(260px, 45vw, 600px);
       object-fit: cover;
       display: block;
     }
@@ -502,6 +502,29 @@
         </div>
       </div>
     </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <div class="modal-overlay" id="consultModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
+      <div class="modal-header text-center">
+        <span class="card-tag-pill"><span class="gold-dot"></span> ARCHITECTURAL CONSULTATION</span>
+        <h3 class="modal-title">Book Studio Appointment</h3>
+        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting.</p>
+      </div>
+      <form onsubmit="handleConsultSubmit(event)" class="modal-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="phoneNum">Mobile / WhatsApp</label>
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input" />
+        </div>
+        <button type="submit" class="btn btn-inquire-pill" style="width: 100%; margin-top: 1rem;">Confirm Consultation</button>
+      </form>
+    </div>
+  </div>
 
   <!-- SCRIPT FOR DYNAMIC PROJECT ROUTING & DANCING LETTERS -->
   <script>
