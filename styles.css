@@ -355,14 +355,14 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .glass-content-card {
   position: absolute;
-  width: 520px;
-  max-width: 90vw;
+  width: 440px;
+  max-width: min(440px, 86vw);
   background: linear-gradient(135deg, rgba(30, 26, 22, 0.75) 0%, rgba(15, 15, 15, 0.65) 100%);
   border: 1px solid var(--border-glass-gold);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border-radius: 18px;
-  padding: 1.85rem 2.15rem 1.65rem;
+  border-radius: 16px;
+  padding: 1.35rem 1.65rem 1.25rem;
   box-shadow: var(--shadow-elevated), inset 0 1px 1px rgba(255, 255, 255, 0.15);
   opacity: 0;
   visibility: hidden;
@@ -382,18 +382,18 @@ body:not(:has(.cinema-scroll)) .site-header {
 .card-tag-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.72rem;
+  gap: 0.45rem;
+  font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
   color: var(--accent-gold);
-  margin-bottom: 1rem;
+  margin-bottom: 0.65rem;
 }
 
 .gold-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--accent-gold-bright);
   box-shadow: 0 0 8px var(--accent-gold-bright);
@@ -401,26 +401,26 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .card-hero-title {
   font-family: var(--font-serif);
-  font-size: 2.6rem;
+  font-size: 1.85rem;
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.18;
   color: var(--text-primary-serif);
-  margin-bottom: 0.85rem;
-  letter-spacing: 0.5px;
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.4px;
 }
 
 .card-hero-desc {
-  font-size: 0.94rem;
+  font-size: 0.84rem;
   color: var(--text-secondary-body);
-  line-height: 1.6;
-  margin-bottom: 1.75rem;
+  line-height: 1.5;
+  margin-bottom: 1.15rem;
 }
 
 .card-feature-grid {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding-top: 1.15rem;
+  gap: 1.25rem;
+  padding-top: 0.9rem;
   border-top: 1px solid rgba(220, 190, 140, 0.2);
 }
 
@@ -431,21 +431,23 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .feature-val {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--accent-gold);
+  line-height: 1.2;
 }
 
 .feature-lbl {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: var(--text-secondary-body);
+  margin-top: 2px;
 }
 
 .feature-divider {
   width: 1px;
-  height: 28px;
+  height: 24px;
   background: rgba(220, 190, 140, 0.2);
 }
 
@@ -2822,11 +2824,27 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
 
   .left-content-card-stage {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+    height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .glass-content-card {
-    width: 100%;
+    width: min(420px, 85vw);
+    max-width: 100%;
+    padding: 1.25rem 1.5rem 1.15rem;
+  }
+
+  .card-hero-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-hero-desc {
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
   }
 
   .portfolio-grid {
