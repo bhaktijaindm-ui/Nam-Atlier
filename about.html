@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- CSS Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3.0" />
   
   <style>
     /* Dedicated Page Specific Styles for About Us & Timeline */
@@ -44,10 +44,10 @@
     
     /* Interactive Horizontal Journey Timeline Section */
     .journey-section {
-      background: #FFFFFF;
+      background: #080808;
       padding: 6rem 2rem;
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
       position: relative;
       overflow: hidden;
     }
@@ -63,8 +63,8 @@
       top: 50%;
       left: 0;
       right: 0;
-      height: 3px;
-      background: var(--accent-terracotta);
+      height: 2px;
+      background: var(--accent-gold);
       transform: translateY(-50%);
       z-index: 1;
     }
@@ -88,9 +88,9 @@
     }
 
     .timeline-node-card {
-      background: var(--bg-sand);
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
       padding: 1.75rem 1.25rem;
       position: relative;
       transition: all 0.35s ease;
@@ -98,17 +98,17 @@
 
     .timeline-node-card:hover {
       transform: translateY(-8px);
-      border-color: var(--accent-terracotta);
-      box-shadow: 0 16px 36px rgba(30, 26, 22, 0.1);
+      border-color: var(--accent-gold);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
     }
 
     .node-dot {
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--accent-terracotta);
-      border: 4px solid #FFFFFF;
-      box-shadow: 0 0 0 2px var(--accent-terracotta);
+      background: var(--accent-gold);
+      border: 4px solid #000000;
+      box-shadow: 0 0 0 2px var(--accent-gold);
       margin: 0 auto 1rem;
     }
 
@@ -116,7 +116,7 @@
       font-family: var(--font-serif);
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--text-charcoal);
+      color: #FFFFFF;
       margin-bottom: 0.25rem;
       text-align: center;
     }
@@ -126,7 +126,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--accent-terracotta);
+      color: var(--accent-gold);
       text-align: center;
       margin-bottom: 0.75rem;
     }
@@ -261,10 +261,10 @@
       <div class="principals-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 3rem;">
         
         <!-- Founder 1 -->
-        <div class="principal-card" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
+        <div class="principal-card" style="background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 16px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
           <div class="principal-details">
-            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-charcoal); margin-bottom: 0.25rem;">Udhay Seth</h3>
-            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Principal Civil Constructor</span>
+            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: #FFFFFF; margin-bottom: 0.25rem;">Udhay Seth</h3>
+            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Principal Civil Constructor</span>
             <p class="principal-bio" style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
               Specializing in structural execution, site coordination, and turnkey civil contracting. Udhay ensures that every 3D render translated onto site meets exact architectural tolerance and structural longevity.
             </p>
@@ -277,10 +277,10 @@
         </div>
 
         <!-- Founder 2 -->
-        <div class="principal-card" style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
+        <div class="principal-card" style="background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 16px; padding: 2.5rem 2rem; box-shadow: var(--shadow-soft);">
           <div class="principal-details">
-            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-charcoal); margin-bottom: 0.25rem;">Mudita D Seth</h3>
-            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Lead Interior Designer</span>
+            <h3 class="principal-name" style="font-family: var(--font-serif); font-size: 2rem; color: #FFFFFF; margin-bottom: 0.25rem;">Mudita D Seth</h3>
+            <span class="principal-role" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 1.25rem;">Founder &amp; Lead Interior Designer</span>
             <p class="principal-bio" style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
               Spearheading interior spatial design, 3D visualization, material curation, and color theory. Mudita crafts serene luxury environments that blend modern warm minimalism with functional elegance.
             </p>

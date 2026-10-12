@@ -589,29 +589,29 @@ function initBeforeAfterSlider() {
 /* 13. ANIMATED TESTIMONIALS CAROUSEL & EXPANDABLE MODAL HANDLER */
 const testimonialsData = [
   {
-    name: "priya sharma.",
-    designation: "data scientist at quantumleap & villa owner",
-    description: "this platform revolutionized our spatial planning and data analysis process. the 3d render speed and structural accuracy are unparalleled. a must-have for any high-end architectural project."
+    name: "vikramaditya sharma.",
+    designation: "commissioner • the royal oak estate, ludhiana",
+    description: "nam atelier transformed our 12,000 sq.ft bare shell into a breathtaking european-inspired sanctuary. their 3d photorealistic renders were 100% identical to the final handed-over villa, with zero site surprises."
   },
   {
-    name: "marcus johnson.",
-    designation: "head of operations at synergy corp",
-    description: "the user interface is incredibly intuitive, which made reviewing 3d vr walkthroughs for my team a breeze. we finalized civil plans in hours, not days."
+    name: "kanika mehra.",
+    designation: "penthouse owner • cantonment heights, amritsar",
+    description: "the spatial flow and material selection curated by mudita d seth are extraordinary. bookmatched travertine, fluted oak joinery, and concealed lighting create a serene sanctuary we cherish daily."
   },
   {
-    name: "isabella rossi.",
-    designation: "client success manager at horizon",
-    description: "customer support and turnkey civil execution are top-notch. udhay & mudita are responsive, knowledgeable, and genuinely invested in building your architectural dream home."
+    name: "harpreet singh dhillon.",
+    designation: "managing director • heritage hospitality & estate owner",
+    description: "udhay seth's turnkey civil execution and engineering rigor are unmatched across punjab. civil timelines were met with military precision, and structural workmanship is world-class."
   },
   {
-    name: "kenji tanaka.",
-    designation: "software engineer at codecrafters",
-    description: "i'm impressed by the constant stream of updates, german blum hardware sourcing, and custom acoustic cinema isolation. the development team is clearly passionate."
+    name: "dr. arjun & meera kapoor.",
+    designation: "homeowners • south city villa, ludhiana",
+    description: "the 3d bim walkthrough allowed us to preview every lighting circuit, custom marble counter, and acoustic cinema wall before pouring concrete. nam atelier sets the gold standard for luxury living."
   },
   {
     name: "fatima al-jamil.",
-    designation: "cfo at apex financial & estate owner",
-    description: "the roi on our 14,000 sq.ft palatial estate was immediate. it streamlined our civil workflows so effectively that project delivery times were cut by nearly 30%."
+    designation: "international client • 14,000 sq.ft palatial estate",
+    description: "managing a luxury estate build remotely was effortless with nam atelier. weekly 3d site updates, imported german blum hardware curation, and impeccable interior finish delivery."
   },
   {
     name: "rajiv & ananya kapoor.",
