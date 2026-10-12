@@ -33,49 +33,50 @@ function initVideoScrubbing() {
 
   if (!cinemaSection || !video) return;
 
-  // Video configuration
+  // Strict initial lock: video must never autoplay or loop
   video.muted = true;
   video.playsInline = true;
-  video.setAttribute('playsinline', '');
-  video.setAttribute('webkit-playsinline', '');
+  video.removeAttribute('autoplay');
+  video.removeAttribute('loop');
+  try { video.pause(); } catch(e) {}
 
-  let isSeeking = false;
+  // Enforce pause if browser attempts automatic playback
+  video.addEventListener('play', () => {
+    if (!isUserPlaying) {
+      try { video.pause(); } catch(e) {}
+    }
+  });
+
+  video.addEventListener('pause', () => {
+    const btn = document.getElementById('playPauseBtn');
+    if (btn && !isUserPlaying) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+  });
+
   let pendingSeekTime = null;
+  let isSeeking = false;
   let seekTimeout = null;
-  let cachedTotalScrollable = 0;
-  let cachedOffsetTop = 0;
-  let currentActiveStop = 1;
-
-  function measureCinema() {
-    cachedOffsetTop = cinemaSection.offsetTop;
-    cachedTotalScrollable = cinemaSection.offsetHeight - window.innerHeight;
-  }
-  measureCinema();
 
   function performSeek(time) {
     const duration = video.duration || 0;
     if (duration <= 0 || isNaN(duration)) return;
     const clampedTime = Math.max(0, Math.min(duration - 0.05, time));
 
-    // Avoid unnecessary seek calls if difference is negligible (< 0.04s)
-    if (Math.abs(video.currentTime - clampedTime) < 0.04) return;
-
     if (!isSeeking) {
       isSeeking = true;
       try {
-        if ('fastSeek' in video) {
-          video.fastSeek(clampedTime);
-        } else {
-          video.currentTime = clampedTime;
-        }
+        video.currentTime = clampedTime;
       } catch(e) {
-        try { video.currentTime = clampedTime; } catch(err) {}
+        isSeeking = false;
       }
-
       clearTimeout(seekTimeout);
       seekTimeout = setTimeout(() => {
         isSeeking = false;
-      }, 150);
+        if (pendingSeekTime !== null && !isUserPlaying) {
+          const next = pendingSeekTime;
+          pendingSeekTime = null;
+          performSeek(next);
+        }
+      }, 250);
     } else {
       pendingSeekTime = clampedTime;
     }
@@ -92,14 +93,17 @@ function initVideoScrubbing() {
     if (pendingSeekTime !== null && !isUserPlaying) {
       const next = pendingSeekTime;
       pendingSeekTime = null;
-      performSeek(next);
+      if (Math.abs(video.currentTime - next) > 0.015) {
+        performSeek(next);
+      }
     }
   });
 
   function getScrollFraction() {
-    if (cachedTotalScrollable <= 0) return 0;
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const fraction = (scrollY - cachedOffsetTop) / cachedTotalScrollable;
+    const rect = cinemaSection.getBoundingClientRect();
+    const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
+    if (totalScrollableHeight <= 0) return 0;
+    const fraction = -rect.top / totalScrollableHeight;
     return Math.max(0, Math.min(1, fraction));
   }
 
@@ -135,31 +139,29 @@ function initVideoScrubbing() {
       activeStop = 1;
     }
 
-    // Update card milestones only when state changes to prevent unnecessary DOM mutations
-    if (activeStop !== currentActiveStop) {
-      currentActiveStop = activeStop;
-
-      milestoneCards.forEach(card => {
-        const cardStop = parseInt(card.getAttribute('data-milestone'));
-        if (cardStop === activeStop) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
-      });
-
-      timelinePills.forEach(pill => {
-        const pillStop = parseInt(pill.getAttribute('data-stop'));
-        if (pillStop === activeStop) {
-          pill.classList.add('active');
-        } else {
-          pill.classList.remove('active');
-        }
-      });
-
-      if (barSectionLabel && sectionLabelsMap[activeStop]) {
-        barSectionLabel.textContent = sectionLabelsMap[activeStop];
+    // Update Left Content Card Swapping with smooth fade/slide
+    milestoneCards.forEach(card => {
+      const cardStop = parseInt(card.getAttribute('data-milestone'));
+      if (cardStop === activeStop) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
       }
+    });
+
+    // Update Right Timeline Selector Pills
+    timelinePills.forEach(pill => {
+      const pillStop = parseInt(pill.getAttribute('data-stop'));
+      if (pillStop === activeStop) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    // Update Bottom Bar Label
+    if (barSectionLabel && sectionLabelsMap[activeStop]) {
+      barSectionLabel.textContent = sectionLabelsMap[activeStop];
     }
 
     // Directly bind video frame to current scroll fraction
@@ -168,7 +170,7 @@ function initVideoScrubbing() {
       performSeek(targetTime);
     }
 
-    // Update Digital Time Counter
+    // Update Digital Time Counter (e.g., "00:12 / 00:33")
     if (timeCounter && duration > 0) {
       const curSec = Math.floor(video.currentTime || 0);
       const durSec = Math.floor(duration);
@@ -176,32 +178,33 @@ function initVideoScrubbing() {
     }
   }
 
-  // Ensure video is paused on load so it only responds to user scrolling
-  video.pause();
-
-  video.addEventListener('play', () => {
-    const btn = document.getElementById('playPauseBtn');
-    if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-  });
-
-  video.addEventListener('pause', () => {
-    const btn = document.getElementById('playPauseBtn');
-    if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
-  });
+  // Pre-trigger video loading if metadata hasn't loaded yet
+  if (video.readyState === 0) {
+    try { video.load(); } catch(e) {}
+  }
 
   video.addEventListener('loadedmetadata', () => {
+    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
   video.addEventListener('loadeddata', () => {
+    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
   video.addEventListener('canplay', () => {
+    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
 
   // RAF-throttled scroll handler for instant responsiveness with zero jank
   let isScrollScheduled = false;
   function onScroll() {
+    if (isUserPlaying) {
+      isUserPlaying = false;
+      try { video.pause(); } catch(e) {}
+      const btn = document.getElementById('playPauseBtn');
+      if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
     if (!isScrollScheduled) {
       isScrollScheduled = true;
       requestAnimationFrame(() => {
@@ -212,12 +215,9 @@ function initVideoScrubbing() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => {
-    measureCinema();
-    updateVideoScrub();
-  }, { passive: true });
+  window.addEventListener('resize', updateVideoScrub, { passive: true });
 
-  // Initial synchronization with current scroll position
+  // Initial synchronization
   updateVideoScrub();
 }
 
