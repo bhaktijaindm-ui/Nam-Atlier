@@ -1126,6 +1126,291 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 /* ==========================================================================
+   ARCHITECTURAL FACADE SECTION STYLING
+   ========================================================================== */
+.facade-section {
+  padding: 6rem 2rem 5rem;
+  background: var(--bg-sand);
+  position: relative;
+  overflow: hidden;
+}
+
+.facade-container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.facade-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.facade-visual-hero {
+  position: relative;
+}
+
+.facade-image-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+  box-shadow: var(--shadow-elevated);
+  aspect-ratio: 16 / 11;
+  background: var(--bg-card);
+}
+
+.facade-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.facade-image-frame:hover .facade-main-img {
+  transform: scale(1.04);
+}
+
+.facade-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.25rem 2rem 1.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.facade-overlay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.facade-overlay-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.facade-overlay-sub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.facade-details-panel {
+  position: relative;
+}
+
+.facade-panel-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 16px;
+  padding: 2.5rem 2.5rem 2.25rem;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.facade-panel-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin: 0.75rem 0 1rem;
+}
+
+.facade-panel-text {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.facade-specs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.facade-spec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.facade-spec-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: rgba(198, 173, 133, 0.1);
+  border: 1px solid rgba(198, 173, 133, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.facade-spec-info h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.facade-spec-info p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.facade-panel-action {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.facade-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  transition: var(--transition-smooth);
+}
+
+.facade-link:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+/* Facade Gallery Strip */
+.facade-gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.facade-thumb-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.facade-thumb-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-gold);
+}
+
+.facade-thumb-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #000000;
+}
+
+.facade-thumb-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.facade-thumb-card:hover .facade-thumb-media img {
+  transform: scale(1.06);
+}
+
+.facade-thumb-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+}
+
+.facade-thumb-content {
+  padding: 1.25rem 1.35rem 1.35rem;
+}
+
+.facade-thumb-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+
+.facade-thumb-content p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .facade-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .facade-gallery-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .facade-section {
+    padding: 4rem 1.25rem 3.5rem;
+  }
+  .facade-panel-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .facade-panel-title {
+    font-size: 1.65rem;
+  }
+  .facade-gallery-strip {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .facade-overlay-title {
+    font-size: 1.45rem;
+  }
+  .facade-overlay-sub {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
    SIGNATURE ART-DIRECTED FOOTER (CRUCIAL REQUIREMENT)
    ========================================================================== */
 
