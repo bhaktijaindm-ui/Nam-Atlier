@@ -41,6 +41,7 @@ function initVideoScrubbing() {
 
   let isSeeking = false;
   let pendingSeekTime = null;
+  let seekTimeout = null;
   let cachedTotalScrollable = 0;
   let cachedOffsetTop = 0;
   let currentActiveStop = 1;
@@ -70,6 +71,11 @@ function initVideoScrubbing() {
       } catch(e) {
         try { video.currentTime = clampedTime; } catch(err) {}
       }
+
+      clearTimeout(seekTimeout);
+      seekTimeout = setTimeout(() => {
+        isSeeking = false;
+      }, 150);
     } else {
       pendingSeekTime = clampedTime;
     }
@@ -77,6 +83,7 @@ function initVideoScrubbing() {
 
   video.addEventListener('seeked', () => {
     isSeeking = false;
+    clearTimeout(seekTimeout);
     if (timeCounter && video.duration > 0) {
       const curSec = Math.floor(video.currentTime || 0);
       const durSec = Math.floor(video.duration);
@@ -167,6 +174,11 @@ function initVideoScrubbing() {
       const durSec = Math.floor(duration);
       timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
     }
+  }
+
+  // Ensure browser initiates decode of first frame
+  if (video.readyState === 0) {
+    try { video.load(); } catch(e) {}
   }
 
   video.addEventListener('loadedmetadata', updateVideoScrub);
