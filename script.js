@@ -33,19 +33,11 @@ function initVideoScrubbing() {
 
   if (!cinemaSection || !video) return;
 
-  // Strict initial lock: video must never autoplay or loop
+  // Video configuration
   video.muted = true;
   video.playsInline = true;
-  video.removeAttribute('autoplay');
-  video.removeAttribute('loop');
-  try { video.pause(); } catch(e) {}
-
-  // Enforce pause if browser attempts automatic playback
-  video.addEventListener('play', () => {
-    if (!isUserPlaying) {
-      try { video.pause(); } catch(e) {}
-    }
-  });
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
 
   let pendingSeekTime = null;
   let isSeeking = false;
@@ -59,10 +51,15 @@ function initVideoScrubbing() {
     if (!isSeeking) {
       isSeeking = true;
       try {
-        video.currentTime = clampedTime;
+        if ('fastSeek' in video) {
+          video.fastSeek(clampedTime);
+        } else {
+          video.currentTime = clampedTime;
+        }
       } catch(e) {
-        isSeeking = false;
+        try { video.currentTime = clampedTime; } catch(err) {}
       }
+
       clearTimeout(seekTimeout);
       seekTimeout = setTimeout(() => {
         isSeeking = false;
@@ -71,7 +68,7 @@ function initVideoScrubbing() {
           pendingSeekTime = null;
           performSeek(next);
         }
-      }, 250);
+      }, 120);
     } else {
       pendingSeekTime = clampedTime;
     }
@@ -179,15 +176,12 @@ function initVideoScrubbing() {
   }
 
   video.addEventListener('loadedmetadata', () => {
-    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
   video.addEventListener('loadeddata', () => {
-    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
   video.addEventListener('canplay', () => {
-    try { video.pause(); } catch(e) {}
     updateVideoScrub();
   });
 
