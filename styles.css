@@ -2922,17 +2922,253 @@ body:not(:has(.cinema-scroll)) .site-header {
     background: rgba(255, 255, 255, 0.15);
   }
 
-  .blueprint-card {
-    padding: 1.75rem;
+  /* SECTION PADDING & TYPOGRAPHY SCALING FOR MOBILE */
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+  }
+
+  /* ABOUT SECTION MOBILE OPTIMIZATION */
+  .about-section {
+    padding: 3.5rem 1.25rem;
+    margin: 2rem 0 3rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-heading {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  .about-lead {
+    font-size: 0.95rem;
+  }
+
+  .about-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .about-badge-floating {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.85rem 1.15rem;
+  }
+
+  .badge-num {
+    font-size: 1.6rem;
+  }
+
+  .badge-lbl {
+    font-size: 0.65rem;
+  }
+
+  /* BEFORE & AFTER SLIDER MOBILE OPTIMIZATION */
+  .transformation-section {
+    margin: 3.5rem auto;
+    padding: 0 1.25rem;
+  }
+
+  .ba-slider-container {
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    touch-action: pan-y;
+  }
+
+  .ba-label {
+    bottom: 0.85rem;
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+
+  .label-before {
+    left: 0.85rem;
+  }
+
+  .label-after {
+    right: 0.85rem;
+  }
+
+  .handle-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  /* PORTFOLIO SECTION MOBILE OPTIMIZATION */
+  .portfolio-section {
+    margin: 0 auto 3.5rem;
+    padding: 0 1.25rem;
+  }
+
+  .portfolio-filters {
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.75rem;
+  }
+
+  /* SERVICES SECTION MOBILE OPTIMIZATION */
+  .services-section {
+    margin: 0 auto 3.5rem;
+    padding: 0 1.25rem;
   }
 
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* FOUNDERS & PRINCIPALS SECTION MOBILE OPTIMIZATION */
+  .principals-section {
+    padding: 3.5rem 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .principals-header .title {
+    font-size: 2rem;
+  }
+
+  .principals-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .principal-card {
     flex-direction: column;
-    padding: 1.75rem;
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .blueprint-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* TESTIMONIALS SECTION MOBILE OPTIMIZATION */
+  .testimonials-section {
+    padding: 4rem 1.25rem;
+  }
+
+  .testi-carousel-wrapper {
+    margin: 1.5rem -1.25rem 0;
+  }
+
+  .testi-carousel-track {
+    padding: 1rem 1.25rem 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .testi-card-item {
+    flex: 0 0 82vw;
+    max-width: 320px;
+  }
+
+  .testi-card-inner {
+    height: auto;
+    min-height: 440px;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .profile-image-frame {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-quote {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .card-name {
+    font-size: 1.2rem;
+  }
+
+  .testi-modal-content {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .modal-name {
+    font-size: 1.6rem;
+  }
+
+  .modal-description {
+    font-size: 1.1rem;
+  }
+
+  /* FAQ ACCORDION MOBILE OPTIMIZATION */
+  .faq-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .faq-question {
+    padding: 1.1rem 1.25rem;
+    font-size: 1.05rem;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  /* EDITORIAL JOURNAL SECTION MOBILE OPTIMIZATION */
+  .journal-section {
+    margin: 3.5rem auto;
+    padding: 0 1.25rem;
+  }
+
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+
+  .journal-media {
+    height: 190px;
+  }
+
+  /* BESPOKE INQUIRY FORM MOBILE OPTIMIZATION */
+  .contact-section {
+    padding: 4rem 1.25rem;
   }
 
   .form-row {
@@ -2941,17 +3177,77 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
 
   .contact-form-card {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
     gap: 1.25rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+  }
+
+  .contact-form-card input, 
+  .contact-form-card select, 
+  .contact-form-card textarea {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
   }
 
   .btn-submit-consult {
     width: 100%;
     justify-content: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* FOOTER MOBILE OPTIMIZATION */
+  .signature-luxury-footer {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+
+  .footer-left-card {
+    padding: 2rem 1.5rem 1.75rem;
+    border-radius: 16px;
+  }
+
+  .footer-brand-name {
+    font-size: 2rem;
+  }
+
+  .director-name {
+    font-size: 1.25rem;
+  }
+
+  .footer-right-sage-panel {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .sage-qr-white-card {
+    padding: 1.25rem;
+  }
+
+  .footer-unified-bottom-bar {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer-nav-links {
+    gap: 1.25rem;
+  }
+
+  /* MODALS MOBILE OPTIMIZATION */
+  .modal-card {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    max-height: 85vh;
   }
 
   .project-modal-content {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
