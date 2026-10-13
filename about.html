@@ -667,33 +667,303 @@
       .team-grid { grid-template-columns: 1fr; }
     }
 
-    /* Studio Image Banner */
-    .studio-banner {
-      width: 100%;
+    /* ══════════════════════════════════════════════════════
+       § 3B  THE ATELIER PROTOCOL (PREMIUM ARCHITECTURAL CRAFT)
+    ══════════════════════════════════════════════════════ */
+    .atelier-protocol-module {
       max-width: 1320px;
-      margin: 3rem auto 0;
+      margin: 3.5rem auto 0;
       position: relative;
-      border-radius: 4px;
+    }
+
+    .protocol-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 2.2rem;
+      position: relative;
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .protocol-card {
+      background: linear-gradient(160deg, rgba(22, 25, 30, 0.95) 0%, rgba(13, 15, 18, 0.98) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 10px;
       overflow: hidden;
-      aspect-ratio: 21 / 9;
+      position: relative;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .studio-banner img {
-      width: 100%; height: 100%;
+
+    .protocol-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, 0.65);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Architectural Corner Diamonds */
+    .protocol-card .card-diamond-corner {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
+      z-index: 3;
+    }
+    .protocol-card .card-diamond-corner.top-left { top: -3px; left: -3px; }
+    .protocol-card .card-diamond-corner.top-right { top: -3px; right: -3px; }
+    .protocol-card .card-diamond-corner.bottom-left { bottom: -3px; left: -3px; }
+    .protocol-card .card-diamond-corner.bottom-right { bottom: -3px; right: -3px; }
+
+    .protocol-media {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #0B0C0E;
+    }
+
+    .protocol-media img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: brightness(0.95) contrast(1.05);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      display: block;
     }
-    .studio-banner:hover img { transform: scale(1.03); }
-    .studio-banner-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(11,12,14,0.8) 0%, rgba(11,12,14,0.2) 60%, transparent 100%);
-      display: flex; align-items: flex-end; padding: 2.25rem;
+
+    .protocol-card:hover .protocol-media img {
+      transform: scale(1.07);
+      filter: brightness(1.02) contrast(1.08);
     }
-    .studio-banner-text {
+
+    .protocol-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 12, 14, 0.1) 0%, rgba(11, 12, 14, 0.7) 100%);
+      pointer-events: none;
+    }
+
+    .protocol-badge {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.28rem 0.65rem;
+      background: rgba(11, 12, 14, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 999px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .protocol-badge i {
+      font-size: 0.55rem;
+      color: var(--gold);
+    }
+
+    .protocol-body {
+      padding: 1.5rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .protocol-phase {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--gold-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .protocol-title {
       font-family: var(--serif);
-      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      line-height: 1.25;
+      margin-bottom: 0.65rem;
+    }
+
+    .protocol-animated-line {
+      width: 45px;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37 0%, #E8CC6A 50%, rgba(212, 175, 55, 0.2) 100%);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.85rem;
+      transition: width 0.4s ease;
+    }
+
+    .protocol-card:hover .protocol-animated-line {
+      width: 80px;
+    }
+
+    .protocol-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-quartz);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .protocol-metric-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .protocol-spec-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .protocol-spec-chip i {
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    .protocol-link-arrow {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .protocol-card:hover .protocol-link-arrow {
+      transform: translateX(4px);
+      color: var(--gold);
+    }
+
+    /* ── Architectural Founders' Pledge Ribbon ── */
+    .protocol-pledge-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: linear-gradient(90deg, rgba(20, 23, 28, 0.95) 0%, rgba(13, 15, 18, 0.98) 50%, rgba(20, 23, 28, 0.95) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .protocol-pledge-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .pledge-quote-side {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .pledge-seal {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 1rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    }
+
+    .pledge-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pledge-quote {
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
       font-style: italic;
-      color: var(--text-travertine);
-      max-width: 520px;
+      color: #EDE8D0;
+      line-height: 1.35;
+      margin: 0 0 0.25rem;
+    }
+
+    .pledge-sign {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-muted);
+      font-weight: 600;
+    }
+
+    .pledge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 1.35rem;
+      background: var(--gold);
+      color: #0B0C0E;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .pledge-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .pledge-btn i {
+      transition: transform 0.3s ease;
+    }
+    .pledge-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 960px) {
+      .protocol-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .protocol-pledge-bar { flex-direction: column; text-align: center; }
+      .pledge-quote-side { flex-direction: column; text-align: center; }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -1317,13 +1587,153 @@
       </div>
     </div>
 
-    <!-- Studio Banner -->
-    <div class="studio-banner reveal" style="max-width: 1320px; margin: 4rem auto 0; padding: 0 2rem;">
-      <div style="position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 21/9;">
-        <img src="nam_atelier_studio.jpg" alt="NAM Atelier Studio — Architects Collaborating" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-        <div class="studio-banner-overlay">
-          <p class="studio-banner-text">"Every render is a promise. Every slab is that promise kept."</p>
+    <!-- ════════ § 3B THE ATELIER PROTOCOL ════════ -->
+    <div class="atelier-protocol-module reveal">
+      <div class="protocol-header">
+        <div class="section-tag gold-label">The Atelier Standard</div>
+        <h2 class="serif-display" style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 0.75rem; color: #FFFFFF;">
+          From 3D Blueprint to Living Permanence
+        </h2>
+        <p style="font-size: 0.88rem; color: var(--text-quartz); line-height: 1.7;">
+          Every project moves through three uncompromising disciplines — turning complex virtual models into timeless physical reality with zero deviation.
+        </p>
+      </div>
+
+      <div class="protocol-grid">
+        <!-- PROTOCOL CARD 01: 3D SIMULATION -->
+        <div class="protocol-card">
+          <div class="card-diamond-corner top-left"></div>
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-left"></div>
+          <div class="card-diamond-corner bottom-right"></div>
+
+          <div class="protocol-media">
+            <img src="nam_living_render.jpg" alt="4K 3D Photorealistic Spatial Twin" loading="lazy">
+            <div class="protocol-media-overlay"></div>
+            <span class="protocol-badge">
+              <i class="fa-solid fa-cube"></i>
+              <span>VIRTUAL SIMULATION</span>
+            </span>
+          </div>
+
+          <div class="protocol-body">
+            <div>
+              <div class="protocol-phase">DISCIPLINE 01</div>
+              <h3 class="protocol-title">4K Photorealistic Spatial Twins</h3>
+              <div class="protocol-animated-line">
+                <span class="line-beam"></span>
+              </div>
+              <p class="protocol-desc">
+                Calculating natural sun angles, acoustic resonance, and material grain in ultra-high resolution before breaking ground. The render is our contractual blueprint.
+              </p>
+            </div>
+
+            <div class="protocol-metric-row">
+              <span class="protocol-spec-chip">
+                <i class="fa-solid fa-check-double"></i>
+                <span>100% Built Fidelity</span>
+              </span>
+              <span class="protocol-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
         </div>
+
+        <!-- PROTOCOL CARD 02: STRUCTURAL CIVIL -->
+        <div class="protocol-card">
+          <div class="card-diamond-corner top-left"></div>
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-left"></div>
+          <div class="card-diamond-corner bottom-right"></div>
+
+          <div class="protocol-media">
+            <img src="nam_facade_thumb2.jpg" alt="Monolithic Civil Execution & MEP" loading="lazy">
+            <div class="protocol-media-overlay"></div>
+            <span class="protocol-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>CIVIL INTEGRITY</span>
+            </span>
+          </div>
+
+          <div class="protocol-body">
+            <div>
+              <div class="protocol-phase">DISCIPLINE 02</div>
+              <h3 class="protocol-title">Monolithic Masonry &amp; MEP Fidelity</h3>
+              <div class="protocol-animated-line">
+                <span class="line-beam"></span>
+              </div>
+              <p class="protocol-desc">
+                Heavy-grade RCC foundations, double-height cantilever colonnades, and integrated electrical-plumbing grids executed with zero on-site tolerance.
+              </p>
+            </div>
+
+            <div class="protocol-metric-row">
+              <span class="protocol-spec-chip">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <span>0.0mm Margin of Error</span>
+              </span>
+              <span class="protocol-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROTOCOL CARD 03: ARTISANAL MATERIALITY -->
+        <div class="protocol-card">
+          <div class="card-diamond-corner top-left"></div>
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-left"></div>
+          <div class="card-diamond-corner bottom-right"></div>
+
+          <div class="protocol-media">
+            <img src="nam_bedroom_render.jpg" alt="Italian Travertine & European Oak" loading="lazy">
+            <div class="protocol-media-overlay"></div>
+            <span class="protocol-badge">
+              <i class="fa-solid fa-gem"></i>
+              <span>MATERIAL PALETTE</span>
+            </span>
+          </div>
+
+          <div class="protocol-body">
+            <div>
+              <div class="protocol-phase">DISCIPLINE 03</div>
+              <h3 class="protocol-title">Artisanal Travertine &amp; Natural Oak</h3>
+              <div class="protocol-animated-line">
+                <span class="line-beam"></span>
+              </div>
+              <p class="protocol-desc">
+                Hand-curated Italian bookmatched stone, German Blum hardware, and acoustic isolation engineered to evoke warmth, stillness, and tactile luxury.
+              </p>
+            </div>
+
+            <div class="protocol-metric-row">
+              <span class="protocol-spec-chip">
+                <i class="fa-solid fa-award"></i>
+                <span>Tuscan &amp; European Sourcing</span>
+              </span>
+              <span class="protocol-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PLEDGE RIBBON -->
+      <div class="protocol-pledge-bar">
+        <div class="pledge-quote-side">
+          <div class="pledge-seal">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="pledge-text-group">
+            <p class="pledge-quote">
+              "Every render is a promise. Every slab is that promise kept."
+            </p>
+            <span class="pledge-sign">
+              The Founders' Standard — Udhay Seth &amp; Mudita D Seth
+            </span>
+          </div>
+        </div>
+        <a href="#portfolio-preview" class="pledge-btn">
+          <span>Explore Selected Works</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
