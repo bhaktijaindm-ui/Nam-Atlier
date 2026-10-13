@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NAM ATELIER — ARCHITECTURAL & 3D INTERIOR STUDIO INTERACTIVE ENGINE
+   NAM ATELIER — ARCHITECTURAL & 3D INTERIOR STUDIO INTERACTIVE ENGINE (v3.2)
    ========================================================================== */
 
 /* ── Shared Component Loader ──
