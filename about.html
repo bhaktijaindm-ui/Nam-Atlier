@@ -228,143 +228,392 @@
 
     .founders-intro {
       text-align: center;
-      max-width: 620px;
-      margin: 0 auto 6rem;
+      max-width: 660px;
+      margin: 0 auto 5rem;
       padding: 0 2rem;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .founders-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      position: relative; z-index: 1;
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .founder-pillar {
       position: relative;
+      border-radius: 18px;
       overflow: hidden;
-      min-height: 85vh;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .founder-pillar:first-child {
-      border-right: 1px solid var(--border-subtle);
+
+    .founder-pillar:hover {
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.15);
     }
 
     .founder-portrait-wrap {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       overflow: hidden;
-    }
-    .founder-portrait-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      filter: grayscale(20%) contrast(1.05);
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .founder-pillar:hover .founder-portrait-wrap img {
-      transform: scale(1.05);
+      z-index: 0;
     }
 
+    .founder-portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: brightness(0.6) contrast(1.1);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    }
+
+    .founder-pillar:hover .founder-portrait-wrap img {
+      transform: scale(1.06);
+      filter: brightness(0.68) contrast(1.15);
+    }
+
+    /* Ambient Dual Vignette Overlay for 100% Text Legibility */
     .founder-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(11,12,14,0.97) 0%,
-        rgba(11,12,14,0.7) 45%,
-        rgba(11,12,14,0.1) 75%,
-        transparent 100%
-      );
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 50% 25%, rgba(11, 12, 14, 0.25) 0%, rgba(11, 12, 14, 0.75) 60%, rgba(11, 12, 14, 0.96) 100%),
+                  linear-gradient(180deg, rgba(11, 12, 14, 0.7) 0%, transparent 35%, rgba(11, 12, 14, 0.85) 65%, #0B0C0E 100%);
+      pointer-events: none;
+    }
+
+    /* Ambient Gold Light Flare */
+    .founder-ambient-glow {
+      position: absolute;
+      bottom: 8%;
+      left: 10%;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
     }
 
     .founder-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 3.5rem;
+      position: relative;
+      z-index: 2;
+      padding: 2.25rem;
+      width: 100%;
     }
 
-    .founder-number {
-      font-size: 0.6rem;
+    /* ── Signature Architectural Frosted Glass Card ── */
+    .founder-glass-card {
+      background: linear-gradient(145deg, rgba(17, 19, 23, 0.84) 0%, rgba(11, 12, 14, 0.95) 100%);
+      backdrop-filter: blur(28px) saturate(140%);
+      -webkit-backdrop-filter: blur(28px) saturate(140%);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 14px;
+      padding: 2.5rem 2.25rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .founder-pillar:hover .founder-glass-card {
+      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.88), 0 0 30px rgba(212, 175, 55, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+    }
+
+    /* Diamond Corner Accents (NAM Atelier Signature Geometry) */
+    .founder-glass-card .card-diamond-corner {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
+      z-index: 3;
+    }
+    .founder-glass-card .card-diamond-corner.top-left { top: -4px; left: -4px; }
+    .founder-glass-card .card-diamond-corner.top-right { top: -4px; right: -4px; }
+    .founder-glass-card .card-diamond-corner.bottom-left { bottom: -4px; left: -4px; }
+    .founder-glass-card .card-diamond-corner.bottom-right { bottom: -4px; right: -4px; }
+
+    /* Header Stack */
+    .founder-header-stack {
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-pillar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 999px;
+      font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.25em;
-      color: var(--gold);
+      letter-spacing: 0.22em;
+      color: var(--gold-light);
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .pillar-beacon {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px #E8CC6A;
+      animation: beaconPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes beaconPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 4px #D4AF37; }
+      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px #E8CC6A; }
     }
 
     .founder-name {
       font-family: var(--serif);
-      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-      font-weight: 400;
-      color: var(--text-travertine);
-      line-height: 1.1;
-      margin-bottom: 0.35rem;
+      font-size: clamp(2rem, 2.7vw, 2.6rem);
+      font-weight: 500;
+      color: #FFFFFF;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      margin: 0 0 0.45rem;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
     }
 
     .founder-role {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       color: var(--gold-muted);
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
-    .founder-divider {
-      width: 40px; height: 1px;
-      background: var(--gold);
-      margin-bottom: 1.5rem;
+    /* ── Creative Animated Glowing Gold Line ── */
+    .founder-animated-line {
+      width: 65px;
+      height: 2px;
+      background: linear-gradient(90deg, #D4AF37 0%, #E8CC6A 50%, rgba(212, 175, 55, 0.2) 100%);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+      transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      animation: linePulseWidth 4s ease-in-out infinite;
+    }
+
+    .founder-pillar:hover .founder-animated-line {
+      width: 120px;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.75);
+    }
+
+    .line-beam {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+      animation: beamGlider 2.8s infinite;
+    }
+
+    @keyframes beamGlider {
+      0% { left: -100%; }
+      40%, 100% { left: 200%; }
+    }
+
+    @keyframes linePulseWidth {
+      0%, 100% { transform: scaleX(1); opacity: 0.85; }
+      50% { transform: scaleX(1.15); opacity: 1; }
+    }
+
+    /* ── Quote Box Styling with Pristine Legibility ── */
+    .founder-quote-wrapper {
+      position: relative;
+      margin: 1.5rem 0 2rem;
+      padding: 1.35rem 1.6rem 1.35rem 1.75rem;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      transition: background 0.3s ease, border-left-color 0.3s ease;
+    }
+
+    .founder-pillar:hover .founder-quote-wrapper {
+      background: rgba(255, 255, 255, 0.04);
+      border-left-color: #E8CC6A;
+    }
+
+    .quote-mark-icon {
+      font-size: 1.1rem;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 0.5rem;
     }
 
     .founder-quote {
       font-family: var(--serif);
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-size: clamp(1.02rem, 1.25vw, 1.15rem);
       font-style: italic;
-      font-weight: 300;
-      color: rgba(245,243,239,0.85);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      border-left: 2px solid var(--gold);
-      padding-left: 1.25rem;
+      font-weight: 400;
+      color: #F5F4F0;
+      line-height: 1.8;
+      letter-spacing: 0.012em;
+      margin: 0;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
     }
 
+    /* ── CTA Row: Phone Chip & Interactive Button ── */
     .founder-cta-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .founder-phone {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-travertine);
+    .founder-phone-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
       text-decoration: none;
-      transition: color 0.3s;
+      padding: 0.55rem 1rem 0.55rem 0.65rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 999px;
+      transition: all 0.3s ease;
     }
-    .founder-phone:hover { color: var(--gold); }
-    .founder-phone i { color: var(--gold); font-size: 0.75rem; }
 
-    .founder-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      border: 1px solid var(--border-gold);
-      background: rgba(212,175,55,0.06);
+    .founder-phone-chip:hover {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .phone-pulse-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .founder-phone-chip:hover .phone-pulse-icon {
+      background: var(--gold);
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    .phone-chip-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-chip-tag {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       color: var(--gold-muted);
-      font-size: 0.65rem;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .phone-chip-num {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .founder-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1.6rem;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.06));
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 4px;
+      color: var(--gold-light);
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: var(--transition);
-      border-radius: 1px;
-      width: fit-content;
+      position: relative;
+      overflow: hidden;
       cursor: pointer;
+      transition: all 0.35s ease;
     }
-    .founder-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+
+    .founder-btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .founder-btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .founder-btn-primary:hover {
+      background: var(--gold);
+      color: #0B0C0E;
+      border-color: var(--gold);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .founder-btn-primary i {
+      transition: transform 0.3s ease;
+    }
+
+    .founder-btn-primary:hover i {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 1100px) {
+      .founders-grid { gap: 1.75rem; padding: 0 1.5rem; }
+      .founder-content { padding: 1.75rem; }
+      .founder-glass-card { padding: 2rem 1.75rem; }
+      .founder-cta-row { flex-direction: column; align-items: stretch; }
+      .founder-btn-primary { justify-content: center; }
+    }
 
     @media (max-width: 900px) {
       .founders-grid { grid-template-columns: 1fr; }
-      .founder-pillar { min-height: 75vh; }
-      .founder-pillar:first-child { border-right: none; border-bottom: 1px solid var(--border-subtle); }
-      .founder-content { padding: 2.5rem 1.75rem; }
+      .founder-pillar { min-height: 80vh; }
+      .founder-content { padding: 1.25rem; }
     }
 
     /* ══════════════════════════════════════════════════════
@@ -969,12 +1218,12 @@
 
   <!-- ════════ § 2 DUAL FOUNDERS ════════ -->
   <section id="founders">
-    <div class="founders-intro">
+    <div class="founders-intro reveal">
       <div class="section-tag gold-label">The Two Pillars</div>
-      <h2 class="serif-display" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">
+      <h2 class="serif-display" style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.15rem; color: #FFFFFF;">
         The Architects of NAM Atelier
       </h2>
-      <p style="font-size: 0.9rem; color: var(--text-quartz); line-height: 1.8;">
+      <p style="font-size: 0.95rem; color: var(--text-quartz); line-height: 1.85;">
         Two distinct disciplines. One unified vision. Every project carries the personal commitment of both founders — from the first structural beam to the final stone slab.
       </p>
     </div>
@@ -982,56 +1231,109 @@
     <div class="founders-grid">
 
       <!-- PILLAR 01: UDHAY SETH -->
-      <div class="founder-pillar">
+      <div class="founder-pillar reveal-left">
         <div class="founder-portrait-wrap">
           <img src="nam_founder_udhay.jpg" alt="Udhay Seth — Founder & Principal Civil Constructor" loading="eager">
         </div>
         <div class="founder-overlay"></div>
+        <div class="founder-ambient-glow"></div>
+
         <div class="founder-content">
-          <div class="founder-number">Pillar 01</div>
-          <h2 class="founder-name">Udhay Seth</h2>
-          <div class="founder-role">Founder &amp; Principal Civil Constructor</div>
-          <div class="founder-divider"></div>
-          <blockquote class="founder-quote">
-            "Architecture is only as enduring as the masonry that upholds it. At NAM Atelier, my commitment is absolute zero-tolerance precision on site. We transform ambitious 3D virtual blueprints into physical permanence — ensuring that every cantilever, MEP integration, and hand-cut stone slab withstands generations without compromise."
-          </blockquote>
-          <div class="founder-cta-row">
-            <a href="tel:+917710152917" class="founder-phone">
-              <i class="fa-solid fa-phone"></i>
-              Direct Line: +91 77101 52917
-            </a>
-            <a href="index.html#contact" class="founder-btn">
-              Schedule Civil Consultation <i class="fa-solid fa-arrow-right"></i>
-            </a>
+          <div class="founder-glass-card">
+            <!-- Architectural Corner Accents -->
+            <div class="card-diamond-corner top-left"></div>
+            <div class="card-diamond-corner top-right"></div>
+            <div class="card-diamond-corner bottom-left"></div>
+            <div class="card-diamond-corner bottom-right"></div>
+
+            <div class="founder-header-stack">
+              <div class="founder-pillar-tag">
+                <span class="pillar-beacon"></span>
+                <span>PILLAR 01</span>
+              </div>
+              <h3 class="founder-name">Udhay Seth</h3>
+              <div class="founder-role">Founder &amp; Principal Civil Constructor</div>
+              <div class="founder-animated-line">
+                <span class="line-beam"></span>
+              </div>
+            </div>
+
+            <div class="founder-quote-wrapper">
+              <div class="quote-mark-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <blockquote class="founder-quote">
+                "Architecture is only as enduring as the masonry that upholds it. At NAM Atelier, my commitment is absolute zero-tolerance precision on site. We transform ambitious 3D virtual blueprints into physical permanence — ensuring that every cantilever, MEP integration, and hand-cut stone slab withstands generations without compromise."
+              </blockquote>
+            </div>
+
+            <div class="founder-cta-row">
+              <a href="tel:+917710152917" class="founder-phone-chip" title="Call Udhay Seth directly">
+                <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
+                <div class="phone-chip-info">
+                  <span class="phone-chip-tag">DIRECT LINE</span>
+                  <strong class="phone-chip-num">+91 77101 52917</strong>
+                </div>
+              </a>
+              <a href="index.html#contact" class="founder-btn-primary">
+                <span>Schedule Civil Consultation</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- PILLAR 02: MUDITA D SETH -->
-      <div class="founder-pillar">
+      <div class="founder-pillar reveal-right">
         <div class="founder-portrait-wrap">
           <img src="nam_founder_mudita.jpg" alt="Mudita D Seth — Founder & Lead Interior Designer" loading="eager">
         </div>
         <div class="founder-overlay"></div>
+        <div class="founder-ambient-glow"></div>
+
         <div class="founder-content">
-          <div class="founder-number">Pillar 02</div>
-          <h2 class="founder-name">Mudita D Seth</h2>
-          <div class="founder-role">Founder &amp; Lead Interior Designer</div>
-          <div class="founder-divider"></div>
-          <blockquote class="founder-quote">
-            "True luxury does not shout; it breathes. My philosophy centres on modern warm minimalism, where spaces evoke emotional stillness. Through 4K 3D photorealistic rendering, we sculpt natural light, tactile materiality, and acoustic serenity — curating a bespoke sanctuary unique to your lifestyle."
-          </blockquote>
-          <div class="founder-cta-row">
-            <a href="tel:+918968155070" class="founder-phone">
-              <i class="fa-solid fa-phone"></i>
-              Direct Line: +91 89681 55070
-            </a>
-            <a href="index.html#contact" class="founder-btn">
-              Curate Your Space <i class="fa-solid fa-arrow-right"></i>
-            </a>
+          <div class="founder-glass-card">
+            <!-- Architectural Corner Accents -->
+            <div class="card-diamond-corner top-left"></div>
+            <div class="card-diamond-corner top-right"></div>
+            <div class="card-diamond-corner bottom-left"></div>
+            <div class="card-diamond-corner bottom-right"></div>
+
+            <div class="founder-header-stack">
+              <div class="founder-pillar-tag">
+                <span class="pillar-beacon"></span>
+                <span>PILLAR 02</span>
+              </div>
+              <h3 class="founder-name">Mudita D Seth</h3>
+              <div class="founder-role">Founder &amp; Lead Interior Designer</div>
+              <div class="founder-animated-line">
+                <span class="line-beam"></span>
+              </div>
+            </div>
+
+            <div class="founder-quote-wrapper">
+              <div class="quote-mark-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <blockquote class="founder-quote">
+                "True luxury does not shout; it breathes. My philosophy centres on modern warm minimalism, where spaces evoke emotional stillness. Through 4K 3D photorealistic rendering, we sculpt natural light, tactile materiality, and acoustic serenity — curating a bespoke sanctuary unique to your lifestyle."
+              </blockquote>
+            </div>
+
+            <div class="founder-cta-row">
+              <a href="tel:+918968155070" class="founder-phone-chip" title="Call Mudita D Seth directly">
+                <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
+                <div class="phone-chip-info">
+                  <span class="phone-chip-tag">DIRECT LINE</span>
+                  <strong class="phone-chip-num">+91 89681 55070</strong>
+                </div>
+              </a>
+              <a href="index.html#contact" class="founder-btn-primary">
+                <span>Curate Your Space</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
