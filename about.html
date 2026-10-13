@@ -111,9 +111,10 @@
     ══════════════════════════════════════════════════════ */
     #about-hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 85vh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
+      padding: 4.5rem 1.5rem 3rem;
     }
     #hero-canvas {
       position: absolute; inset: 0;
@@ -140,10 +141,10 @@
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.75rem;
-      padding: 0.5rem 1.25rem;
+      padding: 0.45rem 1.15rem;
       border: 1px solid var(--border-gold);
       border-radius: 1px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.35rem;
       font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.25em;
@@ -157,33 +158,33 @@
 
     .hero-headline {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5.5vw, 5rem);
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
       font-weight: 400;
       font-style: italic;
       color: var(--text-travertine);
-      line-height: 1.08;
-      margin-bottom: 2rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
       opacity: 0; transform: translateY(30px);
     }
     .hero-headline em { font-style: normal; color: var(--gold-light); }
 
     .hero-sub {
-      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      font-size: clamp(0.88rem, 1.4vw, 1.05rem);
       font-weight: 300;
       color: var(--text-quartz);
       max-width: 680px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.8;
+      margin: 0 auto 2.2rem;
+      line-height: 1.75;
       opacity: 0; transform: translateY(20px);
     }
 
     .hero-scroll-cue {
       position: absolute;
-      bottom: 3rem;
+      bottom: 1.5rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
-      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
       opacity: 0;
     }
     .hero-scroll-cue span {
@@ -204,22 +205,22 @@
     }
 
     /* ══════════════════════════════════════════════════════
-       § 2  DUAL FOUNDERS
+       § 2  DUAL FOUNDERS (COMPACT, BRIGHT, PRESTIGE ARCHITECTURAL)
     ══════════════════════════════════════════════════════ */
     #founders {
-      padding: 8rem 0;
+      padding: 4.5rem 1.5rem;
       background: var(--bg-noir);
       position: relative;
     }
     #founders::before {
       content: 'FOUNDERS';
       position: absolute;
-      top: 4rem; left: 50%;
+      top: 1.5rem; left: 50%;
       transform: translateX(-50%);
       font-family: var(--serif);
-      font-size: clamp(6rem, 16vw, 14rem);
+      font-size: clamp(3.5rem, 8vw, 7rem);
       font-weight: 600;
-      color: rgba(255,255,255,0.025);
+      color: rgba(255,255,255,0.02);
       letter-spacing: 0.1em;
       white-space: nowrap;
       pointer-events: none;
@@ -228,9 +229,9 @@
 
     .founders-intro {
       text-align: center;
-      max-width: 660px;
-      margin: 0 auto 5rem;
-      padding: 0 2rem;
+      max-width: 680px;
+      margin: 0 auto 2.2rem;
+      padding: 0 1rem;
       position: relative;
       z-index: 1;
     }
@@ -238,198 +239,158 @@
     .founders-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      max-width: 1400px;
+      gap: 1.75rem;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 0 2.5rem;
       position: relative;
       z-index: 1;
     }
 
-    .founder-pillar {
+    .founder-card {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      background: linear-gradient(145deg, rgba(20, 23, 28, 0.95) 0%, rgba(13, 15, 18, 0.98) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
       position: relative;
-      border-radius: 18px;
+    }
+
+    .founder-card:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.14);
+      transform: translateY(-3px);
+    }
+
+    /* Dedicated Portrait Showcase: 100% VISIBLE, CLEAR, BRIGHT */
+    .founder-photo-col {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
       overflow: hidden;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      border: 1px solid rgba(212, 175, 55, 0.22);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      background: #0B0C0E;
+      border-right: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    .founder-pillar:hover {
-      border-color: rgba(212, 175, 55, 0.55);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.15);
-    }
-
-    .founder-portrait-wrap {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .founder-portrait-wrap img {
+    .founder-photo-col img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
-      filter: brightness(0.6) contrast(1.1);
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+      object-position: center 15%;
+      filter: brightness(1) contrast(1.05);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      display: block;
     }
 
-    .founder-pillar:hover .founder-portrait-wrap img {
-      transform: scale(1.06);
-      filter: brightness(0.68) contrast(1.15);
+    .founder-card:hover .founder-photo-col img {
+      transform: scale(1.05);
+      filter: brightness(1.04) contrast(1.08);
     }
 
-    /* Ambient Dual Vignette Overlay for 100% Text Legibility */
-    .founder-overlay {
+    .founder-pillar-pill {
       position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: radial-gradient(circle at 50% 25%, rgba(11, 12, 14, 0.25) 0%, rgba(11, 12, 14, 0.75) 60%, rgba(11, 12, 14, 0.96) 100%),
-                  linear-gradient(180deg, rgba(11, 12, 14, 0.7) 0%, transparent 35%, rgba(11, 12, 14, 0.85) 65%, #0B0C0E 100%);
-      pointer-events: none;
-    }
-
-    /* Ambient Gold Light Flare */
-    .founder-ambient-glow {
-      position: absolute;
-      bottom: 8%;
-      left: 10%;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
-      filter: blur(50px);
-      z-index: 1;
-      pointer-events: none;
-      transition: opacity 0.6s ease;
-    }
-
-    .founder-content {
-      position: relative;
-      z-index: 2;
-      padding: 2.25rem;
-      width: 100%;
-    }
-
-    /* ── Signature Architectural Frosted Glass Card ── */
-    .founder-glass-card {
-      background: linear-gradient(145deg, rgba(17, 19, 23, 0.84) 0%, rgba(11, 12, 14, 0.95) 100%);
-      backdrop-filter: blur(28px) saturate(140%);
-      -webkit-backdrop-filter: blur(28px) saturate(140%);
-      border: 1px solid rgba(212, 175, 55, 0.28);
-      border-radius: 14px;
-      padding: 2.5rem 2.25rem;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .founder-pillar:hover .founder-glass-card {
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.88), 0 0 30px rgba(212, 175, 55, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      transform: translateY(-4px);
-    }
-
-    /* Diamond Corner Accents (NAM Atelier Signature Geometry) */
-    .founder-glass-card .card-diamond-corner {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      background: var(--gold);
-      transform: rotate(45deg);
-      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
-      z-index: 3;
-    }
-    .founder-glass-card .card-diamond-corner.top-left { top: -4px; left: -4px; }
-    .founder-glass-card .card-diamond-corner.top-right { top: -4px; right: -4px; }
-    .founder-glass-card .card-diamond-corner.bottom-left { bottom: -4px; left: -4px; }
-    .founder-glass-card .card-diamond-corner.bottom-right { bottom: -4px; right: -4px; }
-
-    /* Header Stack */
-    .founder-header-stack {
-      margin-bottom: 1.5rem;
-    }
-
-    .founder-pillar-tag {
+      top: 0.85rem;
+      left: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.35rem 0.9rem;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      gap: 0.45rem;
+      padding: 0.3rem 0.65rem;
+      background: rgba(11, 12, 14, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-radius: 999px;
-      font-size: 0.65rem;
+      font-size: 0.58rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.18em;
       color: var(--gold-light);
       text-transform: uppercase;
-      margin-bottom: 0.85rem;
+      z-index: 2;
     }
 
     .pillar-beacon {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--gold);
-      box-shadow: 0 0 8px #E8CC6A;
+      box-shadow: 0 0 6px #E8CC6A;
       animation: beaconPulse 2s infinite ease-in-out;
     }
 
     @keyframes beaconPulse {
       0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 4px #D4AF37; }
-      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px #E8CC6A; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 8px #E8CC6A; }
+    }
+
+    /* Information Column: 100% Crisp, High Contrast, Readable */
+    .founder-info-col {
+      padding: 1.75rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Diamond Corner Accents */
+    .founder-info-col .card-diamond-corner {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
+      z-index: 3;
+    }
+    .founder-info-col .card-diamond-corner.top-right { top: -3px; right: -3px; }
+    .founder-info-col .card-diamond-corner.bottom-right { bottom: -3px; right: -3px; }
+
+    .founder-header-stack {
+      margin-bottom: 0.75rem;
     }
 
     .founder-name {
       font-family: var(--serif);
-      font-size: clamp(2rem, 2.7vw, 2.6rem);
+      font-size: clamp(1.4rem, 1.8vw, 1.75rem);
       font-weight: 500;
       color: #FFFFFF;
       letter-spacing: 0.02em;
       line-height: 1.15;
-      margin: 0 0 0.45rem;
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+      margin: 0 0 0.3rem;
     }
 
     .founder-role {
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--gold-muted);
+      letter-spacing: 0.18em;
+      color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.65rem;
     }
 
-    /* ── Creative Animated Glowing Gold Line ── */
+    /* Creative Animated Glowing Gold Line */
     .founder-animated-line {
-      width: 65px;
+      width: 50px;
       height: 2px;
       background: linear-gradient(90deg, #D4AF37 0%, #E8CC6A 50%, rgba(212, 175, 55, 0.2) 100%);
       border-radius: 2px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-      transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
       animation: linePulseWidth 4s ease-in-out infinite;
     }
 
-    .founder-pillar:hover .founder-animated-line {
-      width: 120px;
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.75);
+    .founder-card:hover .founder-animated-line {
+      width: 90px;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.7);
     }
 
     .line-beam {
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
       background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
       animation: beamGlider 2.8s infinite;
     }
@@ -444,74 +405,55 @@
       50% { transform: scaleX(1.15); opacity: 1; }
     }
 
-    /* ── Quote Box Styling with Pristine Legibility ── */
-    .founder-quote-wrapper {
-      position: relative;
-      margin: 1.5rem 0 2rem;
-      padding: 1.35rem 1.6rem 1.35rem 1.75rem;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 10px 10px 0;
-      transition: background 0.3s ease, border-left-color 0.3s ease;
-    }
-
-    .founder-pillar:hover .founder-quote-wrapper {
-      background: rgba(255, 255, 255, 0.04);
-      border-left-color: #E8CC6A;
-    }
-
-    .quote-mark-icon {
-      font-size: 1.1rem;
-      color: var(--gold);
-      opacity: 0.75;
-      margin-bottom: 0.5rem;
+    /* Quote Box: Compact, Clean, Bright */
+    .founder-quote-box {
+      margin: 0.75rem 0 1.1rem;
+      padding-left: 0.85rem;
+      border-left: 2px solid var(--gold);
     }
 
     .founder-quote {
       font-family: var(--serif);
-      font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+      font-size: 0.88rem;
       font-style: italic;
       font-weight: 400;
-      color: #F5F4F0;
-      line-height: 1.8;
-      letter-spacing: 0.012em;
+      color: #EDE8D0;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
       margin: 0;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
     }
 
-    /* ── CTA Row: Phone Chip & Interactive Button ── */
+    /* Compact CTA Row */
     .founder-cta-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     .founder-phone-chip {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.55rem;
       text-decoration: none;
-      padding: 0.55rem 1rem 0.55rem 0.65rem;
+      padding: 0.38rem 0.75rem 0.38rem 0.45rem;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.25);
       border-radius: 999px;
       transition: all 0.3s ease;
     }
 
     .founder-phone-chip:hover {
-      background: rgba(212, 175, 55, 0.12);
+      background: rgba(212, 175, 55, 0.15);
       border-color: var(--gold);
       transform: translateY(-2px);
     }
 
     .phone-pulse-icon {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: rgba(212, 175, 55, 0.15);
       border: 1px solid rgba(212, 175, 55, 0.4);
@@ -519,7 +461,7 @@
       align-items: center;
       justify-content: center;
       color: var(--gold-light);
-      font-size: 0.78rem;
+      font-size: 0.65rem;
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
@@ -535,42 +477,42 @@
     }
 
     .phone-chip-tag {
-      font-size: 0.58rem;
+      font-size: 0.5rem;
       font-weight: 600;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.15em;
       color: var(--gold-muted);
       text-transform: uppercase;
       line-height: 1;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.15rem;
     }
 
     .phone-chip-num {
       font-family: var(--sans);
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: #FFFFFF;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       line-height: 1;
     }
 
     .founder-btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.8rem 1.6rem;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.06));
-      border: 1px solid rgba(212, 175, 55, 0.5);
+      gap: 0.5rem;
+      padding: 0.55rem 1.05rem;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
+      border: 1px solid rgba(212, 175, 55, 0.55);
       border-radius: 4px;
       color: var(--gold-light);
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.35s ease;
+      transition: all 0.3s ease;
     }
 
     .founder-btn-primary::before {
@@ -590,7 +532,7 @@
       background: var(--gold);
       color: #0B0C0E;
       border-color: var(--gold);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
       transform: translateY(-2px);
     }
 
@@ -599,34 +541,49 @@
     }
 
     .founder-btn-primary:hover i {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
 
-    @media (max-width: 1100px) {
-      .founders-grid { gap: 1.75rem; padding: 0 1.5rem; }
-      .founder-content { padding: 1.75rem; }
-      .founder-glass-card { padding: 2rem 1.75rem; }
-      .founder-cta-row { flex-direction: column; align-items: stretch; }
-      .founder-btn-primary { justify-content: center; }
+    @media (max-width: 1120px) {
+      .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 660px;
+      }
     }
 
-    @media (max-width: 900px) {
-      .founders-grid { grid-template-columns: 1fr; }
-      .founder-pillar { min-height: 80vh; }
-      .founder-content { padding: 1.25rem; }
+    @media (max-width: 650px) {
+      .founder-card {
+        grid-template-columns: 1fr;
+      }
+      .founder-photo-col {
+        min-height: 260px;
+        height: 260px;
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      }
+      .founder-info-col {
+        padding: 1.35rem 1.25rem;
+      }
+      .founder-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .founder-btn-primary {
+        justify-content: center;
+      }
     }
 
     /* ══════════════════════════════════════════════════════
        § 3  ATELIER COLLECTIVE TEAM
     ══════════════════════════════════════════════════════ */
     #team {
-      padding: 8rem 2rem;
+      padding: 4.5rem 1.5rem;
       background: var(--bg-obsidian);
     }
     .team-header {
       text-align: center;
       max-width: 640px;
-      margin: 0 auto 5rem;
+      margin: 0 auto 2.5rem;
     }
 
     .team-grid {
@@ -640,7 +597,7 @@
 
     .team-card {
       background: var(--bg-card-dark);
-      padding: 3rem 2.25rem;
+      padding: 2.2rem 1.6rem;
       position: relative;
       overflow: hidden;
       transition: background 0.5s ease;
@@ -662,13 +619,13 @@
     .team-card:hover { background: var(--bg-card-mid); }
 
     .team-icon {
-      width: 52px; height: 52px;
+      width: 46px; height: 46px;
       border: 1px solid var(--border-gold);
       border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--gold);
-      margin-bottom: 2rem;
+      margin-bottom: 1.35rem;
       background: rgba(212,175,55,0.05);
       transition: var(--transition);
     }
@@ -683,20 +640,20 @@
       letter-spacing: 0.2em;
       color: var(--gold-muted);
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .team-role {
       font-family: var(--serif);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 400;
       color: var(--text-travertine);
       line-height: 1.25;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
     .team-desc {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 300;
       color: var(--text-quartz);
       line-height: 1.65;
@@ -714,7 +671,7 @@
     .studio-banner {
       width: 100%;
       max-width: 1320px;
-      margin: 5rem auto 0;
+      margin: 3rem auto 0;
       position: relative;
       border-radius: 4px;
       overflow: hidden;
@@ -729,11 +686,11 @@
     .studio-banner-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(11,12,14,0.8) 0%, rgba(11,12,14,0.2) 60%, transparent 100%);
-      display: flex; align-items: flex-end; padding: 3rem;
+      display: flex; align-items: flex-end; padding: 2.25rem;
     }
     .studio-banner-text {
       font-family: var(--serif);
-      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
       font-style: italic;
       color: var(--text-travertine);
       max-width: 520px;
@@ -743,7 +700,7 @@
        § 4  PORTFOLIO PREVIEW
     ══════════════════════════════════════════════════════ */
     #portfolio-preview {
-      padding: 8rem 2rem;
+      padding: 4.5rem 1.5rem;
       background: var(--bg-noir);
       overflow: hidden;
     }
@@ -753,8 +710,8 @@
       align-items: flex-end;
       justify-content: space-between;
       max-width: 1320px;
-      margin: 0 auto 4rem;
-      gap: 2rem;
+      margin: 0 auto 2.2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
 
@@ -766,12 +723,12 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      padding-bottom: 1rem;
+      padding-bottom: 0.75rem;
     }
     .portfolio-marquee-track::-webkit-scrollbar { display: none; }
 
     .port-card {
-      flex: 0 0 380px;
+      flex: 0 0 360px;
       scroll-snap-align: start;
       background: var(--bg-card-dark);
       border: 1px solid var(--border-subtle);
@@ -780,7 +737,7 @@
       transition: transform 0.5s ease, border-color 0.5s ease;
       cursor: pointer;
     }
-    .port-card:hover { transform: translateY(-8px); border-color: var(--border-gold); }
+    .port-card:hover { transform: translateY(-6px); border-color: var(--border-gold); }
 
     .port-card-media {
       aspect-ratio: 4/3;
@@ -793,44 +750,44 @@
       object-fit: cover;
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .port-card:hover .port-card-media img { transform: scale(1.08); }
+    .port-card:hover .port-card-media img { transform: scale(1.06); }
 
     .port-card-label {
       position: absolute;
-      top: 1rem; left: 1rem;
-      font-size: 0.6rem;
+      top: 0.85rem; left: 0.85rem;
+      font-size: 0.58rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
-      padding: 0.3rem 0.7rem;
-      background: rgba(11,12,14,0.8);
+      padding: 0.28rem 0.65rem;
+      background: rgba(11,12,14,0.85);
       backdrop-filter: blur(8px);
       border: 1px solid var(--border-gold);
       border-radius: 1px;
     }
 
-    .port-card-body { padding: 1.75rem 1.75rem 1.5rem; }
+    .port-card-body { padding: 1.4rem 1.4rem 1.25rem; }
 
     .port-card-num {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
       color: var(--text-dim);
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .port-card-title {
       font-family: var(--serif);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 400;
       color: var(--text-travertine);
       line-height: 1.25;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .port-card-desc {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 300;
       color: var(--text-quartz);
       line-height: 1.6;
@@ -838,8 +795,8 @@
 
     .btn-portfolio-archive {
       display: inline-flex; align-items: center; gap: 0.75rem;
-      margin-top: 3.5rem;
-      padding: 1rem 2.25rem;
+      margin-top: 2rem;
+      padding: 0.85rem 2rem;
       border: 1px solid var(--border-gold);
       background: transparent;
       color: var(--gold-muted);
@@ -861,7 +818,7 @@
        § 5  TESTIMONIALS
     ══════════════════════════════════════════════════════ */
     #testimonials {
-      padding: 8rem 2rem;
+      padding: 4.5rem 1.5rem;
       background: var(--bg-obsidian);
       position: relative;
       overflow: hidden;
@@ -871,8 +828,8 @@
       position: absolute;
       top: -2rem; left: -1rem;
       font-family: var(--serif);
-      font-size: clamp(12rem, 25vw, 22rem);
-      color: rgba(212,175,55,0.04);
+      font-size: clamp(10rem, 20vw, 18rem);
+      color: rgba(212,175,55,0.03);
       line-height: 1;
       pointer-events: none;
     }
@@ -880,7 +837,7 @@
     .testi-header {
       text-align: center;
       max-width: 560px;
-      margin: 0 auto 5rem;
+      margin: 0 auto 2.5rem;
     }
 
     .testi-grid {
@@ -895,7 +852,7 @@
       background: var(--bg-card-dark);
       border: 1px solid var(--border-subtle);
       border-radius: 4px;
-      padding: 2.75rem 2.5rem;
+      padding: 2.2rem 1.85rem;
       position: relative;
       overflow: hidden;
       transition: var(--transition);
@@ -907,32 +864,32 @@
 
     .testi-quote-mark {
       font-family: var(--serif);
-      font-size: 5rem;
+      font-size: 4rem;
       color: var(--gold);
       line-height: 0.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       opacity: 0.5;
     }
 
     .testi-text {
       font-family: var(--serif);
-      font-size: 1.08rem;
+      font-size: 1.02rem;
       font-style: italic;
       font-weight: 300;
       color: var(--text-travertine);
-      line-height: 1.75;
-      margin-bottom: 2rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     .testi-author {
       display: flex; align-items: center; gap: 0.85rem;
     }
     .testi-author-line {
-      width: 24px; height: 1px;
+      width: 20px; height: 1px;
       background: var(--gold);
     }
     .testi-author-name {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -946,31 +903,31 @@
        § 6  FAQ ACCORDION
     ══════════════════════════════════════════════════════ */
     #faq {
-      padding: 8rem 2rem;
+      padding: 4.5rem 1.5rem;
       background: var(--bg-noir);
     }
 
     .faq-inner {
       display: grid;
       grid-template-columns: 1fr 1.6fr;
-      gap: 5rem;
+      gap: 3.5rem;
       max-width: 1200px;
       margin: 0 auto;
       align-items: start;
     }
 
-    .faq-intro { position: sticky; top: 8rem; }
+    .faq-intro { position: sticky; top: 6rem; }
 
     .faq-list {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     .faq-item {
       background: rgba(23, 26, 30, 0.65);
       border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
       transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
     }
@@ -985,8 +942,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      padding: 1.5rem 2rem;
+      gap: 1.25rem;
+      padding: 1.25rem 1.75rem;
       cursor: pointer;
       background: transparent;
       border: none;
@@ -997,7 +954,7 @@
 
     .faq-q-text {
       font-family: var(--serif);
-      font-size: 1.22rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--text-travertine);
       line-height: 1.4;
@@ -1005,15 +962,15 @@
     }
 
     .faq-toggle {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border: 1px solid var(--border-gold);
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--gold-muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       flex-shrink: 0;
       transition: var(--transition);
       background: rgba(212, 175, 55, 0.06);
@@ -1036,30 +993,30 @@
     }
 
     .faq-answer-inner {
-      padding: 0.5rem 2rem 1.75rem 2rem;
-      font-size: 0.92rem;
+      padding: 0.4rem 1.75rem 1.5rem 1.75rem;
+      font-size: 0.9rem;
       font-weight: 300;
       color: var(--text-quartz);
-      line-height: 1.75;
+      line-height: 1.7;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
     }
 
     @media (max-width: 900px) {
-      .faq-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .faq-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .faq-intro { position: static; }
     }
     @media (max-width: 600px) {
-      .faq-question { padding: 1.25rem 1.25rem; gap: 1rem; }
-      .faq-q-text { font-size: 1.05rem; }
-      .faq-answer-inner { padding: 0.5rem 1.25rem 1.25rem 1.25rem; }
+      .faq-question { padding: 1.1rem 1.1rem; gap: 0.85rem; }
+      .faq-q-text { font-size: 1rem; }
+      .faq-answer-inner { padding: 0.4rem 1.1rem 1.1rem 1.1rem; }
     }
 
     /* ══════════════════════════════════════════════════════
        § 7  VIP FOOTER CTA
     ══════════════════════════════════════════════════════ */
     #vip-cta {
-      padding: 8rem 2rem 6rem;
+      padding: 4.5rem 1.5rem 3.5rem;
       background: var(--bg-obsidian);
       position: relative;
       overflow: hidden;
@@ -1073,21 +1030,21 @@
 
     .vip-tagline {
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-size: clamp(2.2rem, 4.5vw, 4.2rem);
       font-weight: 400;
       font-style: italic;
       color: var(--text-travertine);
       line-height: 1.1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       position: relative; z-index: 1;
     }
 
     .vip-sub {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 300;
       color: var(--text-quartz);
       max-width: 520px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 2.2rem;
       line-height: 1.7;
       position: relative; z-index: 1;
     }
@@ -1096,23 +1053,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 3rem;
+      gap: 2.2rem;
       flex-wrap: wrap;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.2rem;
       position: relative; z-index: 1;
     }
 
     .vip-contact-block { text-align: center; }
     .vip-contact-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
     .vip-contact-value {
       font-family: var(--serif);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: var(--text-travertine);
       text-decoration: none;
@@ -1130,14 +1087,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
       position: relative; z-index: 1;
     }
 
     .btn-schedule {
       display: inline-flex; align-items: center; gap: 0.75rem;
-      padding: 1.1rem 2.75rem;
+      padding: 0.95rem 2.25rem;
       background: var(--gold);
       color: #000;
       font-size: 0.68rem;
@@ -1158,7 +1115,7 @@
 
     .btn-email {
       display: inline-flex; align-items: center; gap: 0.75rem;
-      padding: 1.1rem 2.25rem;
+      padding: 0.95rem 2rem;
       background: transparent;
       color: var(--gold-muted);
       font-size: 0.68rem;
@@ -1220,10 +1177,10 @@
   <section id="founders">
     <div class="founders-intro reveal">
       <div class="section-tag gold-label">The Two Pillars</div>
-      <h2 class="serif-display" style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.15rem; color: #FFFFFF;">
+      <h2 class="serif-display" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 0.85rem; color: #FFFFFF;">
         The Architects of NAM Atelier
       </h2>
-      <p style="font-size: 0.95rem; color: var(--text-quartz); line-height: 1.85;">
+      <p style="font-size: 0.92rem; color: var(--text-quartz); line-height: 1.75; max-width: 620px; margin: 0 auto;">
         Two distinct disciplines. One unified vision. Every project carries the personal commitment of both founders — from the first structural beam to the final stone slab.
       </p>
     </div>
@@ -1231,105 +1188,89 @@
     <div class="founders-grid">
 
       <!-- PILLAR 01: UDHAY SETH -->
-      <div class="founder-pillar reveal-left">
-        <div class="founder-portrait-wrap">
+      <div class="founder-card reveal-left">
+        <div class="founder-photo-col">
           <img src="nam_founder_udhay.jpg" alt="Udhay Seth — Founder & Principal Civil Constructor" loading="eager">
+          <div class="founder-pillar-pill">
+            <span class="pillar-beacon"></span>
+            <span>PILLAR 01</span>
+          </div>
         </div>
-        <div class="founder-overlay"></div>
-        <div class="founder-ambient-glow"></div>
 
-        <div class="founder-content">
-          <div class="founder-glass-card">
-            <!-- Architectural Corner Accents -->
-            <div class="card-diamond-corner top-left"></div>
-            <div class="card-diamond-corner top-right"></div>
-            <div class="card-diamond-corner bottom-left"></div>
-            <div class="card-diamond-corner bottom-right"></div>
+        <div class="founder-info-col">
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-right"></div>
 
-            <div class="founder-header-stack">
-              <div class="founder-pillar-tag">
-                <span class="pillar-beacon"></span>
-                <span>PILLAR 01</span>
+          <div class="founder-header-stack">
+            <h3 class="founder-name">Udhay Seth</h3>
+            <div class="founder-role">Founder &amp; Principal Civil Constructor</div>
+            <div class="founder-animated-line">
+              <span class="line-beam"></span>
+            </div>
+          </div>
+
+          <div class="founder-quote-box">
+            <p class="founder-quote">
+              "Architecture is only as enduring as the masonry that upholds it. Absolute zero-tolerance precision on site, transforming 3D virtual blueprints into physical permanence that lasts generations."
+            </p>
+          </div>
+
+          <div class="founder-cta-row">
+            <a href="tel:+917710152917" class="founder-phone-chip" title="Call Udhay Seth directly">
+              <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
+              <div class="phone-chip-info">
+                <span class="phone-chip-tag">DIRECT LINE</span>
+                <strong class="phone-chip-num">+91 77101 52917</strong>
               </div>
-              <h3 class="founder-name">Udhay Seth</h3>
-              <div class="founder-role">Founder &amp; Principal Civil Constructor</div>
-              <div class="founder-animated-line">
-                <span class="line-beam"></span>
-              </div>
-            </div>
-
-            <div class="founder-quote-wrapper">
-              <div class="quote-mark-icon"><i class="fa-solid fa-quote-left"></i></div>
-              <blockquote class="founder-quote">
-                "Architecture is only as enduring as the masonry that upholds it. At NAM Atelier, my commitment is absolute zero-tolerance precision on site. We transform ambitious 3D virtual blueprints into physical permanence — ensuring that every cantilever, MEP integration, and hand-cut stone slab withstands generations without compromise."
-              </blockquote>
-            </div>
-
-            <div class="founder-cta-row">
-              <a href="tel:+917710152917" class="founder-phone-chip" title="Call Udhay Seth directly">
-                <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
-                <div class="phone-chip-info">
-                  <span class="phone-chip-tag">DIRECT LINE</span>
-                  <strong class="phone-chip-num">+91 77101 52917</strong>
-                </div>
-              </a>
-              <a href="index.html#contact" class="founder-btn-primary">
-                <span>Schedule Civil Consultation</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
+            </a>
+            <a href="index.html#contact" class="founder-btn-primary">
+              <span>Civil Consult</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
 
       <!-- PILLAR 02: MUDITA D SETH -->
-      <div class="founder-pillar reveal-right">
-        <div class="founder-portrait-wrap">
+      <div class="founder-card reveal-right">
+        <div class="founder-photo-col">
           <img src="nam_founder_mudita.jpg" alt="Mudita D Seth — Founder & Lead Interior Designer" loading="eager">
+          <div class="founder-pillar-pill">
+            <span class="pillar-beacon"></span>
+            <span>PILLAR 02</span>
+          </div>
         </div>
-        <div class="founder-overlay"></div>
-        <div class="founder-ambient-glow"></div>
 
-        <div class="founder-content">
-          <div class="founder-glass-card">
-            <!-- Architectural Corner Accents -->
-            <div class="card-diamond-corner top-left"></div>
-            <div class="card-diamond-corner top-right"></div>
-            <div class="card-diamond-corner bottom-left"></div>
-            <div class="card-diamond-corner bottom-right"></div>
+        <div class="founder-info-col">
+          <div class="card-diamond-corner top-right"></div>
+          <div class="card-diamond-corner bottom-right"></div>
 
-            <div class="founder-header-stack">
-              <div class="founder-pillar-tag">
-                <span class="pillar-beacon"></span>
-                <span>PILLAR 02</span>
+          <div class="founder-header-stack">
+            <h3 class="founder-name">Mudita D Seth</h3>
+            <div class="founder-role">Founder &amp; Lead Interior Designer</div>
+            <div class="founder-animated-line">
+              <span class="line-beam"></span>
+            </div>
+          </div>
+
+          <div class="founder-quote-box">
+            <p class="founder-quote">
+              "True luxury does not shout; it breathes. Modern warm minimalism, sculpting natural light, tactile materiality, and acoustic serenity into bespoke sanctuaries unique to your lifestyle."
+            </p>
+          </div>
+
+          <div class="founder-cta-row">
+            <a href="tel:+918968155070" class="founder-phone-chip" title="Call Mudita D Seth directly">
+              <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
+              <div class="phone-chip-info">
+                <span class="phone-chip-tag">DIRECT LINE</span>
+                <strong class="phone-chip-num">+91 89681 55070</strong>
               </div>
-              <h3 class="founder-name">Mudita D Seth</h3>
-              <div class="founder-role">Founder &amp; Lead Interior Designer</div>
-              <div class="founder-animated-line">
-                <span class="line-beam"></span>
-              </div>
-            </div>
-
-            <div class="founder-quote-wrapper">
-              <div class="quote-mark-icon"><i class="fa-solid fa-quote-left"></i></div>
-              <blockquote class="founder-quote">
-                "True luxury does not shout; it breathes. My philosophy centres on modern warm minimalism, where spaces evoke emotional stillness. Through 4K 3D photorealistic rendering, we sculpt natural light, tactile materiality, and acoustic serenity — curating a bespoke sanctuary unique to your lifestyle."
-              </blockquote>
-            </div>
-
-            <div class="founder-cta-row">
-              <a href="tel:+918968155070" class="founder-phone-chip" title="Call Mudita D Seth directly">
-                <span class="phone-pulse-icon"><i class="fa-solid fa-phone"></i></span>
-                <div class="phone-chip-info">
-                  <span class="phone-chip-tag">DIRECT LINE</span>
-                  <strong class="phone-chip-num">+91 89681 55070</strong>
-                </div>
-              </a>
-              <a href="index.html#contact" class="founder-btn-primary">
-                <span>Curate Your Space</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
+            </a>
+            <a href="index.html#contact" class="founder-btn-primary">
+              <span>Interior Consult</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -1802,14 +1743,14 @@
       });
 
       /* Founder portrait parallax */
-      gsap.utils.toArray('.founder-portrait-wrap img').forEach(img => {
+      gsap.utils.toArray('.founder-photo-col img').forEach(img => {
         gsap.fromTo(img,
-          { yPercent: -6 },
+          { yPercent: -4 },
           {
-            yPercent: 6,
+            yPercent: 4,
             ease: 'none',
             scrollTrigger: {
-              trigger: img.closest('.founder-pillar'),
+              trigger: img.closest('.founder-card'),
               start: 'top bottom',
               end: 'bottom top',
               scrub: true
