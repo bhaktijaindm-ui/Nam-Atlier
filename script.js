@@ -2,7 +2,86 @@
    NAM ATELIER — ARCHITECTURAL & 3D INTERIOR STUDIO INTERACTIVE ENGINE
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+/* ── Shared Component Loader ──
+   Fetches header.html and footer.html from /components/ and injects them
+   into placeholder divs. After injection, sets active nav links and
+   initializes all interactive features.
+   Edit components/header.html or components/footer.html once —
+   changes appear on EVERY page automatically.                              */
+
+async function loadComponents() {
+  const headerEl = document.getElementById('header-placeholder');
+  const footerEl = document.getElementById('footer-placeholder');
+
+  const fetchAndInject = async (url, targetEl) => {
+    if (!targetEl) return;
+    try {
+      let resp = await fetch(url);
+      if (!resp.ok && !url.startsWith('/')) {
+        resp = await fetch('/' + url);
+      }
+      if (!resp.ok) throw new Error(`Failed to load ${url}: ${resp.status}`);
+      targetEl.innerHTML = await resp.text();
+    } catch (err) {
+      console.error('Component load error:', err);
+    }
+  };
+
+  await Promise.all([
+    fetchAndInject('components/header.html', headerEl),
+    fetchAndInject('components/footer.html', footerEl)
+  ]);
+
+  // Set active nav link based on current page
+  setActiveNavLinks();
+}
+
+/* ── Active Nav Link Highlighter ──
+   Detects current page from URL and applies 'active' class to the
+   matching nav link in both desktop nav and mobile drawer.
+   Handles cleanUrls (/about), standard filenames (about.html), and root (/). */
+function setActiveNavLinks() {
+  const path = window.location.pathname;
+  let page = path.substring(path.lastIndexOf('/') + 1) || 'index';
+  page = page.replace('.html', '').toLowerCase();
+  if (page === '' || page === 'index') page = 'index';
+  
+  const isMatch = (href) => {
+    if (!href) return false;
+    let cleanHref = href.split('?')[0].split('#')[0].replace('.html', '').replace(/^\//, '').toLowerCase();
+    if (cleanHref === '' || cleanHref === 'index') cleanHref = 'index';
+    if (cleanHref === page) return true;
+    // Handle aliases like /services vs service-detail, /portfolio vs portfolio-detail
+    if ((page === 'services' && cleanHref === 'service-detail') || (page === 'service-detail' && cleanHref === 'services')) return true;
+    if ((page === 'portfolio' && cleanHref === 'portfolio-detail') || (page === 'portfolio-detail' && cleanHref === 'portfolio')) return true;
+    return false;
+  };
+
+  // Desktop nav links
+  document.querySelectorAll('.main-nav .nav-link').forEach(link => {
+    if (isMatch(link.getAttribute('href'))) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  // Mobile drawer links
+  document.querySelectorAll('.mobile-drawer-link').forEach(link => {
+    if (isMatch(link.getAttribute('href'))) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load shared header & footer components first
+  await loadComponents();
+
+  // Then initialize all interactive features
   try { initVideoScrubbing(); } catch(e) { console.error('Video Scrubbing Error:', e); }
   try { initPortfolioFilters(); } catch(e) { console.error('Portfolio Filters Error:', e); }
   try { initScrollNav(); } catch(e) { console.error('Scroll Nav Error:', e); }

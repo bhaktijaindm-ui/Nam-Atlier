@@ -1,0 +1,67 @@
+<!-- SHARED HEADER COMPONENT — Edit this file to update header on ALL pages -->
+<header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      
+      <!-- LEFT BRAND & SUB-NAV STACK -->
+      <div class="header-brand-nav-stack">
+        <a href="index.html" class="brand-logo" title="NAM Atelier Studio">
+          <img src="nam_logo_white.png" alt="NAM Atelier Official Logo" class="official-brand-logo-img" />
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+          <a href="about.html" class="nav-link">ABOUT STUDIO</a>
+          <a href="portfolio-detail.html" class="nav-link">3D PORTFOLIO</a>
+          <a href="service-detail.html" class="nav-link">SERVICES</a>
+          <a href="blog.html" class="nav-link">JOURNAL</a>
+        </nav>
+      </div>
+
+      <!-- RIGHT ACTION PILL BUTTON & MOBILE TOGGLE -->
+      <div class="header-actions">
+        <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
+          INQUIRE STUDIO
+        </button>
+        <button class="mobile-menu-toggle" aria-label="Open Mobile Menu" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- LUXURY MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo" onclick="toggleMobileMenu(true)">
+        <img src="nam_logo_white.png" alt="NAM Atelier Logo" class="official-brand-logo-img" style="max-height: 28px;" />
+      </a>
+      <button class="mobile-drawer-close" aria-label="Close Mobile Menu" onclick="toggleMobileMenu(true)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="mobile-drawer-links" aria-label="Mobile Navigation">
+      <a href="index.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>Home</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="about.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>About Studio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="portfolio-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>3D Portfolio</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="service-detail.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>Services &amp; Civil</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+      <a href="blog.html" class="mobile-drawer-link" onclick="toggleMobileMenu(true)">
+        <span>Editorial Journal</span> <i class="fa-solid fa-chevron-right" style="font-size: 0.9rem; opacity: 0.5;"></i>
+      </a>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+      <button class="mobile-drawer-btn" onclick="toggleMobileMenu(true); openModal('consultModal');">
+        Commission Studio <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">&copy; 2026 NAM Atelier. Udhay Seth &amp; Mudita D Seth</p>
+    </div>
+  </div>
