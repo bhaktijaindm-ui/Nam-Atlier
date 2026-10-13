@@ -1144,12 +1144,16 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: stretch;        /* ← key: both columns stretch to same height */
   margin-bottom: 4rem;
 }
 
+/* Left column: fill 100% of the grid row height */
 .facade-visual-hero {
   position: relative;
+  height: 100%;                /* fill row height */
+  display: flex;
+  flex-direction: column;
 }
 
 .facade-image-frame {
@@ -1158,7 +1162,8 @@ body:not(:has(.cinema-scroll)) .site-header {
   overflow: hidden;
   border: 1px solid var(--border-dark);
   box-shadow: var(--shadow-elevated);
-  aspect-ratio: 16 / 11;
+  flex: 1;                     /* ← expands to fill .facade-visual-hero height */
+  min-height: 420px;           /* minimum so it never collapses */
   background: var(--bg-card);
 }
 
@@ -1210,6 +1215,9 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .facade-details-panel {
   position: relative;
+  height: 100%;                /* fill row height */
+  display: flex;
+  flex-direction: column;
 }
 
 .facade-panel-card {
@@ -1219,6 +1227,10 @@ body:not(:has(.cinema-scroll)) .site-header {
   padding: 2.5rem 2.5rem 2.25rem;
   box-shadow: var(--shadow-soft);
   position: relative;
+  flex: 1;                     /* fills .facade-details-panel height */
+  display: flex;               /* flexbox column so CTA anchors to bottom */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .facade-panel-title {
@@ -1241,9 +1253,10 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: flex;
   flex-direction: column;
   gap: 1.35rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
   padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--border-dark);
+  flex: 1;                     /* grows to fill available vertical space */
 }
 
 .facade-spec-item {
@@ -1381,7 +1394,22 @@ body:not(:has(.cinema-scroll)) .site-header {
 @media (max-width: 1024px) {
   .facade-showcase-grid {
     grid-template-columns: 1fr;
+    align-items: stretch;
     gap: 2.5rem;
+  }
+  .facade-visual-hero {
+    height: auto;
+  }
+  .facade-image-frame {
+    flex: none;
+    aspect-ratio: 16 / 10;     /* restore aspect ratio when stacked */
+    min-height: unset;
+  }
+  .facade-details-panel {
+    height: auto;
+  }
+  .facade-panel-card {
+    flex: none;
   }
   .facade-gallery-strip {
     grid-template-columns: repeat(2, 1fr);
