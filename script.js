@@ -33,14 +33,14 @@ function initVideoScrubbing() {
 
   if (!cinemaSection || !video) return;
 
-  // Strict initial lock: video must never autoplay or loop
+  // Hard-lock: never autoplay or loop — only scroll drives the video
   video.muted = true;
   video.playsInline = true;
   video.removeAttribute('autoplay');
   video.removeAttribute('loop');
   try { video.pause(); } catch(e) {}
 
-  // Enforce pause if browser attempts automatic playback
+  // Intercept any browser-initiated play attempt
   video.addEventListener('play', () => {
     if (!isUserPlaying) {
       try { video.pause(); } catch(e) {}
@@ -52,173 +52,142 @@ function initVideoScrubbing() {
     if (btn && !isUserPlaying) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
   });
 
-  let pendingSeekTime = null;
-  let isSeeking = false;
-  let seekTimeout = null;
+  // ── SMOOTH RAF-DRIVEN SCRUB ENGINE ──────────────────────────────────────
+  // Instead of a throttled seek queue, we run a continuous RAF loop that
+  // reads the latest target time and sets currentTime directly every frame.
+  // This gives buttery-smooth scrubbing with zero queue delay.
 
-  function performSeek(time) {
-    const duration = video.duration || 0;
-    if (duration <= 0 || isNaN(duration)) return;
-    const clampedTime = Math.max(0, Math.min(duration - 0.05, time));
+  let targetScrubTime = 0;   // desired video time (updated every scroll event)
+  let rafId = null;
+  let videoReady = false;    // true once we have a valid duration
 
-    if (!isSeeking) {
-      isSeeking = true;
-      try {
-        video.currentTime = clampedTime;
-      } catch(e) {
-        isSeeking = false;
+  function scrubLoop() {
+    rafId = null;
+    const duration = video.duration;
+    if (videoReady && duration > 0 && !isUserPlaying) {
+      const clamped = Math.max(0, Math.min(duration - 0.05, targetScrubTime));
+      // Only seek if we're meaningfully off target (avoids unnecessary seeks)
+      if (Math.abs(video.currentTime - clamped) > 0.05) {
+        try { video.currentTime = clamped; } catch(e) {}
       }
-      clearTimeout(seekTimeout);
-      seekTimeout = setTimeout(() => {
-        isSeeking = false;
-        if (pendingSeekTime !== null && !isUserPlaying) {
-          const next = pendingSeekTime;
-          pendingSeekTime = null;
-          performSeek(next);
-        }
-      }, 250);
-    } else {
-      pendingSeekTime = clampedTime;
     }
   }
 
-  video.addEventListener('seeked', () => {
-    isSeeking = false;
-    clearTimeout(seekTimeout);
-    if (timeCounter && video.duration > 0) {
-      const curSec = Math.floor(video.currentTime || 0);
-      const durSec = Math.floor(video.duration);
-      timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
+  function scheduleScrub() {
+    if (!rafId) {
+      rafId = requestAnimationFrame(scrubLoop);
     }
-    if (pendingSeekTime !== null && !isUserPlaying) {
-      const next = pendingSeekTime;
-      pendingSeekTime = null;
-      if (Math.abs(video.currentTime - next) > 0.015) {
-        performSeek(next);
-      }
-    }
-  });
+  }
 
+  // ── UI UPDATE (runs every scroll frame) ─────────────────────────────────
   function getScrollFraction() {
     const rect = cinemaSection.getBoundingClientRect();
-    const totalScrollableHeight = cinemaSection.offsetHeight - window.innerHeight;
-    if (totalScrollableHeight <= 0) return 0;
-    const fraction = -rect.top / totalScrollableHeight;
-    return Math.max(0, Math.min(1, fraction));
+    const totalScrollable = cinemaSection.offsetHeight - window.innerHeight;
+    if (totalScrollable <= 0) return 0;
+    return Math.max(0, Math.min(1, -rect.top / totalScrollable));
   }
 
-  function updateVideoScrub() {
-    const scrollFraction = getScrollFraction();
+  function updateUI(scrollFraction) {
     const duration = video.duration || 0;
 
-    // Update bottom timeline progress fill bar
+    // Progress fill bar
     if (timelineProgressFill) {
-      timelineProgressFill.style.width = `${(scrollFraction * 100).toFixed(1)}%`;
+      timelineProgressFill.style.width = `${(scrollFraction * 100).toFixed(2)}%`;
     }
 
-    // Fade out center scroll indicator on scroll
+    // Scroll indicator
     if (scrollIndicator) {
-      if (scrollFraction > 0.04) {
-        scrollIndicator.style.opacity = '0';
-        scrollIndicator.style.pointerEvents = 'none';
-      } else {
-        scrollIndicator.style.opacity = '1';
-        scrollIndicator.style.pointerEvents = 'auto';
-      }
+      scrollIndicator.style.opacity = scrollFraction > 0.04 ? '0' : '1';
+      scrollIndicator.style.pointerEvents = scrollFraction > 0.04 ? 'none' : 'auto';
     }
 
-    // Determine active milestone based on scroll progress
+    // Active milestone
     let activeStop = 1;
-    if (scrollFraction >= 0.75) {
-      activeStop = 4;
-    } else if (scrollFraction >= 0.50) {
-      activeStop = 3;
-    } else if (scrollFraction >= 0.20) {
-      activeStop = 2;
-    } else {
-      activeStop = 1;
-    }
+    if (scrollFraction >= 0.75)      activeStop = 4;
+    else if (scrollFraction >= 0.50) activeStop = 3;
+    else if (scrollFraction >= 0.20) activeStop = 2;
 
-    // Update Left Content Card Swapping with smooth fade/slide
     milestoneCards.forEach(card => {
-      const cardStop = parseInt(card.getAttribute('data-milestone'));
-      if (cardStop === activeStop) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
-      }
+      const stop = parseInt(card.getAttribute('data-milestone'));
+      card.classList.toggle('active', stop === activeStop);
     });
 
-    // Update Right Timeline Selector Pills
     timelinePills.forEach(pill => {
-      const pillStop = parseInt(pill.getAttribute('data-stop'));
-      if (pillStop === activeStop) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
+      const stop = parseInt(pill.getAttribute('data-stop'));
+      pill.classList.toggle('active', stop === activeStop);
     });
 
-    // Update Bottom Bar Label
     if (barSectionLabel && sectionLabelsMap[activeStop]) {
       barSectionLabel.textContent = sectionLabelsMap[activeStop];
     }
 
-    // Directly bind video frame to current scroll fraction
-    if (!isUserPlaying && duration > 0) {
-      const targetTime = scrollFraction * duration;
-      performSeek(targetTime);
-    }
-
-    // Update Digital Time Counter (e.g., "00:12 / 00:33")
+    // Time counter
     if (timeCounter && duration > 0) {
-      const curSec = Math.floor(video.currentTime || 0);
-      const durSec = Math.floor(duration);
-      timeCounter.textContent = `${formatTime(curSec)} / ${formatTime(durSec)}`;
+      timeCounter.textContent = `${formatTime(Math.floor(video.currentTime))} / ${formatTime(Math.floor(duration))}`;
     }
   }
 
-  // Pre-trigger video loading if metadata hasn't loaded yet
-  if (video.readyState === 0) {
-    try { video.load(); } catch(e) {}
-  }
+  // ── SCROLL HANDLER ───────────────────────────────────────────────────────
+  let uiRafId = null;
 
-  video.addEventListener('loadedmetadata', () => {
-    try { video.pause(); } catch(e) {}
-    updateVideoScrub();
-  });
-  video.addEventListener('loadeddata', () => {
-    try { video.pause(); } catch(e) {}
-    updateVideoScrub();
-  });
-  video.addEventListener('canplay', () => {
-    try { video.pause(); } catch(e) {}
-    updateVideoScrub();
-  });
-
-  // RAF-throttled scroll handler for instant responsiveness with zero jank
-  let isScrollScheduled = false;
   function onScroll() {
+    // If user was manually playing, stop and return to scrub mode
     if (isUserPlaying) {
       isUserPlaying = false;
       try { video.pause(); } catch(e) {}
       const btn = document.getElementById('playPauseBtn');
       if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
     }
-    if (!isScrollScheduled) {
-      isScrollScheduled = true;
-      requestAnimationFrame(() => {
-        updateVideoScrub();
-        isScrollScheduled = false;
+
+    const fraction = getScrollFraction();
+    const duration = video.duration || 0;
+
+    // Update scrub target
+    if (videoReady && duration > 0) {
+      targetScrubTime = fraction * duration;
+      scheduleScrub();
+    }
+
+    // Update UI in its own RAF slot
+    if (!uiRafId) {
+      uiRafId = requestAnimationFrame(() => {
+        updateUI(fraction);
+        uiRafId = null;
       });
     }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', updateVideoScrub, { passive: true });
+  window.addEventListener('resize', () => {
+    updateUI(getScrollFraction());
+  }, { passive: true });
 
-  // Initial synchronization
-  updateVideoScrub();
+  // ── VIDEO READY CALLBACKS ────────────────────────────────────────────────
+  function onVideoReady() {
+    if (video.duration > 0) {
+      videoReady = true;
+      try { video.pause(); } catch(e) {}
+      // Seek to current scroll position immediately
+      const fraction = getScrollFraction();
+      targetScrubTime = fraction * video.duration;
+      try { video.currentTime = targetScrubTime; } catch(e) {}
+      updateUI(fraction);
+    }
+  }
+
+  video.addEventListener('loadedmetadata', onVideoReady);
+  video.addEventListener('loadeddata', onVideoReady);
+  video.addEventListener('canplay', onVideoReady);
+
+  // Kick off loading
+  if (video.readyState === 0) {
+    try { video.load(); } catch(e) {}
+  } else if (video.readyState >= 1) {
+    onVideoReady();
+  }
+
+  // Initial UI render
+  updateUI(getScrollFraction());
 }
 
 function formatTime(seconds) {
