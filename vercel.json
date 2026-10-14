@@ -6,6 +6,7 @@
     { "src": "/", "dest": "/index.html" },
     { "src": "/index", "dest": "/index.html" },
     { "src": "/about", "dest": "/about.html" },
+    { "src": "/portfolio/([a-zA-Z0-9-]+)", "dest": "/portfolio-detail.html?project=$1" },
     { "src": "/portfolio", "dest": "/portfolio-detail.html" },
     { "src": "/portfolio-detail", "dest": "/portfolio-detail.html" },
     { "src": "/services", "dest": "/service-detail.html" },

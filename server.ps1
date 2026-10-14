@@ -19,6 +19,12 @@ try {
             $urlPath = [System.Uri]::UnescapeDataString($urlPath)
             
             $filePath = Join-Path $folder $urlPath.TrimStart('/')
+            if (-not (Test-Path $filePath -PathType Leaf) -and (Test-Path ($filePath + ".html") -PathType Leaf)) {
+                $filePath = $filePath + ".html"
+            }
+            if ($urlPath -eq "/portfolio" -or $urlPath.StartsWith("/portfolio/")) {
+                $filePath = Join-Path $folder "portfolio-detail.html"
+            }
             
             if (Test-Path $filePath -PathType Leaf) {
                 $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
