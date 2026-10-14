@@ -2,13 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/portfolio/:slug", "destination": "/portfolio-detail.html?project=:slug" },
-    { "source": "/portfolio", "destination": "/portfolio-detail.html" },
-    { "source": "/portfolio-detail", "destination": "/portfolio-detail.html" },
-    { "source": "/services", "destination": "/service-detail.html" },
-    { "source": "/service-detail", "destination": "/service-detail.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",

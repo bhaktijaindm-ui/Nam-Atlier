@@ -1,0 +1,2154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/" />
+  <title>3D Architecture &amp; Interior Design Portfolio | NAM Atelier</title>
+  <meta name="description" content="Explore NAM Atelier's bespoke architectural portfolio across Ludhiana and Amritsar. Luxury residential villas, penthouses, chef's kitchens, private acoustic theatres, and turnkey civil execution." />
+  <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio/velvet-cinema-lounge" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="3D Architecture &amp; Interior Design Portfolio | NAM Atelier" />
+  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors in Punjab by Udhay Seth &amp; Mudita D Seth." />
+  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg" />
+  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio-detail" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ›ï¸</text></svg>" />
+
+  <!-- Google Fonts: Cormorant Garamond, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  
+  <!-- Global & Component Styles -->
+  <link rel="stylesheet" href="styles.css?v=3.2" />
+
+  <!-- Structured Data: BreadcrumbList and CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "3D Architecture & Interior Design Portfolio | NAM Atelier",
+    "description": "Curated architectural and interior design portfolio by NAM Atelier across Ludhiana and Amritsar, Punjab.",
+    "url": "https://nam-atlier.vercel.app/portfolio-detail",
+    "provider": {
+      "@type": "Organization",
+      "name": "NAM Atelier",
+      "founders": [
+        { "@type": "Person", "name": "Udhay Seth" },
+        { "@type": "Person", "name": "Mudita D Seth" }
+      ]
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Villa Sanctuary",
+          "url": "https://nam-atlier.vercel.app/portfolio/villa-sanctuary"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Obsidian Penthouse",
+          "url": "https://nam-atlier.vercel.app/portfolio/obsidian-penthouse"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Marble Residence",
+          "url": "https://nam-atlier.vercel.app/portfolio/the-marble-residence"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Amber Heritage Suite",
+          "url": "https://nam-atlier.vercel.app/portfolio/amber-heritage-suite"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "The Rosewood Villa",
+          "url": "https://nam-atlier.vercel.app/portfolio/the-rosewood-villa"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Velvet Cinema Lounge",
+          "url": "https://nam-atlier.vercel.app/portfolio/velvet-cinema-lounge"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       NAM ATELIER â€” EDITORIAL ARCHITECTURAL PORTFOLIO SYSTEM
+       Black-Themed Luxury Architecture Aesthetic matching reference design
+       ========================================================================== */
+    :root {
+      --port-bg-base: #070707;
+      --port-bg-surface: #0e0e0e;
+      --port-bg-card: #141414;
+      --port-bg-card-hover: #191919;
+      --port-border: rgba(255, 255, 255, 0.09);
+      --port-border-hover: rgba(255, 255, 255, 0.22);
+      --port-text-primary: #F7F5F0;
+      --port-text-muted: #A3A09A;
+      --port-text-dim: #6E6C66;
+      --port-accent-gold: #C6AD85;
+      --port-radius-lg: 24px;
+      --port-radius-md: 16px;
+      --port-radius-sm: 10px;
+    }
+
+    body {
+      background-color: var(--port-bg-base);
+      color: var(--port-text-primary);
+    }
+
+    .portfolio-wrapper {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 6.5rem 1.5rem 4rem;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-wrapper {
+        padding: 5.5rem 1rem 3rem;
+      }
+    }
+
+    /* â”€â”€ SECTION 1: EDITORIAL HERO â”€â”€ */
+    .editorial-hero-card {
+      position: relative;
+      width: 100%;
+      min-height: clamp(520px, 78vh, 780px);
+      border-radius: var(--port-radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--port-border);
+      background-color: #0b0b0b;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(2rem, 5vw, 4rem);
+      box-sizing: border-box;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .editorial-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      z-index: 1;
+      filter: brightness(0.68) contrast(1.08);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .editorial-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(7, 7, 7, 0.45) 0%,
+        rgba(7, 7, 7, 0.15) 35%,
+        rgba(7, 7, 7, 0.75) 75%,
+        rgba(7, 7, 7, 0.95) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-top-watermark {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      margin-top: 1rem;
+      pointer-events: none;
+    }
+
+    .hero-watermark-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 11vw, 9.5rem);
+      font-weight: 700;
+      letter-spacing: clamp(4px, 2vw, 16px);
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 0.95;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+      margin: 0;
+    }
+
+    .hero-watermark-subtitle {
+      font-family: var(--font-sans);
+      font-size: clamp(0.75rem, 1.4vw, 1.15rem);
+      font-weight: 600;
+      letter-spacing: clamp(3px, 0.8vw, 8px);
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 0.5rem;
+    }
+
+    .hero-bottom-grid {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1.3fr auto 1fr;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-top: auto;
+      padding-top: 3rem;
+    }
+
+    @media (max-width: 991px) {
+      .hero-bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+    }
+
+    .hero-headline-block {
+      max-width: 480px;
+    }
+
+    .hero-main-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-main-subtext {
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      color: var(--port-text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-vintage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .hero-vintage-badge::after {
+      content: "";
+      display: inline-block;
+      width: 45px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-cta-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.85rem 1.85rem;
+      background-color: #FFFFFF;
+      color: #070707;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-hero-pill .arrow-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #070707;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-hero-pill:hover {
+      background-color: #E6E3DC;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-hero-pill:hover .arrow-circle {
+      transform: translateX(3px);
+    }
+
+    .hero-stats-panel {
+      justify-self: end;
+      background: rgba(18, 18, 18, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--port-radius-md);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 320px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 991px) {
+      .hero-stats-panel {
+        justify-self: start;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      }
+    }
+
+    .stat-row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--port-text-muted);
+      letter-spacing: 0.5px;
+      margin-top: 0.2rem;
+    }
+
+    /* â”€â”€ SECTION 2: STUDIO PHILOSOPHY â”€â”€ */
+    .philosophy-section {
+      margin-top: 3.5rem;
+      background-color: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-lg);
+      padding: clamp(2rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(2rem, 4vw, 4.5rem);
+      align-items: center;
+    }
+
+    @media (max-width: 991px) {
+      .philosophy-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .eyebrow-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--port-accent-gold);
+      margin-bottom: 0.85rem;
+    }
+
+    .editorial-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.12;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+    }
+
+    .editorial-desc {
+      font-size: 1rem;
+      color: var(--port-text-muted);
+      line-height: 1.75;
+      margin-bottom: 2.25rem;
+    }
+
+    .philosophy-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .philosophy-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pillar-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--port-accent-gold);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .pillar-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+    }
+
+    .pillar-desc {
+      font-size: 0.8rem;
+      color: var(--port-text-muted);
+      line-height: 1.5;
+    }
+
+    .btn-editorial-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-editorial-pill:hover {
+      background: #FFFFFF;
+      color: #070707;
+      border-color: #FFFFFF;
+    }
+
+    .philosophy-media-box {
+      position: relative;
+      border-radius: var(--port-radius-md);
+      overflow: hidden;
+      border: 1px solid var(--port-border);
+      height: 100%;
+      min-height: 380px;
+    }
+
+    .philosophy-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .philosophy-media-box:hover img {
+      transform: scale(1.02);
+    }
+
+    .media-floating-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(14, 14, 14, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--port-radius-sm);
+      padding: 1rem 1.25rem;
+      max-width: 220px;
+    }
+
+    .badge-sub {
+      font-size: 0.72rem;
+      color: var(--port-accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .badge-main {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin: 0.15rem 0;
+    }
+
+    .badge-footer {
+      font-size: 0.75rem;
+      color: var(--port-text-muted);
+      line-height: 1.35;
+    }
+
+    /* â”€â”€ SECTION 3: DISCIPLINES & FILTER BAR â”€â”€ */
+    .filter-section {
+      margin-top: 4.5rem;
+    }
+
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .filter-tabs-scroller {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .filter-tabs-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-tab-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: 999px;
+      color: var(--port-text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+
+    .filter-tab-pill:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+    }
+
+    .filter-tab-pill.active {
+      background: #FFFFFF;
+      color: #070707;
+      border-color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .filter-count {
+      display: inline-block;
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+
+    /* â”€â”€ SECTION 4: SELECTED PROJECTS GRID â”€â”€ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .project-card {
+      background: var(--port-bg-card);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--port-border-hover);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-media-wrapper {
+      position: relative;
+      width: 100%;
+      height: 270px;
+      overflow: hidden;
+      background: #111111;
+    }
+
+    .card-media-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover .card-media-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .card-tag-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--port-accent-gold);
+    }
+
+    .card-content-block {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-project-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.2;
+      transition: color 0.2s ease;
+    }
+
+    .project-card:hover .card-project-title {
+      color: #FFFFFF;
+    }
+
+    .card-arrow-icon {
+      font-size: 1rem;
+      color: var(--port-text-muted);
+      transition: transform 0.3s ease, color 0.2s ease;
+    }
+
+    .project-card:hover .card-arrow-icon {
+      transform: translate(3px, -3px);
+      color: #FFFFFF;
+    }
+
+    .card-project-desc {
+      font-size: 0.88rem;
+      color: var(--port-text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-meta-chips {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--port-text-dim);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card-meta-chips span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* â”€â”€ SECTION 5: FEATURED PROJECT BANNER â”€â”€ */
+    .featured-project-section {
+      margin-top: 5rem;
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      align-items: center;
+    }
+
+    @media (max-width: 991px) {
+      .featured-project-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .featured-content-padding {
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+
+    .featured-meta-list {
+      list-style: none;
+      margin: 1.75rem 0 2.25rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .featured-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.9rem;
+      color: var(--port-text-muted);
+    }
+
+    .featured-meta-item i {
+      color: var(--port-accent-gold);
+      width: 18px;
+      text-align: center;
+    }
+
+    .featured-meta-item strong {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    .featured-media-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .featured-project-section:hover .featured-media-frame img {
+      transform: scale(1.02);
+    }
+
+    /* â”€â”€ SECTION 7: BOTTOM CTA BANNER â”€â”€ */
+    .portfolio-cta-banner {
+      margin-top: 5rem;
+      background: #111111;
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: grid;
+      grid-template-columns: 1.2fr 1.3fr auto;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 1100px) {
+      .portfolio-cta-banner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .cta-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 3vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-subtext {
+      font-size: 0.95rem;
+      color: var(--port-text-muted);
+    }
+
+    .cta-contact-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-chip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--port-text-muted);
+    }
+
+    .contact-chip-item i {
+      color: var(--port-accent-gold);
+      width: 16px;
+    }
+
+    .contact-chip-item a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-chip-item a:hover {
+      color: var(--port-accent-gold);
+    }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       VIEW B: DEDICATED INDIVIDUAL PROJECT DETAIL VIEW
+       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .project-detail-view-container {
+      display: none; /* Toggled active by JS */
+      width: 100%;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-nav-back-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--port-border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .back-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--port-text-muted);
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .back-btn-pill:hover {
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.35);
+      background: var(--port-bg-card);
+    }
+
+    .breadcrumb-trail {
+      font-size: 0.8rem;
+      color: var(--port-text-dim);
+    }
+
+    .breadcrumb-trail a {
+      color: var(--port-text-muted);
+    }
+
+    .breadcrumb-trail span {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    .project-detail-hero {
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+
+    .detail-hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--port-accent-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .detail-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero-tagline {
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      color: var(--port-text-muted);
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+    }
+
+    .detail-meta-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-md);
+      margin-bottom: 2.5rem;
+    }
+
+    .detail-meta-item h6 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--port-accent-gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .detail-meta-item p {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .detail-main-media {
+      width: 100%;
+      border-radius: var(--port-radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--port-border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      margin-bottom: 4rem;
+    }
+
+    .detail-main-media img {
+      width: 100%;
+      height: clamp(320px, 55vw, 680px);
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Narrative + Material Palette Split */
+    .detail-narrative-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: clamp(2rem, 4vw, 4.5rem);
+      align-items: start;
+      margin-bottom: 4.5rem;
+    }
+
+    @media (max-width: 991px) {
+      .detail-narrative-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .narrative-text-box h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+    }
+
+    .narrative-text-box p {
+      font-size: 1.02rem;
+      color: var(--port-text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .materials-sidebar-card {
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-md);
+      padding: 2rem;
+    }
+
+    .materials-sidebar-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 1.5rem;
+    }
+
+    .palette-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .palette-card-item {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      padding: 0.85rem 1rem;
+      background: var(--port-bg-card);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-sm);
+    }
+
+    .material-swatch-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .material-info h5 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 0.2rem;
+    }
+
+    .material-info p {
+      font-size: 0.78rem;
+      color: var(--port-text-muted);
+    }
+
+    /* Project Detail Gallery */
+    .detail-gallery-section {
+      margin-bottom: 5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .gallery-thumb-item {
+      position: relative;
+      border-radius: var(--port-radius-md);
+      overflow: hidden;
+      border: 1px solid var(--port-border);
+      height: 280px;
+      cursor: pointer;
+      background: #111111;
+    }
+
+    .gallery-thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-thumb-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      color: #FFFFFF;
+      font-size: 1.35rem;
+    }
+
+    .gallery-thumb-item:hover .gallery-hover-overlay {
+      opacity: 1;
+    }
+
+    /* Previous / Next Project Cycle Navigation */
+    .project-cycle-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.25rem 0;
+      border-top: 1px solid var(--port-border);
+      border-bottom: 1px solid var(--port-border);
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .cycle-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cycle-nav-btn:hover {
+      color: var(--port-accent-gold);
+      transform: translateX(-3px);
+    }
+
+    .cycle-nav-btn.next-btn:hover {
+      transform: translateX(3px);
+    }
+
+    /* Discuss Project CTA Banner */
+    .project-discuss-cta {
+      background: var(--port-bg-surface);
+      border: 1px solid var(--port-border);
+      border-radius: var(--port-radius-lg);
+      padding: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .discuss-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 0.75rem;
+    }
+
+    .discuss-desc {
+      font-size: 1rem;
+      color: var(--port-text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .discuss-action-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    /* Accessible Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-img-frame {
+      max-width: 90vw;
+      max-height: 85vh;
+      position: relative;
+    }
+
+    .lightbox-img-frame img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.9);
+      object-fit: contain;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND BLUEPRINT SKETCH OVERLAY PATTERN (PERSISTENT & SUBTLE) -->
+  <div class="blueprint-bg-canvas" aria-hidden="true">
+    <svg class="blueprint-svg-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(30, 30, 30, 0.03)" stroke-width="1" />
+          <path d="M 30 0 L 30 60 M 0 30 L 60 30" fill="none" stroke="rgba(30, 30, 30, 0.015)" stroke-width="0.5" stroke-dasharray="2,2" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gridPattern)" />
+    </svg>
+  </div>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       SHARED HEADER (SINGLE SOURCE OF TRUTH)
+       Header & mobile drawer are loaded dynamically from: components/header.html
+       Any edit made to components/header.html automatically updates EVERY page!
+       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div id="header-placeholder"></div>
+
+  <main class="portfolio-wrapper" id="mainContent">
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         VIEW A: FULL ARCHITECTURAL SHOWCASE (DEFAULT VIEW)
+         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div id="portfolioShowcaseView">
+
+      <!-- SECTION 1: EDITORIAL ARCHITECTURAL HERO -->
+      <section class="editorial-hero-card" aria-label="Portfolio Introduction">
+        <img class="editorial-hero-bg" src="nam_luxury_residence_exterior.jpg" alt="NAM Atelier Luxury Architectural Residence Exterior at Twilight" fetchpriority="high" />
+        <div class="editorial-hero-overlay" aria-hidden="true"></div>
+
+        <!-- Top Watermark Typography -->
+        <div class="hero-top-watermark">
+          <h1 class="hero-watermark-title">NAM ATELIER</h1>
+          <p class="hero-watermark-subtitle">INTERIORS &amp; ARCHITECTURE</p>
+        </div>
+
+        <!-- Bottom Informational Bar -->
+        <div class="hero-bottom-grid">
+          <div class="hero-headline-block">
+            <h2 class="hero-main-heading">Designing spaces.<br>Elevating lives.</h2>
+            <p class="hero-main-subtext">Architecture that inspires. Interiors that reflect your authentic aspirations.</p>
+            <span class="hero-vintage-badge">SINCE 2020</span>
+          </div>
+
+          <div class="hero-cta-center">
+            <a href="#selectedProjectsSection" class="btn-hero-pill" aria-label="Scroll to projects showcase">
+              <span>View Projects</span>
+              <span class="arrow-circle"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+          </div>
+
+          <!-- Frosted Statistics Box -->
+          <div class="hero-stats-panel">
+            <div class="stat-row">
+              <span class="stat-num">5+</span>
+              <span class="stat-label">Years of Design &amp; Civil Excellence</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-num">100+</span>
+              <span class="stat-label">Completed Bespoke Spaces</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-num" style="font-size: 1.25rem;">Ludhiana &amp; Amritsar</span>
+              <span class="stat-label">Proudly based in &amp; executing across North India</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: STUDIO PHILOSOPHY -->
+      <section class="philosophy-section" aria-label="About NAM Atelier Philosophy">
+        <div class="philosophy-content-col">
+          <span class="eyebrow-label">ABOUT NAM ATELIER</span>
+          <h2 class="editorial-heading">Inspired by purpose.<br>Driven by detail.</h2>
+          <p class="editorial-desc">
+            NAM Atelier is a premier architecture and 3D interior design studio based in Ludhiana &amp; Amritsar, creating timeless spaces since 2020. We believe in thoughtful design that blends functionality, aesthetics, and craftsmanship â€” tailored to the way you live, work, and dream.
+          </p>
+
+          <div class="philosophy-pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon-box"><i class="fa-regular fa-lightbulb"></i></div>
+              <h3 class="pillar-title">Client First</h3>
+              <p class="pillar-desc">Your personal vision is our primary architectural foundation.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon-box"><i class="fa-regular fa-compass"></i></div>
+              <h3 class="pillar-title">Timeless Design</h3>
+              <p class="pillar-desc">Spaces that age beautifully and function effortlessly across generations.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon-box"><i class="fa-regular fa-gem"></i></div>
+              <h3 class="pillar-title">End-to-End Expertise</h3>
+              <p class="pillar-desc">From 3D photorealistic BIM walkthroughs to turnkey civil execution.</p>
+            </div>
+          </div>
+
+          <div>
+            <a href="about.html" class="btn-editorial-pill">
+              <span>More About Us</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="philosophy-media-box">
+          <img src="nam_dining_interior.jpg" alt="NAM Atelier Monolithic Dining &amp; Kitchen Interior" loading="lazy" />
+          <div class="media-floating-badge">
+            <span class="badge-sub">SINCE</span>
+            <div class="badge-main">2020</div>
+            <p class="badge-footer">Building trust.<br>Designing the future.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: OUR DISCIPLINES & FILTER TABS -->
+      <section class="filter-section" id="selectedProjectsSection" aria-label="Project Categories &amp; Filters">
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow-label">OUR DISCIPLINES</span>
+            <h2 class="editorial-heading" style="margin-bottom: 0;">Complete design solutions<br>for every space.</h2>
+          </div>
+          
+          <div class="filter-tabs-scroller" role="tablist" aria-label="Filter projects by category">
+            <button class="filter-tab-pill active" onclick="filterProjects('all', this)" role="tab" aria-selected="true">
+              All Projects <span class="filter-count">(6)</span>
+            </button>
+            <button class="filter-tab-pill" onclick="filterProjects('residential', this)" role="tab" aria-selected="false">
+              Residential Villas <span class="filter-count">(2)</span>
+            </button>
+            <button class="filter-tab-pill" onclick="filterProjects('interior', this)" role="tab" aria-selected="false">
+              Interior Design <span class="filter-count">(3)</span>
+            </button>
+            <button class="filter-tab-pill" onclick="filterProjects('commercial', this)" role="tab" aria-selected="false">
+              Commercial &amp; Estates <span class="filter-count">(1)</span>
+            </button>
+            <button class="filter-tab-pill" onclick="filterProjects('acoustic', this)" role="tab" aria-selected="false">
+              Acoustic &amp; Theatres <span class="filter-count">(1)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SECTION 4: SELECTED PROJECTS GRID -->
+        <div class="projects-grid" id="projectsGridContainer">
+          <!-- Populated dynamically and populated statically for instant SEO/rendering -->
+          
+          <!-- Project Card 1: Villa Sanctuary -->
+          <article class="project-card" data-category="residential" onclick="openProject('villa-sanctuary')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">01 / RESIDENTIAL VILLA</span>
+              <img src="nam_luxury_residence_exterior.jpg" alt="Villa Sanctuary - Luxury Residential Architecture in Amritsar" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">Villa Sanctuary</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">European-inspired palatial sanctuary featuring sunken courtyard, glass portals, and serene reflecting pool.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> Mall Road, Amritsar</span>
+                <span><i class="fa-solid fa-vector-square"></i> 6,200 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2024</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 2: Obsidian Penthouse -->
+          <article class="project-card" data-category="interior" onclick="openProject('obsidian-penthouse')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">02 / PENTHOUSE INTERIOR</span>
+              <img src="nam_living_render.jpg" alt="Obsidian Penthouse - Monolithic Travertine Living Hall in Ludhiana" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">Obsidian Penthouse</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">Double-height monolithic travertine living hall with floating stairs, Italian joinery, and custom recessed LED illumination.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> South Model Gram, Ludhiana</span>
+                <span><i class="fa-solid fa-vector-square"></i> 4,500 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 3: The Marble Residence -->
+          <article class="project-card" data-category="commercial" onclick="openProject('the-marble-residence')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">03 / TURNKEY ESTATE</span>
+              <img src="nam_commercial_render.jpg" alt="The Marble Residence - 14,000 sq ft Palatial Estate in Ludhiana" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">The Marble Residence</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">A landmark 14,000 sq.ft estate pairing classic Rajput colonnades with sleek Milanese interior minimalism.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> Sarabha Nagar, Ludhiana</span>
+                <span><i class="fa-solid fa-vector-square"></i> 14,000 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2024</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 4: Amber Heritage Suite -->
+          <article class="project-card" data-category="interior" onclick="openProject('amber-heritage-suite')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">04 / MASTER SUITE</span>
+              <img src="nam_bedroom_render.jpg" alt="Amber Heritage Suite - Bespoke Bedroom with Brass Inlays in Amritsar" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">Amber Heritage Suite</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">Tactile brass inlays with soft ambient backlighting, fluted acoustic headboard, and integrated marble spa wardrobe.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> Ranjit Avenue, Amritsar</span>
+                <span><i class="fa-solid fa-vector-square"></i> 950 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 5: The Rosewood Villa Kitchen -->
+          <article class="project-card" data-category="interior" onclick="openProject('the-rosewood-villa')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">05 / CHEF'S KITCHEN</span>
+              <img src="nam_dining_interior.jpg" alt="The Rosewood Villa - Chef's Kitchen &amp; Monolithic Marble Island in Amritsar" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">The Rosewood Villa</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">Fluted dark walnut joinery with integrated monolithic marble island, German Blum hardware, and smart prep station.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> Green Avenue, Amritsar</span>
+                <span><i class="fa-solid fa-vector-square"></i> 1,200 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 6: Velvet Cinema Lounge -->
+          <article class="project-card" data-category="acoustic" onclick="openProject('velvet-cinema-lounge')">
+            <div class="card-media-wrapper">
+              <span class="card-tag-badge">06 / ACOUSTIC THEATRE</span>
+              <img src="nam_cinema_theatre.jpg" alt="Velvet Cinema Lounge - Dolby Atmos 9.4.4 Private Theatre in Ludhiana" loading="lazy" />
+            </div>
+            <div class="card-content-block">
+              <div class="card-title-row">
+                <h3 class="card-project-title">Velvet Cinema Lounge</h3>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+              </div>
+              <p class="card-project-desc">Dolby Atmos 9.4.4 private theatre with motorized emerald recliners, starry ceiling, and room-within-a-room acoustic isolation.</p>
+              <div class="card-meta-chips">
+                <span><i class="fa-solid fa-location-dot"></i> Civil Lines, Ludhiana</span>
+                <span><i class="fa-solid fa-vector-square"></i> 850 Sq.Ft</span>
+                <span><i class="fa-solid fa-calendar"></i> 2024</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- SECTION 5: FEATURED PROJECT SECTION -->
+      <section class="featured-project-section" aria-label="Featured Architectural Project">
+        <div class="featured-content-padding">
+          <span class="eyebrow-label">FEATURED PROJECT</span>
+          <h2 class="editorial-heading">Modern living.<br>Timeless elegance.</h2>
+          <p class="editorial-desc" style="margin-bottom: 1.5rem;">
+            Villa Sanctuary represents the pinnacle of contemporary architectural balance. Strong cantilevered stone geometry blends seamlessly with warm interior oak, sunken garden courtyards, and a serene perimeter reflecting pool.
+          </p>
+
+          <ul class="featured-meta-list">
+            <li class="featured-meta-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Location: <strong>Mall Road, Amritsar</strong></span>
+            </li>
+            <li class="featured-meta-item">
+              <i class="fa-solid fa-landmark"></i>
+              <span>Project Type: <strong>Luxury Residential Villa</strong></span>
+            </li>
+            <li class="featured-meta-item">
+              <i class="fa-solid fa-vector-square"></i>
+              <span>Total Area: <strong>6,200 sq. ft.</strong></span>
+            </li>
+            <li class="featured-meta-item">
+              <i class="fa-solid fa-compass-drafting"></i>
+              <span>Execution: <strong>Udhay Seth &amp; Mudita D Seth</strong></span>
+            </li>
+          </ul>
+
+          <button onclick="openProject('villa-sanctuary')" class="btn-editorial-pill">
+            <span>Explore Project</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="featured-media-frame">
+          <img src="nam_luxury_residence_exterior.jpg" alt="Villa Sanctuary - Featured Architectural Masterpiece" loading="lazy" />
+        </div>
+      </section>
+
+      <!-- SECTION 6: STRICT EXCLUSION OF TESTIMONIALS (Omitted per Section 7 Rule) -->
+
+      <!-- SECTION 7: BOTTOM CTA BANNER -->
+      <section class="portfolio-cta-banner" aria-label="Consultation Call to Action">
+        <div>
+          <h2 class="cta-heading">Let's create something<br>extraordinary together.</h2>
+          <p class="cta-subtext">Book a personal architectural consultation with our design directors.</p>
+        </div>
+
+        <div class="cta-contact-chips">
+          <div class="contact-chip-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <span>Call: </span>
+              <a href="tel:+917710152917">+91 77101 52917 (Udhay)</a> Â· 
+              <a href="tel:+918968155070">+91 89681 55070 (Mudita)</a>
+            </div>
+          </div>
+          <div class="contact-chip-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <span>Email: </span>
+              <a href="mailto:naminterior9@gmail.com">naminterior9@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-chip-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Studio: Civil Lines, Ludhiana &amp; Mall Road, Amritsar</span>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-hero-pill" onclick="openModal('consultModal')">
+            <span>Book Consultation</span>
+            <span class="arrow-circle"><i class="fa-solid fa-arrow-right"></i></span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         VIEW B: DEDICATED INDIVIDUAL PROJECT DETAIL VIEW (DEEP DIVE)
+         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div id="projectDetailView" class="project-detail-view-container" aria-label="Individual Project Detail">
+      
+      <!-- Back to All Projects Navigation Bar -->
+      <div class="project-nav-back-row">
+        <button class="back-btn-pill" onclick="closeProjectDetail()" aria-label="Return to portfolio showcase">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to All Projects</span>
+        </button>
+
+        <div class="breadcrumb-trail">
+          <a href="index.html">Home</a> / <a href="portfolio-detail.html" onclick="closeProjectDetail(); return false;">Portfolio</a> / <span id="detailBreadcrumbTitle">Villa Sanctuary</span>
+        </div>
+      </div>
+
+      <!-- Detail Hero Section -->
+      <section class="project-detail-hero">
+        <span class="detail-hero-eyebrow" id="detailCategory">RESIDENTIAL VILLA</span>
+        <h1 class="detail-hero-title" id="detailTitle">VILLA SANCTUARY</h1>
+        <p class="detail-hero-tagline" id="detailTagline">
+          European-inspired palatial sanctuary featuring sunken courtyard, glass portals, and serene reflecting pool.
+        </p>
+
+        <!-- Project Meta Strip -->
+        <div class="detail-meta-strip">
+          <div class="detail-meta-item">
+            <h6>LOCATION</h6>
+            <p id="detailLocation">Mall Road, Amritsar</p>
+          </div>
+          <div class="detail-meta-item">
+            <h6>TOTAL AREA</h6>
+            <p id="detailArea">6,200 Sq.Ft</p>
+          </div>
+          <div class="detail-meta-item">
+            <h6>CIVIL EXECUTION</h6>
+            <p id="detailCivil">Udhay Seth</p>
+          </div>
+          <div class="detail-meta-item">
+            <h6>3D SPATIAL DESIGN</h6>
+            <p id="detailDesign">Mudita D Seth</p>
+          </div>
+          <div class="detail-meta-item">
+            <h6>STATUS / YEAR</h6>
+            <p id="detailYear">2024 / Completed</p>
+          </div>
+        </div>
+
+        <!-- Main Panoramic Hero Render -->
+        <div class="detail-main-media">
+          <img id="detailHeroImage" src="nam_luxury_residence_exterior.jpg" alt="Signature Project Render" fetchpriority="high" />
+        </div>
+      </section>
+
+      <!-- Architectural Concept & Curated Materials Split -->
+      <section class="detail-narrative-grid">
+        <div class="narrative-text-box">
+          <h3 id="detailNarrativeHeading">Architectural Blueprint &amp; Civil Narrative</h3>
+          <p id="detailDesc1">
+            At NAM Atelier, every structural element is calculated in 3D photorealism before site groundbreaking begins. This residence features double-height cantilever ceilings, concealed HVAC slot diffusers, and monolithic stone flooring engineered to withstand Punjab's thermal cycles.
+          </p>
+          <p id="detailDesc2">
+            Custom Italian joinery was sourced with German Blum hardware integration. Civil execution on-site achieved 100% geometric alignment with the approved 3D VR walkthrough.
+          </p>
+          
+          <div style="margin-top: 2rem;">
+            <button onclick="openModal('consultModal')" class="btn-editorial-pill">
+              <span>Commission a Similar Project</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="materials-sidebar-card">
+          <h4 class="materials-sidebar-title">Curated Material Palette</h4>
+          <div class="palette-list" id="detailPaletteContainer">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Architectural & Interior Image Gallery -->
+      <section class="detail-gallery-section">
+        <span class="eyebrow-label">PROJECT GALLERY</span>
+        <h3 class="editorial-heading" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Visual Documentation &amp; Renders</h3>
+        <p class="editorial-desc" style="margin-bottom: 1.5rem;">High-resolution exterior perspectives, spatial interiors, and material craftsmanship details.</p>
+
+        <div class="gallery-grid" id="detailGalleryGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- Next & Previous Project Navigation Cycling -->
+      <div class="project-cycle-nav">
+        <button class="cycle-nav-btn" id="prevProjectBtn" onclick="navigateAdjacentProject(-1)">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span id="prevProjectLabel">Previous Project</span>
+        </button>
+
+        <button class="back-btn-pill" onclick="closeProjectDetail()" style="margin: 0;">
+          All Projects
+        </button>
+
+        <button class="cycle-nav-btn next-btn" id="nextProjectBtn" onclick="navigateAdjacentProject(1)">
+          <span id="nextProjectLabel">Next Project</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Discuss Project Banner -->
+      <section class="project-discuss-cta">
+        <span class="eyebrow-label">READY TO BUILD?</span>
+        <h2 class="discuss-title">Have a project in mind?</h2>
+        <p class="discuss-desc">Let's create a bespoke space that reflects your architectural ambition and lifestyle.</p>
+        <div class="discuss-action-row">
+          <button class="btn-hero-pill" onclick="openModal('consultModal')">
+            <span>Discuss Your Project</span>
+            <span class="arrow-circle"><i class="fa-solid fa-arrow-right"></i></span>
+          </button>
+          <a href="https://wa.me/917710152917?text=Hello%20NAM%20Atelier,%20I%20am%20interested%20in%20discussing%20an%20architectural%20project." target="_blank" rel="noopener noreferrer" class="btn-editorial-pill">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp Direct</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       SHARED FOOTER (SINGLE SOURCE OF TRUTH)
+       Footer (directors, phones, emails, QR, copyright) is loaded dynamically
+       from: components/footer.html
+       Any edit made to components/footer.html automatically updates EVERY page!
+       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div id="footer-placeholder"></div>
+
+  <!-- CONSULTATION MODAL (SHARED SYSTEM) -->
+  <div class="modal-overlay" id="consultModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('consultModal')" aria-label="Close dialog">&times;</button>
+      <div class="modal-header text-center">
+        <span class="card-tag-pill"><span class="gold-dot"></span> ARCHITECTURAL CONSULTATION</span>
+        <h3 class="modal-title">Book Studio Appointment</h3>
+        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting.</p>
+      </div>
+      <form onsubmit="handleConsultSubmit(event)" class="modal-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label for="phoneNum">Mobile / WhatsApp</label>
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input" />
+        </div>
+        <button type="submit" class="btn btn-inquire-pill" style="width: 100%; margin-top: 1rem;">Confirm Consultation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCESSIBLE IMAGE LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="imageLightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Image Preview">
+    <button class="lightbox-close-btn" onclick="closeLightbox(event)" aria-label="Close Preview">&times;</button>
+    <div class="lightbox-img-frame" onclick="event.stopPropagation()">
+      <img id="lightboxImage" src="" alt="Enlarged Architectural Photography Preview" />
+    </div>
+  </div>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       PROJECT DATABASE & DYNAMIC ROUTING ENGINE
+       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <script>
+    const PORTFOLIO_PROJECTS = {
+      "villa-sanctuary": {
+        slug: "villa-sanctuary",
+        title: "Villa Sanctuary",
+        category: "RESIDENTIAL VILLA",
+        filterCategory: "residential",
+        tagline: "European-inspired palatial sanctuary featuring sunken courtyard, glass portals, and serene reflecting pool.",
+        location: "Mall Road, Amritsar",
+        area: "6,200 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2024 / Completed",
+        heroImage: "nam_luxury_residence_exterior.jpg",
+        narrativeHeading: "Architectural Blueprint & Civil Harmony",
+        desc1: "A masterclass in warm architectural minimalism. Villa Sanctuary integrates expansive floor-to-ceiling glass portals connecting the double-height living hall to a peaceful reflecting pool, dissolving the boundary between indoors and the landscaped grounds.",
+        desc2: "Turnkey civil execution led by Udhay Seth guaranteed zero structural deviation from Mudita D Seth's 3D BIM walkthrough. Precision thermal insulation and concealed HVAC slot diffusers ensure year-round climate resilience in Punjab's seasonal extremes.",
+        materials: [
+          { name: "Monolithic Travertine Slab", desc: "Honed Italian exterior & interior wall cladding", color: "#CFC0B0" },
+          { name: "Fluted Dark Walnut Joinery", desc: "Acoustic wall panelling & bespoke cabinetry", color: "#3B2B23" },
+          { name: "Brushed Champagne Brass", desc: "Recessed channel reveals & fixture trims", color: "#C8A97E" },
+          { name: "Low-E Insulated Architectural Glass", desc: "Floor-to-ceiling thermal facades", color: "#4B5563" }
+        ],
+        gallery: [
+          { src: "nam_luxury_residence_exterior.jpg", title: "Twilight Facade & Reflection Pool" },
+          { src: "nam_living_render.jpg", title: "Double-Height Grand Living Hall" },
+          { src: "nam_landscaping_patio.jpg", title: "Covered Terrace & Sunken Lounge" },
+          { src: "nam_architectural_details.jpg", title: "Honed Travertine & Brass Joinery" },
+          { src: "nam_facade_main.jpg", title: "Front Elevation Geometric Cantilever" }
+        ]
+      },
+      "obsidian-penthouse": {
+        slug: "obsidian-penthouse",
+        title: "Obsidian Penthouse",
+        category: "PENTHOUSE INTERIOR",
+        filterCategory: "interior",
+        tagline: "Double-height monolithic travertine living hall with floating stairs, Italian joinery, and custom recessed LED illumination.",
+        location: "South Model Gram, Ludhiana",
+        area: "4,500 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2023 / Handed Over",
+        heroImage: "nam_living_render.jpg",
+        narrativeHeading: "Monolithic Materiality & Ambient Lighting",
+        desc1: "Designed for seamless spatial drama, the Obsidian Penthouse pairs raw travertine slab cladding with warm recessed LED cove illumination. Every dimension was verified via 3D BIM rendering before civil masonry began.",
+        desc2: "Features motorized smart blinds, hidden acoustic cinema speakers, and bespoke Italian furniture sourcing. The sculptural cantilevered staircase creates a commanding architectural focal point.",
+        materials: [
+          { name: "Honed Silver Travertine", desc: "Double-height wall feature & bookmatched slabs", color: "#D1C7BD" },
+          { name: "Smoked European Oak", desc: "Seamless acoustic wall panelling & pivot doors", color: "#2E241E" },
+          { name: "Matte Black Steel", desc: "Structural floating staircase stringers", color: "#1A1A1A" },
+          { name: "Linear Architectural LEDs", desc: "2700K warm diffused cove illumination", color: "#E0B774" }
+        ],
+        gallery: [
+          { src: "nam_living_render.jpg", title: "Grand Living Room Perspective" },
+          { src: "nam_dining_interior.jpg", title: "Sculptural Kitchen Island & Dining" },
+          { src: "nam_architectural_details.jpg", title: "Joinery & Shadow Details" },
+          { src: "nam_bedroom_render.jpg", title: "Master Suite Transition" }
+        ]
+      },
+      "the-marble-residence": {
+        slug: "the-marble-residence",
+        title: "The Marble Residence",
+        category: "TURNKEY ESTATE",
+        filterCategory: "commercial",
+        tagline: "A landmark 14,000 sq.ft estate pairing classic Rajput colonnades with sleek Milanese interior minimalism.",
+        location: "Sarabha Nagar, Ludhiana",
+        area: "14,000 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2024 / Completed",
+        heroImage: "nam_commercial_render.jpg",
+        narrativeHeading: "Heritage Form Reimagined with Modern Craft",
+        desc1: "A landmark architectural achievement in Sarabha Nagar. Combining grand arched colonnades with sleek Milanese interior styling, this multi-generational residence achieves both imperial gravitas and domestic warmth.",
+        desc2: "Full turnkey civil contracting executed by NAM Atelier from bare RCC ground to final interior handover, including advanced waterproofing, structural post-tensioning, and bespoke landscape water features.",
+        materials: [
+          { name: "Calacatta Borghini Marble", desc: "Bookmatched interior flooring & grand entry", color: "#E8E4DC" },
+          { name: "Dholpur Beige Sandstone", desc: "Hand-carved exterior colonnades & porticos", color: "#D5C4A1" },
+          { name: "Acoustic Walnut Slatting", desc: "Formal gallery and entertaining spaces", color: "#45332A" },
+          { name: "Champagne PVD Stainless Steel", desc: "Portico screens and entrance hardware", color: "#C6AD85" }
+        ],
+        gallery: [
+          { src: "nam_commercial_render.jpg", title: "Main Architectural Facade & Colonnade" },
+          { src: "nam_facade_main.jpg", title: "Entry Courtyard & Water Court" },
+          { src: "nam_landscaping_patio.jpg", title: "Rear Garden Pavilion & Patio" },
+          { src: "nam_dining_interior.jpg", title: "Formal Dining & Reception Wing" }
+        ]
+      },
+      "amber-heritage-suite": {
+        slug: "amber-heritage-suite",
+        title: "Amber Heritage Suite",
+        category: "MASTER SUITE",
+        filterCategory: "interior",
+        tagline: "Tactile brass inlays with soft ambient backlighting, fluted acoustic headboard, and integrated marble spa wardrobe.",
+        location: "Ranjit Avenue, Amritsar",
+        area: "950 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2023 / Handed Over",
+        heroImage: "nam_bedroom_render.jpg",
+        narrativeHeading: "Sanctuary of Tactile Serenity",
+        desc1: "Crafted as a private sanctuary of sensory calm. Combining tactile brushed brass metal inlays with soft ambient headboard backlighting, the suite transitions seamlessly into a private marble spa wardrobe.",
+        desc2: "Engineered for restorative acoustics and tailored thermal comfort. Custom fluted acoustic panelling dampens reverberation, while micro-perforated AC diffusers deliver whisper-quiet airflow.",
+        materials: [
+          { name: "Fluted Acoustic Fabric Panelling", desc: "Headboard acoustic dampening & tactile texture", color: "#8C7A6B" },
+          { name: "Brushed Satin Brass Inlays", desc: "Precision metal joinery & shadow lines", color: "#C8A97E" },
+          { name: "Portoro Nero Marble", desc: "En-suite vanity and shower slabs", color: "#222222" },
+          { name: "Natural Silk Wallcovering", desc: "Tactile backdrop surfaces", color: "#DBD5CD" }
+        ],
+        gallery: [
+          { src: "nam_bedroom_render.jpg", title: "Master Suite & Headboard Detailing" },
+          { src: "nam_architectural_details.jpg", title: "Brass Inlays & Walnut Fluting" },
+          { src: "nam_dining_interior.jpg", title: "Suite Morning Bar" },
+          { src: "nam_living_render.jpg", title: "Private Lounge Antechamber" }
+        ]
+      },
+      "the-rosewood-villa": {
+        slug: "the-rosewood-villa",
+        title: "The Rosewood Villa",
+        category: "CHEF'S KITCHEN",
+        filterCategory: "interior",
+        tagline: "Fluted dark walnut joinery with integrated monolithic marble island, German Blum hardware, and smart prep station.",
+        location: "Green Avenue, Amritsar",
+        area: "1,200 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2023 / Completed",
+        heroImage: "nam_dining_interior.jpg",
+        narrativeHeading: "Culinary Precision & Monolithic Craft",
+        desc1: "Engineered with German Blum servo-drive hardware and custom fluted dark walnut cabinetry. The central monolithic marble island serves as both a high-capacity culinary station and an intimate breakfast bar.",
+        desc2: "Concealed appliance garages and integrated linear lighting ensure a clean, uncluttered visual rhythm. Sub-zero refrigeration and silent extraction are fully integrated behind floor-to-ceiling joinery panels.",
+        materials: [
+          { name: "Monolithic Honed Marble Island", desc: "Mitered waterfall edge counter & bar", color: "#DCD8D0" },
+          { name: "Fluted American Walnut", desc: "Moisture-resistant polyurethane seal", color: "#3B2C24" },
+          { name: "Integrated LED Diffusers", desc: "Under-counter architectural illumination", color: "#F3DCAB" },
+          { name: "Blackened Steel Accents", desc: "Minimalist bar framing & linear pendants", color: "#151515" }
+        ],
+        gallery: [
+          { src: "nam_dining_interior.jpg", title: "Sculptural Island & Dining Setting" },
+          { src: "nam_kitchen_render.jpg", title: "Preparation Station & Joinery Wall" },
+          { src: "nam_architectural_details.jpg", title: "Cabinetry Shadow Revealing" },
+          { src: "nam_landscaping_patio.jpg", title: "Breakfast Patio Extension" }
+        ]
+      },
+      "velvet-cinema-lounge": {
+        slug: "velvet-cinema-lounge",
+        title: "Velvet Cinema Lounge",
+        category: "ACOUSTIC THEATRE",
+        filterCategory: "acoustic",
+        tagline: "Dolby Atmos 9.4.4 private theatre with motorized emerald recliners, starry ceiling, and room-within-a-room acoustic isolation.",
+        location: "Civil Lines, Ludhiana",
+        area: "850 Sq.Ft",
+        civil: "Udhay Seth",
+        design: "Mudita D Seth",
+        year: "2024 / Completed",
+        heroImage: "nam_cinema_theatre.jpg",
+        narrativeHeading: "Acoustic Engineering & Private Luxury",
+        desc1: "Engineered with floating room-within-a-room acoustic isolation to achieve zero sound transmission leakage into adjoining living suites, providing an immersive cinema experience.",
+        desc2: "Features 4K laser projection onto an acoustically transparent woven screen, custom velvet acoustic wall baffles, and motorized ergonomic reclining seats calibrated for prime viewing angles.",
+        materials: [
+          { name: "Emerald Acoustic Velvet", desc: "High-NRC sound absorbing fabric panelling", color: "#1C352D" },
+          { name: "Concealed Perforated Bass Traps", desc: "Low-frequency resonance control", color: "#2B2B2B" },
+          { name: "Fiber-Optic Constellation Ceiling", desc: "Dimmable starlight ambient lighting", color: "#0B111A" },
+          { name: "Darkened Acoustic Oak Steps", desc: "Recessed step safety LEDs", color: "#1F1A17" }
+        ],
+        gallery: [
+          { src: "nam_cinema_theatre.jpg", title: "Private Theatre Room Perspective" },
+          { src: "nam_architectural_details.jpg", title: "Acoustic Fluting & Brass Trim" },
+          { src: "nam_living_render.jpg", title: "Adjoining Lounge Transition" },
+          { src: "nam_commercial_render.jpg", title: "Lobby Entryway" }
+        ]
+      }
+    };
+
+    // Slug Aliases for backwards compatibility
+    const SLUG_ALIASES = {
+      "obsidian": "obsidian-penthouse",
+      "sanctuary": "villa-sanctuary",
+      "rosewood": "the-rosewood-villa",
+      "cinema": "velvet-cinema-lounge",
+      "bedroom": "amber-heritage-suite",
+      "marble": "the-marble-residence"
+    };
+
+    const PROJECT_KEYS = Object.keys(PORTFOLIO_PROJECTS);
+
+    // â”€â”€ Filter Projects in Showcase Grid â”€â”€
+    function filterProjects(category, buttonEl) {
+      // Update Tab Styles
+      document.querySelectorAll('.filter-tab-pill').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      if (buttonEl) {
+        buttonEl.classList.add('active');
+        buttonEl.setAttribute('aria-selected', 'true');
+      }
+
+      // Filter Cards
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // â”€â”€ Open Individual Project Detail View â”€â”€
+    function openProject(rawSlug, pushHistory = true) {
+      let slug = SLUG_ALIASES[rawSlug] || rawSlug;
+      const data = PORTFOLIO_PROJECTS[slug];
+      
+      if (!data) {
+        // Fallback to first project if slug not found
+        slug = "villa-sanctuary";
+      }
+
+      const proj = PORTFOLIO_PROJECTS[slug];
+
+      // Update Detail Page Content
+      document.getElementById('detailCategory').textContent = proj.category;
+      document.getElementById('detailTitle').textContent = proj.title.toUpperCase();
+      document.getElementById('detailBreadcrumbTitle').textContent = proj.title;
+      document.getElementById('detailTagline').textContent = proj.tagline;
+      document.getElementById('detailLocation').textContent = proj.location;
+      document.getElementById('detailArea').textContent = proj.area;
+      document.getElementById('detailCivil').textContent = proj.civil;
+      document.getElementById('detailDesign').textContent = proj.design;
+      document.getElementById('detailYear').textContent = proj.year;
+      document.getElementById('detailHeroImage').src = proj.heroImage;
+      document.getElementById('detailHeroImage').alt = proj.title + " - High-Resolution Render";
+      document.getElementById('detailNarrativeHeading').textContent = proj.narrativeHeading;
+      document.getElementById('detailDesc1').textContent = proj.desc1;
+      document.getElementById('detailDesc2').textContent = proj.desc2;
+
+      // Populate Curated Materials
+      const paletteContainer = document.getElementById('detailPaletteContainer');
+      paletteContainer.innerHTML = '';
+      proj.materials.forEach(mat => {
+        const item = document.createElement('div');
+        item.className = 'palette-card-item';
+        item.innerHTML = `
+          <div class="material-swatch-box" style="background-color: ${mat.color};"></div>
+          <div class="material-info">
+            <h5>${mat.name}</h5>
+            <p>${mat.desc}</p>
+          </div>
+        `;
+        paletteContainer.appendChild(item);
+      });
+
+      // Populate Image Gallery
+      const galleryContainer = document.getElementById('detailGalleryGrid');
+      galleryContainer.innerHTML = '';
+      proj.gallery.forEach(img => {
+        const thumb = document.createElement('div');
+        thumb.className = 'gallery-thumb-item';
+        thumb.onclick = () => openLightbox(img.src, img.title);
+        thumb.innerHTML = `
+          <img src="${img.src}" alt="${img.title}" loading="lazy" />
+          <div class="gallery-hover-overlay">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </div>
+        `;
+        galleryContainer.appendChild(thumb);
+      });
+
+      // Configure Prev / Next Navigation Cycling
+      const currentIndex = PROJECT_KEYS.indexOf(slug);
+      const prevIndex = (currentIndex - 1 + PROJECT_KEYS.length) % PROJECT_KEYS.length;
+      const nextIndex = (currentIndex + 1) % PROJECT_KEYS.length;
+      const prevProj = PORTFOLIO_PROJECTS[PROJECT_KEYS[prevIndex]];
+      const nextProj = PORTFOLIO_PROJECTS[PROJECT_KEYS[nextIndex]];
+
+      document.getElementById('prevProjectLabel').textContent = `â† Previous: ${prevProj.title}`;
+      document.getElementById('nextProjectLabel').textContent = `Next: ${nextProj.title} â†’`;
+      
+      window.currentProjectSlug = slug;
+
+      // Toggle Views
+      document.getElementById('portfolioShowcaseView').style.display = 'none';
+      document.getElementById('projectDetailView').style.display = 'block';
+
+      // Update Browser URL & SEO Title
+      document.title = `${proj.title} â€” Project Details | NAM Atelier`;
+      if (pushHistory) {
+        const newUrl = `?project=${slug}`;
+        history.pushState({ project: slug }, '', newUrl);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // â”€â”€ Navigate Adjacent Project â”€â”€
+    function navigateAdjacentProject(direction) {
+      const currentIndex = PROJECT_KEYS.indexOf(window.currentProjectSlug || "villa-sanctuary");
+      const targetIndex = (currentIndex + direction + PROJECT_KEYS.length) % PROJECT_KEYS.length;
+      openProject(PROJECT_KEYS[targetIndex]);
+    }
+
+    // â”€â”€ Close Detail View & Return to Showcase â”€â”€
+    function closeProjectDetail(pushHistory = true) {
+      document.getElementById('projectDetailView').style.display = 'none';
+      document.getElementById('portfolioShowcaseView').style.display = 'block';
+      document.title = '3D Architecture & Interior Design Portfolio | NAM Atelier';
+
+      if (pushHistory) {
+        const cleanUrl = window.location.pathname;
+        history.pushState(null, '', cleanUrl);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // â”€â”€ Accessible Image Lightbox â”€â”€
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('imageLightbox');
+      const img = document.getElementById('lightboxImage');
+      img.src = src;
+      img.alt = caption || 'Architectural Photography';
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      const modal = document.getElementById('imageLightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // â”€â”€ Handle Browser Back / Forward Buttons â”€â”€
+    window.addEventListener('popstate', (e) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let projectParam = 'velvet-cinema-lounge';
+      const projectParam = urlParams.get('project');
+      if (projectParam && (PORTFOLIO_PROJECTS[projectParam] || SLUG_ALIASES[projectParam])) {
+        openProject(projectParam, false);
+      } else {
+        closeProjectDetail(false);
+      }
+    });
+
+    // â”€â”€ Initial Route Dispatcher on Page Load â”€â”€
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let projectParam = 'velvet-cinema-lounge';
+      const projectParam = urlParams.get('project');
+      
+      if (projectParam) {
+        openProject(projectParam, false);
+      }
+    });
+  </script>
+
+  <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
+  <script src="script.js?v=3.2" defer></script>
+</body>
+</html>
+
