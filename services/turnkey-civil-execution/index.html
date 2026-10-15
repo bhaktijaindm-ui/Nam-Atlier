@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="/" />
-  <title>Architecture &amp; Interior Design Services | NAM Atelier</title>
-  <meta name="description" content="Explore NAM Atelier's architectural design, luxury interior architecture, turnkey civil contracting, and acoustic private theatre engineering across Ludhiana and Amritsar, Punjab." />
+  <title>Turnkey Civil Contracting & Execution | NAM Atelier</title>
+  <meta name="description" content="Single-point civil contracting responsibility from bare RCC ground to final handover, led by Udhay Seth in Punjab." />
   <link rel="canonical" href="https://nam-atlier.vercel.app/services/turnkey-civil-execution" />
 
   <!-- Open Graph / Meta -->
@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ›ï¸</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
   <!-- Google Fonts: Cormorant Garamond, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +90,7 @@
 
   <style>
     /* ==========================================================================
-       NAM ATELIER â€” PREMIUM ARCHITECTURE & INTERIOR DESIGN SERVICES SYSTEM
+       NAM ATELIER — PREMIUM ARCHITECTURE & INTERIOR DESIGN SERVICES SYSTEM
        Reversed Monochrome Palette: Deep Black Foundation + Selective White Panels
        ========================================================================== */
     :root {
@@ -131,32 +131,7 @@
       }
     }
 
-    /* â”€â”€ SECTION 1: HERO & PRIMARY SERVICE INTRODUCTION â”€â”€ */
-    .services-hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 1.75rem;
-      align-items: stretch;
-    }
-
-    @media (max-width: 991px) {
-      .services-hero-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    .hero-left-panel {
-      background: var(--svc-bg-panel);
-      border: 1px solid var(--svc-border);
-      border-radius: var(--svc-radius-lg);
-      padding: clamp(2rem, 4vw, 3.75rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-    }
-
+    /* ── GLOBAL UTILITY CLASSES FOR SERVICES ── */
     .eyebrow-tag {
       display: inline-block;
       font-size: 0.72rem;
@@ -165,23 +140,6 @@
       text-transform: uppercase;
       color: var(--svc-accent-gold);
       margin-bottom: 1rem;
-    }
-
-    .hero-main-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 3.8vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.12;
-      color: #FFFFFF;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-main-desc {
-      font-size: 1.02rem;
-      color: var(--svc-text-muted);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      max-width: 580px;
     }
 
     .btn-pill-action {
@@ -226,75 +184,551 @@
       transform: translateX(3px);
     }
 
-    /* 3 Compact Benefit Cards at bottom of Left Hero Panel */
-    .hero-benefit-cards-row {
+    /* ==========================================================================
+       SECTION 1: CINEMATIC INTERACTIVE SERVICE HERO (8 ARCHITECTURAL DISCIPLINES)
+       Four Coordinated Layers:
+         - Layer A: Full-screen cinematic background crossfade + dark overlays
+         - Layer B: Main content area (eyebrow, counter, title, desc, dual CTAs, metrics)
+         - Layer C: Floating interactive service card carousel (8 verified services)
+         - Layer D: Navigation controls, progress bar, counter, swipe & keyboard nav
+       ========================================================================== */
+    .cinematic-service-hero {
+      position: relative;
+      width: 100%;
+      min-height: 660px;
+      border-radius: var(--svc-radius-lg);
+      border: 1px solid var(--svc-border);
+      background-color: #070707;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+      margin-bottom: 4.5rem;
+      box-sizing: border-box;
+    }
+
+    /* ── LAYER A: CINEMATIC BACKGROUND CROSSFADE & OVERLAYS ── */
+    .hero-cinematic-bg-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-bg-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 5s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: opacity, transform;
+    }
+
+    .hero-bg-slide.active {
+      opacity: 1;
+      transform: scale(1.0);
+    }
+
+    .hero-bg-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: 
+        linear-gradient(90deg, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.88) 38%, rgba(5, 5, 5, 0.55) 70%, rgba(5, 5, 5, 0.8) 100%),
+        linear-gradient(0deg, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.25) 50%, rgba(5, 5, 5, 0.75) 100%);
+    }
+
+    .hero-bg-blueprint-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.7;
+    }
+
+    /* ── HERO INNER WRAPPER & GRID ── */
+    .hero-inner-container {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 1.28fr;
+      gap: 2.75rem;
+      align-items: center;
+      padding: clamp(2rem, 4vw, 3.75rem);
+      min-height: 660px;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.25rem 1.5rem;
+        min-height: auto;
+      }
+    }
+
+    /* ── LAYER B: MAIN CONTENT AREA (LEFT) ── */
+    .hero-left-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 560px;
+      box-sizing: border-box;
+    }
+
+    .hero-meta-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-category-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--svc-accent-gold);
+      background: rgba(198, 173, 133, 0.12);
+      border: 1px solid rgba(198, 173, 133, 0.28);
+      padding: 3px 10px;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-counter-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-counter-active {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-counter-divider {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.22);
+      font-weight: 300;
+    }
+
+    .hero-counter-total {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .hero-service-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 3.6vw, 3.3rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: #FFFFFF;
+      margin: 0 0 0.85rem;
+      min-height: 2.2em;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .hero-service-tagline {
+      font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+      font-weight: 500;
+      color: var(--svc-accent-gold);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.85rem;
+      transition: opacity 0.25s ease;
+    }
+
+    .hero-service-desc {
+      font-size: 0.98rem;
+      color: var(--svc-text-muted);
+      line-height: 1.68;
+      margin: 0 0 2rem;
+      max-width: 520px;
+      min-height: 4.8em;
+      transition: opacity 0.25s ease;
+    }
+
+    .hero-action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.88rem 1.85rem;
+      background-color: #FFFFFF;
+      color: #050505;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid #FFFFFF;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-btn-primary:hover {
+      background-color: #E6E3DC;
+      border-color: #E6E3DC;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-btn-primary i {
+      transition: transform 0.3s ease;
+    }
+
+    .hero-btn-primary:hover i {
+      transform: translateX(4px);
+    }
+
+    .hero-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.65rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #F7F7F5;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .hero-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Mini metrics row at bottom of left panel */
+    .hero-metrics-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 1.25rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     @media (max-width: 600px) {
-      .hero-benefit-cards-row {
+      .hero-metrics-strip {
         grid-template-columns: 1fr;
-        gap: 0.85rem;
+        gap: 0.75rem;
       }
     }
 
-    .benefit-micro-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--svc-border);
-      border-radius: var(--svc-radius-sm);
-      padding: 1.15rem 1rem;
+    .hero-metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-metric-val {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--svc-accent-gold);
+      line-height: 1;
+    }
+
+    .hero-metric-lbl {
+      font-size: 0.75rem;
+      color: var(--svc-text-dim);
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── LAYER C: FLOATING INTERACTIVE SERVICE CARD CAROUSEL (RIGHT) ── */
+    .hero-right-carousel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .hero-carousel-viewport {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+      padding: 0.75rem 0.25rem 1.25rem;
+      cursor: grab;
+    }
+
+    .hero-carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hero-carousel-viewport:active {
+      cursor: grabbing;
+    }
+
+    .hero-carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hero-carousel-card {
+      flex: 0 0 240px;
+      width: 240px;
+      height: 350px;
+      border-radius: var(--svc-radius-md);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-sizing: border-box;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      opacity: 0.62;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero-carousel-card {
+        flex: 0 0 205px;
+        width: 205px;
+        height: 295px;
+      }
+    }
+
+    .hero-carousel-card:hover {
+      opacity: 0.95;
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-carousel-card.active {
+      opacity: 1;
+      transform: scale(1.04);
+      border-color: var(--svc-accent-gold);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(198, 173, 133, 0.22);
+    }
+
+    .hero-card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-carousel-card:hover .hero-card-img,
+    .hero-carousel-card.active .hero-card-img {
+      transform: scale(1.06);
+    }
+
+    .hero-card-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.3) 35%, rgba(0,0,0,0.92) 100%);
+      z-index: 2;
+    }
+
+    .hero-card-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.25rem;
+      box-sizing: border-box;
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-card-num {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-carousel-card.active .hero-card-num {
+      color: var(--svc-accent-gold);
+      border-color: var(--svc-accent-gold);
+      background: rgba(198, 173, 133, 0.15);
+    }
+
+    .hero-card-badge {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3px 8px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card-bottom {
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
     }
 
-    .micro-card-icon {
-      font-size: 1.1rem;
-      color: var(--svc-accent-gold);
-      margin-bottom: 0.25rem;
-    }
-
-    .micro-card-metric {
+    .hero-card-title {
       font-family: var(--font-serif);
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 600;
       color: #FFFFFF;
-      line-height: 1.1;
+      line-height: 1.2;
+      margin: 0;
     }
 
-    .micro-card-label {
+    .hero-card-action {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
       font-size: 0.75rem;
-      color: var(--svc-text-muted);
-      line-height: 1.35;
+      font-weight: 500;
+      color: var(--svc-accent-gold);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      opacity: 0.85;
     }
 
-    /* Hero Right Architectural Image Panel */
-    .hero-right-media {
+    /* ── LAYER D: NAVIGATION & PROGRESS CONTROLS ── */
+    .hero-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       position: relative;
-      border-radius: var(--svc-radius-lg);
+      z-index: 5;
+    }
+
+    .hero-progress-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .hero-progress-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+      position: relative;
       overflow: hidden;
-      border: 1px solid var(--svc-border);
-      min-height: 480px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
     }
 
-    .hero-right-media img {
-      width: 100%;
+    .hero-progress-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 1s ease;
+      width: 12.5%;
+      background: var(--svc-accent-gold);
+      border-radius: 3px;
+      transition: width 0.4s ease;
     }
 
-    .hero-right-media:hover img {
-      transform: scale(1.025);
+    .hero-status-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: monospace;
+      white-space: nowrap;
     }
 
-    /* â”€â”€ SECTION 2: SERVICE EXPLANATION & ARCHITECTURAL FEATURES â”€â”€ */
+    .hero-arrow-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-nav-arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-nav-arrow-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.06);
+    }
+
+    .hero-nav-arrow-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* ── SECTION 2: SERVICE EXPLANATION & ARCHITECTURAL FEATURES ── */
     .features-section {
       margin-top: 4.5rem;
       display: grid;
@@ -405,7 +839,7 @@
       line-height: 1.5;
     }
 
-    /* â”€â”€ SECTION 3: PRIMARY SERVICE CATALOG â”€â”€ */
+    /* ── SECTION 3: PRIMARY SERVICE CATALOG ── */
     .catalog-panel {
       margin-top: 5rem;
       background: var(--svc-bg-panel);
@@ -587,7 +1021,7 @@
       border-color: #FFFFFF;
     }
 
-    /* â”€â”€ SECTION 4: SERVICE BENEFITS / DELIVERY APPROACH â”€â”€ */
+    /* ── SECTION 4: SERVICE BENEFITS / DELIVERY APPROACH ── */
     .approach-section {
       margin-top: 5.5rem;
       text-align: center;
@@ -679,7 +1113,7 @@
       line-height: 1.6;
     }
 
-    /* â”€â”€ SECTION 5: THREE-STEP ARCHITECTURAL DESIGN PROCESS â”€â”€ */
+    /* ── SECTION 5: THREE-STEP ARCHITECTURAL DESIGN PROCESS ── */
     .process-section {
       margin-top: 5.5rem;
       padding: clamp(2.5rem, 5vw, 4rem);
@@ -752,9 +1186,9 @@
       justify-content: center;
     }
 
-    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    /* ═════════════════════════════════════════════════════════════════════════
        VIEW B: DEDICATED INDIVIDUAL SERVICE & SUB-SERVICE DETAIL VIEW
-       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+       ═════════════════════════════════════════════════════════════════════════ */
     .service-detail-view-container {
       display: none; /* Toggled active by JS */
       width: 100%;
@@ -1052,60 +1486,257 @@
     </svg>
   </div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- ═════════════════════════════════════════════════════════════════════════
        SHARED HEADER (SINGLE SOURCE OF TRUTH)
        Header & mobile drawer are loaded dynamically from: components/header.html
        Any edit made to components/header.html automatically updates EVERY page!
-       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+       ═════════════════════════════════════════════════════════════════════════ -->
   <div id="header-placeholder"></div>
 
   <main class="services-wrapper" id="mainContent">
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═════════════════════════════════════════════════════════════════════════
          VIEW A: FULL SERVICES SHOWCASE (DEFAULT VIEW)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═════════════════════════════════════════════════════════════════════════ -->
     <div id="servicesShowcaseView">
 
-      <!-- SECTION 1: HERO & PRIMARY SERVICE INTRODUCTION -->
-      <section class="services-hero-grid" aria-label="Services Introduction">
-        <!-- Left Rounded Panel -->
-        <div class="hero-left-panel">
-          <div>
-            <span class="eyebrow-tag">OUR SERVICES</span>
-            <h1 class="hero-main-title">Architecture Designed<br>Around the Way You Live.</h1>
-            <p class="hero-main-desc">
-              From architectural planning to refined interior spaces, we create thoughtful design solutions that balance functionality, materiality, and timeless aesthetics.
-            </p>
-            <a href="#servicesCatalogSection" class="btn-pill-action" aria-label="Scroll to services catalog">
-              <span>Explore Our Services</span>
-              <span class="arrow-circle"><i class="fa-solid fa-arrow-down"></i></span>
-            </a>
-          </div>
-
-          <!-- Three Compact Feature / Benefit Cards -->
-          <div class="hero-benefit-cards-row">
-            <div class="benefit-micro-card">
-              <i class="fa-regular fa-compass micro-card-icon"></i>
-              <div class="micro-card-metric">3D BIM</div>
-              <div class="micro-card-label">Millimeter-accurate virtual digital twins</div>
-            </div>
-            <div class="benefit-micro-card">
-              <i class="fa-regular fa-gem micro-card-icon"></i>
-              <div class="micro-card-metric">100%</div>
-              <div class="micro-card-label">Geometric site execution alignment</div>
-            </div>
-            <div class="benefit-micro-card">
-              <i class="fa-regular fa-building micro-card-icon"></i>
-              <div class="micro-card-metric">Turnkey</div>
-              <div class="micro-card-label">Single-source civil oversight by founders</div>
-            </div>
-          </div>
+      <!-- ═════════════════════════════════════════════════════════════════════════
+           SECTION 1: CINEMATIC INTERACTIVE SERVICE HERO (8 DISCIPLINES)
+           Four Coordinated Layers:
+             - Layer A: Full-screen cinematic background crossfade + dark overlays
+             - Layer B: Main content area (eyebrow, counter, title, desc, dual CTAs, metrics)
+             - Layer C: Floating interactive service card carousel (8 verified services)
+             - Layer D: Navigation controls, progress bar, counter, swipe & keyboard nav
+           ═════════════════════════════════════════════════════════════════════════ -->
+      <section class="cinematic-service-hero" id="cinematicServiceHero" aria-label="Interactive Architectural Services Showcase">
+        
+        <!-- LAYER A: CINEMATIC BACKGROUND SLIDES & OVERLAYS -->
+        <div class="hero-cinematic-bg-container" aria-hidden="true">
+          <div class="hero-bg-slide active" style="background-image: url('nam_luxury_residence_exterior.jpg');" data-index="0"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_living_render.jpg');" data-index="1"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_commercial_render.jpg');" data-index="2"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_cinema_theatre.jpg');" data-index="3"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_dining_interior.jpg');" data-index="4"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_bedroom_render.jpg');" data-index="5"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_landscaping_patio.jpg');" data-index="6"></div>
+          <div class="hero-bg-slide" style="background-image: url('nam_architectural_details.jpg');" data-index="7"></div>
+          <div class="hero-bg-gradient-overlay"></div>
+          <div class="hero-bg-blueprint-grid"></div>
         </div>
 
-        <!-- Right Tall Rounded Architectural Image Panel -->
-        <div class="hero-right-media">
-          <img src="nam_luxury_residence_exterior.jpg" alt="NAM Atelier Luxury Residential Architecture &amp; Glass Facades" fetchpriority="high" />
+        <!-- HERO INNER CONTAINER (LAYERS B, C, D) -->
+        <div class="hero-inner-container">
+
+          <!-- LAYER B: MAIN CONTENT AREA (LEFT) -->
+          <div class="hero-left-content">
+            <div class="hero-meta-header">
+              <span class="eyebrow-tag" style="margin-bottom: 0;">OUR SERVICES</span>
+              <span class="hero-category-badge" id="heroCategoryBadge">ARCHITECTURE</span>
+            </div>
+
+            <div class="hero-counter-wrap">
+              <span class="hero-counter-active" id="heroCounterActive">01</span>
+              <span class="hero-counter-divider">/</span>
+              <span class="hero-counter-total">08</span>
+            </div>
+
+            <div class="hero-title-wrap">
+              <h1 class="hero-service-title" id="heroServiceTitle">Architectural Planning &amp; Facades</h1>
+              <div class="hero-service-tagline" id="heroServiceTagline">Master-Planned Residences &amp; Contemporary Facades</div>
+              <p class="hero-service-desc" id="heroServiceDesc">
+                Bespoke villa planning, contemporary cantilever geometry, thermal envelope engineering, and contextual site orientation crafted for generational longevity.
+              </p>
+            </div>
+
+            <!-- Dual Action CTAs -->
+            <div class="hero-action-buttons">
+              <button class="hero-btn-primary" id="heroPrimaryBtn" onclick="handleHeroPrimaryAction()" aria-label="Explore Selected Service">
+                <span id="heroPrimaryBtnText">EXPLORE SERVICE</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button class="hero-btn-secondary" onclick="openModal('consultModal')" aria-label="Discuss Your Project With Founders">
+                <span>DISCUSS YOUR PROJECT</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+
+            <!-- 3 Compact Architectural Standards / Metrics Strip -->
+            <div class="hero-metrics-strip">
+              <div class="hero-metric-item">
+                <span class="hero-metric-val">3D BIM</span>
+                <span class="hero-metric-lbl">Digital twin precision</span>
+              </div>
+              <div class="hero-metric-item">
+                <span class="hero-metric-val">100%</span>
+                <span class="hero-metric-lbl">Geometric site match</span>
+              </div>
+              <div class="hero-metric-item">
+                <span class="hero-metric-val">Turnkey</span>
+                <span class="hero-metric-lbl">Founder civil oversight</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LAYER C & D: FLOATING INTERACTIVE SERVICE CAROUSEL & CONTROLS (RIGHT) -->
+          <div class="hero-right-carousel">
+            
+            <!-- Cards Viewport & Track -->
+            <div class="hero-carousel-viewport" id="heroCarouselViewport">
+              <div class="hero-carousel-track" id="heroCarouselTrack">
+
+                <!-- Card 01 -->
+                <div class="hero-carousel-card active" data-index="0" onclick="selectHeroService(0)">
+                  <img src="nam_luxury_residence_exterior.jpg" alt="Architectural Planning &amp; Facades" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">01</span>
+                      <span class="hero-card-badge">ARCHITECTURE</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Architectural Planning</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 02 -->
+                <div class="hero-carousel-card" data-index="1" onclick="selectHeroService(1)">
+                  <img src="nam_living_render.jpg" alt="Luxury Interior Architecture" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">02</span>
+                      <span class="hero-card-badge">INTERIORS</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Interior Architecture</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 03 -->
+                <div class="hero-carousel-card" data-index="2" onclick="selectHeroService(2)">
+                  <img src="nam_commercial_render.jpg" alt="Turnkey Civil Contracting &amp; Execution" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">03</span>
+                      <span class="hero-card-badge">CIVIL EXECUTION</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Turnkey Civil</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 04 -->
+                <div class="hero-carousel-card" data-index="3" onclick="selectHeroService(3)">
+                  <img src="nam_cinema_theatre.jpg" alt="Acoustic Theatres &amp; Private Cinemas" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">04</span>
+                      <span class="hero-card-badge">ACOUSTICS</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Acoustic Theatres</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 05 -->
+                <div class="hero-carousel-card" data-index="4" onclick="selectHeroService(4)">
+                  <img src="nam_dining_interior.jpg" alt="Chef's Kitchen &amp; Dining Architecture" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">05</span>
+                      <span class="hero-card-badge">CULINARY DESIGN</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Kitchen &amp; Dining</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 06 -->
+                <div class="hero-carousel-card" data-index="5" onclick="selectHeroService(5)">
+                  <img src="nam_bedroom_render.jpg" alt="Bespoke Master Suites &amp; Spa Bathrooms" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">06</span>
+                      <span class="hero-card-badge">PRIVATE SUITES</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Master Suites &amp; Spa</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 07 -->
+                <div class="hero-carousel-card" data-index="6" onclick="selectHeroService(6)">
+                  <img src="nam_landscaping_patio.jpg" alt="Terrace, Pool &amp; Outdoor Living Design" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">07</span>
+                      <span class="hero-card-badge">OUTDOOR LIVING</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Terrace &amp; Pool</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 08 -->
+                <div class="hero-carousel-card" data-index="7" onclick="selectHeroService(7)">
+                  <img src="nam_architectural_details.jpg" alt="Architectural Detailing &amp; Material Curation" class="hero-card-img" />
+                  <div class="hero-card-gradient"></div>
+                  <div class="hero-card-content">
+                    <div class="hero-card-top">
+                      <span class="hero-card-num">08</span>
+                      <span class="hero-card-badge">MATERIAL CRAFT</span>
+                    </div>
+                    <div class="hero-card-bottom">
+                      <h3 class="hero-card-title">Material Detailing</h3>
+                      <div class="hero-card-action">Select Service <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- LAYER D: NAVIGATION & PROGRESS CONTROLS -->
+            <div class="hero-controls-bar">
+              <div class="hero-progress-section">
+                <div class="hero-progress-track">
+                  <div class="hero-progress-fill" id="heroProgressFill"></div>
+                </div>
+                <span class="hero-status-pill" id="heroStatusPill">01 / 08</span>
+              </div>
+              <div class="hero-arrow-nav">
+                <button class="hero-nav-arrow-btn" onclick="prevHeroService()" aria-label="Previous Service">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="hero-nav-arrow-btn" onclick="nextHeroService()" aria-label="Next Service">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
       <!-- SECTION 2: SERVICE EXPLANATION & ARCHITECTURAL FEATURES -->
@@ -1133,7 +1764,7 @@
               <img src="nam_facade_thumb1.jpg" alt="Spatial Planning &amp; Circulation" loading="lazy" />
             </div>
             <div class="card-text-details">
-              <h4>01 â€” Spatial Planning &amp; Circulation</h4>
+              <h4>01 — Spatial Planning &amp; Circulation</h4>
               <p>Layouts developed to support optimal circulation, natural daylighting, and a natural connection between spaces.</p>
             </div>
           </div>
@@ -1144,7 +1775,7 @@
               <img src="nam_architectural_details.jpg" alt="Material &amp; Lighting Design" loading="lazy" />
             </div>
             <div class="card-text-details">
-              <h4>02 â€” Material &amp; Lighting Curation</h4>
+              <h4>02 — Material &amp; Lighting Curation</h4>
               <p>A considered combination of tactile natural stone, fluted walnut joinery, and concealed 2700K architectural lighting.</p>
             </div>
           </div>
@@ -1155,7 +1786,7 @@
               <img src="nam_facade_thumb2.jpg" alt="Detail-Driven Site Execution" loading="lazy" />
             </div>
             <div class="card-text-details">
-              <h4>03 â€” Detail-Driven Site Execution</h4>
+              <h4>03 — Detail-Driven Site Execution</h4>
               <p>Carefully coordinated construction details and rigorous civil engineering ensuring zero tolerance variance on-site.</p>
             </div>
           </div>
@@ -1342,9 +1973,9 @@
 
     </div>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═════════════════════════════════════════════════════════════════════════
          VIEW B: DEDICATED INDIVIDUAL SERVICE DETAIL VIEW (DEEP DIVE)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═════════════════════════════════════════════════════════════════════════ -->
     <div id="serviceDetailView" class="service-detail-view-container" aria-label="Individual Service Detail">
       
       <!-- Back Navigation Row -->
@@ -1451,12 +2082,12 @@
 
   </main>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- ═════════════════════════════════════════════════════════════════════════
        SHARED FOOTER (SINGLE SOURCE OF TRUTH)
        Footer (directors, phones, emails, QR, copyright) is loaded dynamically
        from: components/footer.html
        Any edit made to components/footer.html automatically updates EVERY page!
-       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+       ═════════════════════════════════════════════════════════════════════════ -->
   <div id="footer-placeholder"></div>
 
   <!-- CONSULTATION MODAL (SHARED SYSTEM) -->
@@ -1490,9 +2121,9 @@
     </div>
   </div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- ═════════════════════════════════════════════════════════════════════════
        SERVICES DATABASE & DYNAMIC ROUTING ENGINE
-       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+       ═════════════════════════════════════════════════════════════════════════ -->
   <script>
     const SERVICES_DATABASE = {
       "architectural-design": {
@@ -1531,7 +2162,7 @@
           { title: "Curated Stone & Marble Sourcing", desc: "Direct hand-selection of Italian travertine and Calacatta slabs." },
           { title: "Bespoke Millwork & Joinery", desc: "Fluted American walnut, smoked oak, and champagne brass details." },
           { title: "Architectural 2700K Lighting", desc: "Recessed cove illumination, trimless downlights, and fixture layouts." },
-          { title: "Custom Furniture & Sanityware", desc: "Imported Milanese lounge seating, brassware, and appliance garages." },
+          { title: "Custom Furniture & Sanitaryware", desc: "Imported Milanese lounge seating, brassware, and appliance garages." },
           { title: "Turnkey Styling & Final Handover", desc: "Flawless site coordination and turnkey dressing of living spaces." }
         ],
         relatedProjects: [
@@ -1581,10 +2212,98 @@
         relatedProjects: [
           { title: "Velvet Cinema Lounge", category: "ACOUSTIC THEATRE", location: "Civil Lines, Ludhiana", image: "nam_cinema_theatre.jpg", url: "portfolio/velvet-cinema-lounge" }
         ]
+      },
+      "kitchen-dining": {
+        slug: "kitchen-dining",
+        title: "Chef's Kitchen & Dining Architecture",
+        category: "CULINARY DESIGN",
+        tagline: "Sculptural marble islands, seamless concealed appliances, and convivial dining spaces designed for culinary elegance.",
+        heroImage: "nam_dining_interior.jpg",
+        narrativeHeader: "Culinary Ergonomics & Monolithic Countertops",
+        desc1: "We elevate the kitchen from a functional service space to the architectural heart of the home. Hand-selected slabs of bookmatched Italian Calacatta or honed quartzite anchor sculptural central islands with integrated induction and concealed downdraft ventilation.",
+        desc2: "Behind fluted walnut joinery lies precision German hardware, bespoke spice pull-outs, and dedicated pantry zones that keep primary work surfaces immaculately clean during social entertaining.",
+        deliverables: [
+          { title: "Sculptural Monolithic Kitchen Islands", desc: "Mitred stone waterfall counters with integrated prep sinks and power." },
+          { title: "Custom Fluted Cabinetry & Joinery", desc: "Soft-close Blum Legrabox drawers and concealed pocket door mechanisms." },
+          { title: "Sub-Zero & Miele Integrated Appliance Detailing", desc: "Custom cabinet panel fronts ensuring seamless appliance alignment." },
+          { title: "Warm Architectural Task & Ambient Lighting", desc: "Shadow-reveal counter lighting and statement linear suspensions." },
+          { title: "Butler's Pantry & Scullery Integration", desc: "Dedicated secondary kitchen spaces for high-intensity meal preparation." },
+          { title: "Formal Dining Spatial Flow", desc: "Seamless spatial transition connecting wine displays and main dining tables." }
+        ],
+        relatedProjects: [
+          { title: "The Rosewood Villa", category: "CULINARY SUITE", location: "Sarabha Nagar, Ludhiana", image: "nam_dining_interior.jpg", url: "portfolio/the-rosewood-villa" },
+          { title: "Obsidian Penthouse", category: "PENTHOUSE INTERIOR", location: "South Model Gram, Ludhiana", image: "nam_living_render.jpg", url: "portfolio/obsidian-penthouse" }
+        ]
+      },
+      "master-suites": {
+        slug: "master-suites",
+        title: "Bespoke Master Suites & Spa Bathrooms",
+        category: "PRIVATE SUITES",
+        tagline: "Sanctuary bedrooms, custom walk-in dressing rooms, and bookmatched travertine bathrooms with integrated hydrotherapy.",
+        heroImage: "nam_bedroom_render.jpg",
+        narrativeHeader: "Private Sanctuaries & Tactile Restfulness",
+        desc1: "A master suite should be a restorative haven separated from household bustle. We design multi-zone owner retreats featuring sound-dampened acoustic wall paneling, automated blackout reveals, and walk-in boutique closets.",
+        desc2: "Our ensuite master bathrooms replicate five-star spa experiences with heated travertine flooring, rimless walk-in rainfall showers, freestanding soaking tubs, and custom stone double vanities.",
+        deliverables: [
+          { title: "Acoustic Bedhead Walls & Paneling", desc: "Custom upholstered headboards and fluted wood acoustic baffles." },
+          { title: "Glass-Fronted Walk-in Dressing Suites", desc: "Integrated warm LED clothes illumination and velvet watch drawers." },
+          { title: "Bookmatched Travertine Wet Rooms", desc: "Full-height slab cladding with precision mitred corner details." },
+          { title: "Freestanding Soaking Tubs & Fixtures", desc: "Dornbracht brassware and freestanding stone composite bathtubs." },
+          { title: "Circadian Lighting & Blackout Controls", desc: "Automated Lutron smart shading and tunable white ambient lighting." },
+          { title: "Private Suite Morning Bar & Coffee Station", desc: "Concealed mini-fridge, water filtration, and espresso pull-outs." }
+        ],
+        relatedProjects: [
+          { title: "Amber Heritage Suite", category: "MASTER SUITE", location: "Ranjit Avenue, Amritsar", image: "nam_bedroom_render.jpg", url: "portfolio/amber-heritage-suite" },
+          { title: "Villa Sanctuary", category: "RESIDENTIAL VILLA", location: "Mall Road, Amritsar", image: "nam_luxury_residence_exterior.jpg", url: "portfolio/villa-sanctuary" }
+        ]
+      },
+      "outdoor-living": {
+        slug: "outdoor-living",
+        title: "Terrace, Pool & Outdoor Living Design",
+        category: "OUTDOOR LIVING",
+        tagline: "Sunken lounges, reflection pools, cantilevered pavilions, and architectural landscaping tailored for Punjab's seasons.",
+        heroImage: "nam_landscaping_patio.jpg",
+        narrativeHeader: "Landscape Architecture & Outdoor Entertaining",
+        desc1: "We treat outdoor terraces and gardens as natural architectural extensions of the interior living space. Through large-format sliding glass pocket walls, interior terrazzo flows effortlessly onto exterior travertine pool decks.",
+        desc2: "Our outdoor living designs feature cantilevered concrete pergolas with integrated rain louvers, sunken conversation fire pits, and minimalist infinity-edge reflection pools flanked by mature indigenous landscaping.",
+        deliverables: [
+          { title: "Architectural Pergolas & Shading Canopies", desc: "Cantilevered steel and concrete structures offering summer shade." },
+          { title: "Sunken Fire Pits & Lounge Courtyards", desc: "Built-in upholstered bench seating with gas flame fire tables." },
+          { title: "Infinity-Edge & Reflection Pools", desc: "Glass-tiled plunge pools with concealed skimmers and underwater LEDs." },
+          { title: "Outdoor Alfresco Kitchens & Barbeques", desc: "Weatherproof stainless steel grills, ice makers, and quartzite bars." },
+          { title: "Sculptural Specimen Plant Curation", desc: "Low-water native trees, olive trees, and seasonal architectural foliage." },
+          { title: "Architectural Exterior Lighting Scenes", desc: "Concealed tree uplighting and step reveal lights for nighttime drama." }
+        ],
+        relatedProjects: [
+          { title: "Villa Sanctuary", category: "RESIDENTIAL VILLA", location: "Mall Road, Amritsar", image: "nam_landscaping_patio.jpg", url: "portfolio/villa-sanctuary" },
+          { title: "The Marble Residence", category: "TURNKEY ESTATE", location: "Sarabha Nagar, Ludhiana", image: "nam_luxury_residence_exterior.jpg", url: "portfolio/the-marble-residence" }
+        ]
+      },
+      "material-curation": {
+        slug: "material-curation",
+        title: "Architectural Detailing & Material Curation",
+        category: "MATERIAL CRAFT",
+        tagline: "Tactile material palettes, bespoke millwork joinery details, champagne brass inlays, and shadow-reveal junctions.",
+        heroImage: "nam_architectural_details.jpg",
+        narrativeHeader: "Material Authenticity & Micro-Detail Precision",
+        desc1: "True architectural luxury is found at the intersection of noble materials. We source raw travertine, open-pore Italian walnut, brushed champagne brass, and hand-applied lime plaster, harmonizing textures to create timeless sensory depth.",
+        desc2: "Every joint, reveal, and transition is drawn in detail and executed with zero tolerance. Negative baseboard reveals and frameless door details ensure clean architectural sightlines across the entire residence.",
+        deliverables: [
+          { title: "Physical Material Sample Boards", desc: "Curated tactile palettes of marble, timber, fabrics, and metals." },
+          { title: "Full-Scale 1:1 Architectural Joinery Details", desc: "Millimeter-accurate workshop drawings for master carpenters." },
+          { title: "Custom Metal & Brass Inlay Fabrication", desc: "PVD-coated brushed champagne brass inlays and door pull handles." },
+          { title: "Natural Lime Plaster & Microcement Finishes", desc: "Breathable mineral wall treatments with subtle textural movement." },
+          { title: "Stone Slab Matching & Dry-Lay Audits", desc: "Personal dry-lay inspections at marble yards prior to installation." },
+          { title: "Zero-Reveal Shadowline Details", desc: "Recessed baseboards, trimless reveals, and concealed hinge systems." }
+        ],
+        relatedProjects: [
+          { title: "Obsidian Penthouse", category: "PENTHOUSE INTERIOR", location: "South Model Gram, Ludhiana", image: "nam_architectural_details.jpg", url: "portfolio/obsidian-penthouse" },
+          { title: "The Rosewood Villa", category: "RESIDENTIAL VILLA", location: "Sarabha Nagar, Ludhiana", image: "nam_dining_interior.jpg", url: "portfolio/the-rosewood-villa" }
+        ]
       }
     };
 
-    // Backward compatibility aliases
+    // Service Aliases mapping
     const SERVICE_ALIASES = {
       "civil": "turnkey-civil-execution",
       "3d-rendering": "architectural-design",
@@ -1592,10 +2311,210 @@
       "turnkey": "turnkey-civil-execution",
       "acoustic": "acoustic-theatre-design",
       "cinema": "acoustic-theatre-design",
-      "architecture": "architectural-design"
+      "architecture": "architectural-design",
+      "kitchen": "kitchen-dining",
+      "dining": "kitchen-dining",
+      "bedroom": "master-suites",
+      "suites": "master-suites",
+      "master-suite": "master-suites",
+      "landscape": "outdoor-living",
+      "terrace": "outdoor-living",
+      "pool": "outdoor-living",
+      "patio": "outdoor-living",
+      "materials": "material-curation",
+      "detailing": "material-curation"
     };
 
-    // â”€â”€ Open Individual Service Detail View â”€â”€
+    // ═════════════════════════════════════════════════════════════════════════
+    // CINEMATIC INTERACTIVE SERVICE HERO ENGINE (8 VERIFIED DISCIPLINES)
+    // ═════════════════════════════════════════════════════════════════════════
+    const HERO_SERVICES_DATA = [
+      {
+        index: 0,
+        num: "01",
+        category: "ARCHITECTURE",
+        title: "Architectural Planning & Facades",
+        tagline: "Master-Planned Residences & Contemporary Facades",
+        desc: "Bespoke villa planning, contemporary cantilever geometry, thermal envelope engineering, and contextual site orientation crafted for generational longevity.",
+        image: "nam_luxury_residence_exterior.jpg",
+        slug: "architectural-design"
+      },
+      {
+        index: 1,
+        num: "02",
+        category: "INTERIOR DESIGN",
+        title: "Luxury Interior Architecture",
+        tagline: "Spatial Harmony, Monolithic Volumes & Light",
+        desc: "Monolithic travertine living halls, double-height volumes, Italian joinery, and curated ambient illumination tailored for elevated residential living.",
+        image: "nam_living_render.jpg",
+        slug: "interior-design"
+      },
+      {
+        index: 2,
+        num: "03",
+        category: "CIVIL EXECUTION",
+        title: "Turnkey Civil Contracting & Execution",
+        tagline: "From Bare RCC Ground to Turnkey Handover",
+        desc: "End-to-end structural construction, MEP engineering, and architectural craftsmanship managed with strict geometric tolerance under direct founder supervision.",
+        image: "nam_commercial_render.jpg",
+        slug: "turnkey-civil-execution"
+      },
+      {
+        index: 3,
+        num: "04",
+        category: "ACOUSTIC LUXURY",
+        title: "Acoustic Theatres & Private Cinemas",
+        tagline: "Dolby Atmos Precision & Cinematic Immersion",
+        desc: "Certified THX and Dolby Atmos 9.4.4 private screening rooms featuring acoustic isolation floating walls, custom acoustic fabrics, and bespoke cinema seating.",
+        image: "nam_cinema_theatre.jpg",
+        slug: "acoustic-theatre-design"
+      },
+      {
+        index: 4,
+        num: "05",
+        category: "CULINARY DESIGN",
+        title: "Chef's Kitchen & Dining Architecture",
+        tagline: "Sculptural Marble Islands & Gourmet Joinery",
+        desc: "Ergonomic culinary workspaces, book-matched Italian marble, custom concealed appliances, and seamless social dining spaces built for culinary passion.",
+        image: "nam_dining_interior.jpg",
+        slug: "kitchen-dining"
+      },
+      {
+        index: 5,
+        num: "06",
+        category: "PRIVATE SUITES",
+        title: "Bespoke Master Suites & Spa Bathrooms",
+        tagline: "Sanctuary Living, Walk-in Dressing & Hydrotherapy",
+        desc: "Private master retreats featuring integrated dressing suites, fluted acoustic panelling, concealed climate control, and spa-grade travertine wet rooms.",
+        image: "nam_bedroom_render.jpg",
+        slug: "master-suites"
+      },
+      {
+        index: 6,
+        num: "07",
+        category: "OUTDOOR LIVING",
+        title: "Terrace, Pool & Outdoor Living Design",
+        tagline: "Sunken Lounges, Water Reflections & Canopies",
+        desc: "Cantilevered concrete canopies, integrated water reflection features, outdoor fire pits, and drought-tolerant sculptural landscaping blending indoor and outdoor living.",
+        image: "nam_landscaping_patio.jpg",
+        slug: "outdoor-living"
+      },
+      {
+        index: 7,
+        num: "08",
+        category: "MATERIAL CRAFT",
+        title: "Architectural Detailing & Material Curation",
+        tagline: "Honed Travertine, Fluted Walnut & Brass Reveals",
+        desc: "Tactile material palettes, bespoke millwork joinery details, champagne brass inlays, and shadow-reveal junctions designed to architectural perfection.",
+        image: "nam_architectural_details.jpg",
+        slug: "material-curation"
+      }
+    ];
+
+    let currentHeroIndex = 0;
+    let heroAutoAdvanceTimer = null;
+
+    function selectHeroService(index, userInitiated = true) {
+      if (index < 0 || index >= HERO_SERVICES_DATA.length) return;
+      currentHeroIndex = index;
+      const data = HERO_SERVICES_DATA[index];
+
+      // 1. Crossfade Background Slides
+      const bgSlides = document.querySelectorAll('.hero-bg-slide');
+      bgSlides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      // 2. Smoothly Update Left Editorial Content
+      const titleEl = document.getElementById('heroServiceTitle');
+      const taglineEl = document.getElementById('heroServiceTagline');
+      const descEl = document.getElementById('heroServiceDesc');
+      const categoryBadge = document.getElementById('heroCategoryBadge');
+      const counterEl = document.getElementById('heroCounterActive');
+      const statusPill = document.getElementById('heroStatusPill');
+      const progressFill = document.getElementById('heroProgressFill');
+
+      if (titleEl && descEl) {
+        titleEl.style.opacity = '0';
+        titleEl.style.transform = 'translateY(6px)';
+        if (taglineEl) taglineEl.style.opacity = '0';
+        descEl.style.opacity = '0';
+
+        setTimeout(() => {
+          titleEl.textContent = data.title;
+          if (taglineEl) taglineEl.textContent = data.tagline;
+          descEl.textContent = data.desc;
+          if (categoryBadge) categoryBadge.textContent = data.category;
+          if (counterEl) counterEl.textContent = data.num;
+          if (statusPill) statusPill.textContent = `${data.num} / 08`;
+
+          titleEl.style.opacity = '1';
+          titleEl.style.transform = 'translateY(0)';
+          if (taglineEl) taglineEl.style.opacity = '1';
+          descEl.style.opacity = '1';
+        }, 160);
+      }
+
+      // 3. Update Progress Bar Fill
+      if (progressFill) {
+        const pct = ((index + 1) / HERO_SERVICES_DATA.length) * 100;
+        progressFill.style.width = `${pct}%`;
+      }
+
+      // 4. Update Active Card in Carousel Track
+      const cards = document.querySelectorAll('.hero-carousel-card');
+      cards.forEach((card, idx) => {
+        if (idx === index) {
+          card.classList.add('active');
+          const viewport = document.getElementById('heroCarouselViewport');
+          if (viewport) {
+            const cardLeft = card.offsetLeft;
+            const cardWidth = card.offsetWidth;
+            const viewportWidth = viewport.offsetWidth;
+            const scrollTarget = cardLeft - (viewportWidth / 2) + (cardWidth / 2);
+            viewport.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+          }
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      // Reset auto-advance timer if user-initiated
+      if (userInitiated) {
+        restartHeroAutoTimer();
+      }
+    }
+
+    function nextHeroService() {
+      const nextIdx = (currentHeroIndex + 1) % HERO_SERVICES_DATA.length;
+      selectHeroService(nextIdx);
+    }
+
+    function prevHeroService() {
+      const prevIdx = (currentHeroIndex - 1 + HERO_SERVICES_DATA.length) % HERO_SERVICES_DATA.length;
+      selectHeroService(prevIdx);
+    }
+
+    function handleHeroPrimaryAction() {
+      const activeData = HERO_SERVICES_DATA[currentHeroIndex];
+      if (activeData && activeData.slug) {
+        openService(activeData.slug);
+      }
+    }
+
+    function restartHeroAutoTimer() {
+      if (heroAutoAdvanceTimer) clearInterval(heroAutoAdvanceTimer);
+      heroAutoAdvanceTimer = setInterval(() => {
+        const nextIdx = (currentHeroIndex + 1) % HERO_SERVICES_DATA.length;
+        selectHeroService(nextIdx, false);
+      }, 7500);
+    }
+
+    // ── Open Individual Service Detail View ──
     function openService(rawSlug, pushHistory = true) {
       let slug = SERVICE_ALIASES[rawSlug] || rawSlug;
       const data = SERVICES_DATABASE[slug] || SERVICES_DATABASE["architectural-design"];
@@ -1641,7 +2560,7 @@
           <div class="catalog-card-body">
             <h3 class="catalog-card-title">${proj.title}</h3>
             <p class="catalog-card-desc"><i class="fa-solid fa-location-dot" style="color: var(--svc-accent-gold); margin-right: 4px;"></i> ${proj.location}</p>
-            <span class="catalog-card-link">View Portfolio Project â†—</span>
+            <span class="catalog-card-link">View Portfolio Project ↗</span>
           </div>
         `;
         relatedContainer.appendChild(card);
@@ -1661,7 +2580,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // â”€â”€ Close Detail View & Return to Services Showcase â”€â”€
+    // ── Close Detail View & Return to Services Showcase ──
     function closeServiceDetail(pushHistory = true) {
       document.getElementById('serviceDetailView').style.display = 'none';
       document.getElementById('servicesShowcaseView').style.display = 'block';
@@ -1675,7 +2594,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // â”€â”€ Catalog Scroll Functionality â”€â”€
+    // ── Catalog Scroll Functionality ──
     function scrollCatalog(direction) {
       const container = document.querySelector('.catalog-grid');
       if (container) {
@@ -1683,10 +2602,9 @@
       }
     }
 
-    // â”€â”€ Handle Browser Back / Forward Buttons â”€â”€
+    // ── Handle Browser Back / Forward Buttons ──
     window.addEventListener('popstate', (e) => {
       const urlParams = new URLSearchParams(window.location.search);
-      let serviceParam = 'turnkey-civil-execution';
       const serviceParam = urlParams.get('service');
       if (serviceParam && (SERVICES_DATABASE[serviceParam] || SERVICE_ALIASES[serviceParam])) {
         openService(serviceParam, false);
@@ -1695,14 +2613,56 @@
       }
     });
 
-    // â”€â”€ Initial Route Dispatcher â”€â”€
+    // ── Initial Route Dispatcher, Keyboard & Touch Setup ──
     document.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let serviceParam = 'turnkey-civil-execution';
-      const serviceParam = urlParams.get('service');
-      if (serviceParam) {
-        openService(serviceParam, false);
+      // 1. Initial service query param check
+      openService('turnkey-civil-execution', false);
+
+      // 2. Setup Touch Swipe Listeners on Hero Carousel Viewport
+      const viewport = document.getElementById('heroCarouselViewport');
+      const heroContainer = document.getElementById('cinematicServiceHero');
+
+      if (viewport) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        viewport.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              nextHeroService();
+            } else {
+              prevHeroService();
+            }
+          }
+        }, { passive: true });
+
+        // Hover pause
+        heroContainer?.addEventListener('mouseenter', () => {
+          if (heroAutoAdvanceTimer) clearInterval(heroAutoAdvanceTimer);
+        });
+        heroContainer?.addEventListener('mouseleave', () => {
+          restartHeroAutoTimer();
+        });
       }
+
+      // 3. Keyboard Arrow Keys Navigation
+      window.addEventListener('keydown', (e) => {
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        if (e.key === 'ArrowRight') {
+          nextHeroService();
+        } else if (e.key === 'ArrowLeft') {
+          prevHeroService();
+        }
+      });
+
+      // 4. Start auto advance timer
+      restartHeroAutoTimer();
     });
   </script>
 
