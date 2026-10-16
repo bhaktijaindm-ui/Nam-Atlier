@@ -116,8 +116,74 @@
   </url>
   <url>
     <loc>https://nam-atlier.vercel.app/blog</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/spatial-harmony-luxury-interior-architecture</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/monolithic-travertine-limestone-villa-facades</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/acoustic-theatres-private-cinema-architecture</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/selecting-statuario-vs-travertine-marble</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/zero-tolerance-civil-engineering-rcc-shells</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/raytracing-sunlight-spatial-light-synthesis</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/floating-cantilever-staircases-structural-physics</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/culinary-architecture-german-hardware-concealed-joinery</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/biophilic-courtyards-seamless-indoor-outdoor-living</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/master-suite-sanctuaries-lighting-acoustic-comfort</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nam-atlier.vercel.app/blog/tactile-craftsmanship-brass-inlays-honed-limestone</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

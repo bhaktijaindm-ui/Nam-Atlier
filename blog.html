@@ -3,598 +3,1794 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Journal &amp; Architectural Insights — NAM Atelier</title>
-  <meta name="description" content="Architectural essays, 3D interior design guides, civil engineering methodologies, and material selection insights by Udhay Seth & Mudita D Seth." />
+  <title>Architecture &amp; Interior Design Journal | NAM Atelier</title>
+  <meta name="description" content="Explore architectural essays, 3D interior design guides, civil engineering methodologies, and material selection insights by Udhay Seth & Mudita D Seth." />
+  <link rel="canonical" href="https://nam-atlier.vercel.app/blog" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Architecture &amp; Interior Design Journal | NAM Atelier" />
+  <meta property="og:description" content="Thoughtful architectural essays, 3D interior design guides, civil engineering methodologies, and material curation insights." />
+  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_blog_featured_hero.jpg" />
+  <meta property="og:url" content="https://nam-atlier.vercel.app/blog" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Cormorant Garamond, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons (Asynchronous non-blocking) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  
+  <!-- Global & Component Styles -->
+  <link rel="stylesheet" href="styles.css?v=3.2" />
 
-  <link rel="stylesheet" href="styles.css?v=3.1" />
+  <!-- Structured Data: Blog & BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "NAM Atelier Journal & Architectural Insights",
+    "description": "Architectural essays, 3D interior design guides, civil engineering methodologies, and material selection insights.",
+    "url": "https://nam-atlier.vercel.app/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NAM Atelier",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nam-atlier.vercel.app/nam_logo_white.png"
+      }
+    }
+  }
+  </script>
 
   <style>
-    .blog-hero {
-      padding: 9rem 2rem 5rem;
-      background: linear-gradient(180deg, var(--bg-sand) 0%, var(--bg-alabaster) 100%);
-      text-align: center;
+    /* ==========================================================================
+       NAM ATELIER — EDITORIAL MAGAZINE DESIGN SYSTEM (BLACK THEME REVERSAL)
+       Layout blueprint inspired by reference image, inverted to architectural black.
+       ========================================================================== */
+
+    :root {
+      --blog-bg: #060606;
+      --blog-panel: #0E0E0E;
+      --blog-panel-elevated: #141414;
+      --blog-card-hover: #181818;
+      --blog-border: rgba(255, 255, 255, 0.1);
+      --blog-border-hover: rgba(198, 173, 133, 0.45);
+      --blog-text-head: #FFFFFF;
+      --blog-text-body: #C2C2BD;
+      --blog-text-muted: #8E8E89;
+      --blog-gold: #C6AD85;
+      --blog-gold-light: rgba(198, 173, 133, 0.14);
+      --blog-radius-lg: 22px;
+      --blog-radius-md: 16px;
+      --blog-radius-sm: 10px;
+      --blog-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    body {
+      background-color: var(--blog-bg);
+      color: var(--blog-text-body);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    /* ── MAIN CONTAINER WRAPPER ── */
+    .blog-magazine-wrapper {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem 4rem;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .blog-magazine-wrapper {
+        padding: 4.2rem 1rem 3rem;
+      }
+    }
+
+    /* ── SECTION 1: LARGE FEATURED HERO PANEL ── */
+    .blog-hero-showcase {
+      position: relative;
+      background: var(--blog-panel);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--blog-shadow);
+      margin-bottom: 3.5rem;
+      box-sizing: border-box;
+    }
+
+    .hero-slide-item {
+      display: none;
+      grid-template-columns: 1.05fr 1.15fr;
+      align-items: center;
+      min-height: 480px;
       position: relative;
     }
 
-    .blog-hero-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--accent-terracotta);
-      margin-bottom: 1rem;
-    }
-
-    .blog-hero-title {
-      font-family: var(--font-serif);
-      font-size: 3.6rem;
-      font-weight: 500;
-      color: var(--text-charcoal);
-      margin-bottom: 1.25rem;
-      line-height: 1.15;
-    }
-
-    .blog-hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 3rem;
-      line-height: 1.7;
-    }
-
-    /* Filter Bar */
-    .blog-filters {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
-    }
-
-    .blog-filter-btn {
-      padding: 0.65rem 1.4rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-dark);
-      border-radius: 30px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .blog-filter-btn:hover, .blog-filter-btn.active {
-      background: #1f1f1f;
-      color: var(--accent-gold);
-      border-color: var(--accent-gold);
-      box-shadow: 0 4px 14px rgba(198, 173, 133, 0.2);
-    }
-
-    /* Blog Grid */
-    .blog-grid-section {
-      max-width: 1320px;
-      margin: 0 auto 6rem;
-      padding: 0 2rem;
-    }
-
-    .blog-grid {
+    .hero-slide-item.active {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
+      animation: heroFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @media (max-width: 1024px) {
-      .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 640px) {
-      .blog-grid {
+    @media (max-width: 991px) {
+      .hero-slide-item {
         grid-template-columns: 1fr;
+        min-height: auto;
       }
     }
 
-    .blog-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dark);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition-smooth);
+    /* Left Editorial Content Area */
+    .hero-slide-content {
+      padding: clamp(2rem, 4vw, 3.5rem);
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .hero-tag-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-eyebrow-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blog-gold);
+      background: var(--blog-gold-light);
+      border: 1px solid rgba(198, 173, 133, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .hero-category-meta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blog-text-muted);
+    }
+
+    .hero-headline-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.4vw, 3.3rem);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--blog-text-head);
+      margin: 0 0 1.25rem;
+      transition: color 0.3s ease;
       cursor: pointer;
     }
 
-    .blog-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-elevated);
-      border-color: var(--accent-gold);
+    .hero-headline-title:hover {
+      color: var(--blog-gold);
     }
 
-    .blog-card-img-wrapper {
+    .hero-narrative-excerpt {
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: var(--blog-text-body);
+      margin: 0 0 2rem;
+      max-width: 540px;
+    }
+
+    .hero-action-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.8rem 1.75rem;
+      background: #FFFFFF;
+      color: #050505;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid #FFFFFF;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-hero-cta:hover {
+      background: var(--blog-gold);
+      border-color: var(--blog-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(198, 173, 133, 0.3);
+    }
+
+    .btn-hero-cta i {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-hero-cta:hover i {
+      transform: translate(2px, -2px);
+    }
+
+    .hero-meta-details {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--blog-text-muted);
+    }
+
+    .hero-meta-details span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Right Media Area */
+    .hero-slide-media {
       position: relative;
-      height: 240px;
+      height: 100%;
+      min-height: 480px;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .blog-card-img {
+    @media (max-width: 991px) {
+      .hero-slide-media {
+        min-height: 320px;
+        height: 320px;
+        order: -1;
+      }
+    }
+
+    .hero-slide-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .blog-card:hover .blog-card-img {
-      transform: scale(1.08);
+    .hero-slide-media:hover .hero-slide-img {
+      transform: scale(1.04);
     }
 
-    .blog-category-badge {
+    .hero-media-gradient-left {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(30, 26, 22, 0.75);
-      backdrop-filter: blur(10px);
-      color: var(--accent-gold);
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(200, 169, 126, 0.4);
+      inset: 0;
+      background: linear-gradient(90deg, var(--blog-panel) 0%, rgba(14, 14, 14, 0.6) 25%, transparent 60%);
+      pointer-events: none;
+      z-index: 2;
     }
 
-    .blog-card-body {
-      padding: 2rem 1.75rem 1.75rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+    @media (max-width: 991px) {
+      .hero-media-gradient-left {
+        background: linear-gradient(0deg, var(--blog-panel) 0%, rgba(14, 14, 14, 0.4) 40%, transparent 100%);
+      }
     }
 
-    .blog-meta {
+    /* Hero Navigation Controls (Left Bottom) */
+    .hero-controls-bar {
+      position: absolute;
+      bottom: 1.75rem;
+      left: clamp(2rem, 4vw, 3.5rem);
       display: flex;
       align-items: center;
-      gap: 1rem;
-      font-size: 0.78rem;
-      color: var(--text-light);
-      margin-bottom: 0.85rem;
+      gap: 1.5rem;
+      z-index: 5;
     }
 
-    .blog-meta i {
-      color: var(--accent-terracotta);
+    @media (max-width: 991px) {
+      .hero-controls-bar {
+        position: static;
+        padding: 0 1.5rem 1.5rem;
+        justify-content: space-between;
+      }
     }
 
-    .blog-title {
-      font-family: var(--font-serif);
-      font-size: 1.65rem;
-      font-weight: 500;
-      line-height: 1.25;
-      color: var(--text-charcoal);
-      margin-bottom: 0.85rem;
-    }
-
-    .blog-excerpt {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .blog-author-row {
+    .hero-arrow-btns {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border-light);
-      padding-top: 1rem;
-      margin-top: auto;
+      gap: 0.5rem;
     }
 
-    .author-info {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .author-avatar {
-      width: 32px;
-      height: 32px;
+    .hero-nav-arrow {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: var(--accent-sage);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .author-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-charcoal);
-    }
-
-    .read-more-link {
+      cursor: pointer;
       font-size: 0.8rem;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-nav-arrow:hover {
+      background: var(--blog-gold);
+      color: #050505;
+      border-color: var(--blog-gold);
+      transform: scale(1.06);
+    }
+
+    .hero-dots-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-dot.active {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--blog-gold);
+    }
+
+    /* ═════════════════════════════════════════════════════════════════════════
+       MAIN 2-COLUMN LAYOUT: 70% LEFT MAIN CONTENT & 30% RIGHT SIDEBAR
+       ═════════════════════════════════════════════════════════════════════════ */
+    .blog-main-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .blog-main-layout {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    /* ── LEFT COLUMN SECTIONS ── */
+    .blog-primary-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Section Header Row */
+    .section-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.3vw, 2.1rem);
+      font-weight: 600;
+      color: var(--blog-text-head);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-link-action {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--blog-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .section-link-action:hover {
+      color: #FFFFFF;
+      transform: translateX(3px);
+    }
+
+    /* ── 4-CARD LATEST POSTS GRID (ROW A) ── */
+    .latest-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 1250px) {
+      .latest-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .latest-posts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blog-article-card {
+      background: var(--blog-panel);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .blog-article-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--blog-border-hover);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(198, 173, 133, 0.12);
+      background: var(--blog-card-hover);
+    }
+
+    .card-media-wrapper {
+      position: relative;
+      width: 100%;
+      height: 185px;
+      overflow: hidden;
+      background: #111111;
+    }
+
+    .card-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .blog-article-card:hover .card-thumb-img {
+      transform: scale(1.08);
+    }
+
+    .card-category-badge {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      color: var(--accent-sage);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      background: rgba(14, 14, 14, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3px 8px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .card-body-content {
+      padding: 1.15rem 1.15rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-post-title {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--blog-text-head);
+      margin: 0 0 0.55rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.25s ease;
+    }
+
+    .blog-article-card:hover .card-post-title {
+      color: var(--blog-gold);
+    }
+
+    .card-excerpt-text {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--blog-text-muted);
+      margin: 0 0 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .card-footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--blog-text-muted);
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: auto;
+    }
+
+    .card-meta-date {
       display: flex;
       align-items: center;
       gap: 0.35rem;
     }
 
-    /* Newsletter Box */
-    .newsletter-section {
-      background: #191612;
-      color: #FFFFFF;
-      padding: 5rem 2rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .newsletter-box {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .newsletter-title {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      color: var(--text-primary-serif);
-      margin-bottom: 1rem;
-    }
-
-    .newsletter-desc {
-      font-size: 0.98rem;
-      color: var(--text-secondary-body);
-      margin-bottom: 2rem;
-    }
-
-    .newsletter-form {
+    .card-meta-time {
       display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--blog-gold);
+    }
+
+    /* ── ROW B: 2 EQUAL SUB-COLUMNS (CATEGORIES & TRENDING) ── */
+    .row-split-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .row-split-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .editorial-subpanel-card {
+      background: var(--blog-panel);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-md);
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    /* Category Tiles Grid */
+    .category-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 0.75rem;
-      max-width: 520px;
-      margin: 0 auto;
+      margin-top: 0.5rem;
     }
 
-    .newsletter-input {
-      flex-grow: 1;
-      padding: 0.85rem 1.25rem;
-      border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      color: #FFFFFF;
-      outline: none;
-      font-size: 0.9rem;
+    @media (max-width: 600px) {
+      .category-tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .newsletter-input::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+    .category-tile-btn {
+      background: var(--blog-panel-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--blog-radius-sm);
+      padding: 1.15rem 0.5rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .newsletter-btn {
-      background: var(--accent-gold);
-      color: #1E1E1E;
-      border: none;
-      padding: 0.85rem 1.75rem;
-      border-radius: 30px;
+    .category-tile-btn:hover,
+    .category-tile-btn.active {
+      background: #1B1B1B;
+      border-color: var(--blog-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .cat-icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(198, 173, 133, 0.1);
+      border: 1px solid rgba(198, 173, 133, 0.3);
+      color: var(--blog-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      transition: transform 0.3s ease;
+    }
+
+    .category-tile-btn:hover .cat-icon-circle {
+      transform: scale(1.1);
+      background: var(--blog-gold);
+      color: #050505;
+    }
+
+    .cat-name-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blog-text-head);
+      line-height: 1.2;
+    }
+
+    .cat-count-subtext {
+      font-size: 0.65rem;
+      color: var(--blog-text-muted);
+    }
+
+    /* Numbered Trending List */
+    .trending-articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .trending-list-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.55rem 0.65rem;
+      border-radius: var(--blog-radius-sm);
+      background: var(--blog-panel-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .trending-list-item:hover {
+      background: #1A1A1A;
+      border-color: rgba(198, 173, 133, 0.4);
+      transform: translateX(4px);
+    }
+
+    .trending-number-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(198, 173, 133, 0.15);
+      border: 1px solid var(--blog-gold);
+      color: var(--blog-gold);
+      font-family: var(--font-serif);
       font-size: 0.82rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    .newsletter-btn:hover {
-      background: #FFFFFF;
+    .trending-item-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--blog-text-head);
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
     }
 
-    /* Modal Article Reader */
-    .article-modal-content {
-      max-width: 850px;
-      width: 90vw;
-      background: #FFFFFF;
-      border-radius: 20px;
-      padding: 3rem 2.5rem;
-      max-height: 85vh;
-      overflow-y: auto;
-      color: var(--text-charcoal);
+    .trending-list-item:hover .trending-item-title {
+      color: var(--blog-gold);
     }
 
-    .modal-article-header {
-      margin-bottom: 2rem;
+    /* ── ROW C: 2 SUB-COLUMNS (NEWSLETTER & CLIENT PERSPECTIVES) ── */
+    .newsletter-box-card {
+      background: linear-gradient(135deg, #121212 0%, #0E0E0E 100%);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .modal-article-tag {
+    .newsletter-card-heading {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0 0 0.5rem;
+    }
+
+    .newsletter-card-subtext {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--blog-text-muted);
+      margin: 0 0 1.25rem;
+    }
+
+    .newsletter-input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-email-field {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color 0.25s ease;
+    }
+
+    .newsletter-email-field:focus {
+      border-color: var(--blog-gold);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .newsletter-submit-btn {
+      padding: 0.75rem 1.35rem;
+      border-radius: 999px;
+      background: var(--blog-gold);
+      color: #050505;
       font-size: 0.75rem;
       font-weight: 700;
-      color: var(--accent-terracotta);
+      letter-spacing: 1px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.5rem;
-      display: block;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
-    .modal-article-title {
+    .newsletter-submit-btn:hover {
+      background: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Client Testimonial / Studio Perspective Panel */
+    .testimonial-box-card {
+      background: var(--blog-panel);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-icon-mark {
       font-family: var(--font-serif);
       font-size: 2.8rem;
-      line-height: 1.15;
-      color: var(--text-charcoal);
-      margin-bottom: 1rem;
+      line-height: 1;
+      color: var(--blog-gold);
+      opacity: 0.6;
+      margin-bottom: 0.25rem;
     }
 
-    .modal-article-img {
+    .testimonial-quote-text {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: #E2E2DE;
+      margin: 0 0 1.25rem;
+    }
+
+    .testimonial-client-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .client-avatar-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1D1D1D;
+      border: 1px solid var(--blog-gold);
+      color: var(--blog-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .client-name-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .client-project-sub {
+      font-size: 0.72rem;
+      color: var(--blog-text-muted);
+      margin: 0;
+    }
+
+    /* ═════════════════════════════════════════════════════════════════════════
+       RIGHT COLUMN: SIDEBAR WIDGETS
+       ═════════════════════════════════════════════════════════════════════════ */
+    .blog-sidebar-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-widget-card {
+      background: var(--blog-panel);
+      border: 1px solid var(--blog-border);
+      border-radius: var(--blog-radius-md);
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    /* 1. Article Search Widget */
+    .search-widget-form {
+      position: relative;
       width: 100%;
-      height: 380px;
+    }
+
+    .search-input-field {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 1.15rem;
+      background: var(--blog-panel-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      outline: none;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .search-input-field:focus {
+      border-color: var(--blog-gold);
+      background: #191919;
+      box-shadow: 0 0 15px rgba(198, 173, 133, 0.15);
+    }
+
+    .search-submit-icon {
+      position: absolute;
+      right: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blog-text-muted);
+      font-size: 0.82rem;
+      pointer-events: none;
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      right: 2.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blog-text-muted);
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* 2. Popular Posts Widget */
+    .popular-posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .popular-post-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .popular-post-item:hover {
+      transform: translateX(3px);
+    }
+
+    .popular-thumb-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .popular-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .popular-post-item:hover .popular-thumb-img {
+      transform: scale(1.1);
+    }
+
+    .popular-content-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .popular-item-title {
+      font-family: var(--font-serif);
+      font-size: 0.96rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--blog-text-head);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.25s ease;
+    }
+
+    .popular-post-item:hover .popular-item-title {
+      color: var(--blog-gold);
+    }
+
+    .popular-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.68rem;
+      color: var(--blog-text-muted);
+    }
+
+    /* 3. Studio Founders / Author Card */
+    .author-card-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .author-portrait-circle {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--blog-gold);
+      box-shadow: 0 0 20px rgba(198, 173, 133, 0.25);
+      margin-bottom: 1rem;
+      background: #111111;
+    }
+
+    .author-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-greeting-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0 0 0.25rem;
+    }
+
+    .author-tagline-sub {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--blog-gold);
+      margin-bottom: 0.85rem;
+    }
+
+    .author-bio-narrative {
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--blog-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .author-social-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .author-social-link {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      transition: all 0.25s ease;
+    }
+
+    .author-social-link:hover {
+      background: var(--blog-gold);
+      color: #050505;
+      border-color: var(--blog-gold);
+      transform: translateY(-2px);
+    }
+
+    /* 4. Instagram / Visual Inspiration Gallery */
+    .instagram-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.75rem;
+    }
+
+    .insta-thumb-box {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .insta-thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .insta-thumb-box:hover img {
+      transform: scale(1.12);
+    }
+
+    .insta-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .insta-thumb-box:hover .insta-hover-overlay {
+      opacity: 1;
+    }
+
+    /* ── ARTICLE READER MODAL (IN-PLACE POPUP) ── */
+    .article-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .article-modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .article-modal-card {
+      background: #0E0E0E;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--blog-radius-lg);
+      max-width: 860px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: clamp(1.75rem, 4vw, 3rem);
+      box-sizing: border-box;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-close-trigger {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.25s ease;
+      z-index: 10;
+    }
+
+    .modal-close-trigger:hover {
+      background: var(--blog-gold);
+      color: #050505;
+      border-color: var(--blog-gold);
+    }
+
+    .modal-reader-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blog-gold);
+      background: var(--blog-gold-light);
+      border: 1px solid rgba(198, 173, 133, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-reader-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.18;
+      margin: 0 0 1rem;
+    }
+
+    .modal-reader-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--blog-text-muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .modal-reader-img {
+      width: 100%;
+      height: clamp(260px, 38vw, 420px);
       object-fit: cover;
       border-radius: 14px;
       margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .modal-article-body {
-      font-size: 1.05rem;
+    .modal-reader-body {
+      font-size: 1.02rem;
       line-height: 1.8;
-      color: var(--text-muted);
+      color: #D2D2D0;
     }
 
-    .modal-article-body p {
+    .modal-reader-body p {
       margin-bottom: 1.5rem;
+    }
+
+    .modal-reader-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: #FFFFFF;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .modal-reader-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
     }
   </style>
 </head>
 <body>
 
-  <div class="site-wrapper">
+  <!-- BACKGROUND BLUEPRINT SKETCH OVERLAY PATTERN (PERSISTENT & SUBTLE) -->
+  <div class="blueprint-bg-canvas" aria-hidden="true">
+    <svg class="blueprint-svg-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(30, 30, 30, 0.03)" stroke-width="1" />
+          <path d="M 30 0 L 30 60 M 0 30 L 60 30" fill="none" stroke="rgba(30, 30, 30, 0.015)" stroke-width="0.5" stroke-dasharray="2,2" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gridPattern)" />
+    </svg>
+  </div>
 
-    <!-- ═════════════════════════════════════════════════════════════════════════
-         SHARED HEADER (SINGLE SOURCE OF TRUTH)
-         Header & mobile drawer are loaded dynamically from: components/header.html
-         Any edit made to components/header.html automatically updates EVERY page!
-         ═════════════════════════════════════════════════════════════════════════ -->
-    <div id="header-placeholder"></div>
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SHARED HEADER (SINGLE SOURCE OF TRUTH)
+       Header & mobile drawer are loaded dynamically from: components/header.html
+       Any edit made to components/header.html automatically updates EVERY page!
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <div id="header-placeholder"></div>
 
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       MAIN EDITORIAL BLOG CONTAINER
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <main class="blog-magazine-wrapper" id="mainContent">
 
-    <!-- HERO HEADER -->
-    <section class="blog-hero">
-      <span class="blog-hero-tag">ARCHITECTURAL ESSAYS &amp; MATERIAL ESSENCE</span>
-      <h1 class="blog-hero-title">Journal &amp; Design Insights</h1>
-      <p class="blog-hero-subtitle">
-        Exploring spatial light, material synthesis, zero-tolerance civil masonry, and 3D architectural rendering methodologies by Udhay Seth &amp; Mudita D Seth.
-      </p>
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SECTION 1: LARGE FEATURED HERO PANEL (INTERACTIVE 3-SLIDE CAROUSEL)
+         Matching Blogify reference layout, styled in architectural luxury black
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="blog-hero-showcase" id="blogHeroShowcase" aria-label="Featured Studio Articles">
 
-      <!-- Category Filter Pills -->
-      <div class="blog-filters">
-        <button class="blog-filter-btn active" data-filter="all">All Insights</button>
-        <button class="blog-filter-btn" data-filter="material">Material Selection</button>
-        <button class="blog-filter-btn" data-filter="civil">Civil Engineering</button>
-        <button class="blog-filter-btn" data-filter="render">3D Visualization</button>
-        <button class="blog-filter-btn" data-filter="lighting">Lighting &amp; Acoustics</button>
-      </div>
-    </section>
-
-    <!-- BLOG GRID -->
-    <section class="blog-grid-section">
-      <div class="blog-grid">
-
-        <!-- Article 1 -->
-        <article class="blog-card" data-category="material" onclick="openBlogArticle(0)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">Material Selection</span>
-            <img src="nam_kitchen_render.jpg" alt="Statuario Marble & Travertine" class="blog-card-img" loading="lazy" decoding="async" />
+      <!-- Slide 01: Spatial Harmony & Luxury Living (Default) -->
+      <article class="hero-slide-item active" data-slide="0">
+        <div class="hero-slide-content">
+          <div class="hero-tag-wrap">
+            <span class="hero-eyebrow-pill">FEATURED ARTICLE</span>
+            <span class="hero-category-meta">INTERIOR ARCHITECTURE</span>
           </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Sept 28, 2026</span>
-              <span>•</span>
-              <span><i class="fa-regular fa-clock"></i> 5 min read</span>
-            </div>
-            <h2 class="blog-title">Selecting Statuario vs. Travertine: Marble Curation for Villa Porticos</h2>
-            <p class="blog-excerpt">
-              A comprehensive study on vein continuity, porosity treatments, and bookmatched stone sourcing for double-height entrances.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar">MDS</div>
-                <span class="author-name">Mudita D Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="blog-card" data-category="civil" onclick="openBlogArticle(1)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">Civil Engineering</span>
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zero-Tolerance Masonry" class="blog-card-img" loading="lazy" decoding="async" />
-          </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Sept 22, 2026</span>
-              <span>•</span>
-              <span><i class="fa-regular fa-clock"></i> 7 min read</span>
-            </div>
-            <h2 class="blog-title">Zero-Tolerance Civil Engineering: Translating 3D Renders onto RCC Shells</h2>
-            <p class="blog-excerpt">
-              How structural laser alignment and precise MEP conduit planning eliminate costly site variations during concrete pouring.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
-                <span class="author-name">Udhay Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="blog-card" data-category="lighting" onclick="openBlogArticle(2)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">Lighting &amp; Acoustics</span>
-            <img src="nam_bedroom_render.jpg" alt="Ambient Cove Lighting" class="blog-card-img" loading="lazy" decoding="async" />
-          </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Sept 15, 2026</span>
-              <span>•</span>
-              <span><i class="fa-regular fa-clock"></i> 4 min read</span>
-            </div>
-            <h2 class="blog-title">Acoustic Cinema Isolation in Luxury Residential Palaces</h2>
-            <p class="blog-excerpt">
-              Engineering zero-vibration subwoofers and floating decoupled walls for Dolby Atmos home theater suites.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar">MDS</div>
-                <span class="author-name">Mudita D Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 4 -->
-        <article class="blog-card" data-category="render" onclick="openBlogArticle(3)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">3D Visualization</span>
-            <img src="nam_living_render.jpg" alt="Photorealistic 3D Renders" class="blog-card-img" loading="lazy" decoding="async" />
-          </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Sept 04, 2026</span>
+          <h1 class="hero-headline-title" onclick="openBlogArticleModal('spatial-harmony-luxury-interior-architecture')">
+            The Art of Creating Timeless Interior Spaces: Spatial Harmony &amp; Light
+          </h1>
+          <p class="hero-narrative-excerpt">
+            Explore how thoughtful spatial planning, monolithic natural stone, fluted walnut joinery, and curated ambient illumination transform modern residential living into timeless sanctuaries.
+          </p>
+          <div class="hero-action-row">
+            <a href="blog/spatial-harmony-luxury-interior-architecture" class="btn-hero-cta" onclick="event.preventDefault(); openBlogArticleModal('spatial-harmony-luxury-interior-architecture');">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <div class="hero-meta-details">
+              <span><i class="fa-regular fa-calendar"></i> Oct 15, 2026</span>
               <span>•</span>
               <span><i class="fa-regular fa-clock"></i> 6 min read</span>
             </div>
-            <h2 class="blog-title">Raytracing Sunlight &amp; Spatial Light Synthesis in 4K Renders</h2>
-            <p class="blog-excerpt">
-              Calculating true sun angles across Ludhiana and Amritsar to simulate natural light distribution throughout seasons.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar">MDS</div>
-                <span class="author-name">Mudita D Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <div class="hero-slide-media" onclick="openBlogArticleModal('spatial-harmony-luxury-interior-architecture')">
+          <img src="nam_blog_featured_hero.jpg" alt="Contemporary luxury living room with floor-to-ceiling glass looking onto a lush courtyard garden" class="hero-slide-img" loading="eager" />
+          <div class="hero-media-gradient-left"></div>
+        </div>
+      </article>
+
+      <!-- Slide 02: Monolithic Villa Facades -->
+      <article class="hero-slide-item" data-slide="1">
+        <div class="hero-slide-content">
+          <div class="hero-tag-wrap">
+            <span class="hero-eyebrow-pill">FEATURED ARTICLE</span>
+            <span class="hero-category-meta">FACADE ARCHITECTURE</span>
+          </div>
+          <h2 class="hero-headline-title" onclick="openBlogArticleModal('monolithic-travertine-limestone-villa-facades')">
+            Monolithic Volumes: Integrating Travertine &amp; Steel in Villa Facades
+          </h2>
+          <p class="hero-narrative-excerpt">
+            An engineering perspective on cantilevered overhangs, passive thermal mass management, and concealed structural steel anchorages in high-end North Indian residential estates.
+          </p>
+          <div class="hero-action-row">
+            <a href="blog/monolithic-travertine-limestone-villa-facades" class="btn-hero-cta" onclick="event.preventDefault(); openBlogArticleModal('monolithic-travertine-limestone-villa-facades');">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <div class="hero-meta-details">
+              <span><i class="fa-regular fa-calendar"></i> Oct 10, 2026</span>
+              <span>•</span>
+              <span><i class="fa-regular fa-clock"></i> 7 min read</span>
             </div>
           </div>
-        </article>
+        </div>
+        <div class="hero-slide-media" onclick="openBlogArticleModal('monolithic-travertine-limestone-villa-facades')">
+          <img src="nam_luxury_residence_exterior.jpg" alt="Contemporary villa facade with geometric stone and glass" class="hero-slide-img" loading="lazy" />
+          <div class="hero-media-gradient-left"></div>
+        </div>
+      </article>
 
-        <!-- Article 5 -->
-        <article class="blog-card" data-category="material" onclick="openBlogArticle(4)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">Material Selection</span>
-            <img src="nam_commercial_render.jpg" alt="German Blum Hardware" class="blog-card-img" loading="lazy" decoding="async" />
+      <!-- Slide 03: Acoustic Theatres & Private Cinemas -->
+      <article class="hero-slide-item" data-slide="2">
+        <div class="hero-slide-content">
+          <div class="hero-tag-wrap">
+            <span class="hero-eyebrow-pill">FEATURED ARTICLE</span>
+            <span class="hero-category-meta">ACOUSTIC DESIGN</span>
           </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Aug 29, 2026</span>
+          <h2 class="hero-headline-title" onclick="openBlogArticleModal('acoustic-theatres-private-cinema-architecture')">
+            Decoupled Walls &amp; Zero Vibration: Designing Dolby Atmos Private Theatres
+          </h2>
+          <p class="hero-narrative-excerpt">
+            Balancing acoustic resonance, concealed bass traps, and architectural velvet finishes for ultra-luxury residential screening rooms without structural sound transmission.
+          </p>
+          <div class="hero-action-row">
+            <a href="blog/acoustic-theatres-private-cinema-architecture" class="btn-hero-cta" onclick="event.preventDefault(); openBlogArticleModal('acoustic-theatres-private-cinema-architecture');">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <div class="hero-meta-details">
+              <span><i class="fa-regular fa-calendar"></i> Oct 04, 2026</span>
               <span>•</span>
               <span><i class="fa-regular fa-clock"></i> 5 min read</span>
             </div>
-            <h2 class="blog-title">German Blum Hardware &amp; Custom Ergonomic Joinery Curation</h2>
-            <p class="blog-excerpt">
-              Designing soft-close motorized pocket doors and concealed storage for clutter-free luxury culinary kitchens.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
-                <span class="author-name">Udhay Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
           </div>
-        </article>
+        </div>
+        <div class="hero-slide-media" onclick="openBlogArticleModal('acoustic-theatres-private-cinema-architecture')">
+          <img src="nam_cinema_theatre.jpg" alt="Private acoustic cinema theatre with architectural lighting" class="hero-slide-img" loading="lazy" />
+          <div class="hero-media-gradient-left"></div>
+        </div>
+      </article>
 
-        <!-- Article 6 -->
-        <article class="blog-card" data-category="civil" onclick="openBlogArticle(5)">
-          <div class="blog-card-img-wrapper">
-            <span class="blog-category-badge">Civil Engineering</span>
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Cantilever Stairs Structural Engineering" class="blog-card-img" loading="lazy" decoding="async" />
-          </div>
-          <div class="blog-card-body">
-            <div class="blog-meta">
-              <span><i class="fa-regular fa-calendar"></i> Aug 18, 2026</span>
-              <span>•</span>
-              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
-            </div>
-            <h2 class="blog-title">Floating Cantilever Staircases: Load Calculations &amp; Steel Anchorage</h2>
-            <p class="blog-excerpt">
-              The physics behind floating wooden stair steps embedded directly into RCC spine walls without visible ground supports.
-            </p>
-            <div class="blog-author-row">
-              <div class="author-info">
-                <div class="author-avatar" style="background: var(--accent-ochre);">US</div>
-                <span class="author-name">Udhay Seth</span>
-              </div>
-              <span class="read-more-link">Read Essay <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- NEWSLETTER SECTION -->
-    <section class="newsletter-section">
-      <div class="newsletter-box">
-        <h2 class="newsletter-title">Subscribe to Studio Insights</h2>
-        <p class="newsletter-desc">Receive exclusive monthly architectural essays, material monographs, and 3D render breakdowns delivered to your inbox.</p>
-        <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-          <input type="email" required placeholder="Enter your email address..." class="newsletter-input" />
-          <button type="submit" class="newsletter-btn">Subscribe</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- ═════════════════════════════════════════════════════════════════════════
-         SHARED FOOTER (SINGLE SOURCE OF TRUTH)
-         Footer (directors, phones, emails, QR, copyright) is loaded dynamically
-         from: components/footer.html
-         Any edit made to components/footer.html automatically updates EVERY page!
-         ═════════════════════════════════════════════════════════════════════════ -->
-    <div id="footer-placeholder"></div>
-
-
-  </div>
-
-  <!-- ARTICLE READER MODAL -->
-  <div class="modal-overlay" id="blogArticleModal">
-    <div class="article-modal-content">
-      <button class="modal-close-btn" onclick="closeBlogArticle()">&times;</button>
-      <div class="modal-article-header">
-        <span class="modal-article-tag" id="articleModalCategory">Material Selection</span>
-        <h2 class="modal-article-title" id="articleModalTitle">Article Title</h2>
-        <div class="blog-meta" id="articleModalMeta">
-          <span>By Mudita D Seth</span> • <span>Sept 28, 2026</span> • <span>5 min read</span>
+      <!-- Carousel Navigation Controls -->
+      <div class="hero-controls-bar">
+        <div class="hero-arrow-btns">
+          <button class="hero-nav-arrow" onclick="prevHeroSlide()" aria-label="Previous Featured Slide">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button class="hero-nav-arrow" onclick="nextHeroSlide()" aria-label="Next Featured Slide">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="hero-dots-indicator" id="heroDotsWrap">
+          <span class="hero-dot active" onclick="goToHeroSlide(0)" aria-label="Go to slide 1"></span>
+          <span class="hero-dot" onclick="goToHeroSlide(1)" aria-label="Go to slide 2"></span>
+          <span class="hero-dot" onclick="goToHeroSlide(2)" aria-label="Go to slide 3"></span>
         </div>
       </div>
-      <img id="articleModalImg" src="nam_kitchen_render.jpg" alt="Article Cover" class="modal-article-img" />
-      <div class="modal-article-body" id="articleModalBody">
-        <p>Loading article content...</p>
+
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         MAIN 2-COLUMN LAYOUT: 70% MAIN CONTENT + 30% SIDEBAR
+         ───────────────────────────────────────────────────────────────────── -->
+    <div class="blog-main-layout">
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+           LEFT COLUMN: LATEST POSTS, CATEGORIES, TRENDING, NEWSLETTER, REVIEWS
+           ═══════════════════════════════════════════════════════════════════ -->
+      <div class="blog-primary-col">
+
+        <!-- ── ROW A: LATEST BLOG POSTS (4-CARD GRID) ── -->
+        <section class="latest-blog-section" aria-label="Latest Articles">
+          <div class="section-header-row">
+            <h2 class="section-title">Latest Articles</h2>
+            <a href="javascript:void(0)" class="section-link-action" onclick="filterByCategory('all')">
+              <span>View All</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="latest-posts-grid" id="latestPostsGrid">
+
+            <!-- Card 1: Statuario vs Travertine -->
+            <article class="blog-article-card" data-category="material" onclick="openBlogArticleModal('selecting-statuario-vs-travertine-marble')">
+              <div class="card-media-wrapper">
+                <span class="card-category-badge">MATERIALITY</span>
+                <img src="nam_kitchen_render.jpg" alt="Statuario Marble &amp; Travertine Curation" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-body-content">
+                <h3 class="card-post-title">Selecting Statuario vs. Travertine: Marble Curation for Porticos</h3>
+                <p class="card-excerpt-text">A study on vein continuity, porosity treatments, and bookmatched stone sourcing for grand double-height entrances.</p>
+                <div class="card-footer-meta">
+                  <span class="card-meta-date"><i class="fa-regular fa-calendar"></i> Sep 28, 2026</span>
+                  <span class="card-meta-time"><i class="fa-regular fa-clock"></i> 5m</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Zero Tolerance Civil Engineering -->
+            <article class="blog-article-card" data-category="civil" onclick="openBlogArticleModal('zero-tolerance-civil-engineering-rcc-shells')">
+              <div class="card-media-wrapper">
+                <span class="card-category-badge">CIVIL EXECUTION</span>
+                <img src="nam_commercial_render.jpg" alt="Zero-Tolerance RCC Civil Engineering" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-body-content">
+                <h3 class="card-post-title">Zero-Tolerance Civil Engineering: 3D BIM onto RCC Shells</h3>
+                <p class="card-excerpt-text">How structural laser alignment and precise MEP conduit planning eliminate costly site variations during concrete pouring.</p>
+                <div class="card-footer-meta">
+                  <span class="card-meta-date"><i class="fa-regular fa-calendar"></i> Sep 22, 2026</span>
+                  <span class="card-meta-time"><i class="fa-regular fa-clock"></i> 7m</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Raytracing Sunlight -->
+            <article class="blog-article-card" data-category="render" onclick="openBlogArticleModal('raytracing-sunlight-spatial-light-synthesis')">
+              <div class="card-media-wrapper">
+                <span class="card-category-badge">3D DIGITAL TWIN</span>
+                <img src="nam_living_render.jpg" alt="Raytracing Sunlight in 4K Renders" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-body-content">
+                <h3 class="card-post-title">Raytracing Sunlight: Spatial Light Synthesis in 4K Renders</h3>
+                <p class="card-excerpt-text">Simulating exact Punjab solar trajectories to evaluate daylight distribution, shadow lines, and evening cove illumination.</p>
+                <div class="card-footer-meta">
+                  <span class="card-meta-date"><i class="fa-regular fa-calendar"></i> Sep 14, 2026</span>
+                  <span class="card-meta-time"><i class="fa-regular fa-clock"></i> 6m</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Floating Cantilever Stairs -->
+            <article class="blog-article-card" data-category="civil" onclick="openBlogArticleModal('floating-cantilever-staircases-structural-physics')">
+              <div class="card-media-wrapper">
+                <span class="card-category-badge">STRUCTURAL STEEL</span>
+                <img src="nam_structural_framework.jpg" alt="Floating Cantilever Staircases" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-body-content">
+                <h3 class="card-post-title">Floating Cantilever Staircases: Physics &amp; Steel Anchorage</h3>
+                <p class="card-excerpt-text">The structural mechanics behind solid teak treads embedded directly into reinforced RCC spine walls without ground supports.</p>
+                <div class="card-footer-meta">
+                  <span class="card-meta-date"><i class="fa-regular fa-calendar"></i> Sep 08, 2026</span>
+                  <span class="card-meta-time"><i class="fa-regular fa-clock"></i> 8m</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ── ROW B: 2 SUB-COLUMNS (FEATURED CATEGORIES & TRENDING ARTICLES) ── -->
+        <div class="row-split-container">
+
+          <!-- Left Sub-column: Featured Categories -->
+          <section class="editorial-subpanel-card" aria-label="Featured Categories">
+            <div class="section-header-row" style="margin-bottom: 1rem;">
+              <h2 class="section-title" style="font-size: 1.45rem;">Featured Categories</h2>
+              <a href="javascript:void(0)" class="section-link-action" onclick="filterByCategory('all')">
+                <span>View All</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="category-tiles-grid">
+
+              <!-- Category 1: Interior Design -->
+              <div class="category-tile-btn" onclick="filterByCategory('interior')">
+                <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
+                <span class="cat-name-label">Interiors</span>
+                <span class="cat-count-subtext">3 Essays</span>
+              </div>
+
+              <!-- Category 2: Architecture -->
+              <div class="category-tile-btn" onclick="filterByCategory('architecture')">
+                <div class="cat-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+                <span class="cat-name-label">Architecture</span>
+                <span class="cat-count-subtext">2 Essays</span>
+              </div>
+
+              <!-- Category 3: Civil Execution -->
+              <div class="category-tile-btn" onclick="filterByCategory('civil')">
+                <div class="cat-icon-circle"><i class="fa-solid fa-trowel-bricks"></i></div>
+                <span class="cat-name-label">Civil Execution</span>
+                <span class="cat-count-subtext">2 Essays</span>
+              </div>
+
+              <!-- Category 4: Material Curation -->
+              <div class="category-tile-btn" onclick="filterByCategory('material')">
+                <div class="cat-icon-circle"><i class="fa-solid fa-layer-group"></i></div>
+                <span class="cat-name-label">Materiality</span>
+                <span class="cat-count-subtext">2 Essays</span>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Right Sub-column: Trending Articles (Numbered 1 to 5) -->
+          <section class="editorial-subpanel-card" aria-label="Trending Studio Articles">
+            <div class="section-header-row" style="margin-bottom: 1rem;">
+              <h2 class="section-title" style="font-size: 1.45rem;">Trending Articles</h2>
+              <a href="javascript:void(0)" class="section-link-action" onclick="filterByCategory('all')">
+                <span>View All</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="trending-articles-list">
+
+              <div class="trending-list-item" onclick="openBlogArticleModal('spatial-harmony-luxury-interior-architecture')">
+                <span class="trending-number-badge">1</span>
+                <span class="trending-item-title">The Art of Creating Timeless Interior Spaces: Spatial Harmony</span>
+              </div>
+
+              <div class="trending-list-item" onclick="openBlogArticleModal('zero-tolerance-civil-engineering-rcc-shells')">
+                <span class="trending-number-badge">2</span>
+                <span class="trending-item-title">Zero-Tolerance Civil Engineering: 3D BIM onto RCC Shells</span>
+              </div>
+
+              <div class="trending-list-item" onclick="openBlogArticleModal('selecting-statuario-vs-travertine-marble')">
+                <span class="trending-number-badge">3</span>
+                <span class="trending-item-title">Selecting Statuario vs. Travertine: Marble for Porticos</span>
+              </div>
+
+              <div class="trending-list-item" onclick="openBlogArticleModal('floating-cantilever-staircases-structural-physics')">
+                <span class="trending-number-badge">4</span>
+                <span class="trending-item-title">Floating Cantilever Staircases: Structural Physics &amp; Steel</span>
+              </div>
+
+              <div class="trending-list-item" onclick="openBlogArticleModal('raytracing-sunlight-spatial-light-synthesis')">
+                <span class="trending-number-badge">5</span>
+                <span class="trending-item-title">Raytracing Sunlight: Spatial Light Synthesis in 4K Renders</span>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ── ROW C: 2 SUB-COLUMNS (NEWSLETTER & CLIENT PERSPECTIVES) ── -->
+        <div class="row-split-container">
+
+          <!-- Left Sub-column: Newsletter Card -->
+          <section class="newsletter-box-card" aria-label="Newsletter Subscription">
+            <div>
+              <span class="hero-eyebrow-pill" style="margin-bottom: 0.75rem;">STUDIO JOURNAL</span>
+              <h3 class="newsletter-card-heading">Design Inspiration, Delivered.</h3>
+              <p class="newsletter-card-subtext">
+                Receive curated architectural monographs, material case studies, and 3D visualization breakdowns straight to your inbox.
+              </p>
+            </div>
+            <form onsubmit="handleNewsletterSubmit(event)">
+              <div class="newsletter-input-group">
+                <input type="email" required placeholder="Enter your email address..." class="newsletter-email-field" id="newsletterEmailInput" />
+                <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Right Sub-column: What Our Clients Say / Studio Perspectives -->
+          <section class="testimonial-box-card" aria-label="Studio Testimonials">
+            <div>
+              <div class="section-header-row" style="margin-bottom: 0.5rem; border: none; padding: 0;">
+                <h3 class="section-title" style="font-size: 1.35rem;">What Our Clients Say</h3>
+              </div>
+              <div class="quote-icon-mark">“</div>
+              <p class="testimonial-quote-text">
+                NAM Atelier delivered zero deviation between their 3D BIM renders and the concrete reality of our villa. The bookmatched travertine and cantilevered stairs are a masterclass in civil craftsmanship.
+              </p>
+            </div>
+            <div class="testimonial-client-row">
+              <div class="client-avatar-badge">HG</div>
+              <div>
+                <h4 class="client-name-title">Dr. H.S. Grewal</h4>
+                <p class="client-project-sub">Villa Sanctuary, Model Town</p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+           RIGHT COLUMN: SIDEBAR (SEARCH, POPULAR POSTS, AUTHOR, INSTAGRAM)
+           ═══════════════════════════════════════════════════════════════════ -->
+      <aside class="blog-sidebar-col" aria-label="Blog Sidebar">
+
+        <!-- 1. Search Box Widget -->
+        <div class="sidebar-widget-card" style="padding: 1.15rem;">
+          <form class="search-widget-form" onsubmit="event.preventDefault(); handleBlogSearch();">
+            <input 
+              type="text" 
+              class="search-input-field" 
+              id="blogSearchInput" 
+              placeholder="Search articles, stone, BIM..." 
+              oninput="handleBlogSearch()"
+              aria-label="Search Studio Articles"
+            />
+            <button type="button" class="search-clear-btn" id="searchClearBtn" onclick="clearBlogSearch()" aria-label="Clear Search">&times;</button>
+            <i class="fa-solid fa-magnifying-glass search-submit-icon"></i>
+          </form>
+        </div>
+
+        <!-- 2. Popular Posts Widget -->
+        <div class="sidebar-widget-card">
+          <div class="section-header-row" style="margin-bottom: 1.15rem;">
+            <h3 class="section-title" style="font-size: 1.35rem;">Popular Posts</h3>
+            <a href="javascript:void(0)" class="section-link-action" onclick="filterByCategory('all')">
+              <span>View All</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="popular-posts-list">
+
+            <!-- Popular 1 -->
+            <div class="popular-post-item" onclick="openBlogArticleModal('spatial-harmony-luxury-interior-architecture')">
+              <div class="popular-thumb-wrap">
+                <img src="nam_blog_featured_hero.jpg" alt="Spatial Harmony" class="popular-thumb-img" loading="lazy" />
+              </div>
+              <div class="popular-content-wrap">
+                <h4 class="popular-item-title">The Art of Creating Timeless Interior Spaces</h4>
+                <div class="popular-meta-row">
+                  <span>Oct 15, 2026</span>
+                  <span>•</span>
+                  <span><i class="fa-regular fa-clock"></i> 6m</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Popular 2 -->
+            <div class="popular-post-item" onclick="openBlogArticleModal('monolithic-travertine-limestone-villa-facades')">
+              <div class="popular-thumb-wrap">
+                <img src="nam_luxury_residence_exterior.jpg" alt="Monolithic Facades" class="popular-thumb-img" loading="lazy" />
+              </div>
+              <div class="popular-content-wrap">
+                <h4 class="popular-item-title">Monolithic Volumes: Travertine &amp; Steel in Facades</h4>
+                <div class="popular-meta-row">
+                  <span>Oct 10, 2026</span>
+                  <span>•</span>
+                  <span><i class="fa-regular fa-clock"></i> 7m</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Popular 3 -->
+            <div class="popular-post-item" onclick="openBlogArticleModal('acoustic-theatres-private-cinema-architecture')">
+              <div class="popular-thumb-wrap">
+                <img src="nam_cinema_theatre.jpg" alt="Acoustic Cinema Isolation" class="popular-thumb-img" loading="lazy" />
+              </div>
+              <div class="popular-content-wrap">
+                <h4 class="popular-item-title">Decoupled Walls &amp; Zero Vibration in Theatres</h4>
+                <div class="popular-meta-row">
+                  <span>Oct 04, 2026</span>
+                  <span>•</span>
+                  <span><i class="fa-regular fa-clock"></i> 5m</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Popular 4 -->
+            <div class="popular-post-item" onclick="openBlogArticleModal('culinary-architecture-german-hardware-concealed-joinery')">
+              <div class="popular-thumb-wrap">
+                <img src="nam_dining_interior.jpg" alt="Culinary Architecture" class="popular-thumb-img" loading="lazy" />
+              </div>
+              <div class="popular-content-wrap">
+                <h4 class="popular-item-title">Culinary Architecture: Blum Hardware &amp; Joinery</h4>
+                <div class="popular-meta-row">
+                  <span>Aug 29, 2026</span>
+                  <span>•</span>
+                  <span><i class="fa-regular fa-clock"></i> 5m</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. Author / Editorial Profile Card -->
+        <div class="sidebar-widget-card author-card-center">
+          <div class="author-portrait-circle">
+            <img src="nam_atelier_studio.jpg" alt="Udhay Seth &amp; Mudita D Seth" class="author-portrait-img" />
+          </div>
+          <h3 class="author-greeting-title">Udhay &amp; Mudita Seth</h3>
+          <span class="author-tagline-sub">STUDIO PRINCIPALS &amp; EDITORS</span>
+          <p class="author-bio-narrative">
+            Principal civil constructor and lead interior architect exploring the intersection of spatial geometry, stone materiality, and zero-tolerance 3D digital-twin execution across luxury estates.
+          </p>
+          <div class="author-social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="author-social-link" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="author-social-link" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="tel:+917710152917" class="author-social-link" title="Call Studio">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="mailto:naminterior9@gmail.com" class="author-social-link" title="Email Studio">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Visual Inspiration / Instagram Gallery Widget -->
+        <div class="sidebar-widget-card">
+          <div class="section-header-row" style="margin-bottom: 0.85rem;">
+            <div>
+              <h3 class="section-title" style="font-size: 1.35rem;">Visual Inspiration</h3>
+              <span style="font-size: 0.72rem; color: var(--blog-gold);">@namatelier.official</span>
+            </div>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="section-link-action">
+              <span>Follow Us</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="instagram-gallery-grid">
+            <div class="insta-thumb-box" onclick="openBlogArticleModal('culinary-architecture-german-hardware-concealed-joinery')">
+              <img src="nam_dining_interior.jpg" alt="Culinary Dining Architecture" loading="lazy" />
+              <div class="insta-hover-overlay"><i class="fa-brands fa-instagram"></i></div>
+            </div>
+            <div class="insta-thumb-box" onclick="openBlogArticleModal('master-suite-sanctuaries-lighting-acoustic-comfort')">
+              <img src="nam_bedroom_render.jpg" alt="Master Suite Sanctuary" loading="lazy" />
+              <div class="insta-hover-overlay"><i class="fa-brands fa-instagram"></i></div>
+            </div>
+            <div class="insta-thumb-box" onclick="openBlogArticleModal('biophilic-courtyards-seamless-indoor-outdoor-living')">
+              <img src="nam_landscaping_patio.jpg" alt="Biophilic Outdoor Terrace" loading="lazy" />
+              <div class="insta-hover-overlay"><i class="fa-brands fa-instagram"></i></div>
+            </div>
+            <div class="insta-thumb-box" onclick="openBlogArticleModal('tactile-craftsmanship-brass-inlays-honed-limestone')">
+              <img src="nam_architectural_details.jpg" alt="Architectural Brass &amp; Stone Details" loading="lazy" />
+              <div class="insta-hover-overlay"><i class="fa-brands fa-instagram"></i></div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       IN-PLACE ARTICLE READER MODAL (INSTANT READING EXPERIENCE)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <div class="article-modal-backdrop" id="articleReaderModal" role="dialog" aria-modal="true" aria-labelledby="modalReaderTitle">
+    <div class="article-modal-card">
+      <button class="modal-close-trigger" onclick="closeBlogArticleModal()" aria-label="Close Article">&times;</button>
+      
+      <span class="modal-reader-tag" id="modalReaderTag">INTERIOR ARCHITECTURE</span>
+      <h2 class="modal-reader-title" id="modalReaderTitle">Article Title</h2>
+      <div class="modal-reader-meta" id="modalReaderMeta">
+        <span>By Mudita D Seth</span> • <span>Oct 15, 2026</span> • <span>6 min read</span>
+      </div>
+
+      <img id="modalReaderImg" src="nam_blog_featured_hero.jpg" alt="Article Cover Photography" class="modal-reader-img" />
+
+      <div class="modal-reader-body" id="modalReaderBody">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="modal-reader-footer">
+        <a id="modalDirectArticleLink" href="#" class="btn-hero-cta" style="padding: 0.65rem 1.4rem; font-size: 0.75rem;">
+          <span>Open Full Dedicated Page ↗</span>
+        </a>
+        <button class="btn btn-inquire-pill" onclick="closeBlogArticleModal(); openModal('consultModal');">
+          DISCUSS YOUR RESIDENCE ↗
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- CONSULTATION MODAL -->
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       CONSULTATION MODAL (SHARED STUDIO DIALOG)
+       ═════════════════════════════════════════════════════════════════════════ -->
   <div class="modal-overlay" id="consultModal">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
@@ -617,130 +1813,400 @@
     </div>
   </div>
 
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SHARED FOOTER (SINGLE SOURCE OF TRUTH)
+       Footer is loaded dynamically from: components/footer.html
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       INTERACTIVE JAVASCRIPT ENGINE (SLIDER, LIVE SEARCH, CATEGORY FILTERS)
+       ═════════════════════════════════════════════════════════════════════════ -->
   <script>
-    const articlesData = [
-      {
-        category: "Material Selection",
-        title: "Selecting Statuario vs. Travertine: Marble Curation for Villa Porticos",
-        date: "Sept 28, 2026",
-        readTime: "5 min read",
-        author: "Mudita D Seth",
-        img: "nam_kitchen_render.jpg",
-        content: `
-          <p>When curating marble for double-height entrances and open-plan living rooms, the choice between Italian Statuario and Roman Travertine defines the architectural atmosphere of the residence.</p>
-          <p>Statuario marble offers crisp light reflectance with bold grey-blue veining, ideal for dramatic foyer backdrops and cantilevers. Travertine, by contrast, brings warm tactile porosity, acoustic dampening, and earthy luxury.</p>
-          <p>At NAM Atelier, every slab is bookmatched in 4K 3D CAD renders prior to site delivery, ensuring that vein lines flow continuously across floor joints and wall cladding.</p>
-        `
-      },
-      {
-        category: "Civil Engineering",
-        title: "Zero-Tolerance Civil Engineering: Translating 3D Renders onto RCC Shells",
-        date: "Sept 22, 2026",
-        readTime: "7 min read",
-        author: "Udhay Seth",
-        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-        content: `
-          <p>Architectural beauty relies heavily on civil precision. A minor variance of 15mm in ceiling height can throw off custom joinery, cove lighting channels, and wall paneling alignment.</p>
-          <p>By implementing 3D BIM structural layout verification before shuttering and concrete pouring, our civil construction team achieves zero-tolerance precision on bare brick shells in Ludhiana and Amritsar.</p>
-        `
-      },
-      {
-        category: "Lighting & Acoustics",
-        title: "Acoustic Cinema Isolation in Luxury Residential Palaces",
-        date: "Sept 15, 2026",
-        readTime: "4 min read",
-        author: "Mudita D Seth",
-        img: "nam_bedroom_render.jpg",
-        content: `
-          <p>Private home theaters require precise decibel dampening to prevent sound leakage into neighboring master bedrooms. Decoupled floating studs, dense acoustic mineral wool, and acoustic fabric paneling form the cornerstone of sound design.</p>
-          <p>Every Dolby Atmos speaker angle is computed during our initial 3D rendering phase, delivering immersive cinematic audio with zero structural vibration.</p>
-        `
-      },
-      {
-        category: "3D Visualization",
-        title: "Raytracing Sunlight & Spatial Light Synthesis in 4K Renders",
-        date: "Sept 04, 2026",
+    /* Complete Database of Articles */
+    const BLOG_DATABASE = {
+      "spatial-harmony-luxury-interior-architecture": {
+        slug: "spatial-harmony-luxury-interior-architecture",
+        title: "The Art of Creating Timeless Interior Spaces: Spatial Harmony & Light",
+        category: "Interior Design",
+        tag: "INTERIOR ARCHITECTURE",
+        date: "October 15, 2026",
         readTime: "6 min read",
         author: "Mudita D Seth",
-        img: "nam_living_render.jpg",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_blog_featured_hero.jpg",
         content: `
-          <p>Natural daylight alters how materials look throughout the day. By simulating exact solar trajectories for Punjab coordinates, our 3D renders reveal how morning glare, afternoon coves, and evening accent lights illuminate room surfaces.</p>
+          <p>When designing luxury residential interiors, the true test of architectural enduring value lies not in fleeting decorative trends, but in the harmony between volume, natural daylight, and honest materials.</p>
+          <h2>1. Spatial Proportions & Uninterrupted Sightlines</h2>
+          <p>True luxury interior architecture begins with the floor plan. In our residential villa projects across Punjab, we deliberately establish clean sightlines that draw the eye from intimate salon zones toward expansive double-height volumes and outdoor courtyard greenery.</p>
+          <h2>2. Monolithic Stone & Warm Joinery Synthesis</h2>
+          <p>A restrained material palette prevents visual fatigue. In this living salon, honed Italian travertine is utilized for the monolithic low coffee table and flooring, providing an earthy, tactile foundation. We balance the cool mineral stone with fluted dark walnut joinery and slatted acoustic ceiling paneling.</p>
+          <h2>3. Layered Ambient & Circadian Illumination</h2>
+          <p>Direct overhead downlights often flatten architectural depth and cast harsh facial shadows. Instead, we implement three distinct illumination layers: concealed cove uplights, hand-blown ceramic accent fixtures, and micro-step circadian dimmers.</p>
         `
       },
-      {
-        category: "Material Selection",
-        title: "German Blum Hardware & Custom Ergonomic Joinery Curation",
-        date: "Aug 29, 2026",
-        readTime: "5 min read",
+      "monolithic-travertine-limestone-villa-facades": {
+        slug: "monolithic-travertine-limestone-villa-facades",
+        title: "Monolithic Volumes: Integrating Travertine & Steel in Contemporary Villa Facades",
+        category: "Architecture",
+        tag: "FACADE ENGINEERING",
+        date: "October 10, 2026",
+        readTime: "7 min read",
         author: "Udhay Seth",
-        img: "nam_commercial_render.jpg",
+        authorRole: "Principal Civil Constructor",
+        coverImage: "nam_luxury_residence_exterior.jpg",
         content: `
-          <p>Luxury kitchens require silent, effortless movement. We integrate German Blum AVENTOS lift systems and motorized SERVO-DRIVE drawers into bespoke teak and fluted sage cabinetry.</p>
+          <p>Contemporary residential facades in North India face dual challenges: creating striking geometric presence while withstanding severe continental climate swings from 45°C summer heat to near-freezing winter mists.</p>
+          <h2>1. Cantilevered Overhangs & Solar Shading</h2>
+          <p>Deep horizontal roof cantilevers serve both as an iconic sculptural statement and as an engineered passive thermal barrier. By projecting concrete slabs up to 3.2 meters past the glass envelope, high summer sun angles are blocked from heating exterior glass.</p>
+          <h2>2. Ventilated Dry-Clad Travertine Systems</h2>
+          <p>Wet-affixed stone tiles inevitably crack and effloresce under thermal expansion. We engineer rear-ventilated dry-clad aluminum and stainless-steel bracket subframes with a 50mm continuous air gap.</p>
         `
       },
-      {
-        category: "Civil Engineering",
-        title: "Floating Cantilever Staircases: Load Calculations & Steel Anchorage",
-        date: "Aug 18, 2026",
+      "acoustic-theatres-private-cinema-architecture": {
+        slug: "acoustic-theatres-private-cinema-architecture",
+        title: "Decoupled Walls & Zero Vibration: Designing Dolby Atmos Private Theatres",
+        category: "Lighting & Acoustics",
+        tag: "ACOUSTIC ARCHITECTURE",
+        date: "October 04, 2026",
+        readTime: "5 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_cinema_theatre.jpg",
+        content: `
+          <p>Private home theaters require precise decibel dampening to prevent sound leakage into neighboring master bedrooms. Decoupled floating studs, dense acoustic mineral wool, and acoustic fabric paneling form the cornerstone of sound design.</p>
+          <h2>1. Room-Within-A-Room Decoupling</h2>
+          <p>True isolation cannot be achieved with surface wall panels alone. We construct a secondary isolated floor, wall, and ceiling envelope suspended on heavy-duty elastomeric neoprene springs.</p>
+          <h2>2. Concealed Bass Trapping & Helmholtz Resonators</h2>
+          <p>Behind our architectural velvet draperies and fluted timber slats, we engineer tuned membrane resonators and mineral fiber traps that absorb rogue sub-bass energy smoothly.</p>
+        `
+      },
+      "selecting-statuario-vs-travertine-marble": {
+        slug: "selecting-statuario-vs-travertine-marble",
+        title: "Selecting Statuario vs. Travertine: Marble Curation for Villa Porticos",
+        category: "Material Curation",
+        tag: "MATERIAL STUDY",
+        date: "September 28, 2026",
+        readTime: "5 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_kitchen_render.jpg",
+        content: `
+          <p>When curating marble for double-height entrances and open-plan living rooms, the choice between Italian Statuario and Roman Travertine defines the architectural atmosphere of the residence.</p>
+          <h2>1. Statuario: Classical Luminescence & Dramatic Veining</h2>
+          <p>Sourced from Carrara, Statuario marble offers crisp crystalline white opacity punctuated by bold grey-blue graphite veins, perfect for monumental fireplace walls and backdrops.</p>
+          <h2>2. Roman Travertine: Warmth & Acoustic Comfort</h2>
+          <p>Travertine provides an organic linear pore structure that softly diffuses light and absorbs high-frequency flutter echoes in large stone salons.</p>
+        `
+      },
+      "zero-tolerance-civil-engineering-rcc-shells": {
+        slug: "zero-tolerance-civil-engineering-rcc-shells",
+        title: "Zero-Tolerance Civil Engineering: Translating 3D Renders onto RCC Shells",
+        category: "Civil Execution",
+        tag: "CIVIL CRAFTSMANSHIP",
+        date: "September 22, 2026",
+        readTime: "7 min read",
+        author: "Udhay Seth",
+        authorRole: "Principal Civil Constructor",
+        coverImage: "nam_commercial_render.jpg",
+        content: `
+          <p>Architectural beauty relies heavily on civil precision. A minor variance of 15mm in ceiling height can throw off custom joinery, cove lighting channels, and wall paneling alignment.</p>
+          <h2>1. Optical Laser Formwork Verification</h2>
+          <p>Before concrete pouring, our civil engineers deploy optical laser total stations to verify column plumb, beam depths, and slab levels to within ±2mm tolerance.</p>
+          <h2>2. Integrated MEP Conduit Pre-Casting</h2>
+          <p>All raceways, HVAC supply diffusers, and acoustic wiring conduits are cast directly within the RCC slab during rebar tying, eliminating destructive post-pour hacking.</p>
+        `
+      },
+      "raytracing-sunlight-spatial-light-synthesis": {
+        slug: "raytracing-sunlight-spatial-light-synthesis",
+        title: "Raytracing Sunlight: Spatial Light Synthesis in 4K Renders",
+        category: "3D Visualization",
+        tag: "DIGITAL TWIN PRECISION",
+        date: "September 14, 2026",
+        readTime: "6 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_living_render.jpg",
+        content: `
+          <p>Natural sunlight alters how materials look throughout the day. By simulating exact solar trajectories for Punjab coordinates, our 3D renders reveal how morning glare, afternoon coves, and evening accent lights illuminate room surfaces.</p>
+          <h2>1. Physically Based Rendering (PBR)</h2>
+          <p>Every stone slab, brass trim, and timber panel is modeled with scientifically measured reflectance indices to ensure visual fidelity between digital twin and site reality.</p>
+        `
+      },
+      "floating-cantilever-staircases-structural-physics": {
+        slug: "floating-cantilever-staircases-structural-physics",
+        title: "Floating Cantilever Staircases: Structural Physics & Steel Anchorage",
+        category: "Civil Execution",
+        tag: "STRUCTURAL PHYSICS",
+        date: "September 08, 2026",
         readTime: "8 min read",
         author: "Udhay Seth",
-        img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+        authorRole: "Principal Civil Constructor",
+        coverImage: "nam_structural_framework.jpg",
         content: `
           <p>Floating stairs create spatial transparency in modern villas. Heavy structural steel brackets anchored deep within reinforced concrete RCC columns allow teak steps to float effortlessly without floor pillars.</p>
+          <h2>1. Torsion & Deflection Limits</h2>
+          <p>Welded hollow structural steel (HSS) box sections are engineered to limit deflection to under 1.5mm under concentrated 200kg tip loads, eliminating bounce.</p>
+        `
+      },
+      "culinary-architecture-german-hardware-concealed-joinery": {
+        slug: "culinary-architecture-german-hardware-concealed-joinery",
+        title: "Culinary Architecture: Blum Hardware & Custom Ergonomic Joinery",
+        category: "Interior Design",
+        tag: "CULINARY DESIGN",
+        date: "August 29, 2026",
+        readTime: "5 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_dining_interior.jpg",
+        content: `
+          <p>Luxury kitchens require silent, effortless movement. We integrate German Blum AVENTOS lift systems and motorized SERVO-DRIVE drawers into bespoke teak and fluted cabinetry.</p>
+        `
+      },
+      "biophilic-courtyards-seamless-indoor-outdoor-living": {
+        slug: "biophilic-courtyards-seamless-indoor-outdoor-living",
+        title: "Biophilic Courtyards: Seamless Transition from Salon to Terrace Pool",
+        category: "Architecture",
+        tag: "OUTDOOR LIVING",
+        date: "August 18, 2026",
+        readTime: "6 min read",
+        author: "Udhay Seth",
+        authorRole: "Principal Civil Constructor",
+        coverImage: "nam_landscaping_patio.jpg",
+        content: `
+          <p>By engineering recessed sub-floor drain channels, our oversized floor-to-ceiling glass sliding panels glide along tracks flush with the interior stone floor, seamlessly merging salon with terrace.</p>
+        `
+      },
+      "master-suite-sanctuaries-lighting-acoustic-comfort": {
+        slug: "master-suite-sanctuaries-lighting-acoustic-comfort",
+        title: "Master Suite Sanctuaries: Layered Illumination & Tactile Textures",
+        category: "Interior Design",
+        tag: "PRIVATE SUITES",
+        date: "August 04, 2026",
+        readTime: "5 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_bedroom_render.jpg",
+        content: `
+          <p>Behind the custom king platform bed, we introduce floor-to-ceiling acoustic wall upholstery in soft bouclé or brushed wool, creating a tranquil acoustic sanctuary for deep rest.</p>
+        `
+      },
+      "tactile-craftsmanship-brass-inlays-honed-limestone": {
+        slug: "tactile-craftsmanship-brass-inlays-honed-limestone",
+        title: "Tactile Craftsmanship: Champagne Brass Inlays & Honed Limestone",
+        category: "Material Curation",
+        tag: "CRAFTSMANSHIP",
+        date: "July 26, 2026",
+        readTime: "4 min read",
+        author: "Mudita D Seth",
+        authorRole: "Lead Interior Architect",
+        coverImage: "nam_architectural_details.jpg",
+        content: `
+          <p>Where honed travertine meets fluted dark walnut cabinetry, we embed 3mm solid brushed champagne brass inlays with a 5mm negative shadow reveal to celebrate material honesty.</p>
         `
       }
-    ];
+    };
 
-    function openBlogArticle(idx) {
-      const modal = document.getElementById('blogArticleModal');
-      const data = articlesData[idx];
-      if (!modal || !data) return;
+    /* ── 1. HERO SLIDER CAROUSEL LOGIC ── */
+    let currentHeroSlide = 0;
+    const heroSlides = document.querySelectorAll('.hero-slide-item');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    let heroAutoTimer = null;
 
-      document.getElementById('articleModalCategory').textContent = data.category;
-      document.getElementById('articleModalTitle').textContent = data.title;
-      document.getElementById('articleModalMeta').innerHTML = `By <strong>${data.author}</strong> • ${data.date} • ${data.readTime}`;
-      document.getElementById('articleModalImg').src = data.img;
-      document.getElementById('articleModalBody').innerHTML = data.content;
+    function showHeroSlide(index) {
+      if (index < 0) index = heroSlides.length - 1;
+      if (index >= heroSlides.length) index = 0;
+      currentHeroSlide = index;
 
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      heroSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+
+      heroDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
     }
 
-    function closeBlogArticle() {
-      const modal = document.getElementById('blogArticleModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+    function nextHeroSlide() {
+      showHeroSlide(currentHeroSlide + 1);
+      resetHeroAutoTimer();
+    }
+
+    function prevHeroSlide() {
+      showHeroSlide(currentHeroSlide - 1);
+      resetHeroAutoTimer();
+    }
+
+    function goToHeroSlide(idx) {
+      showHeroSlide(idx);
+      resetHeroAutoTimer();
+    }
+
+    function resetHeroAutoTimer() {
+      if (heroAutoTimer) clearInterval(heroAutoTimer);
+      heroAutoTimer = setInterval(() => {
+        showHeroSlide((currentHeroSlide + 1) % heroSlides.length);
+      }, 7500);
+    }
+
+    resetHeroAutoTimer();
+
+    // Pause on hover
+    const heroShowcase = document.getElementById('blogHeroShowcase');
+    heroShowcase?.addEventListener('mouseenter', () => {
+      if (heroAutoTimer) clearInterval(heroAutoTimer);
+    });
+    heroShowcase?.addEventListener('mouseleave', () => {
+      resetHeroAutoTimer();
+    });
+
+    // Touch swipe support on hero
+    let touchStartX = 0;
+    heroShowcase?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    heroShowcase?.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextHeroSlide();
+      if (touchEndX - touchStartX > 50) prevHeroSlide();
+    }, { passive: true });
+
+    /* ── 2. IN-PLACE ARTICLE READER MODAL ── */
+    function openBlogArticleModal(slug) {
+      const article = BLOG_DATABASE[slug];
+      if (!article) return;
+
+      document.getElementById('modalReaderTag').textContent = article.tag || article.category.toUpperCase();
+      document.getElementById('modalReaderTitle').textContent = article.title;
+      document.getElementById('modalReaderMeta').innerHTML = `By <strong>${article.author}</strong> • ${article.date} • ${article.readTime}`;
+      document.getElementById('modalReaderImg').src = article.coverImage;
+      document.getElementById('modalReaderImg').alt = article.title;
+      document.getElementById('modalReaderBody').innerHTML = article.content;
+      document.getElementById('modalDirectArticleLink').href = `blog/${slug}`;
+
+      const modal = document.getElementById('articleReaderModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Update URL without full page reload
+      history.pushState({ article: slug }, '', `?article=${slug}`);
+    }
+
+    function closeBlogArticleModal() {
+      const modal = document.getElementById('articleReaderModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      history.pushState(null, '', window.location.pathname);
+    }
+
+    // Close modal on escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeBlogArticleModal();
+    });
+
+    // Close modal on outside click
+    document.getElementById('articleReaderModal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'articleReaderModal') closeBlogArticleModal();
+    });
+
+    /* ── 3. LIVE SEARCH FILTER ── */
+    function handleBlogSearch() {
+      const query = document.getElementById('blogSearchInput').value.trim().toLowerCase();
+      const clearBtn = document.getElementById('searchClearBtn');
+      clearBtn.style.display = query ? 'block' : 'none';
+
+      const cards = document.querySelectorAll('.blog-article-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.querySelector('.card-post-title').textContent.toLowerCase();
+        const excerpt = card.querySelector('.card-excerpt-text').textContent.toLowerCase();
+        const category = card.querySelector('.card-category-badge').textContent.toLowerCase();
+
+        const match = title.includes(query) || excerpt.includes(query) || category.includes(query);
+        card.style.display = match ? 'flex' : 'none';
+        if (match) visibleCount++;
+      });
+    }
+
+    function clearBlogSearch() {
+      const input = document.getElementById('blogSearchInput');
+      input.value = '';
+      handleBlogSearch();
+      input.focus();
+    }
+
+    /* ── 4. CATEGORY FILTER ── */
+    function filterByCategory(category) {
+      const cards = document.querySelectorAll('.blog-article-card');
+      const catTiles = document.querySelectorAll('.category-tile-btn');
+      
+      catTiles.forEach(tile => {
+        tile.classList.remove('active');
+      });
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Smooth scroll to latest articles section
+      const targetSec = document.querySelector('.latest-blog-section');
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
+    /* ── 5. NEWSLETTER SUBMISSION ── */
     function handleNewsletterSubmit(e) {
       e.preventDefault();
-      const input = e.target.querySelector('input');
-      showToast(`Subscribed ${input.value} to NAM Atelier Journal!`);
-      e.target.reset();
+      const input = document.getElementById('newsletterEmailInput');
+      const email = input.value.trim();
+      if (!email) return;
+
+      if (typeof showToast === 'function') {
+        showToast(`Subscribed ${email} to NAM Atelier Journal!`);
+      } else {
+        alert(`Thank you! ${email} has been subscribed to NAM Atelier Journal.`);
+      }
+      input.value = '';
     }
 
-    // Filter functionality
-    document.querySelectorAll('.blog-filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
+    /* ── 6. URL PARAMETER DISPATCHER ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleSlug = urlParams.get('article');
+      if (articleSlug && BLOG_DATABASE[articleSlug]) {
+        openBlogArticleModal(articleSlug);
+      }
 
-        document.querySelectorAll('.blog-card').forEach(card => {
-          const cat = card.getAttribute('data-category');
-          if (filter === 'all' || cat === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
+      const catParam = urlParams.get('category');
+      if (catParam) {
+        filterByCategory(catParam);
+      }
+    });
+
+    // Handle back/forward navigation for modal
+    window.addEventListener('popstate', (e) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleSlug = urlParams.get('article');
+      if (articleSlug && BLOG_DATABASE[articleSlug]) {
+        openBlogArticleModal(articleSlug);
+      } else {
+        const modal = document.getElementById('articleReaderModal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
     });
   </script>
 
   <!-- SHARED SCRIPTS -->
-  <script src="script.js?v=3.1" defer></script>
+  <script src="script.js?v=3.2" defer></script>
 </body>
 </html>
