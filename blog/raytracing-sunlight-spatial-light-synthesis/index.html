@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="/" />
-  <title>Raytracing Sunlight: Spatial Light Synthesis in 4K Renders | NAM Atelier Journal</title>
+  <title>Raytracing Sunlight: Spatial Light Synthesis in 4K Renders | NAM Atelier</title>
   <meta name="description" content="Calculating true sun angles across Punjab coordinates to accurately simulate daylight distribution, shadow angles, and circadian lighting channels." />
   <link rel="canonical" href="https://nam-atlier.vercel.app/blog/raytracing-sunlight-spatial-light-synthesis" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Meta -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Raytracing Sunlight: Spatial Light Synthesis in 4K Renders | NAM Atelier Journal" />
+  <meta property="og:title" content="Raytracing Sunlight: Spatial Light Synthesis in 4K Renders | NAM Atelier" />
   <meta property="og:description" content="Calculating true sun angles across Punjab coordinates to accurately simulate daylight distribution, shadow angles, and circadian lighting channels." />
   <meta property="og:image" content="https://nam-atlier.vercel.app/nam_living_render.jpg" />
   <meta property="og:url" content="https://nam-atlier.vercel.app/blog/raytracing-sunlight-spatial-light-synthesis" />
@@ -19,7 +19,7 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ›ï¸</text></svg>" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Cormorant Garamond, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-  <!-- Global Styles -->
+  <!-- Global & Component Styles -->
   <link rel="stylesheet" href="styles.css?v=3.2" />
 
   <!-- Structured Data: BlogPosting & BreadcrumbList -->
@@ -60,244 +60,557 @@
   </script>
 
   <style>
+    /* ==========================================================================
+       SWIFT SINGLE-ARTICLE LAYOUT (REVERSED TO LUXURY ARCHITECTURAL BLACK)
+       Faithfully replicating Reference Image 2:
+       - Left: Main article with large image, elegant typography, breadcrumbs, CTAs
+       - Right: Boxed About Studio widget, boxed Popular Posts, boxed Consultation Form
+       ========================================================================== */
+
+    :root {
+      --art-bg: #050505;
+      --art-panel: #0D0D0D;
+      --art-panel-elevated: #141414;
+      --art-border: rgba(255, 255, 255, 0.1);
+      --art-border-hover: rgba(198, 173, 133, 0.45);
+      --art-gold: #C6AD85;
+      --art-gold-light: rgba(198, 173, 133, 0.12);
+      --art-text-head: #FFFFFF;
+      --art-text-body: #C8C8C2;
+      --art-text-muted: #8E8E89;
+    }
+
     body {
-      background-color: #060606;
-      color: var(--text-secondary-body);
+      background-color: var(--art-bg);
+      color: var(--art-text-body);
       font-family: var(--font-sans);
+      overflow-x: hidden;
     }
 
-    .article-page-wrapper {
-      max-width: 960px;
+    /* Main Container */
+    .swift-page-wrapper {
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 6.5rem 1.5rem 5rem;
+      padding: 5.5rem 1.5rem 4rem;
       box-sizing: border-box;
+      position: relative;
+      z-index: 2;
     }
 
-    @media (max-width: 768px) {
-      .article-page-wrapper {
-        padding: 5rem 1rem 3.5rem;
+    @media (max-width: 900px) {
+      .swift-page-wrapper {
+        padding: 4.2rem 1rem 3rem;
       }
     }
 
-    .article-breadcrumb {
+    /* Swift 2-Column Grid Layout */
+    .swift-article-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .swift-article-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    /* â”€â”€ LEFT COLUMN: MAIN ARTICLE CARD CONTAINER â”€â”€ */
+    .swift-main-article-card {
+      background: var(--art-panel);
+      border: 1px solid var(--art-border);
+      border-radius: 18px;
+      padding: clamp(1.75rem, 4vw, 3.25rem);
+      box-sizing: border-box;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Breadcrumbs */
+    .swift-breadcrumb-nav {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
+      color: var(--art-text-muted);
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
 
-    .article-breadcrumb a {
-      color: var(--accent-gold);
+    .swift-breadcrumb-nav a {
+      color: var(--art-gold);
       text-decoration: none;
     }
 
-    .article-breadcrumb a:hover {
+    .swift-breadcrumb-nav a:hover {
       text-decoration: underline;
     }
 
-    .article-header {
-      margin-bottom: 2.5rem;
-    }
-
-    .article-tag-badge {
-      display: inline-block;
-      font-size: 0.65rem;
+    /* Article Meta Header */
+    .swift-tag-category {
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent-gold);
-      background: rgba(198, 173, 133, 0.12);
-      border: 1px solid rgba(198, 173, 133, 0.28);
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 1.25rem;
+      color: var(--art-gold);
+      display: inline-block;
+      margin-bottom: 0.75rem;
     }
 
-    .article-h1-title {
+    .swift-article-h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
       font-weight: 600;
       line-height: 1.15;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
+      color: var(--art-text-head);
+      margin: 0 0 1rem;
     }
 
-    .article-subtitle-lead {
-      font-size: clamp(1rem, 1.3vw, 1.2rem);
-      color: #C5C5C5;
+    .swift-article-subtitle {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       line-height: 1.6;
-      margin-bottom: 1.75rem;
+      color: #B5B5AF;
+      margin: 0 0 1.5rem;
     }
 
-    .article-meta-bar {
+    .swift-meta-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      padding: 1.2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.78rem;
+      color: var(--art-text-muted);
       flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
 
-    .author-meta-block {
+    .swift-author-info {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
+      color: #FFFFFF;
+      font-weight: 500;
     }
 
-    .author-avatar-img {
-      width: 44px;
-      height: 44px;
+    .swift-author-avatar {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: #181818;
-      border: 1px solid rgba(198, 173, 133, 0.4);
+      background: var(--art-gold-light);
+      border: 1px solid var(--art-gold);
+      color: var(--art-gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent-gold);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
     }
 
-    .author-name-text {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #FFFFFF;
-    }
-
-    .author-role-subtext {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .article-meta-info {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .article-featured-hero-media {
+    /* Featured Image */
+    .swift-featured-image-box {
       width: 100%;
-      height: clamp(300px, 45vw, 520px);
-      border-radius: 18px;
+      height: clamp(300px, 45vw, 480px);
+      border-radius: 14px;
       overflow: hidden;
-      margin: 2.5rem 0 3.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
     }
 
-    .article-featured-hero-media img {
+    .swift-featured-image-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .article-content-body {
+    /* Body Typography */
+    .swift-article-content {
       font-size: 1.05rem;
       line-height: 1.85;
-      color: #D2D2D0;
+      color: #D2D2CC;
     }
 
-    .article-content-body p {
+    .swift-article-content p {
       margin-bottom: 1.75rem;
     }
 
-    .article-content-body p.lead-paragraph {
+    .swift-article-content p.lead-paragraph {
       font-size: 1.25rem;
-      line-height: 1.7;
+      line-height: 1.65;
       color: #FFFFFF;
-      font-weight: 400;
-      border-left: 2px solid var(--accent-gold);
+      border-left: 2px solid var(--art-gold);
       padding-left: 1.25rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
     }
 
-    .article-content-body h2 {
+    .swift-article-content h2 {
       font-family: var(--font-serif);
-      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      font-size: clamp(1.65rem, 2.3vw, 2.2rem);
       font-weight: 600;
       color: #FFFFFF;
-      margin: 3rem 0 1rem;
+      margin: 2.75rem 0 1rem;
       line-height: 1.2;
     }
 
-    .article-content-body ul {
+    .swift-article-content ul {
       margin: 1.25rem 0 2rem 1.5rem;
     }
 
-    .article-content-body li {
+    .swift-article-content li {
       margin-bottom: 0.75rem;
     }
 
+    /* Editorial Quote */
     .editorial-quote {
-      margin: 3rem 0;
-      padding: 2rem 2.5rem;
-      background: #0E0E0E;
-      border-left: 3px solid var(--accent-gold);
-      border-radius: 0 14px 14px 0;
+      margin: 2.75rem 0;
+      padding: 1.75rem 2.25rem;
+      background: var(--art-panel-elevated);
+      border-left: 3px solid var(--art-gold);
+      border-radius: 0 12px 12px 0;
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-style: italic;
-      line-height: 1.55;
+      line-height: 1.5;
       color: #FFFFFF;
     }
 
     .editorial-quote cite {
       display: block;
-      margin-top: 1rem;
+      margin-top: 0.85rem;
       font-family: var(--font-sans);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-style: normal;
-      color: var(--accent-gold);
+      color: var(--art-gold);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .article-bottom-actions {
-      margin-top: 4rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Bottom Share & Navigation */
+    .swift-share-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.75rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       flex-wrap: wrap;
-      gap: 1.25rem;
     }
 
-    .btn-back-journal {
+    .swift-social-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .swift-social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .swift-social-btn:hover {
+      background: var(--art-gold);
+      color: #050505;
+      border-color: var(--art-gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-return-journal {
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--art-gold);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-return-journal:hover {
       color: #FFFFFF;
+      transform: translateX(-3px);
+    }
+
+    /* Contextual Bottom Consultation Box */
+    .swift-bottom-cta-box {
+      margin-top: 3rem;
+      padding: 2.25rem;
+      background: linear-gradient(135deg, #141414 0%, #0E0E0E 100%);
+      border: 1px solid var(--art-border);
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .swift-cta-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0 0 0.5rem;
+    }
+
+    .swift-cta-desc {
+      font-size: 0.92rem;
+      color: var(--art-text-muted);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .swift-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* â”€â”€ RIGHT COLUMN: SIDEBAR (SWIFT BOXED WIDGETS) â”€â”€ */
+    .swift-sidebar-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .swift-widget-card {
+      background: var(--art-panel);
+      border: 1px solid var(--art-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-sizing: border-box;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Swift Signature Boxed Header (Matching Reference Image 2) */
+    .swift-boxed-header {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.45rem 1rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      border-radius: 4px;
+    }
+
+    .swift-boxed-header h3 {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    /* About Me / About Studio Widget */
+    .swift-about-image {
+      width: 100%;
+      height: 175px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .swift-about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swift-about-bio {
       font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--art-text-muted);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .swift-about-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .swift-contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.55rem;
+      border-radius: 999px;
+      background: var(--art-panel-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--art-gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .swift-contact-link:hover {
+      background: var(--art-gold);
+      color: #050505;
+      border-color: var(--art-gold);
+    }
+
+    /* Popular Posts Widget */
+    .swift-popular-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .swift-popular-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+    }
+
+    .swift-popular-item:hover {
+      transform: translateX(4px);
+    }
+
+    .swift-pop-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .swift-pop-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .swift-popular-item:hover .swift-pop-thumb img {
+      transform: scale(1.1);
+    }
+
+    .swift-pop-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .swift-pop-title {
+      font-family: var(--font-serif);
+      font-size: 0.94rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.25s ease;
+    }
+
+    .swift-popular-item:hover .swift-pop-title {
+      color: var(--art-gold);
+    }
+
+    .swift-pop-date {
+      font-size: 0.68rem;
+      color: var(--art-text-muted);
+    }
+
+    /* Consultation Form Widget */
+    .swift-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .swift-form-group label {
+      font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
+      color: var(--art-text-muted);
     }
 
-    .btn-back-journal:hover {
-      background: var(--accent-gold);
+    .swift-form-input,
+    .swift-form-select,
+    .swift-form-textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      background: var(--art-panel-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.25s ease;
+    }
+
+    .swift-form-input:focus,
+    .swift-form-select:focus,
+    .swift-form-textarea:focus {
+      border-color: var(--art-gold);
+      background: #181818;
+    }
+
+    .swift-form-select option {
+      background: #111111;
+      color: #FFFFFF;
+    }
+
+    .swift-form-submit-btn {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 6px;
+      background: var(--art-gold);
       color: #050505;
-      border-color: var(--accent-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .swift-form-submit-btn:hover {
+      background: #FFFFFF;
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND BLUEPRINT SKETCH OVERLAY PATTERN -->
+  <!-- BACKGROUND BLUEPRINT GRID OVERLAY -->
   <div class="blueprint-bg-canvas" aria-hidden="true">
     <svg class="blueprint-svg-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -310,82 +623,221 @@
     </svg>
   </div>
 
-  <!-- SHARED HEADER -->
+  <!-- SHARED HEADER (PRESERVED) -->
   <div id="header-placeholder"></div>
 
-  <!-- MAIN ARTICLE CONTENT -->
-  <main class="article-page-wrapper" id="mainContent">
+  <!-- MAIN ARTICLE CONTAINER (SWIFT 2-COLUMN LAYOUT) -->
+  <main class="swift-page-wrapper" id="mainContent">
 
-    <!-- BREADCRUMB -->
-    <nav class="article-breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
-      <span>/</span>
-      <a href="blog.html">Journal</a>
-      <span>/</span>
-      <span>3D Visualization</span>
-    </nav>
+    <div class="swift-article-grid">
 
-    <!-- ARTICLE HEADER -->
-    <header class="article-header">
-      <span class="article-tag-badge">DIGITAL TWIN PRECISION</span>
-      <h1 class="article-h1-title">Raytracing Sunlight: Spatial Light Synthesis in 4K Renders</h1>
-      <p class="article-subtitle-lead">Calculating true sun angles across Punjab coordinates to accurately simulate daylight distribution, shadow angles, and circadian channels.</p>
+      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           LEFT COLUMN: MAIN ARTICLE BODY (SWIFT LAYOUT)
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <article class="swift-main-article-card">
 
-      <div class="article-meta-bar">
-        <div class="author-meta-block">
-          <div class="author-avatar-img">NAM</div>
+        <!-- Breadcrumbs -->
+        <nav class="swift-breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="blog.html">Journal</a>
+          <span>/</span>
+          <a href="blog.html?category=3d-visualization">3D Visualization</a>
+          <span>/</span>
+          <span>Raytracing Sunlight: Spatial Light Synthesis in 4K Renders</span>
+        </nav>
+
+        <!-- Category & H1 Header -->
+        <span class="swift-tag-category">DIGITAL TWIN PRECISION Â· LUDHIANA, PUNJAB</span>
+        <h1 class="swift-article-h1">Raytracing Sunlight: Spatial Light Synthesis in 4K Renders</h1>
+        <p class="swift-article-subtitle">Calculating true sun angles across Punjab coordinates to accurately simulate daylight distribution, shadow angles, and circadian channels.</p>
+
+        <!-- Metadata Bar -->
+        <div class="swift-meta-bar">
+          <div class="swift-author-info">
+            <div class="swift-author-avatar">NAM</div>
+            <span>By <strong>Mudita D Seth</strong></span>
+          </div>
           <div>
-            <div class="author-name-text">Mudita D Seth</div>
-            <div class="author-role-subtext">Lead Interior Architect, NAM Atelier</div>
+            <span><i class="fa-regular fa-calendar"></i> September 14, 2026</span>
+            <span style="margin: 0 0.5rem;">â€¢</span>
+            <span><i class="fa-regular fa-clock"></i> 6 min read</span>
           </div>
         </div>
-        <div class="article-meta-info">
-          <span><i class="fa-regular fa-calendar"></i> September 14, 2026</span>
-          <span>â€¢</span>
-          <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+
+        <!-- Large Featured Image -->
+        <div class="swift-featured-image-box">
+          <img src="nam_living_render.jpg" alt="Raytracing Sunlight in 4K Renders" loading="eager" />
         </div>
-      </div>
-    </header>
 
-    <!-- COVER IMAGE -->
-    <div class="article-featured-hero-media">
-      <img src="nam_living_render.jpg" alt="Raytracing Sunlight: Spatial Light Synthesis in 4K Renders" loading="eager" />
-    </div>
+        <!-- Article Content Body -->
+        <div class="swift-article-content">
+                <p class="lead-paragraph">Natural sunlight alters how building materials look, breathe, and feel throughout the hours of the day. In high-end villa architecture, renders cannot simply be flattering artistic illustrations; they must be physically accurate digital twins.</p>
+      <h2>1. Physically Based Rendering (PBR)</h2>
+      <p>Every stone slab, brass trim, and timber panel is modeled with scientifically measured reflectance indices to ensure visual fidelity between digital twin and site reality.</p>
+        </div>
 
-    <!-- ESSAY BODY -->
-    <article class="article-content-body">
-            <p class="lead-paragraph">Natural sunlight alters how building materials look, breathe, and feel throughout the hours of the day. In high-end villa architecture, renders cannot simply be flattering artistic illustrations; they must be physically accurate digital twins.</p>
+        <!-- Share Row & Return Link -->
+        <div class="swift-share-row">
+          <a href="blog.html" class="btn-return-journal">
+            <i class="fa-solid fa-arrow-left"></i> Back to All Stories
+          </a>
+          <div class="swift-social-pills">
+            <span style="font-size: 0.72rem; color: var(--art-text-muted); margin-right: 0.25rem;">SHARE:</span>
+            <a href="javascript:void(0)" onclick="navigator.clipboard.writeText(window.location.href); if (typeof showToast==='function') showToast('Article URL copied to clipboard!'); else alert('Article URL copied!');" class="swift-social-btn" title="Copy Link">
+              <i class="fa-solid fa-link"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?text=Raytracing%20Sunlight%3A%20Spatial%20Light%20Synthesis%20in%204K%20Renders%20https%3A%2F%2Fnam-atlier.vercel.app%2Fblog%2Fraytracing-sunlight-spatial-light-synthesis" target="_blank" rel="noopener noreferrer" class="swift-social-btn" title="Share on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://nam-atlier.vercel.app/blog/raytracing-sunlight-spatial-light-synthesis" target="_blank" rel="noopener noreferrer" class="swift-social-btn" title="Share on LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
 
-      <h2>1. Solar Coordinate Calibration</h2>
-      <p>Using accurate geographic latitude and longitude data for sites in Ludhiana, Amritsar, and Jalandhar, we configure physically based atmospheric sky models. We simulate solar elevation and azimuth angles across solstices and equinoxes, previewing morning glare, midday overhang shadow lines, and golden-hour light falloff.</p>
+        <!-- Contextual Bottom Consultation CTA -->
+        <section class="swift-bottom-cta-box" aria-label="Project Consultation">
+          <h2 class="swift-cta-title">Planning a Space of Your Own in Ludhiana?</h2>
+          <p class="swift-cta-desc">
+            Explore how thoughtful spatial geometry, 3D BIM digital twins, and zero-tolerance civil masonry can bring clarity, comfort, and architectural longevity to your home.
+          </p>
+          <div class="swift-cta-actions">
+            <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
+              CONNECT NOW â†—
+            </button>
+            <a href="tel:+917710152917" class="btn-return-journal" style="color: #FFFFFF; font-size: 0.8rem;">
+              <i class="fa-solid fa-phone"></i> +91 77101 52917
+            </a>
+          </div>
+        </section>
 
-      <h2>2. Realistic Material Bidirectional Reflectance (BSDF)</h2>
-      <p>We build custom photometric shader nodes for every real-world material specified in the project. Honed travertine, fluted walnut, liquid brass, and etched glass reflect photons based on laboratory-measured refractive indices and roughness values.</p>
+      </article>
 
-      <h2>3. Eliminating Costly Client Revisions</h2>
-      <p>By experiencing accurate 4K spatial lighting synthesis prior to groundbreaking, our clients make informed, confident decisions on window glazing tints, cove depths, and room orientation before ordering costly materials.</p>
-    </article>
+      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           RIGHT COLUMN: SWIFT SIDEBAR WIDGETS (MATCHING REFERENCE IMAGE 2)
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <aside class="swift-sidebar-col" aria-label="Article Sidebar">
 
-    <!-- BOTTOM ACTIONS -->
-    <div class="article-bottom-actions">
-      <a href="blog.html" class="btn-back-journal">
-        <i class="fa-solid fa-arrow-left"></i> Back to Journal
+        <!-- Widget 1: ABOUT STUDIO (Boxed Header) -->
+        <div class="swift-widget-card">
+          <div class="swift-boxed-header">
+            <h3>ABOUT STUDIO</h3>
+          </div>
+          <div class="swift-about-image">
+            <img src="nam_atelier_studio.jpg" alt="NAM Atelier Architecture and 3D Interior Design Studio Ludhiana" loading="lazy" />
+          </div>
+          <p class="swift-about-bio">
+            NAM Atelier is a contemporary architecture and 3D interior design studio based in Ludhiana, Punjab led by founders Udhay Seth &amp; Mudita D Seth. Specializing in turn-key residential estates, civil construction, and acoustic design.
+          </p>
+          <div class="swift-about-contacts">
+            <a href="tel:+917710152917" class="swift-contact-link">
+              <i class="fa-solid fa-phone"></i> +91 77101 52917 (Udhay)
+            </a>
+            <a href="tel:+918968155070" class="swift-contact-link">
+              <i class="fa-solid fa-phone"></i> +91 89681 55070 (Mudita)
+            </a>
+          </div>
+        </div>
+
+        <!-- Widget 2: POPULAR POSTS (Boxed Header) -->
+        <div class="swift-widget-card">
+          <div class="swift-boxed-header">
+            <h3>POPULAR POSTS</h3>
+          </div>
+          <div class="swift-popular-list">
+                  <a href="blog/how-to-choose-interior-designers-in-ludhiana" class="swift-popular-item">
+        <div class="swift-pop-thumb">
+          <img src="nam_atelier_studio.jpg" alt="How to Choose the Right Interior Designer in Ludhiana: A Founder's Guide" loading="lazy" />
+        </div>
+        <div class="swift-pop-info">
+          <h4 class="swift-pop-title">How to Choose the Right Interior Designer in Ludhiana: A Founder's Guide</h4>
+          <span class="swift-pop-date">October 17, 2026</span>
+        </div>
+      </a>      <a href="blog/modern-living-room-design-ideas" class="swift-popular-item">
+        <div class="swift-pop-thumb">
+          <img src="nam_living_render.jpg" alt="Modern Living Room Design Ideas for Indian Homes: Spatial Harmony & Light" loading="lazy" />
+        </div>
+        <div class="swift-pop-info">
+          <h4 class="swift-pop-title">Modern Living Room Design Ideas for Indian Homes: Spatial Harmony & Light</h4>
+          <span class="swift-pop-date">October 16, 2026</span>
+        </div>
+      </a>      <a href="blog/modular-kitchen-design-ideas" class="swift-popular-item">
+        <div class="swift-pop-thumb">
+          <img src="nam_dining_interior.jpg" alt="Modular Kitchen Design Ideas: Blum Hardware, Sintered Stone & Layouts" loading="lazy" />
+        </div>
+        <div class="swift-pop-info">
+          <h4 class="swift-pop-title">Modular Kitchen Design Ideas: Blum Hardware, Sintered Stone & Layouts</h4>
+          <span class="swift-pop-date">October 15, 2026</span>
+        </div>
+      </a>      <a href="blog/modern-bedroom-interior-design" class="swift-popular-item">
+        <div class="swift-pop-thumb">
+          <img src="nam_bedroom_render.jpg" alt="Modern Bedroom Interior Design: Acoustic Comfort, Lighting & Wardrobes" loading="lazy" />
+        </div>
+        <div class="swift-pop-info">
+          <h4 class="swift-pop-title">Modern Bedroom Interior Design: Acoustic Comfort, Lighting & Wardrobes</h4>
+          <span class="swift-pop-date">October 14, 2026</span>
+        </div>
+      </a>      <a href="blog/office-interior-design-ideas" class="swift-popular-item">
+        <div class="swift-pop-thumb">
+          <img src="nam_office_interior.jpg" alt="Office & Commercial Interior Design Ideas: Acoustic Comfort & Brand Identity" loading="lazy" />
+        </div>
+        <div class="swift-pop-info">
+          <h4 class="swift-pop-title">Office & Commercial Interior Design Ideas: Acoustic Comfort & Brand Identity</h4>
+          <span class="swift-pop-date">October 13, 2026</span>
+        </div>
       </a>
-      <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
-        DISCUSS YOUR RESIDENCE â†—
-      </button>
+          </div>
+        </div>
+
+        <!-- Widget 3: CONSULTATION INQUIRY (Boxed Header) -->
+        <div class="swift-widget-card">
+          <div class="swift-boxed-header">
+            <h3>REQUEST A CONSULTATION</h3>
+          </div>
+          <form onsubmit="handleSwiftSidebarForm(event)">
+            <div class="swift-form-group">
+              <label for="sideName">Your Full Name</label>
+              <input type="text" id="sideName" required placeholder="e.g. Gurpreet Singh" class="swift-form-input" />
+            </div>
+            <div class="swift-form-group">
+              <label for="sidePhone">Mobile / WhatsApp</label>
+              <input type="tel" id="sidePhone" required placeholder="+91 98765 43210" class="swift-form-input" />
+            </div>
+            <div class="swift-form-group">
+              <label for="sideProject">Project Type</label>
+              <select id="sideProject" class="swift-form-select">
+                <option value="Residential Villa">Residential Villa (Punjab)</option>
+                <option value="Luxury Apartment Interiors">Luxury Apartment Interiors</option>
+                <option value="Modular Kitchen Design">Modular Kitchen Architecture</option>
+                <option value="Commercial Office Workspace">Commercial Office Workspace</option>
+                <option value="Turnkey Civil Contracting">Turnkey Civil Contracting</option>
+              </select>
+            </div>
+            <div class="swift-form-group">
+              <label for="sideMsg">Brief Notes (Optional)</label>
+              <textarea id="sideMsg" rows="2" placeholder="Approx. area or location..." class="swift-form-textarea"></textarea>
+            </div>
+            <button type="submit" class="swift-form-submit-btn">
+              SUBMIT INQUIRY â†—
+            </button>
+          </form>
+        </div>
+
+      </aside>
+
     </div>
 
   </main>
 
-  <!-- CONSULTATION MODAL -->
+  <!-- CONSULTATION MODAL (SHARED DIALOG) -->
   <div class="modal-overlay" id="consultModal">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
       <div class="modal-header text-center">
         <span class="card-tag-pill"><span class="gold-dot"></span> ARCHITECTURAL CONSULTATION</span>
         <h3 class="modal-title">Book Studio Appointment</h3>
-        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting.</p>
+        <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting in Ludhiana.</p>
       </div>
       <form onsubmit="handleConsultSubmit(event)" class="modal-form">
         <div class="form-group">
@@ -401,10 +853,25 @@
     </div>
   </div>
 
-  <!-- SHARED FOOTER -->
+  <!-- SHARED FOOTER (PRESERVED) -->
   <div id="footer-placeholder"></div>
 
-  <!-- SHARED SCRIPTS -->
+  <script>
+    function handleSwiftSidebarForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('sideName').value;
+      const phone = document.getElementById('sidePhone').value;
+      const project = document.getElementById('sideProject').value;
+      if (typeof showToast === 'function') {
+        showToast('Thank you ' + name + '! We will connect regarding your ' + project + ' inquiry.');
+      } else {
+        alert('Thank you ' + name + '! We will connect regarding your ' + project + ' inquiry.');
+      }
+      e.target.reset();
+    }
+  </script>
+
+  <!-- SHARED ENGINE SCRIPTS -->
   <script src="script.js?v=3.2" defer></script>
 </body>
 </html>
