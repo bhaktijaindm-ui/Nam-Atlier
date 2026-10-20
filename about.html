@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About the Studio — NAM Atelier | Architectural &amp; 3D Interior Design</title>
   <meta name="description" content="Meet Udhay Seth &amp; Mudita D Seth — founders of NAM Atelier. Where zero-tolerance civil engineering meets 4K photorealistic spatial design across Ludhiana &amp; Amritsar." />
+  <link rel="canonical" href="https://nam-atlier.vercel.app/about" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NAM Atelier" />
+  <meta property="og:title" content="About the Studio — NAM Atelier | Architectural &amp; 3D Interior Design" />
+  <meta property="og:description" content="Meet Udhay Seth &amp; Mudita D Seth — founders of NAM Atelier. Where zero-tolerance civil engineering meets 4K photorealistic spatial design." />
+  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_founder_udhay.jpg" />
+  <meta property="og:url" content="https://nam-atlier.vercel.app/about" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About the Studio — NAM Atelier" />
+  <meta name="twitter:description" content="Meet Udhay Seth &amp; Mudita D Seth — founders of NAM Atelier." />
+  <meta name="twitter:image" content="https://nam-atlier.vercel.app/nam_founder_udhay.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +35,36 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
   <!-- Shared Studio Stylesheet (Header, Footer, Design System) -->
-  <link rel="stylesheet" href="styles.css?v=3.1" />
+  <link rel="stylesheet" href="styles.css?v=4.0" />
+
+  <!-- Structured Data: AboutPage & Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About NAM Atelier Studio",
+    "description": "Meet Udhay Seth and Mudita D Seth, founders of NAM Atelier architecture and interior design studio.",
+    "url": "https://nam-atlier.vercel.app/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "NAM Atelier",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Udhay Seth",
+          "jobTitle": "Principal Civil Constructor & Founder",
+          "telephone": "+917710152917"
+        },
+        {
+          "@type": "Person",
+          "name": "Mudita D Seth",
+          "jobTitle": "Lead Interior Designer & Founder",
+          "telephone": "+918968155070"
+        }
+      ]
+    }
+  }
+  </script>
 
   <style>
     /* ============================================================
@@ -557,6 +602,28 @@
 
     .founder-btn-primary:hover i {
       transform: translateX(3px);
+    }
+
+    @media (max-width: 768px) {
+      #about-hero {
+        min-height: 70vh !important;
+        padding: 5rem 1rem 3rem !important;
+      }
+      .hero-headline {
+        font-size: clamp(1.75rem, 6.5vw, 2.5rem) !important;
+        margin-bottom: 1rem !important;
+      }
+      .hero-sub {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.8rem !important;
+      }
+      #founders, #team, #portfolio-preview, #faq {
+        padding: 3.5rem 1rem !important;
+      }
+      #vip-cta {
+        padding: 3.5rem 1rem 2.5rem !important;
+      }
     }
 
     @media (max-width: 1120px) {
@@ -2331,6 +2398,6 @@
   </div>
 
   <!-- Shared Interactive Engine (Component Loader, Modals, Nav, Clipboard) -->
-  <script src="script.js?v=3.1" defer></script>
+  <script src="script.js?v=4.0" defer></script>
 </body>
 </html>

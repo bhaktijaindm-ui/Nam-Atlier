@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=3.2" />
+  <link rel="stylesheet" href="styles.css?v=4.0" />
 
   <!-- Structured Data: Blog & BreadcrumbList -->
   <script type="application/ld+json">
@@ -182,10 +182,23 @@
     @media (max-width: 768px) {
       .hague-hero-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
       }
       .hague-hero-col-center {
         grid-column: span 1;
+      }
+      .hague-center-img-wrap {
+        height: 210px !important;
+      }
+      .hague-center-title {
+        font-size: 1.45rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .hague-center-excerpt {
+        font-size: 0.85rem !important;
+        -webkit-line-clamp: 3 !important;
       }
     }
 
@@ -1175,6 +1188,6 @@
   <div id="footer-placeholder"></div>
 
   <!-- SHARED ENGINE SCRIPTS -->
-  <script src="script.js?v=3.2" defer></script>
+  <script src="script.js?v=4.0" defer></script>
 </body>
 </html>

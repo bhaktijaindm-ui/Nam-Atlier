@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=3.2" />
+  <link rel="stylesheet" href="styles.css?v=4.0" />
 
   <!-- Structured Data: BreadcrumbList and CollectionPage -->
   <script type="application/ld+json">
@@ -127,7 +127,36 @@
 
     @media (max-width: 768px) {
       .portfolio-wrapper {
-        padding: 5.5rem 1rem 3rem;
+        padding: 4.8rem 0.85rem 2.5rem;
+      }
+      .editorial-hero-card {
+        min-height: 440px !important;
+        padding: 1.5rem 1.1rem !important;
+        border-radius: var(--port-radius-md) !important;
+      }
+      .hero-top-watermark {
+        margin-top: 0.25rem !important;
+      }
+      .hero-watermark-title {
+        font-size: clamp(2.2rem, 9.5vw, 4rem) !important;
+        letter-spacing: 2px !important;
+      }
+      .hero-watermark-subtitle {
+        font-size: 0.65rem !important;
+        letter-spacing: 2px !important;
+      }
+      .hero-headline-block {
+        max-width: 100% !important;
+      }
+      .hero-main-heading {
+        font-size: 1.45rem !important;
+      }
+      .hero-main-subtext {
+        font-size: 0.82rem !important;
+      }
+      .hero-bottom-grid {
+        gap: 1.25rem !important;
+        padding-top: 1.5rem !important;
       }
     }
 
@@ -2146,6 +2175,6 @@
   </script>
 
   <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
-  <script src="script.js?v=3.2" defer></script>
+  <script src="script.js?v=4.0" defer></script>
 </body>
 </html>
