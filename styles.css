@@ -338,6 +338,43 @@ body:not(:has(.cinema-scroll)) .site-header {
   inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(15, 15, 15, 0.1) 0%, rgba(15, 15, 15, 0.85) 100%);
   pointer-events: none;
+  z-index: 3;
+}
+
+/* CREATIVE ATMOSPHERIC ELEMENT (SUBTLE ARCHITECTURAL MIST / CLOUD DEPTH) */
+.hero-atmospheric-mist {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+  transition: opacity 0.5s ease-out;
+  background: 
+    radial-gradient(ellipse 70% 30% at 50% 88%, rgba(255, 255, 255, 0.13) 0%, rgba(210, 190, 160, 0.05) 50%, transparent 80%),
+    radial-gradient(ellipse 45% 22% at 20% 82%, rgba(255, 255, 255, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 22% at 80% 84%, rgba(255, 255, 255, 0.09) 0%, transparent 70%);
+  filter: blur(32px);
+  will-change: transform, opacity;
+  animation: heroMistDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroMistDrift {
+  0% {
+    transform: translate3d(-1.5%, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1.5%, -0.8%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-0.5%, 0.5%, 0) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmospheric-mist {
+    animation: none;
+    opacity: 0.35;
+  }
 }
 
 /* LEFT CONTENT CARD (DYNAMIC FROSTED GLASS CONTAINER) */

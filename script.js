@@ -94,10 +94,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 let isUserPlaying = false;
 
 const sectionLabelsMap = {
-  1: "01 / Grand Facade & Entrance",
-  2: "02 / Living Hall & Travertine Atrium",
-  3: "03 / Mezzanine Level & Cantilever Stairs",
-  4: "04 / Private Sanctuary & Theater"
+  1: "01 / Grand Façade & Portico",
+  2: "02 / Living Hall & Marble Atrium",
+  3: "03 / Culinary Architecture & Lounge",
+  4: "04 / Cinema & Master Sanctuary"
 };
 
 function initVideoScrubbing() {
@@ -109,19 +109,25 @@ function initVideoScrubbing() {
   const barSectionLabel = document.getElementById('barSectionLabel');
   const timelineProgressFill = document.getElementById('timelineProgressFill');
   const timeCounter = document.getElementById('timeCounter');
+  const heroMist = document.getElementById('heroMist');
 
   if (!cinemaSection || !video) return;
 
-  // Hard-lock: never autoplay or loop — only scroll drives the video
+  // Respect reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Hard-lock: muted, inline, no loop — scroll exclusively drives playback
   video.muted = true;
   video.playsInline = true;
+  video.setAttribute('playsinline', 'true');
+  video.setAttribute('webkit-playsinline', 'true');
   video.removeAttribute('autoplay');
   video.removeAttribute('loop');
   try { video.pause(); } catch(e) {}
 
-  // Intercept any browser-initiated play attempt
+  // Intercept any browser-initiated play attempt when not user-triggered
   video.addEventListener('play', () => {
-    if (!isUserPlaying) {
+    if (!isUserPlaying && !prefersReducedMotion) {
       try { video.pause(); } catch(e) {}
     }
   });
@@ -131,34 +137,69 @@ function initVideoScrubbing() {
     if (btn && !isUserPlaying) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
   });
 
-  // ── SMOOTH RAF-DRIVEN SCRUB ENGINE ──────────────────────────────────────
-  // Instead of a throttled seek queue, we run a continuous RAF loop that
-  // reads the latest target time and sets currentTime directly every frame.
-  // This gives buttery-smooth scrubbing with zero queue delay.
+  // Keep scrubber & cards synchronized if user presses Play button
+  video.addEventListener('timeupdate', () => {
+    if (isUserPlaying && video.duration > 0) {
+      const fraction = video.currentTime / video.duration;
+      updateUI(fraction);
+    }
+  });
 
-  let targetScrubTime = 0;   // desired video time (updated every scroll event)
+  // ── ADVANCED NON-BLOCKING SEEK ENGINE (BUTTERY SMOOTH) ───────────────────
+  let targetScrubTime = 0;   // Desired time computed from scroll position
+  let pendingSeekTime = null; // Next seek waiting for decoder to finish
   let rafId = null;
-  let videoReady = false;    // true once we have a valid duration
+  let videoReady = false;
+
+  function performSeek(clampedTime) {
+    if (!videoReady || !video.duration || isUserPlaying) return;
+
+    // If browser decoder is already seeking, queue latest target to prevent decoder pipeline stall
+    if (video.seeking) {
+      pendingSeekTime = clampedTime;
+      return;
+    }
+
+    try {
+      if (typeof video.fastSeek === 'function') {
+        video.fastSeek(clampedTime);
+      } else {
+        video.currentTime = clampedTime;
+      }
+    } catch(err) {
+      try { video.currentTime = clampedTime; } catch(e) {}
+    }
+  }
+
+  // When decoder finishes seeking, drain any pending target immediately
+  video.addEventListener('seeked', () => {
+    if (pendingSeekTime !== null && !isUserPlaying) {
+      const nextTime = pendingSeekTime;
+      pendingSeekTime = null;
+      if (Math.abs(video.currentTime - nextTime) > 0.03) {
+        performSeek(nextTime);
+      }
+    }
+  });
 
   function scrubLoop() {
     rafId = null;
     const duration = video.duration;
     if (videoReady && duration > 0 && !isUserPlaying) {
-      const clamped = Math.max(0, Math.min(duration - 0.05, targetScrubTime));
-      // Only seek if we're meaningfully off target (avoids unnecessary seeks)
-      if (Math.abs(video.currentTime - clamped) > 0.05) {
-        try { video.currentTime = clamped; } catch(e) {}
+      const clamped = Math.max(0, Math.min(duration - 0.04, targetScrubTime));
+      if (Math.abs(video.currentTime - clamped) > 0.03) {
+        performSeek(clamped);
       }
     }
   }
 
   function scheduleScrub() {
-    if (!rafId) {
+    if (!rafId && !prefersReducedMotion) {
       rafId = requestAnimationFrame(scrubLoop);
     }
   }
 
-  // ── UI UPDATE (runs every scroll frame) ─────────────────────────────────
+  // ── UI UPDATE (Synchronized with scroll progress) ───────────────────────
   function getScrollFraction() {
     const rect = cinemaSection.getBoundingClientRect();
     const totalScrollable = cinemaSection.offsetHeight - window.innerHeight;
@@ -167,24 +208,31 @@ function initVideoScrubbing() {
   }
 
   function updateUI(scrollFraction) {
-    const duration = video.duration || 0;
+    const duration = video.duration || 10;
 
-    // Progress fill bar
+    // Timeline progress fill bar
     if (timelineProgressFill) {
       timelineProgressFill.style.width = `${(scrollFraction * 100).toFixed(2)}%`;
     }
 
-    // Scroll indicator
+    // Scroll-to-explore indicator
     if (scrollIndicator) {
       scrollIndicator.style.opacity = scrollFraction > 0.04 ? '0' : '1';
       scrollIndicator.style.pointerEvents = scrollFraction > 0.04 ? 'none' : 'auto';
     }
 
-    // Active milestone
+    // Subtle atmospheric mist depth: present at exterior facade, fades naturally into interior
+    if (heroMist) {
+      const mistOpacity = Math.max(0, 0.85 - (scrollFraction * 3.5));
+      heroMist.style.opacity = mistOpacity.toFixed(2);
+    }
+
+    // Active milestone cards & timeline pills (4 curated architectural stops)
     let activeStop = 1;
-    if (scrollFraction >= 0.75)      activeStop = 4;
-    else if (scrollFraction >= 0.50) activeStop = 3;
-    else if (scrollFraction >= 0.20) activeStop = 2;
+    if (scrollFraction >= 0.75)      activeStop = 4; // Cinema & Master Sanctuary
+    else if (scrollFraction >= 0.50) activeStop = 3; // Dining, Kitchen & Lounge
+    else if (scrollFraction >= 0.22) activeStop = 2; // Foyer & Living Atrium
+    // else activeStop = 1 (Grand Façade & Portico)
 
     milestoneCards.forEach(card => {
       const stop = parseInt(card.getAttribute('data-milestone'));
@@ -202,15 +250,16 @@ function initVideoScrubbing() {
 
     // Time counter
     if (timeCounter && duration > 0) {
-      timeCounter.textContent = `${formatTime(Math.floor(video.currentTime))} / ${formatTime(Math.floor(duration))}`;
+      const curTime = isUserPlaying ? video.currentTime : (scrollFraction * duration);
+      timeCounter.textContent = `${formatTime(Math.floor(curTime))} / ${formatTime(Math.floor(duration))}`;
     }
   }
 
-  // ── SCROLL HANDLER ───────────────────────────────────────────────────────
+  // ── SCROLL & RESIZE HANDLERS ─────────────────────────────────────────────
   let uiRafId = null;
 
   function onScroll() {
-    // If user was manually playing, stop and return to scrub mode
+    // If user was manually playing, pause and return to scroll-scrub mode
     if (isUserPlaying) {
       isUserPlaying = false;
       try { video.pause(); } catch(e) {}
@@ -219,15 +268,15 @@ function initVideoScrubbing() {
     }
 
     const fraction = getScrollFraction();
-    const duration = video.duration || 0;
+    const duration = video.duration || 10;
 
     // Update scrub target
-    if (videoReady && duration > 0) {
+    if (videoReady && duration > 0 && !prefersReducedMotion) {
       targetScrubTime = fraction * duration;
       scheduleScrub();
     }
 
-    // Update UI in its own RAF slot
+    // Update UI in RAF slot
     if (!uiRafId) {
       uiRafId = requestAnimationFrame(() => {
         updateUI(fraction);
@@ -241,15 +290,23 @@ function initVideoScrubbing() {
     updateUI(getScrollFraction());
   }, { passive: true });
 
+  // Prime mobile video decoder on first user touch/interaction
+  const primeVideo = () => {
+    if (video.readyState < 2) {
+      try { video.load(); } catch(e) {}
+    }
+  };
+  window.addEventListener('touchstart', primeVideo, { passive: true, once: true });
+  window.addEventListener('pointerdown', primeVideo, { passive: true, once: true });
+
   // ── VIDEO READY CALLBACKS ────────────────────────────────────────────────
   function onVideoReady() {
     if (video.duration > 0) {
       videoReady = true;
       try { video.pause(); } catch(e) {}
-      // Seek to current scroll position immediately
       const fraction = getScrollFraction();
       targetScrubTime = fraction * video.duration;
-      try { video.currentTime = targetScrubTime; } catch(e) {}
+      performSeek(targetScrubTime);
       updateUI(fraction);
     }
   }
@@ -258,7 +315,7 @@ function initVideoScrubbing() {
   video.addEventListener('loadeddata', onVideoReady);
   video.addEventListener('canplay', onVideoReady);
 
-  // Kick off loading
+  // Kick off loading immediately
   if (video.readyState === 0) {
     try { video.load(); } catch(e) {}
   } else if (video.readyState >= 1) {
@@ -284,10 +341,10 @@ function jumpToMilestone(stopNumber) {
   let targetFraction = 0;
 
   switch (stopNumber) {
-    case 1: targetFraction = 0.02; break;
-    case 2: targetFraction = 0.32; break;
-    case 3: targetFraction = 0.62; break;
-    case 4: targetFraction = 0.90; break;
+    case 1: targetFraction = 0.02; break; // Façade & Portico
+    case 2: targetFraction = 0.32; break; // Living Atrium
+    case 3: targetFraction = 0.62; break; // Culinary & Lounge
+    case 4: targetFraction = 0.88; break; // Cinema & Sanctuary
   }
 
   const targetY = cinemaSection.offsetTop + (targetFraction * totalScrollableHeight);
