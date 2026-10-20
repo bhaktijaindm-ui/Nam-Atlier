@@ -3437,10 +3437,13 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
   /* MOBILE STAGE & HERO BANNER FULL VIEW OPTIMIZATION */
   .cinema-scroll {
-    height: 180vh; /* Effortless natural scrubbing height on mobile: no scroll-trapping */
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
+    position: relative !important;
+    height: 300vh !important; /* Enough scroll-distance for full video scrubbing across 4 milestones */
+    width: 100% !important;
+    max-width: 100vw !important;
+    background: #090b0c !important;
+    /* DO NOT set overflow-x: hidden — it breaks position: sticky on .stage */
+    overflow: visible !important;
     touch-action: pan-y;
   }
 
