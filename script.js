@@ -126,8 +126,10 @@ function initVideoScrubbing() {
   try { video.pause(); } catch(e) {}
 
   // Intercept any browser-initiated play attempt when not user-triggered
+  // Allow the primeVideo unlock call through — only block autoplay after decoder is primed
   video.addEventListener('play', () => {
-    if (!isUserPlaying && !prefersReducedMotion) {
+    if (!isUserPlaying && !prefersReducedMotion && videoReady) {
+      // Only pause if we're in scroll-scrub mode and decoder is already ready
       try { video.pause(); } catch(e) {}
     }
   });
@@ -291,9 +293,38 @@ function initVideoScrubbing() {
   }, { passive: true });
 
   // Prime mobile video decoder on first user touch/interaction
+  // Mobile browsers block seek until after a play() call — play+pause unlocks the decoder
+  let videoPrimed = false;
   const primeVideo = () => {
-    if (video.readyState < 2) {
+    if (videoPrimed) return;
+    videoPrimed = true;
+    if (video.readyState < 1) {
       try { video.load(); } catch(e) {}
+    }
+    // play() then immediately pause() unlocks the mobile video decoder
+    // so that currentTime scrubbing works without autoplay restrictions
+    const unlockPromise = video.play();
+    if (unlockPromise !== undefined) {
+      unlockPromise
+        .then(() => {
+          // Successfully started — immediately pause and hand control to scroll
+          try { video.pause(); } catch(e) {}
+          video.currentTime = 0;
+          if (!videoReady && video.duration > 0) {
+            videoReady = true;
+            const fraction = getScrollFraction();
+            targetScrubTime = fraction * video.duration;
+            performSeek(targetScrubTime);
+            updateUI(fraction);
+          }
+        })
+        .catch(() => {
+          // Autoplay blocked — try load() as fallback
+          try { video.load(); } catch(e) {}
+        });
+    } else {
+      // Old browser without Promise API
+      try { video.pause(); } catch(e) {}
     }
   };
   window.addEventListener('touchstart', primeVideo, { passive: true, once: true });
@@ -301,9 +332,8 @@ function initVideoScrubbing() {
 
   // ── VIDEO READY CALLBACKS ────────────────────────────────────────────────
   function onVideoReady() {
-    if (video.duration > 0) {
+    if (video.duration > 0 && !videoReady) {
       videoReady = true;
-      try { video.pause(); } catch(e) {}
       const fraction = getScrollFraction();
       targetScrubTime = fraction * video.duration;
       performSeek(targetScrubTime);
@@ -314,12 +344,29 @@ function initVideoScrubbing() {
   video.addEventListener('loadedmetadata', onVideoReady);
   video.addEventListener('loadeddata', onVideoReady);
   video.addEventListener('canplay', onVideoReady);
+  video.addEventListener('canplaythrough', onVideoReady);
 
   // Kick off loading immediately
   if (video.readyState === 0) {
     try { video.load(); } catch(e) {}
   } else if (video.readyState >= 1) {
     onVideoReady();
+  }
+
+  // IntersectionObserver: auto-prime when hero section enters viewport
+  // Helps iOS Safari which requires visible element + user gesture
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !videoPrimed) {
+          // Section is visible — trigger video load to start buffering
+          if (video.readyState < 1) {
+            try { video.load(); } catch(e) {}
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    heroObserver.observe(cinemaSection);
   }
 
   // Initial UI render
