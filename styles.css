@@ -3173,30 +3173,6 @@ body:not(:has(.cinema-scroll)) .site-header {
     display: none !important;
   }
 
-  .left-content-card-stage {
-    padding: 0 2rem;
-    height: calc(100vh - 160px);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .glass-content-card {
-    width: min(420px, 85vw);
-    max-width: 100%;
-    padding: 1.25rem 1.5rem 1.15rem;
-  }
-
-  .card-hero-title {
-    font-size: 1.7rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-hero-desc {
-    font-size: 0.82rem;
-    margin-bottom: 1rem;
-  }
-
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
@@ -3219,6 +3195,33 @@ body:not(:has(.cinema-scroll)) .site-header {
     height: 50%;
     top: auto;
     bottom: 0;
+  }
+}
+
+/* Tablet only (769px–1024px): centered card layout — NOT applied to phones */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .left-content-card-stage {
+    padding: 0 2rem;
+    height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .glass-content-card {
+    width: min(420px, 85vw);
+    max-width: 100%;
+    padding: 1.25rem 1.5rem 1.15rem;
+  }
+
+  .card-hero-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-hero-desc {
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -3442,57 +3445,57 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
 
   .stage {
-    height: 100vh;
-    height: 100dvh;
-    min-height: 100%;
-    max-height: 100vh;
-    max-height: 100dvh;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    box-sizing: border-box;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: unset !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    box-sizing: border-box !important;
     touch-action: pan-y;
   }
 
   .video-stage {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
   }
 
   .hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 36%; /* Perfectly frames the classical portico and entrance on mobile screens */
-    pointer-events: none;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 36% !important;
+    pointer-events: none !important;
   }
 
   /* COMPACT BOTTOM-DOCKED HERO CARD STAGE FOR MOBILE (100% IN-VIEW) */
   .left-content-card-stage {
-    position: absolute;
-    bottom: 0.65rem;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    padding: 0 0.75rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    z-index: 30;
-    pointer-events: none;
-    box-sizing: border-box;
+    position: absolute !important;
+    bottom: 0.75rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 0 0.75rem !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    z-index: 30 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
   }
 
   /* COMPACT, LANDSCAPE-PROPORTIONED FROSTED CARD (RESIZED & COMPRESSED TO FIT SCREEN) */
@@ -3504,17 +3507,17 @@ body:not(:has(.cinema-scroll)) .site-header {
     right: auto !important;
     transform: none !important;
     width: 100% !important;
-    max-width: 390px !important;
+    max-width: calc(100vw - 1.5rem) !important;
     margin: 0 auto !important;
-    padding: 0.55rem 0.8rem 0.5rem !important;
+    padding: 0.55rem 0.9rem 0.55rem !important;
     border-radius: 12px !important;
     
     /* Premium Frosted Luxury Dark Glass */
-    background: rgba(10, 10, 10, 0.85) !important;
-    backdrop-filter: blur(16px) saturate(140%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
-    border: 1px solid rgba(198, 173, 133, 0.35) !important;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.75) !important;
+    background: rgba(8, 8, 8, 0.88) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    border: 1px solid rgba(198, 173, 133, 0.38) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.8) !important;
     
     box-sizing: border-box !important;
     pointer-events: auto !important;
