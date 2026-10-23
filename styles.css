@@ -4280,3 +4280,23 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
 }
 
+/* Service Detail Page - Full-Bleed Hero & Clean Layout Support */
+.service-page {
+  display: flow-root;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.service-page > #servicesShowcaseView > .services-wrapper {
+  padding-top: 0 !important;
+}
+
+.service-page .cinematic-service-hero {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
