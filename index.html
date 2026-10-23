@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -32,7 +32,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Global Design System & Component Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.3" />
+  <link rel="stylesheet" href="styles.css?v=4.5" />
 
   <!-- Structured Data: Organization & LocalBusiness JSON-LD -->
   <script type="application/ld+json">
@@ -145,6 +145,12 @@
                 <span class="feature-lbl">Teakwood Main Entry</span>
               </div>
             </div>
+
+            <div class="card-action-row">
+              <a href="services/architectural-design/" class="hero-card-cta-btn">
+                Explore Façade Architecture <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
 
           <!-- Card Stop 2: Foyer & Living Atrium -->
@@ -172,6 +178,12 @@
                 <span class="feature-val">Recessed Cove</span>
                 <span class="feature-lbl">2700K Luminescence</span>
               </div>
+            </div>
+
+            <div class="card-action-row">
+              <a href="services/interior-design/" class="hero-card-cta-btn">
+                Explore Interior Architecture <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
@@ -201,6 +213,12 @@
                 <span class="feature-lbl">Cantilever Stairs</span>
               </div>
             </div>
+
+            <div class="card-action-row">
+              <a href="services/kitchen-dining/" class="hero-card-cta-btn">
+                Explore Culinary Architecture <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
 
           <!-- Card Stop 4: Cinema & Master Sanctuary -->
@@ -228,6 +246,12 @@
                 <span class="feature-val">Master Suite</span>
                 <span class="feature-lbl">Glass Ensuite</span>
               </div>
+            </div>
+
+            <div class="card-action-row">
+              <a href="services/acoustic-theatre-design/" class="hero-card-cta-btn">
+                Explore Acoustic Theatres <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
@@ -310,9 +334,14 @@
       <section class="about-section" id="about">
         <div class="about-container">
           <div class="section-header text-center" style="margin-bottom: 3rem;">
-            <span class="section-subtitle">ABOUT NAM ATELIER</span>
+            <span class="section-subtitle"><a href="about.html" style="color: inherit; text-decoration: none;">ABOUT NAM ATELIER <i class="fa-solid fa-arrow-right" style="font-size: 0.75em; margin-left: 4px;"></i></a></span>
             <h2 class="section-title">Crafting Timeless Architecture &amp; Bespoke 3D Sanctuaries</h2>
             <p class="section-desc">Ludhiana &amp; Amritsar’s premier boutique architectural curation and turnkey civil contracting studio.</p>
+            <div style="margin-top: 1rem;">
+              <a href="about.html" class="section-header-action-btn">
+                Discover About Us &amp; Studio Philosophy <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
 
           <div class="about-grid">
@@ -352,10 +381,13 @@
               </div>
 
               <div class="about-cta-row">
+                <a href="about.html" class="btn btn-inquire-pill">
+                  Explore Full Studio Story <i class="fa-solid fa-arrow-right"></i>
+                </a>
                 <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
-                  Book Studio Consultation <i class="fa-solid fa-arrow-right"></i>
+                  Book Studio Consultation
                 </button>
-                <a href="#portfolio" class="about-link">Explore 3D Portfolio <i class="fa-solid fa-chevron-down"></i></a>
+                <a href="portfolio-detail.html" class="about-link">Explore 3D Portfolio <i class="fa-solid fa-chevron-right"></i></a>
               </div>
             </div>
 
@@ -503,10 +535,10 @@
                 </div>
 
                 <div class="facade-panel-action">
-                  <button class="btn btn-inquire-pill" onclick="openModal('consultModal')">
-                    Commission Facade Design <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                  <a href="service-detail.html" class="facade-link">
+                  <a href="services/architectural-design/" class="btn btn-inquire-pill">
+                    Commission Façade Architecture <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                  <a href="services/turnkey-civil-execution/" class="facade-link">
                     Explore Civil Contracting <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                 </div>
@@ -518,38 +550,38 @@
           <!-- Facade Signature Gallery Strip -->
           <div class="facade-gallery-strip">
             
-            <div class="facade-thumb-card">
+            <a href="portfolio/villa-sanctuary/" class="facade-thumb-card" style="text-decoration: none; color: inherit;">
               <div class="facade-thumb-media">
                 <img src="nam_facade_thumb1.jpg" alt="Minimalist Villa Facade with Reflecting Pool" loading="lazy" decoding="async" />
                 <span class="facade-thumb-badge">Amritsar Estate</span>
               </div>
               <div class="facade-thumb-content">
-                <h4>Villa Sanctuary Elevation</h4>
+                <h4>Villa Sanctuary Elevation ↗</h4>
                 <p>Floor-to-ceiling slimline glass portals facing a private reflecting pool.</p>
               </div>
-            </div>
+            </a>
 
-            <div class="facade-thumb-card">
+            <a href="portfolio/the-marble-residence/" class="facade-thumb-card" style="text-decoration: none; color: inherit;">
               <div class="facade-thumb-media">
                 <img src="nam_facade_thumb2.jpg" alt="Modern European Villa Entrance Portico" loading="lazy" decoding="async" />
                 <span class="facade-thumb-badge">Ludhiana Villa</span>
               </div>
               <div class="facade-thumb-content">
-                <h4>Model Town Grand Portico</h4>
+                <h4>Model Town Grand Portico ↗</h4>
                 <p>Symmetrical classical colonnades paired with fluted bronze pivot doors.</p>
               </div>
-            </div>
+            </a>
 
-            <div class="facade-thumb-card">
+            <a href="services/architectural-design/" class="facade-thumb-card" style="text-decoration: none; color: inherit;">
               <div class="facade-thumb-media">
                 <img src="nam_facade_thumb3.jpg" alt="Travertine Exterior Masonry & Cantilever Terraces" loading="lazy" decoding="async" />
                 <span class="facade-thumb-badge">Civil Lines Estate</span>
               </div>
               <div class="facade-thumb-content">
-                <h4>Cantilever Stone Terrace</h4>
+                <h4>Cantilever Stone Terrace ↗</h4>
                 <p>Zero-tolerance post-tensioned slabs with monolithic stone soffits.</p>
               </div>
-            </div>
+            </a>
 
           </div>
 
@@ -559,105 +591,122 @@
       <!-- PROJECTS SHOWCASE INFINITE CAROUSEL SECTION -->
       <section class="sights-slider-section" id="projects-showcase" aria-label="Signature Design Projects Showcase">
         <div class="section-header text-center">
-          <div class="section-subtitle">PROJECTS SHOWCASE</div>
+          <div class="section-subtitle"><a href="portfolio-detail.html" style="color: inherit; text-decoration: none;">PROJECTS SHOWCASE <i class="fa-solid fa-arrow-right"></i></a></div>
           <h2 class="section-title">Bespoke Architectural Residences</h2>
           <p class="section-desc">Explore our signature penthouses, chef's kitchens, private cinemas, and turnkey estates.</p>
+          <div style="margin-top: 1rem;">
+            <a href="portfolio-detail.html" class="section-header-action-btn">
+              View Complete 3D Portfolio Page <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
         <div class="sights-slider-wrapper">
           <div class="sights-track" id="sightsTrack">
             <!-- Card 1 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/obsidian-penthouse/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Obsidian Penthouse" loading="lazy" decoding="async" />
+                <a href="portfolio/obsidian-penthouse/">
+                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Obsidian Penthouse" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Penthouse Interior</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">The Obsidian Penthouse</h3>
+                <h3 class="sight-title"><a href="portfolio/obsidian-penthouse/" style="color: inherit; text-decoration: none;">The Obsidian Penthouse</a></h3>
                 <p class="sight-desc">Double-height monolithic stone living hall with floating staircase and custom cove lighting.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> South Model Gram</span>
-                  <a href="portfolio-detail.html?project=obsidian" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/obsidian-penthouse/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
 
             <!-- Card 2 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/the-rosewood-villa/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="The Rosewood Villa" loading="lazy" decoding="async" />
+                <a href="portfolio/the-rosewood-villa/">
+                  <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="The Rosewood Villa" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Chef's Kitchen</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">The Rosewood Villa</h3>
+                <h3 class="sight-title"><a href="portfolio/the-rosewood-villa/" style="color: inherit; text-decoration: none;">The Rosewood Villa</a></h3>
                 <p class="sight-desc">Fluted dark oak joinery with integrated quartz island and smart preparation station.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> Mall Road, Amritsar</span>
-                  <a href="portfolio-detail.html?project=rosewood" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/the-rosewood-villa/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
 
             <!-- Card 3 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/velvet-cinema-lounge/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="The Velvet Cinema Lounge" loading="lazy" decoding="async" />
+                <a href="portfolio/velvet-cinema-lounge/">
+                  <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="The Velvet Cinema Lounge" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Acoustic Theatre</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">The Velvet Cinema Lounge</h3>
+                <h3 class="sight-title"><a href="portfolio/velvet-cinema-lounge/" style="color: inherit; text-decoration: none;">The Velvet Cinema Lounge</a></h3>
                 <p class="sight-desc">Dolby Atmos 9.4.4 private theatre with motorized emerald recliners and acoustic panels.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> Civil Lines, Ludhiana</span>
-                  <a href="portfolio-detail.html?project=cinema" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/velvet-cinema-lounge/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
 
             <!-- Card 4 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/amber-heritage-suite/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Amber Heritage Suite" loading="lazy" decoding="async" />
+                <a href="portfolio/amber-heritage-suite/">
+                  <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Amber Heritage Suite" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Master Bedroom</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">Amber Heritage Suite</h3>
+                <h3 class="sight-title"><a href="portfolio/amber-heritage-suite/" style="color: inherit; text-decoration: none;">Amber Heritage Suite</a></h3>
                 <p class="sight-desc">Bespoke brass inlays, fluted acoustic bedhead, and integrated walk-in spa wardrobe.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> Green Avenue, Amritsar</span>
-                  <a href="portfolio-detail.html?project=bedroom" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/amber-heritage-suite/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
 
             <!-- Card 5 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/villa-sanctuary/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Zen Courtyard Pavilion" loading="lazy" decoding="async" />
+                <a href="portfolio/villa-sanctuary/">
+                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Zen Courtyard Pavilion" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Indoor-Outdoor</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">Zen Courtyard Pavilion</h3>
+                <h3 class="sight-title"><a href="portfolio/villa-sanctuary/" style="color: inherit; text-decoration: none;">Zen Courtyard Pavilion</a></h3>
                 <p class="sight-desc">Sunken conversation lounge enclosed by reflecting water pool and glass portals.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> Sarabha Nagar, Ludhiana</span>
-                  <a href="portfolio-detail.html?project=sanctuary" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/villa-sanctuary/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
 
             <!-- Card 6 -->
-            <article class="sight-card">
+            <article class="sight-card" onclick="window.location.href='portfolio/the-marble-residence/'" style="cursor: pointer;">
               <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="The Marble Residence" loading="lazy" decoding="async" />
+                <a href="portfolio/the-marble-residence/">
+                  <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="The Marble Residence" loading="lazy" decoding="async" />
+                </a>
                 <span class="sight-badge">Turnkey Estate</span>
               </div>
               <div class="sight-body">
-                <h3 class="sight-title">The Marble Residence</h3>
+                <h3 class="sight-title"><a href="portfolio/the-marble-residence/" style="color: inherit; text-decoration: none;">The Marble Residence</a></h3>
                 <p class="sight-desc">A 14,000 sq.ft palatial estate combining Rajput arches with Milanese minimalism.</p>
                 <div class="sight-footer">
                   <span class="sight-location"><i class="fa-solid fa-location-dot"></i> Ranjit Avenue, Amritsar</span>
-                  <a href="portfolio-detail.html?project=marble" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
+                  <a href="portfolio/the-marble-residence/" class="sight-btn" style="text-decoration: none;">Explore ↗</a>
                 </div>
               </div>
             </article>
@@ -701,9 +750,14 @@
       <!-- PORTFOLIO SECTION -->
       <section class="portfolio-section" id="portfolio">
         <div class="section-header">
-          <div class="section-subtitle">CURATED WORKS</div>
+          <div class="section-subtitle"><a href="portfolio-detail.html" style="color: inherit; text-decoration: none;">CURATED WORKS <i class="fa-solid fa-arrow-right"></i></a></div>
           <h2 class="section-title">Architectural &amp; Interior Portfolio</h2>
-          <p class="section-desc">Explore our signature residential villas, luxury commercial suites, and 3D renderings.</p>
+          <p class="section-desc">Explore our signature residential villas, luxury commercial suites, and 3D renderings across Ludhiana &amp; Amritsar.</p>
+          <div style="margin-top: 1rem;">
+            <a href="portfolio-detail.html" class="section-header-action-btn">
+              Explore Complete Portfolio Showcase <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
         <!-- Filter Controls -->
@@ -727,9 +781,9 @@
                   <span class="reveal-badge">3D Render</span>
                   <h4>Villa Sanctuary Lounge</h4>
                   <p>Ludhiana • 4,500 Sq.Ft</p>
-                  <button class="btn-reveal-action" onclick="openProjectModal('living')">
-                    View Blueprint Specs <i class="fa-solid fa-plus"></i>
-                  </button>
+                  <a href="portfolio/villa-sanctuary/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -738,7 +792,7 @@
                 <span class="card-cat">3D Interior Render</span>
                 <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Ludhiana</span>
               </div>
-              <h3 class="card-title">Villa Sanctuary — Living Architecture</h3>
+              <h3 class="card-title"><a href="portfolio/villa-sanctuary/" style="color: inherit; text-decoration: none;">Villa Sanctuary — Living Architecture</a></h3>
             </div>
           </article>
 
@@ -751,9 +805,9 @@
                   <span class="reveal-badge">Turnkey &amp; 3D</span>
                   <h4>Travertine Culinary Suite</h4>
                   <p>Amritsar • Civil &amp; Interior</p>
-                  <button class="btn-reveal-action" onclick="openProjectModal('kitchen')">
-                    View Blueprint Specs <i class="fa-solid fa-plus"></i>
-                  </button>
+                  <a href="portfolio/the-rosewood-villa/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -762,7 +816,7 @@
                 <span class="card-cat">Civil &amp; 3D Render</span>
                 <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Amritsar</span>
               </div>
-              <h3 class="card-title">The Travertine House — Kitchen &amp; Dining</h3>
+              <h3 class="card-title"><a href="portfolio/the-rosewood-villa/" style="color: inherit; text-decoration: none;">The Travertine House — Kitchen &amp; Dining</a></h3>
             </div>
           </article>
 
@@ -775,9 +829,9 @@
                   <span class="reveal-badge">Residential</span>
                   <h4>Alabaster Master Suite</h4>
                   <p>South Model Gram • Ludhiana</p>
-                  <button class="btn-reveal-action" onclick="openProjectModal('bedroom')">
-                    View Blueprint Specs <i class="fa-solid fa-plus"></i>
-                  </button>
+                  <a href="portfolio/amber-heritage-suite/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -786,7 +840,7 @@
                 <span class="card-cat">Master Suite Interior</span>
                 <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Ludhiana</span>
               </div>
-              <h3 class="card-title">Alabaster Master Bedroom Sanctuary</h3>
+              <h3 class="card-title"><a href="portfolio/amber-heritage-suite/" style="color: inherit; text-decoration: none;">Alabaster Master Bedroom Sanctuary</a></h3>
             </div>
           </article>
 
@@ -797,20 +851,68 @@
               <div class="blueprint-reveal-overlay">
                 <div class="reveal-content">
                   <span class="reveal-badge">Commercial</span>
-                  <h4>Executive Design Studio</h4>
-                  <p>Green Field • Amritsar</p>
-                  <button class="btn-reveal-action" onclick="openProjectModal('commercial')">
-                    View Blueprint Specs <i class="fa-solid fa-plus"></i>
-                  </button>
+                  <h4>The Obsidian Penthouse Studio</h4>
+                  <p>South Model Gram • Ludhiana</p>
+                  <a href="portfolio/obsidian-penthouse/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
                 </div>
               </div>
             </div>
             <div class="card-info">
               <div class="card-meta">
-                <span class="card-cat">Commercial Interior</span>
+                <span class="card-cat">Commercial &amp; Penthouse</span>
+                <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Ludhiana</span>
+              </div>
+              <h3 class="card-title"><a href="portfolio/obsidian-penthouse/" style="color: inherit; text-decoration: none;">The Obsidian Penthouse &amp; Studio</a></h3>
+            </div>
+          </article>
+
+          <!-- Item 5 -->
+          <article class="portfolio-card" data-category="residential 3d-render">
+            <div class="card-media">
+              <img src="nam_cinema_theatre.jpg" alt="Velvet Cinema Lounge" class="card-img" loading="lazy" decoding="async" />
+              <div class="blueprint-reveal-overlay">
+                <div class="reveal-content">
+                  <span class="reveal-badge">Acoustic Theatre</span>
+                  <h4>The Velvet Cinema Lounge</h4>
+                  <p>Civil Lines • Ludhiana</p>
+                  <a href="portfolio/velvet-cinema-lounge/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-cat">Acoustic Cinema</span>
+                <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Ludhiana</span>
+              </div>
+              <h3 class="card-title"><a href="portfolio/velvet-cinema-lounge/" style="color: inherit; text-decoration: none;">The Velvet Cinema Lounge</a></h3>
+            </div>
+          </article>
+
+          <!-- Item 6 -->
+          <article class="portfolio-card" data-category="residential turnkey">
+            <div class="card-media">
+              <img src="nam_luxury_residence_exterior.jpg" alt="The Marble Residence" class="card-img" loading="lazy" decoding="async" />
+              <div class="blueprint-reveal-overlay">
+                <div class="reveal-content">
+                  <span class="reveal-badge">Turnkey Estate</span>
+                  <h4>The Marble Residence</h4>
+                  <p>Ranjit Avenue • Amritsar</p>
+                  <a href="portfolio/the-marble-residence/" class="btn-reveal-action" style="text-decoration: none;">
+                    View Project Specs ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-cat">Turnkey Luxury Estate</span>
                 <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Amritsar</span>
               </div>
-              <h3 class="card-title">Executive Creative Studio Workspace</h3>
+              <h3 class="card-title"><a href="portfolio/the-marble-residence/" style="color: inherit; text-decoration: none;">The Marble Residence — Palatial Villa</a></h3>
             </div>
           </article>
 
@@ -820,14 +922,20 @@
       <!-- SERVICES SECTION -->
       <section class="services-section" id="services">
         <div class="section-header text-center">
-          <div class="section-subtitle">CORE CAPABILITIES</div>
+          <div class="section-subtitle"><a href="service-detail.html" style="color: inherit; text-decoration: none;">CORE CAPABILITIES <i class="fa-solid fa-arrow-right"></i></a></div>
           <h2 class="section-title">Architectural &amp; Interior Services</h2>
           <p class="section-desc">From initial 3D concept render to final on-site civil structural execution.</p>
+          <div style="margin-top: 1rem;">
+            <a href="service-detail.html" class="section-header-action-btn">
+              Explore Full Services Catalog <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
         <div class="services-grid">
 
-          <div class="service-card">
+          <!-- Service 1: 3D Interior Design -->
+          <div class="service-card" onclick="window.location.href='services/interior-design/'" style="cursor: pointer;">
             <div class="service-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <rect x="5" y="5" width="30" height="30" rx="2" stroke="#4D685A" stroke-width="2"/>
@@ -835,18 +943,20 @@
                 <circle cx="25" cy="25" r="4" stroke="#1E1E1E" stroke-width="1.5"/>
               </svg>
             </div>
-            <h3 class="service-title">3D Interior Rendering</h3>
+            <h3 class="service-title"><a href="services/interior-design/" style="color: inherit; text-decoration: none;">3D Interior Rendering</a></h3>
             <p class="service-text">
-              High-definition photorealistic 3D visualizations, material mapping, lighting simulations, and virtual spatial walkthroughs for residential &amp; commercial projects.
+              High-definition photorealistic 3D visualizations, material mapping, lighting simulations, and virtual spatial walkthroughs for luxury residential &amp; commercial projects.
             </p>
             <ul class="service-list">
               <li><i class="fa-solid fa-check"></i> Photorealistic 4K Renders</li>
               <li><i class="fa-solid fa-check"></i> Custom Material &amp; Lighting Maps</li>
-              <li><i class="fa-solid fa-check"></i> 360° Panoramic Views</li>
+              <li><i class="fa-solid fa-check"></i> 360° Panoramic BIM Views</li>
             </ul>
+            <a href="services/interior-design/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
-          <div class="service-card">
+          <!-- Service 2: Civil Contracting -->
+          <div class="service-card" onclick="window.location.href='services/turnkey-civil-execution/'" style="cursor: pointer;">
             <div class="service-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path d="M5 35 L20 5 L35 35 Z" stroke="#4D685A" stroke-width="2"/>
@@ -854,18 +964,20 @@
                 <line x1="20" y1="5" x2="20" y2="35" stroke="#1E1E1E" stroke-width="1" stroke-dasharray="2,2"/>
               </svg>
             </div>
-            <h3 class="service-title">Civil Contracting</h3>
+            <h3 class="service-title"><a href="services/turnkey-civil-execution/" style="color: inherit; text-decoration: none;">Civil Contracting</a></h3>
             <p class="service-text">
-              End-to-end civil execution overseen by experienced civil constructors. Masonry, structural reinforcements, MEP plumbing, electrical grid setup, and site management.
+              End-to-end civil execution overseen by experienced civil constructor Udhay Seth. Masonry, structural reinforcements, MEP plumbing, electrical grid setup, and site management.
             </p>
             <ul class="service-list">
               <li><i class="fa-solid fa-check"></i> Turnkey Structural Contracting</li>
-              <li><i class="fa-solid fa-check"></i> Masonry &amp; Foundation Execution</li>
-              <li><i class="fa-solid fa-check"></i> On-Site Quality Control</li>
+              <li><i class="fa-solid fa-check"></i> Foundation &amp; RCC Framework</li>
+              <li><i class="fa-solid fa-check"></i> Zero-Tolerance Quality Control</li>
             </ul>
+            <a href="services/turnkey-civil-execution/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
-          <div class="service-card">
+          <!-- Service 3: Architectural Planning -->
+          <div class="service-card" onclick="window.location.href='services/architectural-design/'" style="cursor: pointer;">
             <div class="service-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <rect x="8" y="12" width="24" height="20" rx="2" stroke="#4D685A" stroke-width="2"/>
@@ -873,18 +985,20 @@
                 <line x1="20" y1="18" x2="20" y2="24" stroke="#1E1E1E" stroke-width="2"/>
               </svg>
             </div>
-            <h3 class="service-title">Turnkey Remodeling</h3>
+            <h3 class="service-title"><a href="services/architectural-design/" style="color: inherit; text-decoration: none;">Architectural Façades &amp; Planning</a></h3>
             <p class="service-text">
-              Complete interior transformations from bare brick shells to finished luxury spaces. Custom ceiling design, flooring, wall paneling, and curated spatial ergonomics.
+              Complete exterior architectural planning, monumental double-height porticos, cantilever geometry, and thermal envelope engineering tailored to Punjab's weather cycles.
             </p>
             <ul class="service-list">
-              <li><i class="fa-solid fa-check"></i> Full Interior Overhauls</li>
-              <li><i class="fa-solid fa-check"></i> Custom Joinery &amp; Cabinetry</li>
-              <li><i class="fa-solid fa-check"></i> Acoustic &amp; Lighting Integration</li>
+              <li><i class="fa-solid fa-check"></i> Site Sun-Path &amp; Zoning Strategy</li>
+              <li><i class="fa-solid fa-check"></i> Monolithic Natural Stone Façades</li>
+              <li><i class="fa-solid fa-check"></i> Punjab Municipal Sanction Schematics</li>
             </ul>
+            <a href="services/architectural-design/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
-          <div class="service-card">
+          <!-- Service 4: Space Curation & Material Detailing -->
+          <div class="service-card" onclick="window.location.href='services/material-curation/'" style="cursor: pointer;">
             <div class="service-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <circle cx="20" cy="20" r="14" stroke="#4D685A" stroke-width="2"/>
@@ -892,15 +1006,101 @@
                 <circle cx="20" cy="20" r="2" fill="#1E1E1E"/>
               </svg>
             </div>
-            <h3 class="service-title">Space Curation &amp; Design</h3>
+            <h3 class="service-title"><a href="services/material-curation/" style="color: inherit; text-decoration: none;">Material Curation &amp; Design</a></h3>
             <p class="service-text">
               Selecting harmonious color palettes, bespoke furniture, art installations, textural fabrics, and architectural lighting fixtures tailored to your personal aesthetic.
             </p>
             <ul class="service-list">
-              <li><i class="fa-solid fa-check"></i> Material &amp; Palette Selection</li>
-              <li><i class="fa-solid fa-check"></i> Bespoke Furniture Sourcing</li>
-              <li><i class="fa-solid fa-check"></i> Art &amp; Decorative Styling</li>
+              <li><i class="fa-solid fa-check"></i> Statuario &amp; Travertine Sourcing</li>
+              <li><i class="fa-solid fa-check"></i> Bespoke Teakwood &amp; Brass Inlays</li>
+              <li><i class="fa-solid fa-check"></i> Curated 2700K Architectural Lighting</li>
             </ul>
+            <a href="services/material-curation/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 5: Acoustic Theatres & Cinemas -->
+          <div class="service-card" onclick="window.location.href='services/acoustic-theatre-design/'" style="cursor: pointer;">
+            <div class="service-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="6" y="8" width="28" height="20" rx="3" stroke="#4D685A" stroke-width="2"/>
+                <circle cx="20" cy="18" r="5" stroke="#E38F56" stroke-width="1.5"/>
+                <line x1="10" y1="32" x2="30" y2="32" stroke="#1E1E1E" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 class="service-title"><a href="services/acoustic-theatre-design/" style="color: inherit; text-decoration: none;">Acoustic Theatres &amp; Cinemas</a></h3>
+            <p class="service-text">
+              Private Dolby Atmos cinema room engineering with decoupled wall studs, bass traps, mass-loaded vinyl isolation, and motorized luxury velvet recliners.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Dolby Atmos 9.4.4 Audio Calibration</li>
+              <li><i class="fa-solid fa-check"></i> Acoustic Sorbothane Decoupling</li>
+              <li><i class="fa-solid fa-check"></i> Concealed Projector &amp; Laser Screens</li>
+            </ul>
+            <a href="services/acoustic-theatre-design/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 6: Chef's Kitchen & Dining -->
+          <div class="service-card" onclick="window.location.href='services/kitchen-dining/'" style="cursor: pointer;">
+            <div class="service-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="7" y="10" width="26" height="22" rx="2" stroke="#4D685A" stroke-width="2"/>
+                <line x1="7" y1="20" x2="33" y2="20" stroke="#E38F56" stroke-width="1.5"/>
+                <circle cx="15" cy="15" r="2" fill="#E38F56"/>
+                <circle cx="25" cy="15" r="2" fill="#E38F56"/>
+              </svg>
+            </div>
+            <h3 class="service-title"><a href="services/kitchen-dining/" style="color: inherit; text-decoration: none;">Chef's Kitchen &amp; Dining</a></h3>
+            <p class="service-text">
+              Sculptural culinary suites integrating waterfall quartz islands, fluted dark oak cabinetry, motorized German Blum hardware, and discreet butler preparation pantries.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> German Blum &amp; Hafele Soft-Close</li>
+              <li><i class="fa-solid fa-check"></i> Monolithic Quartz Waterfall Islands</li>
+              <li><i class="fa-solid fa-check"></i> Integrated Beverage &amp; Cocktail Bars</li>
+            </ul>
+            <a href="services/kitchen-dining/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 7: Master Suites -->
+          <div class="service-card" onclick="window.location.href='services/master-suites/'" style="cursor: pointer;">
+            <div class="service-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M8 28 V16 C8 13 10 11 13 11 H27 C30 11 32 13 32 16 V28" stroke="#4D685A" stroke-width="2"/>
+                <line x1="6" y1="28" x2="34" y2="28" stroke="#E38F56" stroke-width="2"/>
+                <rect x="12" y="15" width="6" height="6" rx="1" stroke="#1E1E1E" stroke-width="1"/>
+                <rect x="22" y="15" width="6" height="6" rx="1" stroke="#1E1E1E" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="service-title"><a href="services/master-suites/" style="color: inherit; text-decoration: none;">Bespoke Master Suites</a></h3>
+            <p class="service-text">
+              Five-star bedroom sanctuaries featuring acoustic fabric bedheads, frameless glass ensuite spa bathrooms, integrated walk-in dressing suites, and smart lighting.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Custom Acoustic Headboards</li>
+              <li><i class="fa-solid fa-check"></i> Freestanding Soaking Tubs &amp; Rain Showers</li>
+              <li><i class="fa-solid fa-check"></i> Walk-In Climate Spa Wardrobes</li>
+            </ul>
+            <a href="services/master-suites/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 8: Outdoor Living & Landscape -->
+          <div class="service-card" onclick="window.location.href='services/outdoor-living/'" style="cursor: pointer;">
+            <div class="service-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="15" r="7" stroke="#E38F56" stroke-width="2"/>
+                <path d="M6 32 C10 26 15 28 20 25 C25 22 30 26 34 32" stroke="#4D685A" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 class="service-title"><a href="services/outdoor-living/" style="color: inherit; text-decoration: none;">Outdoor Living &amp; Terraces</a></h3>
+            <p class="service-text">
+              Seamless indoor-outdoor architecture with sunken courtyards, infinity reflecting water features, climate-resilient stone pergolas, and evening mood lighting.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Sunken Fire-Pit Lounges</li>
+              <li><i class="fa-solid fa-check"></i> Reflecting Pools &amp; Water Cascades</li>
+              <li><i class="fa-solid fa-check"></i> Weatherproof Teak &amp; Honed Granite</li>
+            </ul>
+            <a href="services/outdoor-living/" class="service-explore-link">Explore Service Details <i class="fa-solid fa-arrow-right"></i></a>
           </div>
 
         </div>
@@ -910,9 +1110,14 @@
       <section class="principals-section" id="principals">
         <div class="principals-container">
           <div class="principals-header">
-            <span class="subtitle">STUDIO LEADERSHIP</span>
+            <span class="subtitle"><a href="about.html#founders" style="color: inherit; text-decoration: none;">STUDIO LEADERSHIP <i class="fa-solid fa-arrow-right"></i></a></span>
             <h2 class="title">Meet the Founders of NAM Atelier</h2>
             <p class="desc">Combining creative interior architecture with hands-on civil engineering mastery across Ludhiana &amp; Amritsar.</p>
+            <div style="margin-top: 1rem;">
+              <a href="about.html#founders" class="section-header-action-btn">
+                Read Full Leadership Narrative on About Page <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
 
           <div class="principals-grid">
@@ -969,155 +1174,12 @@
         </div>
       </section>
 
-      <!-- CLIENT TESTIMONIALS SECTION (LUXURY EXPANDABLE CAROUSEL) -->
-      <section class="testimonials-section" id="testimonials">
-        <div class="grid-animated-bg" aria-hidden="true"></div>
-        
-        <div class="testimonials-container">
-          <div class="section-header text-center">
-            <span class="section-subtitle">CLIENT ENDORSEMENTS</span>
-            <h2 class="section-title">Words from Our Homeowners &amp; Partners</h2>
-            <p class="section-desc">What leaders and villa owners say about our 3D spatial design, speed, and turnkey execution.</p>
-          </div>
-
-          <!-- Carousel Track Container -->
-          <div class="testi-carousel-wrapper">
-            <div class="testi-carousel-track" id="testiCarouselTrack">
-              
-              <!-- Card 1 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(0)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Vikramaditya Sharma" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"nam atelier transformed our 12,000 sq.ft bare shell into a breathtaking european-inspired sanctuary..."</p>
-                  <p class="card-name">vikramaditya sharma.</p>
-                  <p class="card-role">the royal oak estate • ludhiana</p>
-                </div>
-              </div>
-
-              <!-- Card 2 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(1)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Kanika Mehra" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"the spatial flow and material selection curated by mudita d seth are extraordinary..."</p>
-                  <p class="card-name">kanika mehra.</p>
-                  <p class="card-role">cantonment heights • amritsar</p>
-                </div>
-              </div>
-
-              <!-- Card 3 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(2)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Harpreet Singh Dhillon" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"udhay seth's turnkey civil execution and engineering rigor are unmatched across punjab..."</p>
-                  <p class="card-name">harpreet singh dhillon.</p>
-                  <p class="card-role">heritage hospitality &amp; estate owner</p>
-                </div>
-              </div>
-
-              <!-- Card 4 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(3)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Dr. Arjun & Meera Kapoor" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"the 3d bim walkthrough allowed us to preview every lighting circuit and custom counter before pouring concrete..."</p>
-                  <p class="card-name">dr. arjun &amp; meera kapoor.</p>
-                  <p class="card-role">south city villa • ludhiana</p>
-                </div>
-              </div>
-
-              <!-- Card 5 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(4)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Fatima Al-Jamil" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"managing a luxury estate build remotely was effortless with nam atelier. weekly 3d site updates..."</p>
-                  <p class="card-name">fatima al-jamil.</p>
-                  <p class="card-role">palatial estate commissioner</p>
-                </div>
-              </div>
-
-              <!-- Card 6 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(5)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Rajiv & Ananya Kapoor" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"nam atelier transformed our 5,000 sq.ft bare brick shell into a breathtaking european-inspired sanctuary..."</p>
-                  <p class="card-name">rajiv &amp; ananya kapoor.</p>
-                  <p class="card-role">the model town villa • ludhiana</p>
-                </div>
-              </div>
-
-              <!-- Card 7 -->
-              <div class="testi-card-item" onclick="openTestimonialModal(6)">
-                <div class="testi-card-inner">
-                  <div class="card-bg-texture">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Texture" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="profile-image-frame">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Siddharth Malhotra" loading="lazy" decoding="async" />
-                  </div>
-                  <p class="card-quote">"the dolby atmos acoustic cinema lounge engineered by udhay &amp; mudita is the highlight of our home..."</p>
-                  <p class="card-name">siddharth malhotra.</p>
-                  <p class="card-role">executive penthouse • amritsar</p>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Carousel Controls -->
-            <div class="testi-carousel-controls">
-              <button class="carousel-nav-btn" id="testiScrollLeft" aria-label="Scroll Left">
-                <i class="fa-solid fa-arrow-left"></i>
-              </button>
-              <button class="carousel-nav-btn" id="testiScrollRight" aria-label="Scroll Right">
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Expandable Testimonial Modal Dialog -->
-      <div class="testi-modal-backdrop" id="testiModalBackdrop" aria-hidden="true" onclick="closeTestimonialModal()">
-        <div class="testi-modal-content" onclick="event.stopPropagation()">
-          <button class="testi-modal-close" onclick="closeTestimonialModal()" aria-label="Close modal">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <p class="modal-designation" id="modalDesignation"></p>
-          <h3 class="modal-name" id="modalName"></h3>
-          <div class="modal-quote-box">
-            <i class="fa-solid fa-quote-left quote-icon"></i>
-            <p class="modal-description" id="modalDescription"></p>
-          </div>
-        </div>
-      </div>
+      <!-- ═════════════════════════════════════════════════════════════════════════
+           SHARED TESTIMONIALS CAROUSEL (SINGLE SOURCE OF TRUTH)
+           Loaded dynamically from: components/testimonials.html
+           Any update to components/testimonials.html updates EVERY page automatically!
+           ═════════════════════════════════════════════════════════════════════════ -->
+      <div id="testimonials-placeholder"></div>
 
       <!-- INTERACTIVE FAQ ACCORDION SECTION -->
       <section class="faq-section" id="faq">
@@ -1173,42 +1235,90 @@
       <!-- EDITORIAL JOURNAL / BLOG SECTION -->
       <section class="journal-section" id="journal">
         <div class="section-header">
-          <div class="section-subtitle">EDITORIAL &amp; INSIGHTS</div>
+          <div class="section-subtitle"><a href="blog.html" style="color: inherit; text-decoration: none;">EDITORIAL &amp; INSIGHTS <i class="fa-solid fa-arrow-right"></i></a></div>
           <h2 class="section-title">Architectural Journal</h2>
-          <p class="section-desc">Essays on acoustic isolation, warm minimalism, and material selection.</p>
+          <p class="section-desc">Essays on acoustic isolation, warm minimalism, and material selection across Punjab.</p>
+          <div style="margin-top: 1rem;">
+            <a href="blog.html" class="section-header-action-btn">
+              Read Full Journal &amp; All Stories <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
         <div class="journal-grid">
-          <article class="journal-card">
+          <!-- Article 1: Acoustic Theatres -->
+          <article class="journal-card" onclick="window.location.href='blog/acoustic-theatres-private-cinema-architecture/'" style="cursor: pointer;">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1595935736128-db1f0a261263?auto=format&fit=crop&w=800&q=80" alt="Physics of Acoustic Home Theatres" loading="lazy" decoding="async" />
+              <a href="blog/acoustic-theatres-private-cinema-architecture/">
+                <img src="nam_cinema_theatre.jpg" alt="Physics of Acoustic Home Theatres" loading="lazy" decoding="async" />
+              </a>
             </div>
             <div class="journal-content">
               <span class="journal-meta">May 2026 • 6 min read</span>
-              <h3 class="journal-title">The Physics of Acoustic Home Theatres: Sound Isolation &amp; Wave Absorption</h3>
+              <h3 class="journal-title">
+                <a href="blog/acoustic-theatres-private-cinema-architecture/" style="color: inherit; text-decoration: none;">
+                  The Physics of Acoustic Home Theatres: Sound Isolation &amp; Wave Absorption
+                </a>
+              </h3>
               <p class="journal-snippet">Exploring mass-loaded vinyl, decoupled stud channels, and emerald velvet acoustic paneling for private cinemas.</p>
+              <a href="blog/acoustic-theatres-private-cinema-architecture/" class="journal-read-link">Read Full Essay <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
-          <article class="journal-card">
+          <!-- Article 2: Warm Minimalism -->
+          <article class="journal-card" onclick="window.location.href='blog/spatial-harmony-luxury-interior-architecture/'" style="cursor: pointer;">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Warm Minimalism vs Rajput Motifs" loading="lazy" decoding="async" />
+              <a href="blog/spatial-harmony-luxury-interior-architecture/">
+                <img src="nam_living_render.jpg" alt="Warm Minimalism vs Rajput Motifs" loading="lazy" decoding="async" />
+              </a>
             </div>
             <div class="journal-content">
               <span class="journal-meta">July 2026 • 8 min read</span>
-              <h3 class="journal-title">Warm Minimalism vs Classical Rajput Motifs in Modern Panjabi Architecture</h3>
+              <h3 class="journal-title">
+                <a href="blog/spatial-harmony-luxury-interior-architecture/" style="color: inherit; text-decoration: none;">
+                  Warm Minimalism vs Classical Rajput Motifs in Modern Panjabi Architecture
+                </a>
+              </h3>
               <p class="journal-snippet">Harmonizing clean Milanese lines with hand-carved stone arches and brass inlay accents in modern luxury estates.</p>
+              <a href="blog/spatial-harmony-luxury-interior-architecture/" class="journal-read-link">Read Full Essay <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
 
-          <article class="journal-card">
+          <!-- Article 3: Travertine vs Statuario Marble -->
+          <article class="journal-card" onclick="window.location.href='blog/selecting-statuario-vs-travertine-marble/'" style="cursor: pointer;">
             <div class="journal-media">
-              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Curating Travertine Marble" loading="lazy" decoding="async" />
+              <a href="blog/selecting-statuario-vs-travertine-marble/">
+                <img src="nam_kitchen_render.jpg" alt="Curating Travertine Marble" loading="lazy" decoding="async" />
+              </a>
             </div>
             <div class="journal-content">
               <span class="journal-meta">Sept 2026 • 5 min read</span>
-              <h3 class="journal-title">Curating Bookmatched Italian Travertine for Double-Height Living Atriums</h3>
+              <h3 class="journal-title">
+                <a href="blog/selecting-statuario-vs-travertine-marble/" style="color: inherit; text-decoration: none;">
+                  Curating Bookmatched Italian Travertine for Double-Height Living Atriums
+                </a>
+              </h3>
               <p class="journal-snippet">Why vein alignment and matte honed sealant choices define the longevity of travertine architectural features.</p>
+              <a href="blog/selecting-statuario-vs-travertine-marble/" class="journal-read-link">Read Full Essay <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Article 4: Choosing Interior Designers in Ludhiana -->
+          <article class="journal-card" onclick="window.location.href='blog/how-to-choose-interior-designers-in-ludhiana/'" style="cursor: pointer;">
+            <div class="journal-media">
+              <a href="blog/how-to-choose-interior-designers-in-ludhiana/">
+                <img src="nam_office_interior.jpg" alt="How to Choose Interior Designers in Ludhiana" loading="lazy" decoding="async" />
+              </a>
+            </div>
+            <div class="journal-content">
+              <span class="journal-meta">Oct 2026 • 10 min read</span>
+              <h3 class="journal-title">
+                <a href="blog/how-to-choose-interior-designers-in-ludhiana/" style="color: inherit; text-decoration: none;">
+                  How to Choose the Best Interior Designers in Ludhiana (Complete Guide)
+                </a>
+              </h3>
+              <p class="journal-snippet">A deep dive into vetting turnkey civil execution, 3D photorealistic rendering, and architectural curation in Punjab.</p>
+              <a href="blog/how-to-choose-interior-designers-in-ludhiana/" class="journal-read-link">Read Full Essay <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </article>
         </div>
@@ -1351,7 +1461,7 @@
       </button>
 
       <div class="proj-modal-media">
-        <img id="projModalImg" src="" alt="Project Blueprint Render" />
+        <img id="projModalImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Project Blueprint Render" />
       </div>
 
       <div class="proj-modal-body">

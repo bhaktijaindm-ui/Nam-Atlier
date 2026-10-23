@@ -94,8 +94,10 @@ img, video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0.6;
@@ -2319,8 +2321,9 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .about-cta-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .about-link {
@@ -3037,6 +3040,92 @@ body:not(:has(.cinema-scroll)) .site-header {
   line-height: 1.5;
 }
 
+.journal-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  color: var(--accent-terracotta);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.journal-read-link:hover {
+  color: var(--accent-sage);
+  transform: translateX(4px);
+}
+
+.journal-title a:hover {
+  color: var(--accent-terracotta);
+}
+
+.section-header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--text-charcoal);
+  color: var(--bg-sand);
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.section-header-action-btn:hover {
+  background: var(--accent-sage);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(77, 104, 90, 0.3);
+}
+
+.hero-card-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+  padding: 0.45rem 0.95rem;
+  background: rgba(227, 143, 86, 0.15);
+  border: 1px solid rgba(227, 143, 86, 0.5);
+  border-radius: 50px;
+  color: var(--accent-terracotta);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.hero-card-cta-btn:hover {
+  background: var(--accent-terracotta);
+  color: #FFFFFF;
+  border-color: var(--accent-terracotta);
+  transform: translateX(3px);
+}
+
+.service-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+  color: var(--accent-terracotta);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.service-explore-link:hover {
+  color: var(--accent-sage);
+  transform: translateX(4px);
+}
+
 /* ==========================================================================
    BESPOKE CONSULTATION BOOKING FORM SECTION
    ========================================================================== */
@@ -3732,6 +3821,22 @@ body:not(:has(.cinema-scroll)) .site-header {
     font-size: 0.65rem;
   }
 
+  .about-cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .about-cta-row .btn,
+  .about-cta-row .about-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
   /* BEFORE & AFTER SLIDER MOBILE OPTIMIZATION */
   .transformation-section {
     margin: 3.5rem auto;
@@ -4023,6 +4128,155 @@ body:not(:has(.cinema-scroll)) .site-header {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL HEADER GEOMETRY & HERO BANNER SEPARATION (ALL PAGES & SUBPAGES)
+   Eliminates overlap/merging between floating glass header and hero banners,
+   back navigation bars, breadcrumbs, and page titles across the entire website.
+   Guarantees a clean, intentional 14px-18px visible gap on all viewports.
+   ========================================================================== */
+:root {
+  --site-header-top: 0.6rem;
+  --site-header-height: 96px;
+  --actual-header-bottom: calc(var(--site-header-top) + var(--site-header-height)); /* ~106px */
+  --header-hero-gap: 28px; /* Clean visible 28px gap between header bottom border and hero box top border */
+  --hero-content-padding-top: calc(var(--actual-header-bottom) + var(--header-hero-gap)); /* ~134px / 8.375rem */
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --site-header-top: 0.6rem;
+    --site-header-height: 96px;
+    --actual-header-bottom: calc(var(--site-header-top) + var(--site-header-height));
+    --header-hero-gap: 26px;
+    --hero-content-padding-top: calc(var(--actual-header-bottom) + var(--header-hero-gap)); /* ~132px / 8.25rem */
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --site-header-top: 0.5rem;
+    --site-header-height: 54px;
+    --actual-header-bottom: calc(var(--site-header-top) + var(--site-header-height)); /* ~62px */
+    --header-hero-gap: 22px; /* Clean visible 22px separation on mobile */
+    --hero-content-padding-top: calc(var(--actual-header-bottom) + var(--header-hero-gap)); /* ~84px / 5.25rem */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --site-header-top: 0.5rem;
+    --site-header-height: 54px;
+    --actual-header-bottom: calc(var(--site-header-top) + var(--site-header-height)); /* ~62px */
+    --header-hero-gap: 20px;
+    --hero-content-padding-top: calc(var(--actual-header-bottom) + var(--header-hero-gap)); /* ~82px / 5.125rem */
+  }
+}
+
+/* Page containers across all service, portfolio, blog, and about routes */
+.services-wrapper,
+.portfolio-wrapper,
+.hague-page-container,
+.swift-page-wrapper {
+  width: 94% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-top: var(--hero-content-padding-top, 8.375rem) !important;
+  padding-left: clamp(1rem, 2vw, 2.5rem) !important;
+  padding-right: clamp(1rem, 2vw, 2.5rem) !important;
+  box-sizing: border-box !important;
+}
+
+#about-hero {
+  width: 94% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-top: calc(var(--hero-content-padding-top, 8.375rem) + 0.5rem) !important;
+  padding-left: clamp(1rem, 2vw, 2.5rem) !important;
+  padding-right: clamp(1rem, 2vw, 2.5rem) !important;
+  box-sizing: border-box !important;
+}
+
+/* Detail view back button navigation rows (Services & Projects deep dives) */
+.service-nav-back-row,
+.project-nav-back-row {
+  margin-top: 0.25rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Homepage Desktop: Ensure hero glass card sits comfortably below header */
+@media (min-width: 769px) {
+  .left-content-card-stage {
+    padding-top: var(--actual-header-bottom, 106px) !important;
+  }
+}
+
+/* Tablet Breakpoint (<= 1024px) */
+@media (max-width: 1024px) {
+  .services-wrapper,
+  .portfolio-wrapper,
+  .hague-page-container,
+  .swift-page-wrapper {
+    width: 94% !important;
+    max-width: 1320px !important;
+    padding-top: var(--hero-content-padding-top, 8.25rem) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  #about-hero {
+    width: 94% !important;
+    max-width: 1320px !important;
+    padding-top: calc(var(--hero-content-padding-top, 8.25rem) + 0.5rem) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Mobile Breakpoint (<= 768px) */
+@media (max-width: 768px) {
+  .services-wrapper,
+  .portfolio-wrapper,
+  .hague-page-container,
+  .swift-page-wrapper {
+    width: 94% !important;
+    padding-top: var(--hero-content-padding-top, 5.25rem) !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+
+  #about-hero {
+    width: 94% !important;
+    padding-top: calc(var(--hero-content-padding-top, 5.25rem) + 0.5rem) !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+
+  .service-nav-back-row,
+  .project-nav-back-row {
+    margin-top: 0.25rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-wrapper,
+  .portfolio-wrapper,
+  .hague-page-container,
+  .swift-page-wrapper {
+    width: 94% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #about-hero {
+    width: 94% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 }
 

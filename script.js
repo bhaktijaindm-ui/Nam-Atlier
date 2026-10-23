@@ -12,6 +12,7 @@
 async function loadComponents() {
   const headerEl = document.getElementById('header-placeholder');
   const footerEl = document.getElementById('footer-placeholder');
+  const testiEl = document.getElementById('testimonials-placeholder');
 
   const fetchAndInject = async (url, targetEl) => {
     if (!targetEl) return;
@@ -29,12 +30,38 @@ async function loadComponents() {
 
   await Promise.all([
     fetchAndInject('components/header.html', headerEl),
-    fetchAndInject('components/footer.html', footerEl)
+    fetchAndInject('components/footer.html', footerEl),
+    fetchAndInject('components/testimonials.html', testiEl)
   ]);
 
   // Set active nav link based on current page
   setActiveNavLinks();
+  syncHeaderGeometry();
+  if (typeof window !== 'undefined' && typeof window.__runQAAudit === 'function') {
+    window.__runQAAudit();
+  }
 }
+
+/* ── Dynamic Header Geometry & Spacing Synchronizer ──
+   Measures the real rendered header bottom edge across all viewports
+   and sets --actual-header-bottom on :root so all page wrappers and hero
+   banners maintain an exact, intentional 14px-18px gap below the header. */
+function syncHeaderGeometry() {
+  const header = document.getElementById('siteHeader');
+  if (!header) return;
+  const rect = header.getBoundingClientRect();
+  const computedStyle = window.getComputedStyle(header);
+  const topOffset = parseFloat(computedStyle.top) || 0;
+  const renderedHeight = header.offsetHeight || rect.height;
+  const totalBottom = Math.round(topOffset + renderedHeight);
+  
+  if (totalBottom > 0) {
+    document.documentElement.style.setProperty('--actual-header-bottom', `${totalBottom}px`);
+  }
+}
+
+window.addEventListener('resize', syncHeaderGeometry, { passive: true });
+window.addEventListener('orientationchange', syncHeaderGeometry, { passive: true });
 
 /* ── Active Nav Link Highlighter ──
    Detects current page from URL and applies 'active' class to the
@@ -912,4 +939,146 @@ window.handleConsultSubmit = handleConsultSubmit;
 window.toggleFaq = toggleFaq;
 window.openTestimonialModal = openTestimonialModal;
 window.closeTestimonialModal = closeTestimonialModal;
+
+/* ==========================================================================
+   NAM ATELIER AUTOMATED QA AUDIT ENGINE (PHASE 1 - PHASE 11)
+   Runs when URL contains ?qa_audit=1
+   Measures real rendered viewports, horizontal overflow, header-hero gap,
+   media integrity, broken links, and console errors.
+   ========================================================================== */
+(function() {
+  const capturedErrors = [];
+  window.addEventListener('error', (e) => {
+    capturedErrors.push({ message: e.message, filename: e.filename, lineno: e.lineno });
+  });
+
+  if (typeof window !== 'undefined' && window.location.search.includes('qa_audit=1')) {
+    window.__runQAAudit = runQAAudit;
+    function runQAAudit() {
+      const header = document.getElementById('siteHeader');
+      const headerRect = header ? header.getBoundingClientRect() : null;
+
+      // Candidate hero selectors
+      const heroSelectors = [
+        '.service-nav-back-row',
+        '.project-nav-back-row',
+        '.cinematic-service-hero',
+        '.editorial-hero-card',
+        '.hague-hero-grid',
+        '.swift-page-wrapper article',
+        '#about-hero .hero-content',
+        '#about-hero',
+        '.glass-content-card.active',
+        '.glass-content-card',
+        '.left-content-card-stage',
+        '#hero'
+      ];
+      let heroEl = null;
+      let heroSelectorUsed = null;
+      for (const sel of heroSelectors) {
+        const el = document.querySelector(sel);
+        if (el && el.offsetParent !== null) {
+          heroEl = el;
+          heroSelectorUsed = sel;
+          break;
+        }
+      }
+      const heroRect = heroEl ? heroEl.getBoundingClientRect() : null;
+
+      // Gap calculation
+      let gapPx = null;
+      let isOverlapping = false;
+      if (headerRect && heroRect) {
+        gapPx = Math.round(heroRect.top - headerRect.bottom);
+        isOverlapping = heroRect.top < headerRect.bottom;
+      }
+
+      // Horizontal overflow check
+      const scrollW = document.documentElement.scrollWidth;
+      const innerW = window.innerWidth;
+      const hasHorizontalOverflow = scrollW > innerW;
+
+      // Find elements that overflow viewport width
+      const overflowingElements = [];
+      if (hasHorizontalOverflow) {
+        document.querySelectorAll('*').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.width > innerW + 1 || r.right > innerW + 1) {
+            overflowingElements.push({
+              tag: el.tagName,
+              id: el.id,
+              className: el.className,
+              right: Math.round(r.right),
+              width: Math.round(r.width)
+            });
+          }
+        });
+      }
+
+      // Broken images check
+      const brokenImages = [];
+      document.querySelectorAll('img').forEach(img => {
+        if (img.id === 'lightboxImage' || (img.src && img.src.startsWith('data:'))) return;
+        if (img.complete && img.naturalWidth === 0 && img.src) {
+          brokenImages.push({ src: img.src, alt: img.alt });
+        }
+      });
+
+      // Empty/hash links check
+      const emptyLinks = [];
+      document.querySelectorAll('a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!href || href === '#' || href.trim() === '') {
+          emptyLinks.push({ text: a.textContent.trim(), class: a.className });
+        }
+      });
+
+      const report = {
+        url: window.location.href,
+        viewport: {
+          width: innerW,
+          height: window.innerHeight,
+          scrollWidth: scrollW,
+          hasHorizontalOverflow,
+          overflowingElementsCount: overflowingElements.length,
+          overflowingElements: overflowingElements.slice(0, 5)
+        },
+        headerHeroSpacing: {
+          headerBottom: headerRect ? Math.round(headerRect.bottom) : null,
+          heroTop: heroRect ? Math.round(heroRect.top) : null,
+          heroSelectorUsed,
+          gapPx,
+          isOverlapping
+        },
+        media: {
+          totalImages: document.querySelectorAll('img').length,
+          brokenImagesCount: brokenImages.length,
+          brokenImages
+        },
+        links: {
+          totalLinks: document.querySelectorAll('a').length,
+          emptyLinksCount: emptyLinks.length,
+          emptyLinks: emptyLinks.slice(0, 5)
+        },
+        errors: capturedErrors
+      };
+
+      let scriptTag = document.getElementById('__QA_AUDIT_DATA__');
+      if (!scriptTag) {
+        scriptTag = document.createElement('script');
+        scriptTag.id = '__QA_AUDIT_DATA__';
+        scriptTag.type = 'application/json';
+        document.body.appendChild(scriptTag);
+      }
+      scriptTag.textContent = JSON.stringify(report, null, 2);
+      window.__QA_AUDIT_DATA__ = report;
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      runQAAudit();
+    }
+    document.addEventListener('DOMContentLoaded', runQAAudit);
+    window.addEventListener('load', runQAAudit);
+  }
+})();
 

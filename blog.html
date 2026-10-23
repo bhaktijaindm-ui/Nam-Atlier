@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ›ï¸</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
   <!-- Google Fonts: Cormorant Garamond, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=4.3" />
+  <link rel="stylesheet" href="styles.css?v=4.5" />
 
   <!-- Structured Data: Blog & BreadcrumbList -->
   <script type="application/ld+json">
@@ -52,7 +52,7 @@
 
   <style>
     /* ==========================================================================
-       NAM ATELIER â€” THE HAGUE EDITORIAL MAGAZINE LAYOUT (BLACK THEME REVERSAL)
+       NAM ATELIER — THE HAGUE EDITORIAL MAGAZINE LAYOUT (BLACK THEME REVERSAL)
        Recreating Reference Image 1 (The HAGUE) visual hierarchy in luxury black & gold.
        ========================================================================== */
 
@@ -87,8 +87,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 1;
       opacity: 0.7;
@@ -96,9 +98,10 @@
 
     /* Hague Page Container */
     .hague-page-container {
-      max-width: 1340px;
+      width: 94%;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 5.5rem 1.5rem 4rem;
+      padding: var(--hero-content-padding-top, 8.375rem) clamp(1rem, 2vw, 2.5rem) 4rem;
       box-sizing: border-box;
       position: relative;
       z-index: 2;
@@ -106,61 +109,15 @@
 
     @media (max-width: 900px) {
       .hague-page-container {
-        padding: 4.2rem 1rem 3rem;
+        padding: var(--hero-content-padding-top, 5.25rem) 1rem 3rem;
       }
     }
 
-    /* â”€â”€ SUB-NAV / CATEGORY BAR (Matching HAGUE Top Bar) â”€â”€ */
-    .hague-subnav-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 0.85rem 1rem;
-      margin-bottom: 2.5rem;
-      border-top: 1px solid var(--hague-border);
-      border-bottom: 1px solid var(--hague-border);
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .hague-subnav-bar::-webkit-scrollbar {
-      display: none;
-    }
 
-    .hague-nav-link {
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--hague-text-muted);
-      text-decoration: none;
-      transition: all 0.25s ease;
-      cursor: pointer;
-      position: relative;
-      padding: 0.35rem 0.5rem;
-    }
-
-    .hague-nav-link:hover,
-    .hague-nav-link.active {
-      color: #FFFFFF;
-    }
-
-    .hague-nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0.5rem;
-      right: 0.5rem;
-      height: 2px;
-      background: var(--hague-gold);
-    }
-
-    /* â”€â”€ THE HAGUE 3-COLUMN HERO GRID â”€â”€ */
+    /* ── THE HAGUE 3-COLUMN HERO GRID ── */
     .hague-hero-grid {
       display: grid;
-      grid-template-columns: 24% 48% 28%;
+      grid-template-columns: 6fr 12fr 7fr;
       gap: 2rem;
       align-items: stretch;
       margin-bottom: 4rem;
@@ -168,7 +125,13 @@
       border-bottom: 1px solid var(--hague-border);
     }
 
-    @media (max-width: 1100px) {
+    .hague-hero-col-left,
+    .hague-hero-col-center,
+    .hague-hero-col-right {
+      min-width: 0;
+    }
+
+    @media (max-width: 1180px) {
       .hague-hero-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
@@ -232,7 +195,7 @@
       margin-top: 0.35rem;
     }
 
-    /* â”€â”€ COLUMN 1: LEFT STACK (2 Stacked Cards) â”€â”€ */
+    /* ── COLUMN 1: LEFT STACK (2 Stacked Cards) ── */
     .hague-hero-col-left {
       display: flex;
       flex-direction: column;
@@ -306,7 +269,7 @@
       overflow: hidden;
     }
 
-    /* â”€â”€ COLUMN 2: CENTER MONUMENTAL FEATURE â”€â”€ */
+    /* ── COLUMN 2: CENTER MONUMENTAL FEATURE ── */
     .hague-hero-col-center {
       display: flex;
       flex-direction: column;
@@ -404,7 +367,7 @@
       color: #FFFFFF;
     }
 
-    /* â”€â”€ COLUMN 3: RIGHT "LATEST" SIDEBAR FEED â”€â”€ */
+    /* ── COLUMN 3: RIGHT "LATEST" SIDEBAR FEED ── */
     .hague-hero-col-right {
       display: flex;
       flex-direction: column;
@@ -497,7 +460,7 @@
       transform: scale(1.1);
     }
 
-    /* â”€â”€ CATEGORY SHELVES (Matching "BUSINESS" & "TRAVEL" Rows in Reference Image 1) â”€â”€ */
+    /* ── CATEGORY SHELVES (Matching "BUSINESS" & "TRAVEL" Rows in Reference Image 1) ── */
     .hague-shelf-section {
       margin-bottom: 4rem;
     }
@@ -639,7 +602,7 @@
       overflow: hidden;
     }
 
-    /* â”€â”€ CONSULTATION CTA BOX (BOTTOM) â”€â”€ */
+    /* ── CONSULTATION CTA BOX (BOTTOM) ── */
     .hague-consult-box {
       background: linear-gradient(135deg, #111111 0%, #080808 100%);
       border: 1px solid rgba(198, 173, 133, 0.3);
@@ -757,21 +720,11 @@
   <!-- MAIN EDITORIAL PAGE CONTAINER -->
   <main class="hague-page-container" id="mainContent">
 
-    <!-- SUB-NAV / CATEGORY BAR (MATCHING REFERENCE IMAGE 1 - THE HAGUE) -->
-    <nav class="hague-subnav-bar" aria-label="Editorial Categories">
-      <a href="blog.html" class="hague-nav-link active">ALL STORIES</a>
-      <a href="#residential-interiors" class="hague-nav-link">RESIDENTIAL INTERIORS</a>
-      <a href="#architecture-civil" class="hague-nav-link">ARCHITECTURE &amp; CIVIL</a>
-      <a href="#materiality-craft" class="hague-nav-link">MATERIALITY &amp; DETAILS</a>
-      <a href="blog/how-to-choose-interior-designers-in-ludhiana" class="hague-nav-link">LUDHIANA GUIDE</a>
-      <a href="portfolio-detail.html" class="hague-nav-link">STUDIO PORTFOLIO</a>
-      <a href="service-detail.html" class="hague-nav-link">3D SERVICES</a>
-    </nav>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═══════════════════════════════════════════════════════════════════════
          THE HAGUE TOP 3-COLUMN HERO GRID (MATCHING REFERENCE IMAGE 1)
          Left: 2 stacked cards | Center: Monumental feature | Right: Latest feed
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hague-hero-grid" aria-label="Featured Architectural Stories">
 
       <!-- COLUMN 1: LEFT STACK (2 VERTICALLY STACKED STORY CARDS) -->
@@ -906,9 +859,9 @@
 
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═══════════════════════════════════════════════════════════════════════
          SHELF 1: RESIDENTIAL INTERIORS & CRAFT (MATCHING "BUSINESS" ROW)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hague-shelf-section" id="residential-interiors" aria-label="Residential Interiors & Craft">
       <div class="hague-shelf-header">
         <h2 class="hague-shelf-title">
@@ -982,9 +935,9 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═══════════════════════════════════════════════════════════════════════
          SHELF 2: ARCHITECTURE, CIVIL & MATERIALITY (MATCHING "TRAVEL" ROW)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hague-shelf-section" id="architecture-civil" aria-label="Architecture, Civil & Materiality">
       <div class="hague-shelf-header">
         <h2 class="hague-shelf-title">
@@ -1058,9 +1011,9 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═══════════════════════════════════════════════════════════════════════
          SHELF 3: TACTILE DETAILS & SPATIAL PHILOSOPHY (ROW 3)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hague-shelf-section" id="materiality-craft" aria-label="Tactile Details & Spatial Philosophy">
       <div class="hague-shelf-header">
         <h2 class="hague-shelf-title">
@@ -1134,9 +1087,9 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- ═══════════════════════════════════════════════════════════════════════
          BOTTOM CONSULTATION CTA BOX
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+         ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hague-consult-box" aria-label="Book Architectural Consultation">
       <div class="hague-consult-content">
         <span class="hague-tag" style="letter-spacing: 2.5px;">NAM ATELIER &bull; LUDHIANA, PUNJAB</span>

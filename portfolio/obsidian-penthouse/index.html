@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="/" />
-  <title>3D Architecture &amp; Interior Design Portfolio | NAM Atelier</title>
-  <meta name="description" content="Explore NAM Atelier's bespoke architectural portfolio across Ludhiana and Amritsar. Luxury residential villas, penthouses, chef's kitchens, private acoustic theatres, and turnkey civil execution." />
+  <title>The Obsidian Penthouse — Monolithic Luxury Residence | NAM Atelier</title>
+  <meta name="description" content="The Obsidian Penthouse in Ludhiana: Double-height monolithic stone living hall, floating cantilever staircase, Italian marble accents, and bespoke 2700K lighting curation." />
   <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio/obsidian-penthouse" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="3D Architecture &amp; Interior Design Portfolio | NAM Atelier" />
-  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors in Punjab by Udhay Seth &amp; Mudita D Seth." />
-  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg" />
-  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio-detail" />
+  <meta property="og:title" content="The Obsidian Penthouse — Monolithic Luxury Residence | NAM Atelier" />
+  <meta property="og:description" content="The Obsidian Penthouse in Ludhiana: Double-height monolithic stone living hall, floating cantilever staircase, Italian marble accents, and bespoke 2700K lighting curation." />
+  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_living_render.jpg" />
+  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio/obsidian-penthouse" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=4.3" />
+  <link rel="stylesheet" href="styles.css?v=4.5" />
 
   <!-- Structured Data: BreadcrumbList and CollectionPage -->
   <script type="application/ld+json">
@@ -121,13 +121,13 @@
       width: 100%;
       max-width: 1440px;
       margin: 0 auto;
-      padding: 6.5rem 1.5rem 4rem;
+      padding: var(--hero-content-padding-top, 8.375rem) 1.5rem 4rem;
       box-sizing: border-box;
     }
 
     @media (max-width: 768px) {
       .portfolio-wrapper {
-        padding: 5.5rem 1rem 3rem;
+        padding: var(--hero-content-padding-top, 5.25rem) 1rem 3rem;
       }
     }
 
@@ -2126,8 +2126,7 @@
     // ── Handle Browser Back / Forward Buttons ──
     window.addEventListener('popstate', (e) => {
       const urlParams = new URLSearchParams(window.location.search);
-      let projectParam = 'obsidian-penthouse';
-      const projectParam = urlParams.get('project');
+      const projectParam = urlParams.get('project') || 'obsidian-penthouse';
       if (projectParam && (PORTFOLIO_PROJECTS[projectParam] || SLUG_ALIASES[projectParam])) {
         openProject(projectParam, false);
       } else {
@@ -2138,8 +2137,7 @@
     // ── Initial Route Dispatcher on Page Load ──
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      let projectParam = 'obsidian-penthouse';
-      const projectParam = urlParams.get('project');
+      const projectParam = urlParams.get('project') || 'obsidian-penthouse';
       
       if (projectParam) {
         openProject(projectParam, false);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
   <!-- Shared Studio Stylesheet (Header, Footer, Design System) -->
-  <link rel="stylesheet" href="styles.css?v=4.3" />
+  <link rel="stylesheet" href="styles.css?v=4.5" />
 
   <!-- Structured Data: AboutPage & Organization -->
   <script type="application/ld+json">
@@ -154,8 +154,8 @@
     ══════════════════════════════════════════════════════ */
     .about-bg-canvas {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
       z-index: 0;
       pointer-events: none;
       background: #080808;
@@ -169,7 +169,7 @@
       min-height: 85vh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      padding: 6.5rem 1.5rem 4rem;
+      padding: var(--hero-content-padding-top, 8.375rem) 1.5rem 4rem;
       background: transparent;
       z-index: 1;
     }
@@ -271,6 +271,7 @@
       background: transparent;
       position: relative;
       z-index: 1;
+      overflow-x: clip;
     }
     #founders::before {
       content: 'FOUNDERS';
@@ -300,7 +301,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.75rem;
-      max-width: 1320px;
+      max-width: min(1200px, 92vw);
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -607,7 +608,7 @@
     @media (max-width: 768px) {
       #about-hero {
         min-height: 70vh !important;
-        padding: 5rem 1rem 3rem !important;
+        padding: var(--hero-content-padding-top, 5.25rem) 1rem 3rem !important;
       }
       .hero-headline {
         font-size: clamp(1.75rem, 6.5vw, 2.5rem) !important;
@@ -630,12 +631,26 @@
       .founders-grid {
         grid-template-columns: 1fr;
         max-width: 660px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .reveal-left,
+      .reveal-right {
+        transform: translateY(20px) !important;
+      }
+      .founders-grid,
+      .founder-card {
+        max-width: 100% !important;
+        overflow-x: hidden;
       }
     }
 
     @media (max-width: 650px) {
       .founder-card {
         grid-template-columns: 1fr;
+        max-width: 100% !important;
       }
       .founder-photo-col {
         min-height: 260px;
@@ -1900,44 +1915,8 @@
     </div>
   </section>
 
-  <!-- ════════ § 5 TESTIMONIALS ════════ -->
-  <section id="testimonials">
-    <div class="testi-header">
-      <div class="section-tag gold-label">Client Dispatches &amp; Praise</div>
-      <h2 class="serif-display reveal" style="font-size: clamp(2rem, 4vw, 3rem);">
-        Words from Those We've Built For
-      </h2>
-    </div>
-
-    <div class="testi-grid">
-      <div class="testi-card reveal">
-        <div class="testi-quote-mark">"</div>
-        <p class="testi-text">NAM Atelier bridged the impossible gap between dreamy 3D visualizations and actual civil execution. What Udhay and Mudita promised on 4K renders was built with 100% fidelity on our villa site in Amritsar.</p>
-        <div class="testi-author">
-          <div class="testi-author-line"></div>
-          <span class="testi-author-name">Dr. A. Sandhu — Private Estate Owner, Amritsar</span>
-        </div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="testi-quote-mark">"</div>
-        <p class="testi-text">Their zero-tolerance civil approach saved us months of rework. Mudita's material curation in Italian Travertine and natural oak gave our residence an unmatched European soul unlike anything in Punjab.</p>
-        <div class="testi-author">
-          <div class="testi-author-line"></div>
-          <span class="testi-author-name">R. Bector — Homeowner, Ludhiana</span>
-        </div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="testi-quote-mark">"</div>
-        <p class="testi-text">From the acoustic engineering of our home theatre to the 24ft exterior portico, NAM Atelier represents the absolute pinnacle of luxury architectural consulting and flawless execution in the region.</p>
-        <div class="testi-author">
-          <div class="testi-author-line"></div>
-          <span class="testi-author-name">S. Grewal — Villa Owner, Punjab</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ════════ § 5 SHARED TESTIMONIALS CAROUSEL ════════ -->
+  <div id="testimonials-placeholder"></div>
 
   <!-- ════════ § 6 FAQ ════════ -->
   <section id="faq">

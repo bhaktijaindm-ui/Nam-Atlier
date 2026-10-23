@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=4.3" />
+  <link rel="stylesheet" href="styles.css?v=4.5" />
 
   <!-- Structured Data: Blog & BreadcrumbList -->
   <script type="application/ld+json">
@@ -87,8 +87,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 1;
       opacity: 0.7;
@@ -96,9 +98,10 @@
 
     /* Hague Page Container */
     .hague-page-container {
-      max-width: 1340px;
+      width: 94%;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 5.5rem 1.5rem 4rem;
+      padding: var(--hero-content-padding-top, 8.375rem) clamp(1rem, 2vw, 2.5rem) 4rem;
       box-sizing: border-box;
       position: relative;
       z-index: 2;
@@ -106,61 +109,15 @@
 
     @media (max-width: 900px) {
       .hague-page-container {
-        padding: 4.2rem 1rem 3rem;
+        padding: var(--hero-content-padding-top, 5.25rem) 1rem 3rem;
       }
     }
 
-    /* ── SUB-NAV / CATEGORY BAR (Matching HAGUE Top Bar) ── */
-    .hague-subnav-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 0.85rem 1rem;
-      margin-bottom: 2.5rem;
-      border-top: 1px solid var(--hague-border);
-      border-bottom: 1px solid var(--hague-border);
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .hague-subnav-bar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .hague-nav-link {
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--hague-text-muted);
-      text-decoration: none;
-      transition: all 0.25s ease;
-      cursor: pointer;
-      position: relative;
-      padding: 0.35rem 0.5rem;
-    }
-
-    .hague-nav-link:hover,
-    .hague-nav-link.active {
-      color: #FFFFFF;
-    }
-
-    .hague-nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0.5rem;
-      right: 0.5rem;
-      height: 2px;
-      background: var(--hague-gold);
-    }
 
     /* ── THE HAGUE 3-COLUMN HERO GRID ── */
     .hague-hero-grid {
       display: grid;
-      grid-template-columns: 24% 48% 28%;
+      grid-template-columns: 6fr 12fr 7fr;
       gap: 2rem;
       align-items: stretch;
       margin-bottom: 4rem;
@@ -168,7 +125,13 @@
       border-bottom: 1px solid var(--hague-border);
     }
 
-    @media (max-width: 1100px) {
+    .hague-hero-col-left,
+    .hague-hero-col-center,
+    .hague-hero-col-right {
+      min-width: 0;
+    }
+
+    @media (max-width: 1180px) {
       .hague-hero-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
@@ -182,10 +145,23 @@
     @media (max-width: 768px) {
       .hague-hero-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
       }
       .hague-hero-col-center {
         grid-column: span 1;
+      }
+      .hague-center-img-wrap {
+        height: 210px !important;
+      }
+      .hague-center-title {
+        font-size: 1.45rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .hague-center-excerpt {
+        font-size: 0.85rem !important;
+        -webkit-line-clamp: 3 !important;
       }
     }
 
@@ -744,16 +720,6 @@
   <!-- MAIN EDITORIAL PAGE CONTAINER -->
   <main class="hague-page-container" id="mainContent">
 
-    <!-- SUB-NAV / CATEGORY BAR (MATCHING REFERENCE IMAGE 1 - THE HAGUE) -->
-    <nav class="hague-subnav-bar" aria-label="Editorial Categories">
-      <a href="blog.html" class="hague-nav-link active">ALL STORIES</a>
-      <a href="#residential-interiors" class="hague-nav-link">RESIDENTIAL INTERIORS</a>
-      <a href="#architecture-civil" class="hague-nav-link">ARCHITECTURE &amp; CIVIL</a>
-      <a href="#materiality-craft" class="hague-nav-link">MATERIALITY &amp; DETAILS</a>
-      <a href="blog/how-to-choose-interior-designers-in-ludhiana" class="hague-nav-link">LUDHIANA GUIDE</a>
-      <a href="portfolio-detail.html" class="hague-nav-link">STUDIO PORTFOLIO</a>
-      <a href="service-detail.html" class="hague-nav-link">3D SERVICES</a>
-    </nav>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          THE HAGUE TOP 3-COLUMN HERO GRID (MATCHING REFERENCE IMAGE 1)
