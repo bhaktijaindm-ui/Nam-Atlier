@@ -124,9 +124,9 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
     .sketchbook-wrapper {
       position: relative;
       width: 100%;
-      max-width: 1120px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 0.5rem 1rem 1rem;
+      padding: 0.25rem 0.65rem 0.35rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -309,7 +309,7 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       transition: all 0.25s ease;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
     .nav-arrow:hover:not(.disabled) {
@@ -326,12 +326,12 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       color: rgba(255, 255, 255, 0.3);
     }
 
-    .nav-arrow.prev { left: -24px; }
-    .nav-arrow.next { right: -24px; }
+    .nav-arrow.prev { left: -14px; }
+    .nav-arrow.next { right: -14px; }
 
     .nav-arrow svg {
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       stroke-width: 2.2;
       fill: none;
       stroke: currentColor;
@@ -343,24 +343,24 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 1.1rem;
-      padding: 0 0.25rem;
-      font-size: 0.85rem;
+      margin-top: 0.55rem;
+      padding: 0 0.2rem;
+      font-size: 0.82rem;
     }
 
     .plate-badge-group {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
     }
 
     .plate-counter-pill {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      padding: 0.22rem 0.65rem;
+      padding: 0.16rem 0.52rem;
       background: rgba(198, 173, 133, 0.12);
       border: 1px solid rgba(198, 173, 133, 0.3);
       color: var(--gold);
@@ -369,33 +369,38 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
 
     .plate-title-text {
       font-family: var(--font-serif);
-      font-size: 1.18rem;
+      font-size: 0.96rem;
       font-weight: 500;
       color: #F0F0F0;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
     }
 
     .hint-instruction {
-      font-size: 0.76rem;
+      font-size: 0.68rem;
       color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
     @media (max-width: 768px) {
-      .nav-arrow.prev { left: 4px; }
-      .nav-arrow.next { right: 4px; }
-      .nav-arrow { width: 38px; height: 38px; }
+      .nav-arrow.prev { left: 6px; }
+      .nav-arrow.next { right: 6px; }
+      .nav-arrow { width: 32px; height: 32px; }
+      .nav-arrow svg { width: 14px; height: 14px; }
       .book-meta-bar {
+        margin-top: 0.4rem;
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 0.25rem;
         text-align: center;
       }
       .plate-badge-group {
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.2rem;
+      }
+      .plate-title-text {
+        font-size: 0.86rem;
       }
       .hint-instruction { display: none; }
     }
@@ -652,7 +657,7 @@ export const Sketchbook: React.FC<SketchbookProps> = ({
   assetBaseUrl = "",
   initialPlate = 0,
   className = "",
-  aspectRatio = "16 / 10.5"
+  aspectRatio = "16 / 10"
 }) => {
   const frameId = useId();
 
@@ -669,7 +674,7 @@ export const Sketchbook: React.FC<SketchbookProps> = ({
       className={`sketchbook-component-container ${className}`.trim()}
       style={{
         width: "100%",
-        maxWidth: "1120px",
+        maxWidth: "760px",
         margin: "0 auto",
         position: "relative"
       }}

@@ -674,7 +674,7 @@
        § 2B INTERACTIVE ARCHITECTURAL SKETCHBOOK
     ══════════════════════════════════════════════════════ */
     #sketchbook {
-      padding: 4.5rem 1.5rem;
+      padding: 2.25rem 1.25rem 1.75rem;
       background: transparent;
       position: relative;
       z-index: 1;
@@ -684,15 +684,15 @@
 
     .sketchbook-intro {
       text-align: center;
-      max-width: 680px;
-      margin: 0 auto 2.4rem;
-      padding: 0 1rem;
+      max-width: 580px;
+      margin: 0 auto 1rem;
+      padding: 0 0.5rem;
       position: relative;
       z-index: 1;
     }
 
     .sketchbook-embed-stage {
-      max-width: min(1140px, 92vw);
+      max-width: min(720px, 86vw);
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -700,17 +700,17 @@
 
     .sketchbook-frame {
       width: 100%;
-      aspect-ratio: 16 / 10.4;
-      min-height: 280px;
+      aspect-ratio: 16 / 10;
+      max-height: 440px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       display: block;
       background: #080808;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
     }
 
     .sketchbook-cta-container {
-      margin-top: 2.75rem;
+      margin-top: 1.15rem;
       text-align: center;
       display: flex;
       justify-content: center;
@@ -719,19 +719,71 @@
     }
 
     .sketchbook-cta-container .founder-btn-primary {
-      padding: 0.82rem 2.2rem;
-      font-size: 0.74rem;
-      letter-spacing: 2.2px;
+      padding: 0.65rem 1.7rem;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 600;
     }
 
-    @media (max-width: 768px) {
+    /* Tablet optimization */
+    @media (max-width: 860px) {
       #sketchbook {
-        padding: 3.5rem 1rem !important;
+        padding: 1.85rem 1rem 1.5rem !important;
+      }
+      .sketchbook-embed-stage {
+        max-width: min(620px, 92vw);
       }
       .sketchbook-frame {
-        aspect-ratio: 16 / 11.4;
+        aspect-ratio: 16 / 10.3;
+      }
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 580px) {
+      #sketchbook {
+        padding: 1.35rem 0.65rem 1.15rem !important;
+      }
+      .sketchbook-intro {
+        margin-bottom: 0.75rem;
+      }
+      .sketchbook-embed-stage {
+        max-width: 100%;
+      }
+      .sketchbook-frame {
+        aspect-ratio: 16 / 11;
+        max-height: none;
+      }
+      .sketchbook-cta-container {
+        margin-top: 0.9rem;
+      }
+      .sketchbook-cta-container .founder-btn-primary {
+        padding: 0.55rem 1.3rem;
+        font-size: 0.62rem;
+      }
+    }
+
+    /* Short height screen optimization (e.g. laptop viewports where height <= 800px) */
+    @media (max-height: 800px) and (min-width: 769px) {
+      #sketchbook {
+        padding: 1.25rem 1rem 1rem !important;
+      }
+      .sketchbook-intro {
+        margin-bottom: 0.55rem;
+      }
+      .sketchbook-embed-stage {
+        max-width: min(640px, 76vw);
+      }
+      .sketchbook-frame {
+        aspect-ratio: 16 / 9.8;
+        max-height: 380px;
+      }
+      .sketchbook-cta-container {
+        margin-top: 0.75rem;
+      }
+      .sketchbook-cta-container .founder-btn-primary {
+        padding: 0.52rem 1.4rem;
+        font-size: 0.62rem;
       }
     }
 
@@ -1722,11 +1774,11 @@
   <!-- ════════ § 2B INTERACTIVE ARCHITECTURAL SKETCHBOOK ════════ -->
   <section id="sketchbook" class="sketchbook-section">
     <div class="sketchbook-intro reveal">
-      <div class="section-tag gold-label">Architectural Process</div>
-      <h2 class="serif-display" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 0.85rem; color: #FFFFFF;">
+      <div class="section-tag gold-label" style="font-size: 0.62rem; padding: 0.2rem 0.65rem; margin-bottom: 0.35rem;">Architectural Process</div>
+      <h2 class="serif-display" style="font-size: clamp(1.35rem, 2.2vw, 1.85rem); margin-bottom: 0.35rem; color: #FFFFFF;">
         Tactile Spatial Ideation
       </h2>
-      <p style="font-size: 0.92rem; color: var(--text-quartz); line-height: 1.75; max-width: 640px; margin: 0 auto;">
+      <p style="font-size: 0.8rem; color: var(--text-quartz); line-height: 1.55; max-width: 520px; margin: 0 auto;">
         Before ground-break and photorealistic 3D synthesis, every volume begins as a tactile hand-drawn study — capturing sun-path orientation, structural massing, and noble materiality.
       </p>
     </div>
@@ -2543,8 +2595,8 @@
       user-select: none; -webkit-user-select: none;
     }
     .sketchbook-wrapper {
-      position: relative; width: 100%; max-width: 1120px;
-      margin: 0 auto; padding: 0.5rem 1rem 0.85rem;
+      position: relative; width: 100%; max-width: 760px;
+      margin: 0 auto; padding: 0.25rem 0.65rem 0.35rem;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
     }
@@ -2612,7 +2664,7 @@
     .click-zone.right { right: 0; }
     .nav-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 46px; height: 46px; border-radius: 50%;
+      width: 36px; height: 36px; border-radius: 50%;
       background: rgba(14, 14, 14, 0.88);
       border: 1px solid var(--border-gold);
       color: var(--gold);
@@ -2620,7 +2672,7 @@
       cursor: pointer; z-index: 30;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: all 0.25s ease;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
     .nav-arrow:hover:not(.disabled) {
       background: var(--gold); color: #000000; border-color: var(--gold);
@@ -2630,32 +2682,33 @@
       opacity: 0.25; cursor: not-allowed;
       border-color: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.3);
     }
-    .nav-arrow.prev { left: -24px; }
-    .nav-arrow.next { right: -24px; }
-    .nav-arrow svg { width: 20px; height: 20px; stroke-width: 2.2; fill: none; stroke: currentColor; }
+    .nav-arrow.prev { left: -14px; }
+    .nav-arrow.next { right: -14px; }
+    .nav-arrow svg { width: 16px; height: 16px; stroke-width: 2.2; fill: none; stroke: currentColor; }
     .book-meta-bar {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
-      margin-top: 1.1rem; padding: 0 0.25rem; font-size: 0.85rem;
+      margin-top: 0.55rem; padding: 0 0.2rem; font-size: 0.82rem;
     }
-    .plate-badge-group { display: flex; align-items: center; gap: 0.85rem; }
+    .plate-badge-group { display: flex; align-items: center; gap: 0.65rem; }
     .plate-counter-pill {
-      font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 0.22rem 0.65rem; background: rgba(198, 173, 133, 0.12);
+      font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 0.16rem 0.52rem; background: rgba(198, 173, 133, 0.12);
       border: 1px solid rgba(198, 173, 133, 0.3); color: var(--gold); border-radius: 999px;
     }
     .plate-title-text {
-      font-family: var(--font-serif); font-size: 1.18rem; font-weight: 500;
-      color: #F0F0F0; letter-spacing: 0.5px;
+      font-family: var(--font-serif); font-size: 0.96rem; font-weight: 500;
+      color: #F0F0F0; letter-spacing: 0.4px;
     }
-    .hint-instruction { font-size: 0.76rem; color: rgba(255, 255, 255, 0.4); letter-spacing: 0.5px; }
+    .hint-instruction { font-size: 0.68rem; color: rgba(255, 255, 255, 0.4); letter-spacing: 0.4px; }
     @media (max-width: 768px) {
-      .nav-arrow.prev { left: 4px; }
-      .nav-arrow.next { right: 4px; }
-      .nav-arrow { width: 36px; height: 36px; }
-      .nav-arrow svg { width: 16px; height: 16px; }
-      .book-meta-bar { flex-direction: column; gap: 0.35rem; text-align: center; }
-      .plate-badge-group { flex-direction: column; gap: 0.25rem; }
+      .nav-arrow.prev { left: 6px; }
+      .nav-arrow.next { right: 6px; }
+      .nav-arrow { width: 32px; height: 32px; }
+      .nav-arrow svg { width: 14px; height: 14px; }
+      .book-meta-bar { margin-top: 0.4rem; flex-direction: column; gap: 0.25rem; text-align: center; }
+      .plate-badge-group { flex-direction: column; gap: 0.2rem; }
+      .plate-title-text { font-size: 0.86rem; }
       .hint-instruction { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
