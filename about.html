@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -675,9 +675,9 @@
     ══════════════════════════════════════════════════════ */
     #sketchbook {
       padding: 2.25rem 1.25rem 1.75rem;
-      background: transparent;
+      background: #080808;
       position: relative;
-      z-index: 1;
+      z-index: 20;
       overflow-x: clip;
       border-top: 1px solid var(--border-subtle);
     }
@@ -1774,12 +1774,12 @@
   <!-- ════════ § 2B INTERACTIVE ARCHITECTURAL SKETCHBOOK ════════ -->
   <section id="sketchbook" class="sketchbook-section">
     <div class="sketchbook-intro reveal">
-      <div class="section-tag gold-label" style="font-size: 0.62rem; padding: 0.2rem 0.65rem; margin-bottom: 0.35rem;">Architectural Process</div>
+      <div class="section-tag gold-label" style="font-size: 0.62rem; padding: 0.2rem 0.65rem; margin-bottom: 0.35rem;">ARCHITECTURAL PROCESS</div>
       <h2 class="serif-display" style="font-size: clamp(1.35rem, 2.2vw, 1.85rem); margin-bottom: 0.35rem; color: #FFFFFF;">
         Tactile Spatial Ideation
       </h2>
-      <p style="font-size: 0.8rem; color: var(--text-quartz); line-height: 1.55; max-width: 520px; margin: 0 auto;">
-        Before ground-break and photorealistic 3D synthesis, every volume begins as a tactile hand-drawn study — capturing sun-path orientation, structural massing, and noble materiality.
+      <p style="font-size: 0.8rem; color: var(--text-quartz); line-height: 1.55; max-width: 540px; margin: 0 auto;">
+        Before BIM coordination and photorealistic 4K simulation, every volume begins as an unhurried, tactile sketch — sculpting natural daylight, structural cantilevers, and raw noble materiality.
       </p>
     </div>
 
@@ -2452,7 +2452,37 @@
           }
         );
       });
+
+      /* Pinned Scroll-Driven Sketchbook Flip on Laptop/Desktop */
+      const sbFrame = document.getElementById('namSketchbookFrame');
+      const sbSection = document.getElementById('sketchbook');
+      if (sbFrame && sbSection && typeof gsap.matchMedia === 'function') {
+        const mm = gsap.matchMedia();
+        mm.add("(min-width: 769px)", () => {
+          ScrollTrigger.create({
+            trigger: '#sketchbook',
+            start: 'top top+=75',
+            end: '+=2000',
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              const targetIndex = Math.min(6, Math.floor(self.progress * 7));
+              if (sbFrame && sbFrame.contentWindow) {
+                sbFrame.contentWindow.postMessage({ type: 'SCROLL_PLATE', index: targetIndex }, '*');
+              }
+            }
+          });
+        });
+      }
     }
+
+    /* Forward wheel events from sketchbook iframe to parent window */
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'IFRAME_WHEEL') {
+        window.scrollBy({ top: e.data.deltaY, behavior: 'auto' });
+      }
+    });
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initHeroGSAP);
@@ -2538,31 +2568,38 @@
       const plates = [
         {
           src: "scrapbook-images/1.png",
-          title: "Villa Sanctuary — Cantilever & Massing Study"
+          title: "Villa Sanctuary — Cantilever & Massing Study",
+          caption: "Hand-rendered elevation exploring deep overhangs, sun-path shading, and floating cast-concrete volumes."
         },
         {
           src: "scrapbook-images/2.png",
-          title: "Palatial Facade — Classical Rajput & Italianate Portico"
+          title: "Palatial Estate — Classical Rajput & Italianate Portico",
+          caption: "Symmetric monumental portico featuring fluted sandstone columns, vaulted arches, and deep shaded verandas."
         },
         {
           src: "scrapbook-images/3.png",
-          title: "Urban Estate — Geometric Screen & Nocturnal Illumination"
+          title: "Urban Residence — Geometric Screen & Nocturnal Glow",
+          caption: "Architectural jali stone screens paired with concealed perimeter LEDs to orchestrate nocturnal privacy."
         },
         {
           src: "scrapbook-images/4.png",
-          title: "Sculptural Residence — Fluid Curvature & Balcony Terraces"
+          title: "Sculptural Villa — Fluid Arches & Terraced Greenery",
+          caption: "Curvilinear stucco facades with tiered balcony cascades, integrating living green courtyards into monolithic forms."
         },
         {
           src: "scrapbook-images/5.png",
-          title: "Grand Living Pavilion — Curvilinear Joinery & Stone Wall"
+          title: "Grand Living Pavilion — Curvilinear Joinery & Stone Wall",
+          caption: "Double-height reception lounge featuring bookmatched black quartzite, curved banquette seating, and fluted joinery."
         },
         {
           src: "scrapbook-images/6.png",
-          title: "Master Suite Sanctuary — Illuminated Bedhead Niche"
+          title: "Master Suite Sanctuary — Architectural Bedhead Niche",
+          caption: "Bespoke fluted wall paneling, acoustic timber baffling, and calibrated 2700K ambient cove luminescence."
         },
         {
           src: "scrapbook-images/7.png",
-          title: "Penthouse Suite — Organic Seating & Suspended Luminescence"
+          title: "Penthouse Salon — Organic Seating & Suspended Luminescence",
+          caption: "Curved low-profile modular seating anchored by sculptural pendant chandeliers and continuous glass apertures."
         }
       ];
 
@@ -2604,7 +2641,7 @@
       position: relative; width: 100%; aspect-ratio: 16 / 9;
       perspective: 2400px;
       display: flex; align-items: center; justify-content: center;
-      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85));
+      filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.85));
     }
     .book-container {
       position: relative; width: 100%; height: 100%;
@@ -2690,25 +2727,37 @@
       margin-top: 0.55rem; padding: 0 0.2rem; font-size: 0.82rem;
     }
     .plate-badge-group { display: flex; align-items: center; gap: 0.65rem; }
+    .plate-text-stack { display: flex; flex-direction: column; gap: 0.12rem; text-align: left; }
     .plate-counter-pill {
       font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600;
       letter-spacing: 1.2px; text-transform: uppercase;
       padding: 0.16rem 0.52rem; background: rgba(198, 173, 133, 0.12);
       border: 1px solid rgba(198, 173, 133, 0.3); color: var(--gold); border-radius: 999px;
+      white-space: nowrap; align-self: flex-start;
     }
     .plate-title-text {
       font-family: var(--font-serif); font-size: 0.96rem; font-weight: 500;
       color: #F0F0F0; letter-spacing: 0.4px;
     }
-    .hint-instruction { font-size: 0.68rem; color: rgba(255, 255, 255, 0.4); letter-spacing: 0.4px; }
+    .plate-caption-text {
+      font-size: 0.72rem; color: rgba(255, 255, 255, 0.55);
+      line-height: 1.35; max-width: 520px; letter-spacing: 0.2px;
+    }
+    .hint-instruction {
+      font-size: 0.68rem; color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.4px; display: flex; align-items: center; gap: 0.35rem;
+      white-space: nowrap;
+    }
     @media (max-width: 768px) {
       .nav-arrow.prev { left: 6px; }
       .nav-arrow.next { right: 6px; }
       .nav-arrow { width: 32px; height: 32px; }
       .nav-arrow svg { width: 14px; height: 14px; }
       .book-meta-bar { margin-top: 0.4rem; flex-direction: column; gap: 0.25rem; text-align: center; }
-      .plate-badge-group { flex-direction: column; gap: 0.2rem; }
+      .plate-badge-group { flex-direction: column; align-items: center; gap: 0.2rem; }
+      .plate-text-stack { text-align: center; align-items: center; }
       .plate-title-text { font-size: 0.86rem; }
+      .plate-caption-text { display: none; }
       .hint-instruction { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -2741,10 +2790,14 @@
     <div class="book-meta-bar">
       <div class="plate-badge-group">
         <span class="plate-counter-pill" id="plateCounter">Plate 01 / 07</span>
-        <span class="plate-title-text" id="plateTitle">Villa Sanctuary — Cantilever &amp; Massing Study</span>
+        <div class="plate-text-stack">
+          <div class="plate-title-text" id="plateTitle">Villa Sanctuary — Cantilever &amp; Massing Study</div>
+          <div class="plate-caption-text" id="plateCaption">Hand-rendered elevation exploring deep overhangs, sun-path shading, and floating cast-concrete volumes.</div>
+        </div>
       </div>
-      <div class="hint-instruction">
-        <span>Click pages, use arrows, or swipe to turn</span>
+      <div class="hint-instruction" id="scrollHint">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <span>Scroll down to flip plates</span>
       </div>
     </div>
   </div>
@@ -2764,6 +2817,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const plateCounter = document.getElementById('plateCounter');
     const plateTitle = document.getElementById('plateTitle');
+    const plateCaption = document.getElementById('plateCaption');
 
     PLATES.forEach(p => { const img = new Image(); img.src = p.src; });
 
@@ -2772,15 +2826,16 @@
       baseSpread.style.backgroundImage = 'url("' + p.src + '")';
       plateCounter.textContent = 'Plate ' + String(index + 1).padStart(2, '0') + ' / ' + String(PLATES.length).padStart(2, '0');
       plateTitle.textContent = p.title;
+      if (plateCaption) plateCaption.textContent = p.caption || '';
       if (index === 0) prevBtn.classList.add('disabled'); else prevBtn.classList.remove('disabled');
       if (index === PLATES.length - 1) nextBtn.classList.add('disabled'); else nextBtn.classList.remove('disabled');
     }
 
     updateSpreadView(currentIndex);
 
-    function turnPage(direction) {
+    function turnPage(direction, explicitTarget) {
       if (isFlipping) return;
-      const targetIndex = currentIndex + direction;
+      const targetIndex = typeof explicitTarget === 'number' ? explicitTarget : currentIndex + direction;
       if (targetIndex < 0 || targetIndex >= PLATES.length) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         currentIndex = targetIndex; updateSpreadView(currentIndex); return;
@@ -2801,7 +2856,7 @@
         frontShadow.style.opacity = '0';
         backShadow.style.opacity = '0.7';
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.72s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.62s cubic-bezier(0.25, 1, 0.35, 1)';
           flipperLeaf.style.transform = 'rotateY(-180deg)';
           frontShadow.style.opacity = '0.6';
           backShadow.style.opacity = '0';
@@ -2819,7 +2874,7 @@
         frontShadow.style.opacity = '0.6';
         backShadow.style.opacity = '0';
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.72s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.62s cubic-bezier(0.25, 1, 0.35, 1)';
           flipperLeaf.style.transform = 'rotateY(0deg)';
           frontShadow.style.opacity = '0';
           backShadow.style.opacity = '0.6';
@@ -2832,8 +2887,43 @@
         underlayLeft.style.display = 'none';
         underlayRight.style.display = 'none';
         isFlipping = false;
-      }, 740);
+      }, 640);
     }
+
+    function goToPlate(targetIndex) {
+      if (targetIndex < 0 || targetIndex >= PLATES.length) return;
+      if (targetIndex === currentIndex) return;
+
+      if (isFlipping) {
+        currentIndex = targetIndex;
+        updateSpreadView(currentIndex);
+        flipperLeaf.style.display = 'none';
+        underlayLeft.style.display = 'none';
+        underlayRight.style.display = 'none';
+        isFlipping = false;
+        return;
+      }
+
+      const diff = targetIndex - currentIndex;
+      if (Math.abs(diff) > 1) {
+        currentIndex = targetIndex;
+        updateSpreadView(currentIndex);
+      } else {
+        turnPage(diff > 0 ? 1 : -1, targetIndex);
+      }
+    }
+
+    // Scroll listener from parent page
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'SCROLL_PLATE') {
+        goToPlate(e.data.index);
+      }
+    });
+
+    // Forward wheel scrolling to parent
+    window.addEventListener('wheel', (e) => {
+      window.parent.postMessage({ type: 'IFRAME_WHEEL', deltaY: e.deltaY }, '*');
+    }, { passive: true });
 
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); turnPage(-1); });
     nextBtn.addEventListener('click', (e) => { e.stopPropagation(); turnPage(1); });

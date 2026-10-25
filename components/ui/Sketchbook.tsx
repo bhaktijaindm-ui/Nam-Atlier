@@ -519,9 +519,9 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
     // Initialize View
     updateSpreadView(currentIndex);
 
-    function turnPage(direction) {
+    function turnPage(direction, explicitTarget) {
       if (isFlipping) return;
-      const targetIndex = currentIndex + direction;
+      const targetIndex = typeof explicitTarget === 'number' ? explicitTarget : currentIndex + direction;
       if (targetIndex < 0 || targetIndex >= PLATES.length) return;
 
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -596,8 +596,43 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
         underlayLeft.style.display = 'none';
         underlayRight.style.display = 'none';
         isFlipping = false;
-      }, 740);
+      }, 640);
     }
+
+    function goToPlate(targetIndex) {
+      if (targetIndex < 0 || targetIndex >= PLATES.length) return;
+      if (targetIndex === currentIndex) return;
+
+      if (isFlipping) {
+        currentIndex = targetIndex;
+        updateSpreadView(currentIndex);
+        flipperLeaf.style.display = 'none';
+        underlayLeft.style.display = 'none';
+        underlayRight.style.display = 'none';
+        isFlipping = false;
+        return;
+      }
+
+      const diff = targetIndex - currentIndex;
+      if (Math.abs(diff) > 1) {
+        currentIndex = targetIndex;
+        updateSpreadView(currentIndex);
+      } else {
+        turnPage(diff > 0 ? 1 : -1, targetIndex);
+      }
+    }
+
+    // Scroll listener from parent page
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'SCROLL_PLATE') {
+        goToPlate(e.data.index);
+      }
+    });
+
+    // Forward wheel scrolling to parent
+    window.addEventListener('wheel', (e) => {
+      window.parent.postMessage({ type: 'IFRAME_WHEEL', deltaY: e.deltaY }, '*');
+    }, { passive: true });
 
     // Button Clicks
     prevBtn.addEventListener('click', (e) => {
