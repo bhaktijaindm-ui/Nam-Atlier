@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useId, useMemo } from "react";
 
@@ -142,22 +142,19 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85));
+      filter: none;
     }
 
     .book-container {
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 6px;
+      border-radius: 4px;
       overflow: visible;
       transform-style: preserve-3d;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.9),
-        0 25px 60px rgba(0, 0, 0, 0.8),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     /* BASE VISIBLE SPREAD */
@@ -256,26 +253,9 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       background: linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 80%);
     }
 
-    /* CENTRAL REALISTIC SPINE CREASE */
+    /* CENTRAL REALISTIC SPINE CREASE - REMOVED THICK BLACK STRIP */
     .book-spine-crease {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 44px;
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.6) 0%,
-        rgba(0, 0, 0, 0.25) 30%,
-        rgba(255, 255, 255, 0.05) 48%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 52%,
-        rgba(0, 0, 0, 0.25) 70%,
-        rgba(0, 0, 0, 0.6) 100%
-      );
-      pointer-events: none;
-      z-index: 15;
+      display: none;
     }
 
     /* CLICK ZONES ON LEFT/RIGHT HALVES */
@@ -552,13 +532,13 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
         flipperLeaf.style.transition = 'none';
         flipperLeaf.style.transform = 'rotateY(0deg)';
         frontShadow.style.opacity = '0';
-        backShadow.style.opacity = '0.7';
+        backShadow.style.opacity = '0.5';
 
         // Trigger animation
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.72s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.88s cubic-bezier(0.22, 1, 0.36, 1)';
           flipperLeaf.style.transform = 'rotateY(-180deg)';
-          frontShadow.style.opacity = '0.6';
+          frontShadow.style.opacity = '0.4';
           backShadow.style.opacity = '0';
         });
 
@@ -577,15 +557,15 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
         flipperLeaf.style.display = 'block';
         flipperLeaf.style.transition = 'none';
         flipperLeaf.style.transform = 'rotateY(-180deg)';
-        frontShadow.style.opacity = '0.6';
+        frontShadow.style.opacity = '0.4';
         backShadow.style.opacity = '0';
 
         // Trigger animation
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.72s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.88s cubic-bezier(0.22, 1, 0.36, 1)';
           flipperLeaf.style.transform = 'rotateY(0deg)';
           frontShadow.style.opacity = '0';
-          backShadow.style.opacity = '0.6';
+          backShadow.style.opacity = '0.4';
         });
       }
 
@@ -596,7 +576,7 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
         underlayLeft.style.display = 'none';
         underlayRight.style.display = 'none';
         isFlipping = false;
-      }, 640);
+      }, 900);
     }
 
     function goToPlate(targetIndex) {

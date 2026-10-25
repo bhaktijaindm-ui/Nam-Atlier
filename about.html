@@ -670,11 +670,11 @@
       }
     }
 
-    /* ══════════════════════════════════════════════════════
-       § 2B INTERACTIVE ARCHITECTURAL SKETCHBOOK
-    ══════════════════════════════════════════════════════ */
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         2B INTERACTIVE ARCHITECTURAL SKETCHBOOK (EDITORIAL 2-COLUMN)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     #sketchbook {
-      padding: 2.25rem 1.25rem 1.75rem;
+      padding: clamp(3.5rem, 5.5vw, 5.5rem) 1.5rem;
       background: #080808;
       position: relative;
       z-index: 20;
@@ -682,108 +682,150 @@
       border-top: 1px solid var(--border-subtle);
     }
 
-    .sketchbook-intro {
-      text-align: center;
-      max-width: 580px;
-      margin: 0 auto 1rem;
-      padding: 0 0.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sketchbook-embed-stage {
-      max-width: min(720px, 86vw);
+    .sketchbook-container {
+      max-width: 1260px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      align-items: center;
+      gap: clamp(2rem, 4vw, 4.5rem);
     }
 
-    .sketchbook-frame {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      max-height: 440px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      display: block;
-      background: #080808;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+    /* Left Column Content */
+    .sketchbook-content-col {
+      min-width: 0;
+      text-align: left;
     }
 
-    .sketchbook-cta-container {
-      margin-top: 1.15rem;
-      text-align: center;
+    .sketchbook-content-col .section-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.22rem 0.75rem;
+      margin-bottom: 0.85rem;
+      letter-spacing: 1.8px;
+    }
+
+    .sketchbook-content-col h2 {
+      font-size: clamp(2rem, 3.2vw, 2.85rem);
+      line-height: 1.15;
+      margin-bottom: 1.1rem;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+
+    .sketchbook-content-col .sketchbook-desc {
+      font-size: 0.92rem;
+      color: var(--text-quartz);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+
+    .sketchbook-cta-desktop {
       display: flex;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
+      justify-content: flex-start;
     }
 
-    .sketchbook-cta-container .founder-btn-primary {
-      padding: 0.65rem 1.7rem;
-      font-size: 0.68rem;
+    .sketchbook-cta-mobile {
+      display: none;
+      margin-top: 1.5rem;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .sketchbook-cta-desktop .founder-btn-primary,
+    .sketchbook-cta-mobile .founder-btn-primary {
+      padding: 0.75rem 2rem;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 600;
     }
 
-    /* Tablet optimization */
-    @media (max-width: 860px) {
+    /* Right Column Book Stage */
+    .sketchbook-book-col {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .sketchbook-embed-stage {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Seamless Book Frame - NO CARD BORDER, NO BOX SHADOW */
+    .sketchbook-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border: none !important;
+      outline: none !important;
+      border-radius: 4px;
+      display: block;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Tablet optimization (769px - 991px) */
+    @media (max-width: 991px) and (min-width: 769px) {
       #sketchbook {
-        padding: 1.85rem 1rem 1.5rem !important;
+        padding: 3.5rem 1.25rem !important;
       }
-      .sketchbook-embed-stage {
-        max-width: min(620px, 92vw);
+      .sketchbook-container {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 2rem;
       }
-      .sketchbook-frame {
-        aspect-ratio: 16 / 10.3;
+      .sketchbook-content-col h2 {
+        font-size: 2rem;
+      }
+      .sketchbook-content-col .sketchbook-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
       }
     }
 
-    /* Mobile optimization */
-    @media (max-width: 580px) {
+    /* Mobile optimization (<= 768px): Centered Stacked Layout */
+    @media (max-width: 768px) {
       #sketchbook {
-        padding: 1.35rem 0.65rem 1.15rem !important;
+        padding: 2.75rem 1rem 2.25rem !important;
       }
-      .sketchbook-intro {
-        margin-bottom: 0.75rem;
+      .sketchbook-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
-      .sketchbook-embed-stage {
-        max-width: 100%;
+      .sketchbook-content-col {
+        text-align: center;
+        max-width: 540px;
+        margin: 0 auto;
+      }
+      .sketchbook-content-col .section-tag {
+        margin-inline: auto;
+      }
+      .sketchbook-content-col h2 {
+        font-size: clamp(1.6rem, 6vw, 2.1rem);
+        margin-bottom: 0.65rem;
+      }
+      .sketchbook-content-col .sketchbook-desc {
+        font-size: 0.84rem;
+        line-height: 1.6;
+        margin-inline: auto;
+        margin-bottom: 0;
+      }
+      .sketchbook-cta-desktop {
+        display: none;
+      }
+      .sketchbook-cta-mobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.25rem;
+      }
+      .sketchbook-cta-mobile .founder-btn-primary {
+        padding: 0.65rem 1.6rem;
+        font-size: 0.68rem;
       }
       .sketchbook-frame {
-        aspect-ratio: 16 / 11;
-        max-height: none;
-      }
-      .sketchbook-cta-container {
-        margin-top: 0.9rem;
-      }
-      .sketchbook-cta-container .founder-btn-primary {
-        padding: 0.55rem 1.3rem;
-        font-size: 0.62rem;
-      }
-    }
-
-    /* Short height screen optimization (e.g. laptop viewports where height <= 800px) */
-    @media (max-height: 800px) and (min-width: 769px) {
-      #sketchbook {
-        padding: 1.25rem 1rem 1rem !important;
-      }
-      .sketchbook-intro {
-        margin-bottom: 0.55rem;
-      }
-      .sketchbook-embed-stage {
-        max-width: min(640px, 76vw);
-      }
-      .sketchbook-frame {
-        aspect-ratio: 16 / 9.8;
-        max-height: 380px;
-      }
-      .sketchbook-cta-container {
-        margin-top: 0.75rem;
-      }
-      .sketchbook-cta-container .founder-btn-primary {
-        padding: 0.52rem 1.4rem;
-        font-size: 0.62rem;
+        aspect-ratio: 16 / 10.8;
       }
     }
 
@@ -1773,34 +1815,44 @@
 
   <!-- ════════ § 2B INTERACTIVE ARCHITECTURAL SKETCHBOOK ════════ -->
   <section id="sketchbook" class="sketchbook-section">
-    <div class="sketchbook-intro reveal">
-      <div class="section-tag gold-label" style="font-size: 0.62rem; padding: 0.2rem 0.65rem; margin-bottom: 0.35rem;">ARCHITECTURAL PROCESS</div>
-      <h2 class="serif-display" style="font-size: clamp(1.35rem, 2.2vw, 1.85rem); margin-bottom: 0.35rem; color: #FFFFFF;">
-        Tactile Spatial Ideation
-      </h2>
-      <p style="font-size: 0.8rem; color: var(--text-quartz); line-height: 1.55; max-width: 540px; margin: 0 auto;">
-        Before BIM coordination and photorealistic 4K simulation, every volume begins as an unhurried, tactile sketch — sculpting natural daylight, structural cantilevers, and raw noble materiality.
-      </p>
-    </div>
+    <div class="sketchbook-container">
+      
+      <!-- Left Column: Editorial Architectural Content -->
+      <div class="sketchbook-content-col reveal">
+        <div class="section-tag gold-label">ARCHITECTURAL PROCESS</div>
+        <h2 class="serif-display">Tactile Spatial Ideation</h2>
+        <p class="sketchbook-desc">
+          Before BIM coordination and photorealistic 4K simulation, every volume begins as an unhurried, tactile sketch — sculpting natural daylight, structural cantilevers, and raw noble materiality.
+        </p>
+        <div class="sketchbook-cta-desktop">
+          <a href="portfolio-detail.html" class="founder-btn-primary" style="text-decoration: none;">
+            <span>EXPLORE OUR PORTFOLIO</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
 
-    <!-- Interactive Sketchbook Stage Container -->
-    <div class="sketchbook-embed-stage reveal">
-      <iframe 
-        id="namSketchbookFrame"
-        class="sketchbook-frame"
-        title="NAM Atelier Interactive Architectural Sketchbook"
-        sandbox="allow-scripts allow-same-origin"
-        loading="lazy"
-        aria-label="Interactive 3D Architectural Sketchbook showcasing hand-drawn concepts"
-      ></iframe>
-    </div>
+      <!-- Right Column: Interactive Sketchbook Stage -->
+      <div class="sketchbook-book-col reveal">
+        <div class="sketchbook-embed-stage">
+          <iframe 
+            id="namSketchbookFrame"
+            class="sketchbook-frame"
+            title="NAM Atelier Interactive Architectural Sketchbook"
+            sandbox="allow-scripts allow-same-origin"
+            loading="lazy"
+            aria-label="Interactive 3D Architectural Sketchbook showcasing hand-drawn concepts"
+          ></iframe>
+        </div>
+        <!-- Mobile CTA below the book -->
+        <div class="sketchbook-cta-mobile">
+          <a href="portfolio-detail.html" class="founder-btn-primary" style="text-decoration: none;">
+            <span>EXPLORE OUR PORTFOLIO</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
 
-    <!-- Portfolio CTA -->
-    <div class="sketchbook-cta-container reveal">
-      <a href="portfolio-detail.html" class="founder-btn-primary" style="text-decoration: none;">
-        <span>EXPLORE OUR PORTFOLIO</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
     </div>
   </section>
 
@@ -2623,7 +2675,7 @@
     }
     html, body {
       width: 100%; height: 100%;
-      background: var(--bg-dark);
+      background: transparent !important;
       color: #FFFFFF;
       font-family: var(--font-sans);
       overflow: hidden;
@@ -2632,31 +2684,30 @@
       user-select: none; -webkit-user-select: none;
     }
     .sketchbook-wrapper {
-      position: relative; width: 100%; max-width: 760px;
-      margin: 0 auto; padding: 0.25rem 0.65rem 0.35rem;
+      position: relative; width: 100%; max-width: 100%;
+      margin: 0 auto; padding: 0.25rem 0.5rem 0.35rem;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
+      background: transparent;
     }
     .book-stage {
       position: relative; width: 100%; aspect-ratio: 16 / 9;
       perspective: 2400px;
       display: flex; align-items: center; justify-content: center;
-      filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.85));
+      filter: none !important;
+      background: transparent;
     }
     .book-container {
       position: relative; width: 100%; height: 100%;
-      border-radius: 6px; overflow: visible;
+      border-radius: 4px; overflow: visible;
       transform-style: preserve-3d;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.9),
-        0 25px 60px rgba(0, 0, 0, 0.8),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
     .base-spread {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      border-radius: 6px;
+      border-radius: 4px;
       background-size: cover; background-position: center center;
       background-repeat: no-repeat; pointer-events: none;
     }
@@ -2664,8 +2715,8 @@
       position: absolute; top: 0; bottom: 0; width: 50%; height: 100%;
       background-size: 200% 100%; background-repeat: no-repeat; display: none;
     }
-    .underlay-left { left: 0; background-position: left center; border-radius: 6px 0 0 6px; }
-    .underlay-right { right: 0; background-position: right center; border-radius: 0 6px 6px 0; }
+    .underlay-left { left: 0; background-position: left center; border-radius: 4px 0 0 4px; }
+    .underlay-right { right: 0; background-position: right center; border-radius: 0 4px 4px 0; }
     .flipper-leaf {
       position: absolute; top: 0; left: 50%; width: 50%; height: 100%;
       transform-origin: left center; transform-style: preserve-3d;
@@ -2676,40 +2727,38 @@
       backface-visibility: hidden; -webkit-backface-visibility: hidden;
       background-size: 200% 100%; background-repeat: no-repeat; overflow: hidden;
     }
-    .leaf-front { background-position: right center; border-radius: 0 6px 6px 0; transform: rotateY(0deg); }
-    .leaf-back { background-position: left center; border-radius: 6px 0 0 6px; transform: rotateY(180deg); }
-    .leaf-shadow { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.1s linear; }
-    .leaf-front .leaf-shadow { background: linear-gradient(to left, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 80%); }
-    .leaf-back .leaf-shadow { background: linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 80%); }
-    .book-spine-crease {
-      position: absolute; top: 0; bottom: 0; left: 50%; width: 44px;
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.6) 0%,
-        rgba(0, 0, 0, 0.25) 30%,
-        rgba(255, 255, 255, 0.05) 48%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 52%,
-        rgba(0, 0, 0, 0.25) 70%,
-        rgba(0, 0, 0, 0.6) 100%
-      );
-      pointer-events: none; z-index: 15;
+    .leaf-front { background-position: right center; border-radius: 0 4px 4px 0; transform: rotateY(0deg); }
+    .leaf-back { background-position: left center; border-radius: 4px 0 0 4px; transform: rotateY(180deg); }
+    
+    /* SUBTLE DELICATE SHADOW ONLY DURING TURN — NO DARK STRIP */
+    .leaf-shadow {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      transition: opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .leaf-front .leaf-shadow { background: linear-gradient(to left, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 80%); }
+    .leaf-back .leaf-shadow { background: linear-gradient(to right, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 80%); }
+    
+    /* REMOVED CENTER THICK SHADOW / SPINE CREASE COMPLETELY */
+    .book-spine-crease {
+      display: none !important;
+    }
+
     .click-zone { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 12; cursor: pointer; }
     .click-zone.left { left: 0; }
     .click-zone.right { right: 0; }
+
+    /* REFINED FLOATING NAVIGATION CONTROLS */
     .nav-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(14, 14, 14, 0.88);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(14, 14, 14, 0.85);
       border: 1px solid var(--border-gold);
       color: var(--gold);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; z-index: 30;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     .nav-arrow:hover:not(.disabled) {
       background: var(--gold); color: #000000; border-color: var(--gold);
@@ -2719,44 +2768,47 @@
       opacity: 0.25; cursor: not-allowed;
       border-color: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.3);
     }
-    .nav-arrow.prev { left: -14px; }
-    .nav-arrow.next { right: -14px; }
+    .nav-arrow.prev { left: -19px; }
+    .nav-arrow.next { right: -19px; }
     .nav-arrow svg { width: 16px; height: 16px; stroke-width: 2.2; fill: none; stroke: currentColor; }
+
+    /* FOOTER META BAR - DIRECT ON DARK SURFACE */
     .book-meta-bar {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
-      margin-top: 0.55rem; padding: 0 0.2rem; font-size: 0.82rem;
+      margin-top: 0.75rem; padding: 0 0.25rem; font-size: 0.82rem;
     }
-    .plate-badge-group { display: flex; align-items: center; gap: 0.65rem; }
+    .plate-badge-group { display: flex; align-items: center; gap: 0.75rem; }
     .plate-text-stack { display: flex; flex-direction: column; gap: 0.12rem; text-align: left; }
     .plate-counter-pill {
       font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600;
       letter-spacing: 1.2px; text-transform: uppercase;
-      padding: 0.16rem 0.52rem; background: rgba(198, 173, 133, 0.12);
+      padding: 0.18rem 0.55rem; background: rgba(198, 173, 133, 0.12);
       border: 1px solid rgba(198, 173, 133, 0.3); color: var(--gold); border-radius: 999px;
       white-space: nowrap; align-self: flex-start;
     }
     .plate-title-text {
-      font-family: var(--font-serif); font-size: 0.96rem; font-weight: 500;
+      font-family: var(--font-serif); font-size: 1rem; font-weight: 500;
       color: #F0F0F0; letter-spacing: 0.4px;
     }
     .plate-caption-text {
-      font-size: 0.72rem; color: rgba(255, 255, 255, 0.55);
-      line-height: 1.35; max-width: 520px; letter-spacing: 0.2px;
+      font-size: 0.74rem; color: rgba(255, 255, 255, 0.55);
+      line-height: 1.4; max-width: 520px; letter-spacing: 0.2px;
     }
     .hint-instruction {
-      font-size: 0.68rem; color: rgba(255, 255, 255, 0.45);
+      font-size: 0.7rem; color: rgba(255, 255, 255, 0.4);
       letter-spacing: 0.4px; display: flex; align-items: center; gap: 0.35rem;
       white-space: nowrap;
     }
+
     @media (max-width: 768px) {
-      .nav-arrow.prev { left: 6px; }
-      .nav-arrow.next { right: 6px; }
-      .nav-arrow { width: 32px; height: 32px; }
+      .nav-arrow.prev { left: 4px; }
+      .nav-arrow.next { right: 4px; }
+      .nav-arrow { width: 34px; height: 34px; }
       .nav-arrow svg { width: 14px; height: 14px; }
-      .book-meta-bar { margin-top: 0.4rem; flex-direction: column; gap: 0.25rem; text-align: center; }
-      .plate-badge-group { flex-direction: column; align-items: center; gap: 0.2rem; }
+      .book-meta-bar { margin-top: 0.5rem; flex-direction: column; gap: 0.3rem; text-align: center; }
+      .plate-badge-group { flex-direction: column; align-items: center; gap: 0.25rem; }
       .plate-text-stack { text-align: center; align-items: center; }
-      .plate-title-text { font-size: 0.86rem; }
+      .plate-title-text { font-size: 0.88rem; }
       .plate-caption-text { display: none; }
       .hint-instruction { display: none; }
     }
@@ -2797,7 +2849,7 @@
       </div>
       <div class="hint-instruction" id="scrollHint">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        <span>Scroll down to flip plates</span>
+        <span>Turn page</span>
       </div>
     </div>
   </div>
@@ -2833,6 +2885,7 @@
 
     updateSpreadView(currentIndex);
 
+    // LUXURIOUS DELIBERATE PAGE TURN (0.88s cubic-bezier(0.22, 1, 0.36, 1))
     function turnPage(direction, explicitTarget) {
       if (isFlipping) return;
       const targetIndex = typeof explicitTarget === 'number' ? explicitTarget : currentIndex + direction;
@@ -2854,11 +2907,11 @@
         flipperLeaf.style.transition = 'none';
         flipperLeaf.style.transform = 'rotateY(0deg)';
         frontShadow.style.opacity = '0';
-        backShadow.style.opacity = '0.7';
+        backShadow.style.opacity = '0.5';
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.62s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.88s cubic-bezier(0.22, 1, 0.36, 1)';
           flipperLeaf.style.transform = 'rotateY(-180deg)';
-          frontShadow.style.opacity = '0.6';
+          frontShadow.style.opacity = '0.4';
           backShadow.style.opacity = '0';
         });
       } else {
@@ -2871,13 +2924,13 @@
         flipperLeaf.style.display = 'block';
         flipperLeaf.style.transition = 'none';
         flipperLeaf.style.transform = 'rotateY(-180deg)';
-        frontShadow.style.opacity = '0.6';
+        frontShadow.style.opacity = '0.4';
         backShadow.style.opacity = '0';
         requestAnimationFrame(() => {
-          flipperLeaf.style.transition = 'transform 0.62s cubic-bezier(0.25, 1, 0.35, 1)';
+          flipperLeaf.style.transition = 'transform 0.88s cubic-bezier(0.22, 1, 0.36, 1)';
           flipperLeaf.style.transform = 'rotateY(0deg)';
           frontShadow.style.opacity = '0';
-          backShadow.style.opacity = '0.6';
+          backShadow.style.opacity = '0.4';
         });
       }
       setTimeout(() => {
@@ -2887,7 +2940,7 @@
         underlayLeft.style.display = 'none';
         underlayRight.style.display = 'none';
         isFlipping = false;
-      }, 640);
+      }, 900);
     }
 
     function goToPlate(targetIndex) {
