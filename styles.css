@@ -907,12 +907,12 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .btn-reveal-action {
-  background: #FFFFFF;
-  color: var(--text-charcoal);
+  background: #FFFFFF !important;
+  color: #000000 !important;
   border: none;
   padding: 0.6rem 1.25rem;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -920,6 +920,12 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-reveal-action:hover {
+  background: #E5E5E5 !important;
+  color: #000000 !important;
 }
 
 .card-info {
@@ -4298,5 +4304,39 @@ body:not(:has(.cinema-scroll)) .site-header {
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+}
+
+/* Project Cycle Navigation (Previous / Next Project buttons) */
+.cycle-nav-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.85rem !important;
+  font-family: var(--font-serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0.5rem 0 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.cycle-nav-btn:hover {
+  color: var(--port-accent-gold, #C6AD85) !important;
+  transform: translateX(-4px) !important;
+  background: transparent !important;
+}
+
+.cycle-nav-btn.next-btn:hover {
+  transform: translateX(4px) !important;
+  background: transparent !important;
+}
+
+.cycle-nav-btn i {
+  color: inherit !important;
 }
 

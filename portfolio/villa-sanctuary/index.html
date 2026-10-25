@@ -29,7 +29,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
   <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=4.5" />
+  <link rel="stylesheet" href="styles.css?v=4.7" />
 
   <!-- Structured Data: BreadcrumbList and CollectionPage -->
   <script type="application/ld+json">
@@ -1146,7 +1146,6 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
-
     .cycle-nav-btn {
       display: inline-flex;
       align-items: center;
@@ -1155,6 +1154,10 @@
       font-size: 1.25rem;
       font-weight: 600;
       color: #FFFFFF;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0.5rem 0;
       text-decoration: none;
       cursor: pointer;
       transition: color 0.2s ease, transform 0.2s ease;
@@ -2060,8 +2063,8 @@
       const prevProj = PORTFOLIO_PROJECTS[PROJECT_KEYS[prevIndex]];
       const nextProj = PORTFOLIO_PROJECTS[PROJECT_KEYS[nextIndex]];
 
-      document.getElementById('prevProjectLabel').textContent = `← Previous: ${prevProj.title}`;
-      document.getElementById('nextProjectLabel').textContent = `Next: ${nextProj.title} →`;
+      document.getElementById('prevProjectLabel').textContent = `Previous: ${prevProj.title}`;
+      document.getElementById('nextProjectLabel').textContent = `Next: ${nextProj.title}`;
       
       window.currentProjectSlug = slug;
 
