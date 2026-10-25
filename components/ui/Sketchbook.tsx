@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useId, useMemo } from "react";
 
@@ -112,11 +112,12 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       background: var(--bg-dark);
       color: #FFFFFF;
       font-family: var(--font-sans);
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: visible;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       user-select: none;
       -webkit-user-select: none;
     }
@@ -126,11 +127,12 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       width: 100%;
       max-width: 760px;
       margin: 0 auto;
-      padding: 0.25rem 0.65rem 0.35rem;
+      padding: 0.25rem 0.65rem 0.75rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
     }
 
     /* 3D BOOK STAGE */
@@ -370,17 +372,19 @@ export function createSketchbookDocument(options: CreateSketchbookDocumentOption
       .nav-arrow { width: 32px; height: 32px; }
       .nav-arrow svg { width: 14px; height: 14px; }
       .book-meta-bar {
-        margin-top: 0.4rem;
+        margin-top: 0.5rem;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.3rem;
         text-align: center;
       }
       .plate-badge-group {
         flex-direction: column;
-        gap: 0.2rem;
+        gap: 0.25rem;
       }
       .plate-title-text {
-        font-size: 0.86rem;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        padding-bottom: 3px;
       }
       .hint-instruction { display: none; }
     }
@@ -672,7 +676,7 @@ export const Sketchbook: React.FC<SketchbookProps> = ({
   assetBaseUrl = "",
   initialPlate = 0,
   className = "",
-  aspectRatio = "16 / 10"
+  aspectRatio = "16 / 11.5"
 }) => {
   const frameId = useId();
 
