@@ -1,99 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>3D Architecture &amp; Interior Design Portfolio | NAM Atelier</title>
-  <meta name="description" content="Explore NAM Atelier's bespoke architectural portfolio across Ludhiana and Amritsar. Luxury residential villas, penthouses, chef's kitchens, private acoustic theatres, and turnkey civil execution." />
-  <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio-detail" />
+  <meta name="description" content="Explore NAM Atelier's bespoke architectural portfolio across Ludhiana and Amritsar. Luxury residential villas, penthouses, chef's kitchens, private acoustic theatres, and turnkey civil execution.">
+  <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio-detail">
 
   <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="3D Architecture &amp; Interior Design Portfolio | NAM Atelier" />
-  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors in Punjab by Udhay Seth &amp; Mudita D Seth." />
-  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg" />
-  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio-detail" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="3D Architecture &amp; Interior Design Portfolio | NAM Atelier">
+  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors in Punjab by Udhay Seth &amp; Mudita D Seth.">
+  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg">
+  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio-detail">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
 
-  <!-- Google Fonts: Cormorant Garamond, Outfit -->
+  <!-- Google Fonts: Jost (200-500) and Mrs Saint Delafield (Script accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
-  <!-- Global & Component Styles -->
-  <link rel="stylesheet" href="styles.css?v=5.0" />
-  <link rel="stylesheet" href="portfolio-animations.css?v=2.3" />
-  <link rel="stylesheet" href="components/ScrollAnimationSection.css" />
-
-  <!-- GSAP 3 & ScrollTrigger for Cinematic Motion Engine (Part 3) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Structured Data: BreadcrumbList and CollectionPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "3D Architecture & Interior Design Portfolio | NAM Atelier",
-    "description": "Curated architectural and interior design portfolio by NAM Atelier across Ludhiana and Amritsar, Punjab.",
-    "url": "https://nam-atlier.vercel.app/portfolio-detail",
-    "provider": {
-      "@type": "Organization",
-      "name": "NAM Atelier",
-      "founders": [
-        { "@type": "Person", "name": "Udhay Seth" },
-        { "@type": "Person", "name": "Mudita D Seth" }
-      ]
-    }
-  }
-  </script>
+  <!-- Global Design System & Component Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=5.0">
 
   <style>
     /* ==========================================================================
-       NAM ATELIER — RECONSTRUCTED EDITORIAL ARCHITECTURAL PORTFOLIO SYSTEM
-       Black-Themed Luxury Architecture Aesthetic matching reference specification
+       THEME & COLOR TOKENS (NAM ATELIER LUXURY SCROLL ENGINE)
        ========================================================================== */
     :root {
-      --portfolio-bg: #000000;
-      --portfolio-text: #ffffff;
-      --portfolio-muted: rgba(255, 255, 255, 0.68);
-      --portfolio-dim: rgba(255, 255, 255, 0.42);
-      --portfolio-line: rgba(255, 255, 255, 0.22);
-      --portfolio-accent: #c5a46d;
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --ink: #f4f1ec;
+      --mute: #a8a29a;
+      --card: #1b1b1b;
+      --accent: #c5a46d;
+    }
 
-      --portfolio-page-gutter: clamp(20px, 5vw, 84px);
-      --portfolio-section-gap: clamp(100px, 16vw, 240px);
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      --portfolio-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --portfolio-fast: 450ms;
-      --portfolio-medium: 850ms;
-      --portfolio-slow: 1200ms;
+    html {
+      background: var(--bg);
+      scroll-behavior: auto;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
-      background-color: #000000 !important;
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      width: 100%;
     }
 
-    /* Modal dialog styles */
+    img {
+      display: block;
+      max-width: none;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* Fixed z-index for shared header */
+    .site-header {
+      z-index: 1000 !important;
+    }
+
+    /* ==========================================================================
+       SCROLL CONTAINER ARCHITECTURE & SCENES
+       ========================================================================== */
+    .s {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* Scene 0: Hero */
+    #s0 {
+      z-index: 1;
+    }
+
+    #s0 .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+    }
+
+    #s0::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.6) 100%);
+      pointer-events: none;
+    }
+
+    .hero-t {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      text-shadow: 0 0 30px rgba(0,0,0,.6);
+      z-index: 5;
+      padding: 0 5vw;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+
+    .hero-t p {
+      font-size: clamp(11px, 1.2vw, 14px);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .hero-t h1 {
+      font-weight: 200;
+      font-size: clamp(34px, 7vw, 110px);
+      letter-spacing: .08em;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* Scene 1: Clouds */
+    #s1 {
+      z-index: 2;
+      background: #101010;
+    }
+
+    .clouds i {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(255,255,255,.09), transparent);
+      filter: blur(24px);
+      animation: drift 18s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .clouds i:nth-child(1) { width: 55vw; height: 40vh; left: -8vw; top: 4vh; }
+    .clouds i:nth-child(2) { width: 50vw; height: 36vh; right: -6vw; bottom: -6vh; animation-delay: -5s; }
+    .clouds i:nth-child(3) { width: 40vw; height: 30vh; left: 30vw; top: -8vh; animation-delay: -9s; }
+
+    @keyframes drift {
+      to { transform: translate3d(6vw, 3vh, 0); }
+    }
+
+    .th {
+      position: absolute;
+      aspect-ratio: 4/3;
+      will-change: transform, width, left, top, right, bottom;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .s1-t {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      padding: 0 6vw;
+      z-index: 5;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .s1-t h2 {
+      font-weight: 300;
+      font-size: clamp(24px, 5.2vw, 78px);
+      letter-spacing: .06em;
+      line-height: 1.12;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .script {
+      display: block;
+      font-family: 'Mrs Saint Delafield', cursive;
+      font-size: clamp(72px, 14vw, 220px);
+      line-height: .55;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #d9d2c7;
+      margin-top: .05em;
+      clip-path: inset(0 100% 0 0);
+      will-change: clip-path;
+    }
+
+    /* Scene 2: Reveal */
+    #s2 {
+      z-index: 2;
+      background: #101010;
+    }
+
+    .box {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(24% 22%);
+      will-change: clip-path;
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+    }
+
+    .card {
+      position: absolute;
+      left: 4vw;
+      bottom: 8vh;
+      width: min(360px, 86vw);
+      background: rgba(27,27,27,.94);
+      padding: 26px 24px;
+      z-index: 6;
+      will-change: transform, opacity;
+    }
+
+    .card h3 {
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .card p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--mute);
+    }
+
+    /* Scene 3: Haven */
+    #s3 {
+      position: relative;
+      z-index: 3;
+      margin-top: 250vh;
+      height: 260vh;
+      background: var(--panel);
+    }
+
+    .stick {
+      position: sticky;
+      top: 14vh;
+      margin-left: 38%;
+      width: min(520px, 56vw);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .stick h2 {
+      font-weight: 300;
+      font-size: clamp(20px, 2.6vw, 38px);
+      letter-spacing: .1em;
+      line-height: 1.3;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .stick p {
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 420px;
+      color: var(--mute);
+    }
+
+    .fl {
+      position: absolute;
+      aspect-ratio: 3/4;
+      will-change: transform;
+      z-index: 4;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    /* Scene 4: Realm */
+    #s4 {
+      z-index: 4;
+      background: var(--bg);
+    }
+
+    #s4 .bal {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 34%;
+      z-index: 2;
+      will-change: transform;
+    }
+
+    .bal-l { left: 0; }
+    .bal-r { right: 0; }
+
+    .s4-t {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 40px);
+      letter-spacing: .12em;
+      line-height: 1.5;
+      text-transform: uppercase;
+      padding: 0 10vw;
+      opacity: 0;
+      z-index: 5;
+      color: var(--ink);
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    /* Scene 5: Locations */
+    #s5 {
+      z-index: 5;
+      background: var(--bg);
+    }
+
+    #s5 .map-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+    }
+
+    .s5-t {
+      position: absolute;
+      top: 10vh;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 0 8vw;
+      opacity: 0;
+      z-index: 6;
+      color: var(--ink);
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    .s5-t h2 {
+      font-weight: 300;
+      font-size: clamp(20px, 3vw, 40px);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .s5-t p {
+      font-size: 14px;
+      letter-spacing: .08em;
+      color: var(--mute);
+      text-transform: uppercase;
+    }
+
+    .dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 2.2s infinite;
+      transform: scale(0);
+      z-index: 7;
+      cursor: pointer;
+    }
+
+    .dot b {
+      position: absolute;
+      left: 22px;
+      top: -4px;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: .1em;
+      white-space: nowrap;
+      color: #fff;
+      background: rgba(10,10,10,0.75);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,.7); }
+      70% { box-shadow: 0 0 0 18px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+
+    .fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50%;
+      background: linear-gradient(transparent, var(--bg));
+      opacity: 0;
+      z-index: 8;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    /* Scene 6: Final */
+    #s6 {
+      padding: 12vh 6vw 10vh;
+      background: var(--bg);
+      position: relative;
+      z-index: 6;
+      overflow: hidden;
+    }
+
+    .big {
+      display: flex;
+      justify-content: center;
+      font-weight: 200;
+      font-size: clamp(100px, 24vw, 360px);
+      line-height: .9;
+      color: rgba(244,241,236,.25);
+      margin-bottom: 6vh;
+      letter-spacing: .08em;
+      user-select: none;
+    }
+
+    .big span {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    .fin {
+      display: flex;
+      justify-content: space-between;
+      gap: 8vw;
+      flex-wrap: wrap;
+      margin-bottom: 6vh;
+    }
+
+    .fin h2 {
+      font-weight: 300;
+      font-size: clamp(22px, 3.2vw, 44px);
+      letter-spacing: .08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .fin h2 b {
+      display: block;
+      font-weight: 500;
+    }
+
+    .fin p {
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 340px;
+      margin-bottom: 22px;
+      color: var(--mute);
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid currentColor;
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin: 0 8px 8px 0;
+      color: var(--ink);
+      transition: background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 6vh;
+    }
+
+    .row div {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      will-change: clip-path;
+    }
+
+    .row img {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+    }
+
+    .row div:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Responsive Rules (Requirement 8) */
+    @media (max-width: 768px) {
+      .row { grid-template-columns: 1fr; gap: 24px; }
+      .stick { margin-left: 8vw; width: 84vw; top: 35vh; }
+      .fin { flex-direction: column; gap: 20px; }
+      #s4 .bal { width: 40%; }
+      #s3 .fl:nth-of-type(n+4) { display: none; } /* On mobile: scene 3 uses only the first 3 photos */
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clouds i, .dot { animation: none; }
+      .script { clip-path: none; }
+      .s4-t, .s5-t, .fade { opacity: 1; }
+      .dot { transform: scale(1); }
+      .s { height: auto; min-height: 100vh; }
+      #s3 { margin-top: 0; height: auto; padding: 10vh 0; }
+    }
+
+    /* Modal dialog styles for consultation */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -108,11 +570,11 @@
       pointer-events: auto;
     }
     .modal-card {
-      background: #0d0d0d;
+      background: #141414;
       border: 1px solid rgba(255, 255, 255, 0.16);
       width: 100%;
-      max-width: 520px;
-      padding: clamp(28px, 5vw, 44px);
+      max-width: 500px;
+      padding: clamp(28px, 5vw, 42px);
       position: relative;
       transform: translateY(20px);
       transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -122,10 +584,8 @@
     }
     .modal-close-btn {
       position: absolute;
-      top: 20px;
+      top: 18px;
       right: 20px;
-      background: transparent;
-      border: none;
       color: #ffffff;
       font-size: 28px;
       cursor: pointer;
@@ -133,533 +593,289 @@
       opacity: 0.7;
       transition: opacity 200ms ease;
     }
-    .modal-close-btn:hover {
-      opacity: 1;
-    }
+    .modal-close-btn:hover { opacity: 1; }
     .modal-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(24px, 3vw, 32px);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: clamp(20px, 2.8vw, 28px);
       color: #ffffff;
       margin: 12px 0 8px;
-      font-weight: 400;
     }
     .modal-subtitle {
-      font-size: 14px;
-      color: var(--portfolio-muted);
+      font-size: 13px;
+      color: var(--mute);
       line-height: 1.6;
       margin-bottom: 24px;
     }
-    .modal-form .form-group {
-      margin-bottom: 20px;
-    }
+    .modal-form .form-group { margin-bottom: 20px; }
     .modal-form label {
       display: block;
-      font-size: 12px;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--portfolio-muted);
+      color: var(--mute);
       margin-bottom: 8px;
     }
     .modal-form .form-input {
       width: 100%;
-      background: #141414;
+      background: #1c1c1c;
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: #ffffff;
-      padding: 14px 16px;
+      padding: 13px 15px;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14px;
       box-sizing: border-box;
       outline: none;
       transition: border-color 200ms ease;
     }
-    .modal-form .form-input:focus {
-      border-color: var(--portfolio-accent);
-    }
+    .modal-form .form-input:focus { border-color: var(--accent); }
     .btn-modal-submit {
       width: 100%;
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      padding: 16px;
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid var(--ink);
+      padding: 14px 20px;
       font-family: inherit;
-      font-size: 13px;
-      letter-spacing: 0.12em;
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-weight: 600;
       cursor: pointer;
-      transition: background 200ms ease;
-      margin-top: 10px;
+      font-weight: 400;
+      transition: all 250ms ease;
     }
     .btn-modal-submit:hover {
-      background: var(--portfolio-accent);
-      color: #ffffff;
-    }
-
-    /* Lightbox Modal */
-    .lightbox-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.94);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms ease;
-      padding: 30px;
-    }
-    .lightbox-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .lightbox-close-btn {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 34px;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .lightbox-img-frame {
-      max-width: 90vw;
-      max-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox-img-frame img {
-      max-width: 100%;
-      max-height: 85vh;
-      object-fit: contain;
+      background: transparent;
+      color: var(--ink);
     }
   </style>
 </head>
-<body class="portfolio-body-bg">
-
-  <!-- PART 4: SVG FILTER FOR FLUID CURSOR-DRIVEN WAVE DISTORTION -->
-  <svg
-    aria-hidden="true"
-    style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;"
-  >
-    <filter id="image-wave-filter">
-      <feTurbulence
-        class="wave-noise"
-        type="fractalNoise"
-        baseFrequency="0.012 0.018"
-        numOctaves="2"
-        seed="3"
-        result="noise"
-      />
-      <feDisplacementMap
-        class="wave-displacement"
-        in="SourceGraphic"
-        in2="noise"
-        scale="0"
-        xChannelSelector="R"
-        yChannelSelector="G"
-      />
-    </filter>
-  </svg>
+<body>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
        SHARED HEADER (SINGLE SOURCE OF TRUTH)
-       Header & mobile drawer are loaded dynamically from: components/header.html
+       Loaded dynamically from: components/header.html via script.js
        ═════════════════════════════════════════════════════════════════════════ -->
   <div id="header-placeholder"></div>
 
-  <main class="portfolio-detail-page sa-root" id="mainContent">
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         PART 2.3 — CENTERED HERO COMPOSITION (USER SPECIFICATION)
-         Centered eyebrow, centered monumental title & readable description
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="nam-hero-section" id="heroSection" aria-label="Portfolio Studio Hero">
-      <div class="nam-hero-content">
-        <p class="nam-hero-eyebrow">PORTFOLIO ARCHIVE / 2024 &bull; PHILOSOPHY &amp; SPATIAL POETRY</p>
-        <h1 class="nam-hero-title">
-          <span class="portfolio-heading-line">
-            <span>STEP INTO A REALITY</span>
-          </span>
-          <span class="portfolio-heading-line">
-            <span>THAT TRANSCENDS</span>
-          </span>
-          <span class="portfolio-heading-line">
-            <span class="portfolio-heading-accent">INTERIOR DESIGN</span>
-          </span>
-        </h1>
-        <p class="nam-hero-description">
-          Where 3D architectural rendering meets exacting civil execution. We transform bare RCC structural frames into curated sanctuaries of light, volume, and timeless materiality.
-        </p>
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       7 SCENES CODED IN ORDER (SECTIONS 4 & 5 OF MASTER PROMPT)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <main>
+    <!-- Scene 0 – Hero -->
+    <section class='s' id='s0' aria-label="Hero Showcase">
+      <img class='bg' src='https://nam-atlier.vercel.app/nam_hero_villa_facade.jpg' alt='NAM Atelier villa facade' loading='eager' width='1920' height='1080'>
+      <div class='hero-t'>
+        <p>NAM ATELIER</p>
+        <h1>ONE SPACE<br>AT A TIME</h1>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 1 — CINEMATIC ARCHITECTURAL OPENING
-         Large landscape architectural image with generous whitespace & negative space
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-opening" id="section-opening" aria-label="Cinematic Architectural Opening">
-      <div class="portfolio-opening__header">
-        <span class="portfolio-eyebrow">FEATURED RESIDENCE / 01</span>
-        <div class="portfolio-opening__meta">
-          <span>PRIVATE RESIDENTIAL ARCHITECTURE</span>
-          <span>PUNJAB, INDIA</span>
-        </div>
-      </div>
-
-      <div class="portfolio-image-reveal portfolio-opening__media sa-card">
-        <img
-          src="nam_luxury_residence_exterior.jpg"
-          alt="NAM Atelier luxury architectural residence exterior at twilight"
-          class="wave-image"
-          fetchpriority="high"
-          loading="eager"
-          onclick="openLightbox(this.src, 'Villa Sanctuary — Twilight Facade & Reflection Pool')"
-          onpointermove="handleWaveMove(event)"
-          onpointerleave="handleWaveLeave(event)"
-          style="cursor: zoom-in;"
-        />
-      </div>
-
-      <div class="portfolio-opening__caption">
-        <span class="portfolio-opening__proj-name">VILLA SANCTUARY</span>
-        <span class="portfolio-opening__proj-tag">European-inspired palatial residence featuring sunken courtyard, glass portals, and serene reflecting pool.</span>
+    <!-- Scene 1 – Clouds -->
+    <section class='s' id='s1' aria-label="Clouds and Flying Imagery">
+      <div class='clouds'><i></i><i></i><i></i></div>
+      <img class='th t-a' src='https://nam-atlier.vercel.app/nam_facade_main.jpg' alt='Cantilever architectural facade' loading='eager' width='800' height='600'>
+      <img class='th t-b' src='https://nam-atlier.vercel.app/nam_architectural_details.jpg' alt='Artisanal brass detailing' loading='eager' width='800' height='600'>
+      <img class='th t-c' src='https://nam-atlier.vercel.app/nam_bedroom_render.jpg' alt='Luxury master suite' loading='eager' width='800' height='600'>
+      <div class='s1-t'>
+        <h2>Step into a reality<br>that transcends<span class='script'>Luxury</span></h2>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 2 — FLOATING ARCHITECTURAL IMAGE COMPOSITION
-         Directional scroll-driven entrance (Part 2.B) with cursor wave displacement
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-float-section" id="section-floating" aria-label="Floating Architectural Composition">
-      <div class="portfolio-float-layout">
-        <div class="portfolio-float-item portfolio-float-item--main sa-float">
-          <img
-            src="nam_facade_main.jpg"
-            alt="Sculptural architectural facade cantilever"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Villa Sanctuary — Front Elevation Geometric Cantilever')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </div>
-        <div class="portfolio-float-item portfolio-float-item--small sa-float">
-          <img
-            src="nam_architectural_details.jpg"
-            alt="Bespoke architectural joinery and material detail"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Honed Travertine & Brass Joinery Detail')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </div>
-        <div class="portfolio-float-item portfolio-float-item--lower sa-float">
-          <img
-            src="nam_bedroom_render.jpg"
-            alt="Minimalist luxury bedroom suite interior"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Bespoke Master Suite Transition')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </div>
+    <!-- Scene 2 – Reveal -->
+    <section class='s' id='s2' aria-label="Villa Sanctuary Reveal">
+      <div class='box'>
+        <img src='https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg' alt='Villa Sanctuary aerial pool and facade' loading='eager' width='1920' height='1080'>
+      </div>
+      <div class='card'>
+        <h3>Villa Sanctuary</h3>
+        <p>European-inspired palatial residence featuring sunken courtyard, glass portals, and serene reflecting pool.</p>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 4 — FULL-WIDTH ARCHITECTURAL EXPERIENCE
-         Part 2.C Scroll-Driven Zoom, Part 2.D Image Transitions & Part 2.E Pinned Scrolling
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-scroll-section" id="section-fullwidth" aria-label="Full-Width Architectural Experience">
-      <div class="sa-scene" id="pinnedScene">
-        <div class="sa-scene-viewport">
-          <div class="sa-zoom-image">
-            <img
-              src="nam_commercial_render.jpg"
-              alt="Palatial estate colonnade and contemporary facade"
-              class="sa-zoom-layer wave-image"
-              loading="lazy"
-              onclick="openLightbox(this.src, 'The Marble Residence — Main Architectural Colonnade')"
-              onpointermove="handleWaveMove(event)"
-              onpointerleave="handleWaveLeave(event)"
-              style="cursor: zoom-in;"
-            />
-            <img
-              src="nam_hero_villa_facade.jpg"
-              alt="Hero contemporary villa facade under twilight sky"
-              class="sa-zoom-layer wave-image"
-              loading="lazy"
-              style="opacity: 0; visibility: hidden; cursor: zoom-in;"
-              onclick="openLightbox(this.src, 'Villa Sanctuary — Monumental Facade Perspective')"
-              onpointermove="handleWaveMove(event)"
-              onpointerleave="handleWaveLeave(event)"
-            />
-          </div>
-          <div class="sa-progress-track">
-            <div class="sa-progress"></div>
-          </div>
+    <!-- Scene 3 – Haven -->
+    <section id='s3' aria-label="Interior Haven Parallax">
+      <div class='stick'>
+        <h2>A haven crafted<br>for exceptional living</h2>
+        <p>A considered approach to spatial flow, natural materials, architectural lighting and contemporary luxury.</p>
+      </div>
+      <img class='fl' data-y='-60' src='https://nam-atlier.vercel.app/nam_living_render.jpg' alt='Living sanctuary lounge' loading='lazy' style='left:5%;top:8%;width:20%' width='600' height='800'>
+      <img class='fl' data-y='-120' src='https://nam-atlier.vercel.app/nam_dining_interior.jpg' alt='Bespoke dining room' loading='lazy' style='left:24%;top:52%;width:12%' width='600' height='800'>
+      <img class='fl' data-y='-40' src='https://nam-atlier.vercel.app/nam_bedroom_render.jpg' alt='Suite retreat' loading='lazy' style='right:5%;top:40%;width:26%' width='600' height='800'>
+      <img class='fl' data-y='-160' src='https://nam-atlier.vercel.app/nam_kitchen_render.jpg' alt='Chef kitchen millwork' loading='lazy' style='right:8%;top:90%;width:22%' width='600' height='800'>
+      <img class='fl' data-y='-90' src='https://nam-atlier.vercel.app/nam_architectural_details.jpg' alt='Architectural tactile detail' loading='lazy' style='left:14%;top:120%;width:24%' width='600' height='800'>
+    </section>
+
+    <!-- Scene 4 – Realm -->
+    <section class='s' id='s4' aria-label="Architectural Realm Showcase">
+      <img class='bal bal-l' src='https://nam-atlier.vercel.app/nam_commercial_render.jpg' alt='Commercial glass portal' loading='lazy' width='800' height='1200'>
+      <img class='bal bal-r' src='https://nam-atlier.vercel.app/nam_cinema_theatre.jpg' alt='Acoustic cinema theatre' loading='lazy' width='800' height='1200'>
+      <p class='s4-t'>It’s a realm where luxury lives in every detail</p>
+    </section>
+
+    <!-- Scene 5 – Locations -->
+    <section class='s' id='s5' aria-label="Coveted Locations Map">
+      <img class='map-img' src='https://nam-atlier.vercel.app/nam_landscaping_patio.jpg' alt='Punjab estate landscaping patio aerial' loading='lazy' width='1920' height='1080'>
+      <div class='s5-t'>
+        <h2>In Punjab’s most coveted locations</h2>
+        <p>Ludhiana and Amritsar</p>
+      </div>
+      <span class='dot' style='left:30%;top:55%'><b>Sarabha Nagar</b></span>
+      <span class='dot' style='left:68%;top:42%'><b>Amritsar</b></span>
+      <div class='fade'></div>
+    </section>
+
+    <!-- Scene 6 – Final -->
+    <section id='s6' aria-label="Brand Signature and Discovery">
+      <div class='big'><span>N</span><span>A</span><span>M</span></div>
+      <div class='fin'>
+        <h2>Luxury living<b>redefined</b></h2>
+        <div>
+          <p>NAM Atelier conceives and delivers bespoke architectural residences and ultra-luxury interiors across Punjab.</p>
+          <a class='btn' href='javascript:void(0)' onclick="openModal('consultModal')">Book a Studio Consultation</a>
+          <a class='btn' href='https://wa.me/917710152917?text=Hello%20NAM%20Atelier,%20I%20would%20like%20to%20discuss%20an%20architectural%20interior%20project.' target='_blank' rel='noopener noreferrer'>WhatsApp Studio</a>
         </div>
       </div>
-      <div class="portfolio-scroll-meta reveal-on-scroll">
-        <span class="portfolio-scroll-caption">THE MARBLE RESIDENCE — SARABHA NAGAR, LUDHIANA</span>
-        <span class="portfolio-scroll-tag">14,000 SQ.FT TURNKEY RESIDENTIAL ESTATE</span>
+      <div class='row'>
+        <div><img src='https://nam-atlier.vercel.app/nam_facade_main.jpg' alt='Villa facade cantilever' loading='lazy' width='600' height='450'></div>
+        <div><img src='https://nam-atlier.vercel.app/nam_kitchen_render.jpg' alt='Artisanal kitchen joinery' loading='lazy' width='600' height='450'></div>
+        <div><img src='https://nam-atlier.vercel.app/nam_cinema_theatre.jpg' alt='Private acoustic theatre' loading='lazy' width='600' height='450'></div>
       </div>
     </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 5 — ASYMMETRIC IMAGE AND TEXT EDITORIAL SECTION
-         Two-column editorial with tall image, copy block, and lower detail image
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-editorial" id="section-editorial" aria-label="Asymmetric Interior Editorial">
-      <div class="portfolio-editorial__image sa-parallax reveal-image">
-        <img
-          src="nam_living_render.jpg"
-          alt="Luxury contemporary living room interior with monolithic travertine"
-          class="wave-image"
-          loading="lazy"
-          onclick="openLightbox(this.src, 'Obsidian Penthouse — Grand Living Room Perspective')"
-          onpointermove="handleWaveMove(event)"
-          onpointerleave="handleWaveLeave(event)"
-          style="cursor: zoom-in;"
-        />
-      </div>
-
-      <div class="portfolio-editorial__copy reveal-on-scroll">
-        <p class="portfolio-eyebrow">RESIDENTIAL INTERIORS</p>
-
-        <h2 class="portfolio-editorial-title">
-          Designed to feel extraordinary.
-        </h2>
-
-        <p class="portfolio-body">
-          A considered approach to spatial flow, natural materials,
-          architectural lighting and contemporary luxury. Every line
-          is calculated to evoke calm serenity and structural harmony.
-        </p>
-
-        <div class="portfolio-editorial__spec-list">
-          <div class="portfolio-editorial__spec">
-            <span class="spec-num">01</span>
-            <span class="spec-label">3D Spatial Simulation</span>
-          </div>
-          <div class="portfolio-editorial__spec">
-            <span class="spec-num">02</span>
-            <span class="spec-label">Bespoke Italian Joinery</span>
-          </div>
-          <div class="portfolio-editorial__spec">
-            <span class="spec-num">03</span>
-            <span class="spec-label">Turnkey Civil Execution</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-editorial__detail sa-card reveal-image">
-        <img
-          src="nam_dining_interior.jpg"
-          alt="Close-up of refined minimalist dining and kitchen interior"
-          class="wave-image"
-          loading="lazy"
-          onclick="openLightbox(this.src, 'Sculptural Kitchen Island & Dining')"
-          onpointermove="handleWaveMove(event)"
-          onpointerleave="handleWaveLeave(event)"
-          style="cursor: zoom-in;"
-        />
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 6 — IMMERSIVE EXTERIOR OR INTERIOR IMAGE
-         Building and sky dominate the viewport with clipping reveal
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-cinematic-wrap" id="section-cinematic" aria-label="Immersive Architectural Perspective">
-      <div class="portfolio-cinematic sa-card reveal-on-scroll">
-        <div class="portfolio-cinematic__media">
-          <img
-            src="nam_hero_villa_facade.jpg"
-            alt="Hero contemporary villa facade under dramatic sky"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Villa Sanctuary — Monumental Facade Perspective')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 7 — SUPPORTING IMAGE GALLERY
-         Curated collection with wide, portrait, and detail image ratios
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-gallery" id="section-gallery" aria-label="Curated Design Collection Gallery">
-      <div class="portfolio-gallery__intro reveal-on-scroll">
-        <p class="portfolio-eyebrow">THE DESIGN COLLECTION</p>
-        <h2 class="portfolio-heading portfolio-gallery__title">
-          Luxury, considered in every detail.
-        </h2>
-      </div>
-
-      <div class="portfolio-gallery__grid">
-        <figure class="portfolio-gallery__item portfolio-gallery__item--wide sa-card reveal-image">
-          <img
-            src="nam_cinema_theatre.jpg"
-            alt="Dolby Atmos private cinema lounge interior"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Velvet Cinema Lounge — Acoustic Wall Panelling & 4K Projection')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </figure>
-
-        <figure class="portfolio-gallery__item portfolio-gallery__item--portrait sa-card reveal-image">
-          <img
-            src="nam_kitchen_render.jpg"
-            alt="Sculptural minimalist kitchen and breakfast island"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Obsidian Kitchen — Monolithic Quartz Island & Smoked Glass')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </figure>
-
-        <figure class="portfolio-gallery__item portfolio-gallery__item--detail sa-card reveal-image">
-          <img
-            src="nam_architectural_details.jpg"
-            alt="Refined material transitions and joinery detail"
-            class="wave-image"
-            loading="lazy"
-            onclick="openLightbox(this.src, 'Architectural Detailing — Brass Inlays & Travertine Joinery')"
-            onpointermove="handleWaveMove(event)"
-            onpointerleave="handleWaveLeave(event)"
-            style="cursor: zoom-in;"
-          />
-        </figure>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SECTION 8 — FINAL EDITORIAL HERO: “LUXURY LIVING REDEFINED”
-         Architectural outline SVG, understated CTA link, and landscape imagery
-         ═══════════════════════════════════════════════════════════════════════ -->
-    <section class="portfolio-final reveal-on-scroll" id="section-final" aria-label="Luxury Living Redefined">
-      <svg
-        class="portfolio-architecture-outline"
-        viewBox="0 0 1200 420"
-        fill="none"
-        aria-hidden="true"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <path
-          d="M80 360V150L300 55L520 150V360"
-          stroke="currentColor"
-          strokeWidth="1"
-        />
-        <path
-          d="M520 360V190L720 100L920 190V360"
-          stroke="currentColor"
-          strokeWidth="1"
-        />
-        <path
-          d="M170 360V220H430V360M610 360V235H830V360"
-          stroke="currentColor"
-          strokeWidth="1"
-        />
-        <path
-          d="M50 360H1050"
-          stroke="currentColor"
-          strokeWidth="1"
-        />
-      </svg>
-
-      <div class="portfolio-final__content">
-        <p class="portfolio-eyebrow">A NEW ARCHITECTURAL CHAPTER</p>
-        <h2 class="portfolio-final__title">
-          LUXURY LIVING REDEFINED
-        </h2>
-        <p class="portfolio-final__desc">
-          NAM Atelier conceives and delivers bespoke architectural residences and ultra-luxury interiors across Punjab. Every space is tailored from 3D conceptualization to turnkey civil execution.
-        </p>
-        <div class="portfolio-final__actions">
-          <button type="button" class="portfolio-final__cta" onclick="openModal('consultModal')">
-            <span>Book a Studio Consultation</span>
-            <span class="portfolio-final__cta-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <a href="https://wa.me/917710152917?text=Hello%20NAM%20Atelier,%20I%20would%20like%20to%20discuss%20an%20architectural%20interior%20project." target="_blank" rel="noopener noreferrer" class="portfolio-final__cta">
-            <span>WhatsApp Studio</span>
-            <span class="portfolio-final__cta-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="portfolio-final__imagery sa-card reveal-image">
-        <img
-          src="nam_landscaping_patio.jpg"
-          alt="Architectural sunken courtyard, terrace, and reflection landscape"
-          class="wave-image"
-          loading="lazy"
-          onclick="openLightbox(this.src, 'Villa Sanctuary — Sunken Courtyard & Covered Patio')"
-          onpointermove="handleWaveMove(event)"
-          onpointerleave="handleWaveLeave(event)"
-          style="cursor: zoom-in;"
-        />
-      </div>
-    </section>
-
   </main>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
        SHARED FOOTER (SINGLE SOURCE OF TRUTH)
-       Footer is loaded dynamically from: components/footer.html
+       Loaded dynamically from: components/footer.html via script.js
        ═════════════════════════════════════════════════════════════════════════ -->
   <div id="footer-placeholder"></div>
 
-  <!-- CONSULTATION MODAL -->
-  <div class="modal-overlay" id="consultModal">
+  <!-- CONSULTATION MODAL DIALOG -->
+  <div class="modal-overlay" id="consultModal" role="dialog" aria-modal="true" aria-label="Book Studio Consultation">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('consultModal')" aria-label="Close dialog">&times;</button>
-      <span class="portfolio-eyebrow" style="color: var(--portfolio-accent);">ARCHITECTURAL CONSULTATION</span>
+      <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);">ARCHITECTURAL CONSULTATION</span>
       <h3 class="modal-title">Book Studio Appointment</h3>
-      <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting in Ludhiana &amp; Amritsar.</p>
+      <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting across Punjab.</p>
       <form onsubmit="handleConsultSubmit(event)" class="modal-form">
         <div class="form-group">
           <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input" />
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input">
         </div>
         <div class="form-group">
           <label for="phoneNum">Mobile / WhatsApp</label>
-          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input" />
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input">
         </div>
         <button type="submit" class="btn-modal-submit">Confirm Consultation</button>
       </form>
     </div>
   </div>
 
-  <!-- ACCESSIBLE IMAGE LIGHTBOX MODAL -->
-  <div class="lightbox-modal" id="imageLightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Image Preview">
-    <button class="lightbox-close-btn" onclick="closeLightbox(event)" aria-label="Close Preview">&times;</button>
-    <div class="lightbox-img-frame" onclick="event.stopPropagation()">
-      <img id="lightboxImage" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Enlarged Architectural Photography Preview" />
-    </div>
-  </div>
+  <!-- ==========================================================================
+       GSAP 3.12.5 + SCROLLTRIGGER + LENIS SMOOTH SCROLL (SECTION 7)
+       ========================================================================== -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'></script>
 
-  <!-- INLINE HELPER SCRIPTS -->
   <script>
-    // Modal Helpers
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ignoreMobileResize:true});
+
+    // Lenis Smooth Scroll Initialisation
+    const lenis = new Lenis({lerp:.09});
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const mm = gsap.matchMedia();
+    mm.add({
+      mob: '(max-width:640px)',
+      tab: '(min-width:641px) and (max-width:1024px)',
+      desk: '(min-width:1025px)',
+      calm: '(prefers-reduced-motion: reduce)'
+    }, ctx => {
+      const { mob, tab, calm } = ctx.conditions;
+      if (calm) return;
+
+      const sz = mob ? { A:['26vw','58vw'], B:['14vw','40vw'], C:['10vw','24vw'] }
+               : tab ? { A:['20vw','42vw'], B:['9vw','30vw'], C:['7vw','16vw'] }
+                     : { A:['16vw','34vw'], B:['7vw','26vw'], C:['5vw','12vw'] };
+      const inset = mob ? 'inset(30% 8% 30% 8%)' : 'inset(24% 22% 24% 22%)';
+
+      // Scene 0: hero zooms and fades; scene 1 slides over it
+      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s0', start:'top top', end:'+=100%', pin:true, pinSpacing:false, scrub:true}})
+        .to('#s0 .bg', {scale:1.18}, 0)
+        .to('.hero-t', {yPercent:-40, autoAlpha:0}, 0);
+
+      // Scene 1: thumbs grow outward, text in, script wipe, all out
+      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s1', start:'top top', end:'+=300%', pin:true, scrub:1}})
+        .fromTo('.t-a', {width:sz.A[0], left:'6vw', bottom:'12vh'}, {width:sz.A[1], left:0, bottom:0, duration:2.4}, 0)
+        .fromTo('.t-b', {width:sz.B[0], right:'28vw', top:'22vh'}, {width:sz.B[1], right:0, top:0, duration:2.4}, 0)
+        .fromTo('.t-c', {width:sz.C[0], left:'40vw', top:'8vh'}, {width:sz.C[1], left:'2vw', top:0, duration:2.4}, 0)
+        .fromTo('.s1-t', {autoAlpha:0, scale:.85}, {autoAlpha:1, scale:1, duration:1}, .4)
+        .fromTo('.script', {clipPath:'inset(0 100% 0 0)'}, {clipPath:'inset(0 0% 0 0)', duration:1}, 1.5)
+        .to(['.s1-t','.t-a','.t-b','.t-c'], {autoAlpha:0, duration:.5}, 3);
+
+      // Scene 2: box expands to full screen, card slides up; scene 3 covers it
+      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s2', start:'top top', end:'+=250%', pin:true, pinSpacing:false, scrub:1}})
+        .fromTo('.box', {clipPath:inset}, {clipPath:'inset(0% 0% 0% 0%)', duration:1.2}, 0)
+        .fromTo('.box img', {scale:1.15}, {scale:1, duration:1.2}, 0)
+        .fromTo('.card', {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:.6}, 1.3);
+
+      // Scene 3: five photos drift at different speeds (first 3 active on mobile)
+      gsap.utils.toArray('#s3 .fl').forEach(el => {
+        gsap.to(el, {
+          y: () => parseFloat(el.dataset.y) / 100 * innerHeight * (mob ? .6 : 1),
+          ease: 'none',
+          scrollTrigger: { trigger:'#s3', start:'top bottom', end:'bottom top', scrub:true }
+        });
+      });
+      gsap.from('.stick h2,.stick p', {
+        autoAlpha: 0,
+        y: 30,
+        stagger: .15,
+        duration: .8,
+        scrollTrigger: { trigger:'#s3', start:'top 60%', toggleActions:'play none none reverse' }
+      });
+
+      // Scene 4: two big photos move outward, text in and out
+      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s4', start:'top top', end:'+=250%', pin:true, scrub:1}})
+        .fromTo('.bal-l', {xPercent:0, yPercent:30, scale:1}, {xPercent:-18, yPercent:0, scale:1.25, duration:2}, 0)
+        .fromTo('.bal-r', {xPercent:0, yPercent:30, scale:1}, {xPercent:18, yPercent:0, scale:1.25, duration:2}, 0)
+        .fromTo('.s4-t', {autoAlpha:0}, {autoAlpha:1, duration:.6}, .8)
+        .to('.s4-t', {autoAlpha:0, duration:.5}, 2.2);
+
+      // Scene 5: map zoom, title, dots, fade to page colour
+      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s5', start:'top top', end:'+=300%', pin:true, scrub:1}})
+        .fromTo('.map-img', {scale:1, transformOrigin:'50% 45%'}, {scale:1.7, duration:3}, 0)
+        .fromTo('.s5-t', {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:.6}, 0)
+        .to('.s5-t', {autoAlpha:0, duration:.5}, 1.6)
+        .to('.dot', {scale:1, stagger:.3, duration:.4}, 1.2)
+        .to('.fade', {opacity:1, duration:1}, 2.2);
+
+      // Scene 6: letters rise, images reveal
+      gsap.from('.big span', {
+        yPercent: 60,
+        autoAlpha: 0,
+        stagger: .12,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: { trigger:'#s6', start:'top 70%' }
+      });
+      gsap.from('.row div', {
+        clipPath: 'inset(100% 0 0 0)',
+        stagger: .15,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger:'.row', start:'top 85%' }
+      });
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+
+    // Modal helpers for Consultation
     function openModal(id) {
       const el = document.getElementById(id);
       if (el) {
@@ -682,118 +898,14 @@
       window.open(`https://wa.me/917710152917?text=${text}`, '_blank');
       closeModal('consultModal');
     }
-
-    // Lightbox Helpers
-    function openLightbox(src, caption) {
-      const modal = document.getElementById('imageLightbox');
-      const img = document.getElementById('lightboxImage');
-      if (modal && img) {
-        img.src = src;
-        img.alt = caption || 'Architectural Photography';
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    function closeLightbox(e) {
-      if (e) e.stopPropagation();
-      const modal = document.getElementById('imageLightbox');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.handleConsultSubmit = handleConsultSubmit;
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeModal('consultModal');
-        closeLightbox();
-      }
+      if (e.key === 'Escape') closeModal('consultModal');
     });
-
-    // ── PART 4: CURSOR-DRIVEN WAVE DISTORTION ──
-    function handleWaveMove(event) {
-      const filter = document.getElementById("image-wave-filter");
-      if (!filter) return;
-      const noise = filter.querySelector(".wave-noise");
-      const displacement = filter.querySelector(".wave-displacement");
-      const speed = Math.hypot(event.movementX || 0, event.movementY || 0);
-
-      if (noise) {
-        const frequency = 0.012 + Math.min(speed * 0.0008, 0.025);
-        noise.setAttribute("baseFrequency", `${frequency.toFixed(4)} ${(frequency * 1.4).toFixed(4)}`);
-      }
-      if (displacement) {
-        const scaleVal = Math.min(24, 5 + speed * 1.2);
-        displacement.setAttribute("scale", scaleVal.toFixed(2));
-      }
-    }
-    window.handleWaveMove = handleWaveMove;
-
-    function handleWaveLeave() {
-      const filter = document.getElementById("image-wave-filter");
-      if (!filter) return;
-      const noise = filter.querySelector(".wave-noise");
-      const displacement = filter.querySelector(".wave-displacement");
-
-      if (typeof gsap !== 'undefined') {
-        gsap.to(displacement, {
-          attr: { scale: 0 },
-          duration: 0.65,
-          ease: "power2.out",
-          onComplete: () => {
-            if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
-          }
-        });
-      } else {
-        if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
-        if (displacement) displacement.setAttribute("scale", "0");
-      }
-    }
-    window.handleWaveLeave = handleWaveLeave;
-
-    // Immediate viewport visibility check to avoid blank states during page load or headless captures
-    (function checkInitial() {
-      function evaluate() {
-        const vh = window.innerHeight || 800;
-        const targets = document.querySelectorAll(
-          '.reveal-on-scroll, .reveal-image, .portfolio-float-item, .portfolio-cinematic, .portfolio-final, .portfolio-heading, .portfolio-image-reveal'
-        );
-        targets.forEach((el) => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= vh * 0.92 && rect.bottom >= 0) {
-            el.classList.add('is-visible');
-          }
-        });
-      }
-
-      function handleScrollTarget() {
-        const hash = window.location.hash;
-        if (hash) {
-          const target = document.querySelector(hash);
-          if (target) {
-            target.scrollIntoView({ behavior: 'instant' });
-          }
-        }
-        const urlParams = new URLSearchParams(window.location.search);
-        const scrollParam = urlParams.get('scrollTo');
-        if (scrollParam) {
-          window.scrollTo({ top: parseInt(scrollParam, 10), behavior: 'instant' });
-        }
-        evaluate();
-      }
-
-      evaluate();
-      handleScrollTarget();
-      window.addEventListener('load', () => {
-        handleScrollTarget();
-        setTimeout(evaluate, 150);
-        setTimeout(evaluate, 500);
-      });
-    })();
   </script>
-
-  <!-- ANIMATION ENGINE SCRIPT (GSAP ScrollTrigger & Wave Displacement) -->
-  <script src="portfolio-animations.js?v=2.3" defer></script>
 
   <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
   <script src="script.js?v=4.3" defer></script>
