@@ -1,6 +1,7 @@
 /**
- * NAM ATELIER — COMPLETE PORTFOLIO ANIMATIONS ENGINE
- * Implementation of CODE A (Scroll-Reveal System) & CODE E (Scroll-Progress Parallax)
+ * NAM ATELIER — PORTFOLIO DETAIL ANIMATION ENGINE
+ * Part 3: Shared Scroll-Reveal System (IntersectionObserver)
+ * Part 4: Continuous Scroll-Linked Progress
  */
 (function () {
   'use strict';
@@ -10,18 +11,24 @@
   let rafId = 0;
 
   /**
-   * Evaluates viewport intersection and adds .is-visible class
+   * Immediately marks in-viewport elements as visible to prevent empty states
    */
-  function checkVisibility() {
+  function checkInitialVisibility() {
     const vh = window.innerHeight || 800;
     const elements = document.querySelectorAll(
-      '.reveal:not(.is-visible), .text-mask:not(.is-visible), .portfolio-image-reveal:not(.is-visible), .portfolio-cinematic-section:not(.is-visible)'
+      '.reveal-on-scroll:not(.is-visible), ' +
+      '.reveal-image:not(.is-visible), ' +
+      '.portfolio-float-item:not(.is-visible), ' +
+      '.portfolio-cinematic:not(.is-visible), ' +
+      '.portfolio-final:not(.is-visible), ' +
+      '.portfolio-heading:not(.is-visible), ' +
+      '.portfolio-image-reveal:not(.is-visible)'
     );
 
     for (let i = 0; i < elements.length; i++) {
       const el = elements[i];
       const rect = el.getBoundingClientRect();
-      if (rect.top <= vh * 0.94 && rect.bottom >= 0) {
+      if (rect.top <= vh * 0.92 && rect.bottom >= 0) {
         el.classList.add('is-visible');
         if (revealObserver) {
           revealObserver.unobserve(el);
@@ -31,17 +38,16 @@
   }
 
   /**
-   * CODE A: Scroll-Reveal System using native IntersectionObserver + Event Fallback
+   * Part 3: Shared Scroll-Reveal System
    */
   function initScrollReveal() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hasObserver = 'IntersectionObserver' in window;
-
     const targets = document.querySelectorAll(
-      '.reveal, .text-mask, .portfolio-image-reveal, .portfolio-cinematic-section'
+      '.reveal-on-scroll, .reveal-image, .portfolio-float-item, ' +
+      '.portfolio-cinematic, .portfolio-final, .portfolio-heading, .portfolio-image-reveal'
     );
 
-    if (reduceMotion || !hasObserver) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-visible'));
       return;
     }
@@ -60,8 +66,8 @@
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: '0px 0px -4% 0px',
+        threshold: 0.1,
+        rootMargin: '0px 0px -6% 0px',
       }
     );
 
@@ -69,12 +75,11 @@
       revealObserver.observe(el);
     });
 
-    // Initial check for currently visible items
-    checkVisibility();
+    checkInitialVisibility();
   }
 
   /**
-   * CODE E: Scroll-Progress Parallax System
+   * Part 4: Continuous Scroll-Linked Progress
    */
   function updateScrollProgress() {
     rafId = 0;
@@ -85,20 +90,16 @@
       const rect = el.getBoundingClientRect();
 
       if (rect.bottom >= -150 && rect.top <= viewportHeight + 150) {
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (viewportHeight - rect.top) / (viewportHeight + rect.height)
-          )
-        );
+        const total = viewportHeight + rect.height;
+        const travelled = viewportHeight - rect.top;
+        const progress = Math.max(0, Math.min(1, travelled / total));
         el.style.setProperty('--scroll-progress', progress.toFixed(4));
       }
     }
   }
 
   function onScrollOrResize() {
-    checkVisibility();
+    checkInitialVisibility();
     if (!rafId) {
       rafId = requestAnimationFrame(updateScrollProgress);
     }
@@ -108,7 +109,9 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
 
-    scrollProgressElements = Array.from(document.querySelectorAll('.scroll-image'));
+    scrollProgressElements = Array.from(
+      document.querySelectorAll('.portfolio-scroll-image, .scroll-image')
+    );
     updateScrollProgress();
 
     window.removeEventListener('scroll', onScrollOrResize);
@@ -118,29 +121,19 @@
     window.addEventListener('resize', onScrollOrResize, { passive: true });
   }
 
-  /**
-   * Public Re-initialization
-   */
   window.initPortfolioAnimations = function () {
     initScrollReveal();
     initScrollProgress();
   };
 
-  // Run on DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      window.initPortfolioAnimations();
-    });
+    document.addEventListener('DOMContentLoaded', window.initPortfolioAnimations);
   } else {
     window.initPortfolioAnimations();
   }
 
   window.addEventListener('load', () => {
     window.initPortfolioAnimations();
+    setTimeout(checkInitialVisibility, 200);
   });
-
-  // Safety fallback: run check again after rendering
-  setTimeout(() => {
-    checkVisibility();
-  }, 250);
 })();

@@ -1,91 +1,172 @@
 /* ==========================================================================
-   NAM ATELIER — COMPLETE PORTFOLIO ANIMATION SYSTEM
-   Implementation of CODE B, C, D, E, F, G, H, I, J
+   NAM ATELIER — CINEMATIC ARCHITECTURAL PORTFOLIO SYSTEM
+   Rebuilt to exact specification: 8 Sequential Editorial Sections
    ========================================================================== */
 
-/* ── CODE B: BASE REVEAL & DIRECTIONAL ENTRANCES ── */
-.reveal {
+:root {
+  --portfolio-bg: #000000;
+  --portfolio-text: #ffffff;
+  --portfolio-muted: rgba(255, 255, 255, 0.68);
+  --portfolio-dim: rgba(255, 255, 255, 0.42);
+  --portfolio-line: rgba(255, 255, 255, 0.22);
+  --portfolio-accent: #c5a46d;
+
+  --portfolio-page-gutter: clamp(20px, 5vw, 84px);
+  --portfolio-section-gap: clamp(100px, 16vw, 240px);
+
+  --portfolio-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --portfolio-fast: 450ms;
+  --portfolio-medium: 850ms;
+  --portfolio-slow: 1200ms;
+}
+
+/* ── STRICT PURE BLACK PAGE CONTAINER ── */
+body:has(.portfolio-detail-page),
+body.portfolio-body-bg {
+  background-color: #000000 !important;
+  color: #ffffff;
+}
+
+.portfolio-detail-page {
+  background: var(--portfolio-bg);
+  color: var(--portfolio-text);
+  width: 100%;
+  overflow-x: clip;
+  position: relative;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-detail-page h1,
+.portfolio-detail-page h2,
+.portfolio-detail-page h3,
+.portfolio-detail-page p,
+.portfolio-detail-page a,
+.portfolio-detail-page span {
+  color: inherit;
+}
+
+.portfolio-detail-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-detail-page figure {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.portfolio-detail-page a:focus-visible,
+.portfolio-detail-page button:focus-visible {
+  outline: 1px solid var(--portfolio-text);
+  outline-offset: 5px;
+}
+
+/* ── TYPOGRAPHY BASICS ── */
+.portfolio-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--portfolio-muted);
+  font-weight: 500;
+  margin: 0;
+}
+
+.portfolio-body {
+  max-width: 440px;
+  font-size: clamp(14px, 1.1vw, 17px);
+  line-height: 1.8;
+  color: var(--portfolio-muted);
+  margin: 0;
+}
+
+/* ── SHARED REVEAL SYSTEM ── */
+.reveal-on-scroll {
   opacity: 0;
+  transform: translate3d(0, 34px, 0);
   transition:
-    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 800ms ease,
+    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
-.reveal--fade {
-  transform: none;
-}
-
-.reveal--up {
-  transform: translate3d(0, 28px, 0);
-}
-
-.reveal--left {
-  transform: translate3d(-32px, 0, 0);
-}
-
-.reveal--right {
-  transform: translate3d(32px, 0, 0);
-}
-
-.reveal.is-visible {
+.reveal-on-scroll.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
-/* Staggered timing delays */
-.reveal--delay-1 {
-  transition-delay: 100ms;
-}
-
-.reveal--delay-2 {
-  transition-delay: 200ms;
-}
-
-.reveal--delay-3 {
-  transition-delay: 300ms;
-}
-
-.reveal--delay-4 {
-  transition-delay: 400ms;
-}
-
-/* ── CODE B: LINE-BY-LINE TEXT MASK REVEAL ── */
-.text-mask {
-  display: block;
+.reveal-image {
   overflow: hidden;
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
 }
 
-.text-mask__line {
+.reveal-image.is-visible {
+  clip-path: inset(0);
+}
+
+.reveal-image img {
   display: block;
-  transform: translate3d(0, 110%, 0);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.055);
   transition:
-    transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 1500ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-.text-mask.is-visible .text-mask__line {
-  transform: translate3d(0, 0, 0);
+.reveal-image.is-visible img {
+  transform: scale(1);
 }
 
-/* Inline variant for headings with inline elements */
-.text-mask-inline {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
+/* Stagger delays */
+.delay-1 { transition-delay: 120ms; }
+.delay-2 { transition-delay: 240ms; }
+.delay-3 { transition-delay: 360ms; }
+.delay-4 { transition-delay: 480ms; }
+
+/* ── SECTION 1: CINEMATIC ARCHITECTURAL OPENING ── */
+.portfolio-opening {
+  padding: clamp(32px, 6vw, 72px) var(--portfolio-page-gutter) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 44px);
+  position: relative;
 }
 
-.text-mask-inline .text-mask__line {
-  display: inline-block;
+.portfolio-opening__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--portfolio-muted);
+  border-bottom: 1px solid var(--portfolio-line);
+  padding-bottom: 20px;
 }
 
-/* ── CODE C: IMAGE MASK REVEAL (CURTAIN SHUTTER EFFECT) ── */
+.portfolio-opening__meta {
+  display: flex;
+  gap: clamp(20px, 4vw, 48px);
+  font-size: clamp(11px, 0.9vw, 13px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .portfolio-image-reveal {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 82vh;
 }
 
 .portfolio-image-reveal img {
@@ -94,264 +175,633 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.06);
+  clip-path: inset(0 0 100% 0);
   transition:
-    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.portfolio-image-reveal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #000000;
-  transform: scaleY(1);
-  transform-origin: top;
-  transition:
-    transform 950ms cubic-bezier(0.76, 0, 0.24, 1);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.portfolio-image-reveal.is-visible::after {
-  transform: scaleY(0);
+    clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path, transform;
 }
 
 .portfolio-image-reveal.is-visible img {
+  clip-path: inset(0 0 0 0);
   transform: scale(1);
 }
 
-/* ── CODE D: IMAGE SCALE AND HOVER EFFECTS ── */
-.portfolio-image-hover {
+.portfolio-opening__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  color: var(--portfolio-muted);
+  font-size: clamp(12px, 1vw, 14px);
+}
+
+.portfolio-opening__proj-name {
+  color: var(--portfolio-text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.portfolio-opening__proj-tag {
+  letter-spacing: 0.04em;
+  max-width: 540px;
+  color: var(--portfolio-muted);
+  line-height: 1.6;
+}
+
+/* ── SECTION 2: FLOATING ARCHITECTURAL IMAGE COMPOSITION ── */
+.portfolio-float-section {
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
   overflow: hidden;
-}
-
-.portfolio-image-hover img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition:
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .portfolio-image-hover:hover img {
-    transform: scale(1.035);
-  }
-}
-
-/* ── CODE E: SCROLL-LINKED IMAGE MOVEMENT (PARALLAX & PROGRESS) ── */
-.scroll-image {
-  --scroll-progress: 0.5;
-  overflow: hidden;
-}
-
-.scroll-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform:
-    translate3d(
-      0,
-      calc((0.5 - var(--scroll-progress)) * 24px),
-      0
-    )
-    scale(
-      calc(1.04 - var(--scroll-progress) * 0.04)
-    );
-  will-change: transform;
-}
-
-/* ── CODE F: ASYMMETRICAL IMAGE COMPOSITION ── */
-.portfolio-asymmetric {
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.25fr)
-    minmax(0, 0.75fr);
-  gap: clamp(20px, 4vw, 64px);
-  align-items: start;
-}
-
-.portfolio-asymmetric__primary {
-  min-width: 0;
-  aspect-ratio: 4 / 5;
-}
-
-.portfolio-asymmetric__secondary {
-  min-width: 0;
-  aspect-ratio: 3 / 4;
-  margin-top: clamp(48px, 12vw, 180px);
-}
-
-.portfolio-asymmetric img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@media (max-width: 767px) {
-  .portfolio-asymmetric {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-  }
-
-  .portfolio-asymmetric__primary {
-    aspect-ratio: 4 / 5;
-  }
-
-  .portfolio-asymmetric__secondary {
-    width: 82%;
-    margin-top: 0;
-    margin-left: auto;
-    aspect-ratio: 4 / 5;
-  }
-}
-
-/* ── CODE G: CINEMATIC SECTION TRANSITIONS ── */
-.portfolio-cinematic-section {
   position: relative;
-  isolation: isolate;
-  background: #000000;
 }
 
-.portfolio-cinematic-section__content {
+.portfolio-float-layout {
+  position: relative;
+  width: 100%;
+  min-height: clamp(520px, 75vw, 980px);
+}
+
+.portfolio-float-item {
+  position: absolute;
+  overflow: hidden;
   opacity: 0;
-  transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 48px, 0);
   transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 800ms ease,
+    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
-.portfolio-cinematic-section.is-visible .portfolio-cinematic-section__content {
+.portfolio-float-item.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
-/* ── CODE H: PREMIUM BUTTON AND LINK INTERACTIONS ── */
-.portfolio-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #FFFFFF;
-  text-decoration: none;
-  transition:
-    color 250ms ease,
-    gap 250ms ease;
-  cursor: pointer;
+.portfolio-float-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.portfolio-link__arrow {
-  display: inline-block;
-  transition: transform 250ms ease;
+.portfolio-float-item--main {
+  left: 8%;
+  top: 12%;
+  width: 64%;
+  height: 65%;
+  z-index: 1;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .portfolio-link:hover {
-    color: #c5a46d;
-    gap: 18px;
-  }
-
-  .portfolio-link:hover .portfolio-link__arrow {
-    transform: translateX(4px);
-  }
+.portfolio-float-item--small {
+  right: 5%;
+  top: 2%;
+  width: 21%;
+  height: 25%;
+  z-index: 2;
+  transition-delay: 150ms;
 }
 
-.portfolio-link:focus-visible {
-  outline: 2px solid #c5a46d;
-  outline-offset: 5px;
+.portfolio-float-item--lower {
+  left: 3%;
+  bottom: 2%;
+  width: 30%;
+  height: 28%;
+  z-index: 2;
+  transition-delay: 280ms;
 }
 
-/* ── CODE I: RESPONSIVE TYPOGRAPHY AND SPACING ── */
-.portfolio-container {
-  width: min(100% - 96px, 1440px);
+/* ── SECTION 3: OVERSIZED EDITORIAL HEADLINE ── */
+.portfolio-headline-section {
+  padding: clamp(60px, 10vw, 160px) var(--portfolio-page-gutter);
+  position: relative;
+}
+
+.portfolio-headline-container {
+  max-width: 1240px;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 48px);
 }
 
 .portfolio-heading {
-  max-width: 14ch;
-  font-size: clamp(2.5rem, 7vw, 7.5rem);
-  line-height: 0.98;
-  letter-spacing: -0.045em;
-  overflow-wrap: normal;
-  text-wrap: balance;
+  color: var(--portfolio-text);
+  font-size: clamp(42px, 7.2vw, 112px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+  margin: 0;
 }
 
-.portfolio-description {
-  max-width: 58ch;
-  font-size: clamp(1rem, 1.15vw, 1.2rem);
-  line-height: 1.7;
+.portfolio-heading-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
 
-@media (max-width: 1024px) {
-  .portfolio-container {
-    width: calc(100% - 64px);
+.portfolio-heading-line > span {
+  display: block;
+  transform: translateY(115%);
+  transition:
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.portfolio-heading.is-visible .portfolio-heading-line > span {
+  transform: translateY(0);
+}
+
+.portfolio-heading-line:nth-child(2) > span {
+  transition-delay: 120ms;
+}
+
+.portfolio-heading-line:nth-child(3) > span {
+  transition-delay: 240ms;
+}
+
+.portfolio-heading-accent {
+  font-family: 'Cormorant Garamond', Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+}
+
+.portfolio-headline-subtext {
+  max-width: 620px;
+  margin-top: clamp(8px, 1.5vw, 24px);
+}
+
+/* ── SECTION 4: FULL-WIDTH ARCHITECTURAL EXPERIENCE ── */
+.portfolio-scroll-section {
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
+  position: relative;
+}
+
+.portfolio-scroll-image {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+}
+
+.portfolio-scroll-image img {
+  display: block;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  transform: translate3d(
+    0,
+    calc(var(--scroll-progress, 0) * -5%),
+    0
+  );
+  will-change: transform;
+}
+
+.portfolio-scroll-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  color: var(--portfolio-muted);
+  font-size: clamp(11px, 0.85vw, 13px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── SECTION 5: ASYMMETRIC IMAGE AND TEXT EDITORIAL SECTION ── */
+.portfolio-editorial {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  column-gap: clamp(32px, 8vw, 130px);
+  row-gap: clamp(40px, 8vw, 120px);
+  align-items: start;
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
+}
+
+.portfolio-editorial__image {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  aspect-ratio: 0.78;
+  overflow: hidden;
+}
+
+.portfolio-editorial__copy {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  padding-top: clamp(20px, 7vw, 110px);
+}
+
+.portfolio-editorial-title {
+  font-size: clamp(32px, 4.2vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 16px 0 24px;
+  font-weight: 400;
+  color: var(--portfolio-text);
+}
+
+.portfolio-editorial__detail {
+  grid-column: 2;
+  grid-row: 2;
+  width: 72%;
+  margin-left: auto;
+  aspect-ratio: 1.18;
+  overflow: hidden;
+}
+
+.portfolio-editorial__spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px;
+  border-top: 1px solid var(--portfolio-line);
+  padding-top: 24px;
+  max-width: 440px;
+}
+
+.portfolio-editorial__spec {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.spec-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  color: var(--portfolio-accent);
+}
+
+.spec-label {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--portfolio-text);
+  text-transform: uppercase;
+}
+
+/* ── SECTION 6: IMMERSIVE EXTERIOR OR INTERIOR IMAGE ── */
+.portfolio-cinematic-wrap {
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
+  position: relative;
+}
+
+.portfolio-cinematic {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-cinematic__media {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.7;
+}
+
+.portfolio-cinematic__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path 1300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path, transform;
+}
+
+.portfolio-cinematic.is-visible .portfolio-cinematic__media img {
+  clip-path: inset(0);
+  transform: scale(1);
+}
+
+/* ── SECTION 7: SUPPORTING IMAGE GALLERY ── */
+.portfolio-gallery {
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
+}
+
+.portfolio-gallery__intro {
+  max-width: 1000px;
+  margin-bottom: clamp(44px, 9vw, 130px);
+}
+
+.portfolio-gallery__title {
+  font-size: clamp(38px, 5.5vw, 84px);
+  line-height: 1.02;
+  margin-top: 14px;
+}
+
+.portfolio-gallery__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(14px, 2.5vw, 36px);
+  align-items: start;
+}
+
+.portfolio-gallery__item {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.portfolio-gallery__item--wide {
+  grid-column: 1;
+  aspect-ratio: 1.25;
+}
+
+.portfolio-gallery__item--portrait {
+  grid-column: 2;
+  aspect-ratio: 0.78;
+}
+
+.portfolio-gallery__item--detail {
+  grid-column: 1;
+  width: 75%;
+  margin-left: auto;
+  aspect-ratio: 1.25;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-gallery__item:hover img {
+    transform: scale(1.035);
+  }
+}
+
+/* ── SECTION 8: FINAL EDITORIAL HERO: “LUXURY LIVING REDEFINED” ── */
+.portfolio-final {
+  position: relative;
+  overflow: hidden;
+  padding: var(--portfolio-section-gap) var(--portfolio-page-gutter);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 8vw, 80px);
+}
+
+.portfolio-final__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+}
+
+.portfolio-final__title {
+  font-size: clamp(44px, 9vw, 140px);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  font-weight: 400;
+  margin: 20px 0 28px;
+  color: var(--portfolio-text);
+}
+
+.portfolio-architecture-outline {
+  position: absolute;
+  width: min(95%, 1200px);
+  height: auto;
+  top: 0;
+  right: -5%;
+  color: rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portfolio-architecture-outline path {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  transition: stroke-dashoffset 2200ms ease;
+}
+
+.portfolio-final.is-visible .portfolio-architecture-outline path {
+  stroke-dashoffset: 0;
+}
+
+.portfolio-final__desc {
+  max-width: 540px;
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.75;
+  color: var(--portfolio-muted);
+}
+
+.portfolio-final__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.portfolio-final__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--portfolio-text);
+  text-decoration: none;
+  border: none;
+  background: none;
+  border-bottom: 1px solid var(--portfolio-line);
+  padding: 0 0 10px;
+  font-family: inherit;
+  font-size: clamp(13px, 1.05vw, 16px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--portfolio-fast) ease, color var(--portfolio-fast) ease;
+}
+
+.portfolio-final__cta:hover {
+  border-color: var(--portfolio-text);
+  color: var(--portfolio-accent);
+}
+
+.portfolio-final__cta-arrow {
+  transition: transform var(--portfolio-fast) ease;
+}
+
+.portfolio-final__cta:hover .portfolio-final__cta-arrow {
+  transform: translateX(6px);
+}
+
+.portfolio-final__imagery {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  margin-top: clamp(20px, 4vw, 40px);
+}
+
+.portfolio-final__imagery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── RESPONSIVE ADAPTATIONS (PART 6) ── */
+@media (max-width: 900px) {
+  .portfolio-editorial {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio-editorial__image,
+  .portfolio-editorial__copy,
+  .portfolio-editorial__detail {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .portfolio-editorial__detail {
+    width: 82%;
+    margin-top: 24px;
+  }
+
+  .portfolio-gallery__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-float-layout {
+    min-height: 540px;
+  }
+
+  .portfolio-float-item--main {
+    left: 0;
+    top: 15%;
+    width: 84%;
+    height: 48%;
+  }
+
+  .portfolio-float-item--small {
+    right: 0;
+    top: 0;
+    width: 32%;
+    height: 20%;
+  }
+
+  .portfolio-float-item--lower {
+    left: 4%;
+    bottom: 0;
+    width: 45%;
+    height: 24%;
+  }
+
+  .portfolio-gallery__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio-gallery__title {
+    font-size: clamp(28px, 8vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .portfolio-heading {
-    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-size: clamp(30px, 8.5vw, 54px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .portfolio-final__title {
+    font-size: clamp(32px, 9.5vw, 56px);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .portfolio-gallery__item--wide,
+  .portfolio-gallery__item--portrait,
+  .portfolio-gallery__item--detail {
+    grid-column: 1;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .portfolio-scroll-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .portfolio-cinematic__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .portfolio-final__imagery {
+    aspect-ratio: 16 / 10;
   }
 }
 
-@media (max-width: 767px) {
-  .portfolio-container {
-    width: calc(100% - 40px);
+@media (max-width: 360px) {
+  :root {
+    --portfolio-page-gutter: 16px;
   }
 
   .portfolio-heading {
-    max-width: 100%;
-    font-size: clamp(2.1rem, 10vw, 4rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
+    font-size: clamp(26px, 8vw, 36px);
   }
 
-  .portfolio-description {
-    font-size: 1rem;
-    line-height: 1.65;
-  }
-}
-
-@media (max-width: 374px) {
-  .portfolio-container {
-    width: calc(100% - 32px);
+  .portfolio-final__title {
+    font-size: clamp(28px, 8.5vw, 40px);
   }
 
-  .portfolio-heading {
-    font-size: clamp(1.9rem, 9vw, 2.5rem);
+  .portfolio-gallery__title {
+    font-size: clamp(24px, 7.5vw, 32px);
   }
 }
 
-/* ── CODE J: REDUCED-MOTION ACCESSIBILITY AND FAILURE SAFETY ── */
+/* ── ACCESSIBILITY & REDUCED MOTION (PART 6) ── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal--up,
-  .reveal--left,
-  .reveal--right,
-  .text-mask__line,
-  .portfolio-image-reveal img,
-  .portfolio-image-reveal::after,
-  .scroll-image img,
-  .portfolio-cinematic-section__content {
-    animation: none !important;
-    transition: none !important;
+  .portfolio-detail-page *,
+  .portfolio-detail-page *::before,
+  .portfolio-detail-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .portfolio-detail-page .reveal-on-scroll,
+  .portfolio-detail-page .reveal-image,
+  .portfolio-detail-page .portfolio-float-item,
+  .portfolio-detail-page .portfolio-cinematic,
+  .portfolio-detail-page .portfolio-final {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .portfolio-detail-page .reveal-image img,
+  .portfolio-detail-page .portfolio-image-reveal img,
+  .portfolio-detail-page .portfolio-cinematic__media img,
+  .portfolio-detail-page .portfolio-scroll-image img {
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .portfolio-detail-page .portfolio-heading-line > span {
     transform: none !important;
   }
 
-  .reveal,
-  .reveal.is-visible,
-  .text-mask__line,
-  .portfolio-cinematic-section__content {
-    opacity: 1 !important;
-  }
-
-  .portfolio-image-reveal::after {
-    display: none !important;
-  }
-
-  .portfolio-link,
-  .portfolio-link__arrow {
-    transition: none !important;
+  .portfolio-detail-page .portfolio-architecture-outline path {
+    stroke-dashoffset: 0 !important;
   }
 }
