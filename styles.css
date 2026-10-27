@@ -4517,7 +4517,10 @@ body:not(:has(.cinema-scroll)) .site-header {
   .portfolio-wrapper,
   .hague-page-container,
   .swift-page-wrapper {
-    width: 94% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: clip;
     padding-top: var(--hero-content-padding-top, 5.25rem) !important;
     padding-left: 0.85rem !important;
     padding-right: 0.85rem !important;
@@ -4542,9 +4545,12 @@ body:not(:has(.cinema-scroll)) .site-header {
   .portfolio-wrapper,
   .hague-page-container,
   .swift-page-wrapper {
-    width: 94% !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: clip;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
   }
 
   #about-hero {
