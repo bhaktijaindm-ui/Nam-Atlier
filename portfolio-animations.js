@@ -82,69 +82,76 @@
     const root = document.querySelector(".portfolio-detail-page") || document.body;
     if (!root) return;
 
-    const cards = gsap.utils.toArray(".sa-card", root);
+    // 1. Initial Hero Text Animation (smooth lift on load with 100% crisp white text)
+    const heroTitleLines = root.querySelectorAll(".nam-hero-title .portfolio-heading-line > span");
+    if (heroTitleLines.length > 0) {
+      gsap.from(heroTitleLines, {
+        y: 20,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power2.out",
+      });
+    }
+
+    // 2. Section 1 Opening Image Subtle Zoom Settle
+    const openingImage = root.querySelector(".portfolio-opening__media img");
+    if (openingImage) {
+      gsap.fromTo(
+        openingImage,
+        { scale: 1.05 },
+        {
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out",
+        }
+      );
+    }
+
+    // 3. Directional image movement tied to scrolling (Section 2)
+    const floatLayout = root.querySelector(".portfolio-float-layout");
     const floating = gsap.utils.toArray(".sa-float", root);
+    if (floatLayout && floating.length > 0) {
+      floating.forEach((element, index) => {
+        const direction = index % 2 === 0 ? -1 : 1;
+        const distance = 70 + (index % 3) * 25;
+
+        gsap.fromTo(
+          element,
+          {
+            x: direction * distance,
+            y: index % 2 === 0 ? 30 : -30,
+            scale: 0.95,
+          },
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: floatLayout,
+              start: "top 90%",
+              end: "bottom 55%",
+              scrub: 0.8,
+            },
+          }
+        );
+      });
+    }
+
+    // 4. Cinematic pinned zoom and image transitions (Section 4)
     const scene = root.querySelector(".sa-scene");
     const zoom = root.querySelector(".sa-zoom-image");
     const layers = gsap.utils.toArray(".sa-zoom-layer", root);
     const progress = root.querySelector(".sa-progress");
 
-    // 1. Reveal images as they enter the viewport
-    cards.forEach((card) => {
-      gsap.fromTo(
-        card,
-        { autoAlpha: 0, y: 60 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            end: "top 42%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    // 2. Directional image movement tied to scrolling
-    floating.forEach((element, index) => {
-      const direction = index % 2 === 0 ? -1 : 1;
-      const distance = 160 + (index % 3) * 40;
-
-      gsap.fromTo(
-        element,
-        {
-          x: direction * distance,
-          y: index % 2 === 0 ? 40 : -40,
-          scale: 0.9,
-          autoAlpha: 0,
-        },
-        {
-          x: 0,
-          y: 0,
-          scale: 1,
-          autoAlpha: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: element,
-            start: "top bottom",
-            end: "center center",
-            scrub: 0.8,
-          },
-        }
-      );
-    });
-
-    // 3. Cinematic pinned zoom and image transitions
     if (scene && zoom) {
+      const pinDistance = Math.min(window.innerHeight * 1.3, 1100);
+
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: scene,
           start: "top top",
-          end: () => `+=${window.innerHeight * 2.2}`,
+          end: `+=${pinDistance}`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -152,69 +159,64 @@
         },
       });
 
-      timeline
-        .fromTo(
-          zoom,
-          { scale: 0.82 },
-          { scale: 1, duration: 0.7, ease: "none" }
-        )
-        .to(
-          zoom,
-          { scale: 1.45, duration: 0.8, ease: "none" }
-        );
+      timeline.fromTo(
+        zoom,
+        { scale: 1.0 },
+        { scale: 1.35, duration: 1, ease: "none" },
+        0
+      );
 
       // Crossfade existing images in sequence
-      layers.forEach((layer, index) => {
-        if (index === 0) return;
+      if (layers.length > 1) {
+        gsap.set(layers[0], { autoAlpha: 1 });
+        gsap.set(layers[1], { autoAlpha: 0 });
 
-        const previous = layers[index - 1];
-        const position = 0.45 + (index / layers.length) * 1.5;
-
-        timeline
-          .to(
-            previous,
-            { autoAlpha: 0, duration: 0.35, ease: "none" },
-            position
-          )
-          .fromTo(
-            layer,
-            { autoAlpha: 0, scale: 1.12 },
-            {
-              autoAlpha: 1,
-              scale: 1,
-              duration: 0.6,
-              ease: "none",
-            },
-            position
-          );
-      });
+        timeline.to(
+          layers[1],
+          { autoAlpha: 1, duration: 0.45, ease: "power1.inOut" },
+          0.38
+        );
+      }
 
       // Scroll progress indicator
       if (progress) {
-        gsap.fromTo(
+        timeline.fromTo(
           progress,
           { scaleX: 0 },
-          {
-            scaleX: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: scene,
-              start: "top top",
-              end: () => `+=${window.innerHeight * 2.2}`,
-              scrub: true,
-            },
-          }
+          { scaleX: 1, duration: 1, ease: "none" },
+          0
         );
       }
     }
 
-    // 4. Parallax for elements marked sa-parallax
+    // 5. Reveal cards for remaining editorial sections
+    const cards = gsap.utils.toArray(".sa-card:not(.portfolio-opening__media)", root);
+    cards.forEach((card) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0.4, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 92%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+    });
+
+    // 6. Parallax for elements marked sa-parallax
     gsap.utils.toArray(".sa-parallax", root).forEach((element) => {
       gsap.fromTo(
         element,
-        { yPercent: -8 },
+        { yPercent: -6 },
         {
-          yPercent: 8,
+          yPercent: 6,
           ease: "none",
           scrollTrigger: {
             trigger: element,

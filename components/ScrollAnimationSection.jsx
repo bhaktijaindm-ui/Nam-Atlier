@@ -90,12 +90,8 @@ export default function ScrollAnimationSection({
         timeline
           .fromTo(
             zoom,
-            { scale: 0.78 },
-            { scale: 1, duration: 0.7, ease: "none" }
-          )
-          .to(
-            zoom,
-            { scale: 1.5, duration: 0.8, ease: "none" }
+            { scale: 1.0 },
+            { scale: 1.45, duration: 1, ease: "none" }
           );
 
         // Crossfade existing images in sequence.
