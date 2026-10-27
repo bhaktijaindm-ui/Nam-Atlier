@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Project Details | NAM Atelier</title>
+  <meta name="description" content="Explore bespoke architectural and interior design project details by NAM Atelier. Key facts, full photo gallery, and client reviews.">
+  <link rel="canonical" href="https://nam-atlier.vercel.app/project">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="ogTitle" content="Project Details | NAM Atelier">
+  <meta property="og:description" id="ogDesc" content="Luxury residential architectural project details in Punjab by NAM Atelier.">
+  <meta property="og:image" id="ogImg" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+
+  <!-- Google Fonts: Jost (200-500) and Mrs Saint Delafield (Script accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  
+  <!-- Global Design System & Component Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=5.1">
+
+  <style>
+    :root {
+      --hdr: 112px;
+      --sec: clamp(72px, 10vw, 140px);
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --ink: #f4f1ec;
+      --mute: #c9c3ba;
+      --card: #1b1b1b;
+      --accent: #c5a46d;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: var(--hdr);
+      background: var(--bg);
+      scroll-behavior: auto;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      width: 100%;
+    }
+
+    p, li {
+      color: var(--mute);
+      line-height: 1.75;
+    }
+
+    img {
+      display: block;
+      max-width: none;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+      aspect-ratio: attr(width) / attr(height);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .site-header {
+      z-index: 1000 !important;
+    }
+
+    /* Cover Photo (70vh with title) */
+    .cover {
+      position: relative;
+      height: 70vh;
+      height: 70svh;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.75) 100%);
+      pointer-events: none;
+    }
+    .cover-content {
+      position: absolute;
+      left: 6vw;
+      bottom: 6vh;
+      z-index: 2;
+      max-width: 88vw;
+    }
+    .cover-subtitle {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .cover h1 {
+      font-weight: 300;
+      font-size: clamp(32px, 6vw, 88px);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.08;
+    }
+
+    /* Facts Row */
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      padding: var(--sec) 6vw;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .facts dl {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .facts dt {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 4px;
+    }
+    .facts dd {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: .02em;
+    }
+    .facts p {
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.85;
+      color: var(--ink);
+      align-self: center;
+    }
+
+    /* Gallery */
+    .gal-head {
+      padding: var(--sec) 6vw 3vh;
+    }
+    .gal-head h2 {
+      font-weight: 300;
+      font-size: clamp(22px, 3vw, 40px);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .gal-head p {
+      font-size: 13px;
+      color: var(--mute);
+    }
+    .gal {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      padding: 0 6vw var(--sec);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .gal a {
+      overflow: hidden;
+      grid-column: span 6;
+      aspect-ratio: 4/3;
+      display: block;
+      background: #141414;
+      cursor: zoom-in;
+    }
+    .gal a:nth-child(3n+1) { grid-column: span 7; }
+    .gal a:nth-child(3n+2) { grid-column: span 5; }
+    .gal a:nth-child(3n) { grid-column: span 12; aspect-ratio: 16/9; }
+    .gal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(0.22, 1, 0.36, 1);
+      display: block;
+    }
+    .gal a:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Next Project Link */
+    .next-wrap {
+      padding: 3vh 6vw 8vh;
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .back-portfolio {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+      transition: color .3s ease;
+    }
+    .back-portfolio:hover {
+      color: var(--ink);
+    }
+    .next-proj-btn {
+      display: inline-block;
+      font-size: clamp(16px, 2.2vw, 26px);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      transition: color .3s ease, transform .3s ease;
+    }
+    .next-proj-btn:hover {
+      color: var(--accent);
+      transform: translateX(6px);
+    }
+
+    /* Lightbox */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, .95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: grid;
+      place-items: center;
+    }
+    .lb[hidden] {
+      display: none;
+    }
+    .lb-content {
+      position: relative;
+      max-width: 92vw;
+      max-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lb img {
+      max-width: 92vw;
+      max-height: 82vh;
+      object-fit: contain;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    }
+    .lb-caption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--mute);
+      letter-spacing: .06em;
+      text-align: center;
+    }
+    .lb button {
+      position: absolute;
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 34px;
+      padding: 16px;
+      cursor: pointer;
+      z-index: 2;
+      transition: opacity .2s ease;
+      min-width: 44px;
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+    }
+    .lb button:hover { opacity: .7; }
+    .lb .close {
+      top: calc(12px + env(safe-area-inset-top, 0px));
+      right: 16px;
+      font-size: 38px;
+    }
+    .lb .prev {
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .lb .next {
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Closing Call to Action */
+    .cta {
+      text-align: center;
+      padding: var(--sec) 6vw;
+      border-top: 1px solid rgba(255,255,255,.12);
+      background: var(--bg);
+    }
+    .cta h2 {
+      font-weight: 300;
+      font-size: clamp(24px, 4vw, 52px);
+      letter-spacing: .06em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .cta p {
+      max-width: 440px;
+      margin: 0 auto 28px;
+      font-size: 14px;
+      color: var(--mute);
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border: 1px solid #f4f1ec;
+      border-radius: 99px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin: 0 6px 10px;
+      color: #0a0a0a;
+      background: #f4f1ec;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 400;
+      transition: all 0.3s ease;
+    }
+    .btn.ghost {
+      background: none;
+      color: #f4f1ec;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0a0a0a;
+    }
+    .btn.ghost:hover {
+      background: #f4f1ec;
+      color: #0a0a0a;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .facts { grid-template-columns: 1fr; }
+      .facts dl { grid-template-columns: 1fr; gap: 16px; }
+      .gal a, .gal a:nth-child(n) { grid-column: span 12; aspect-ratio: 4/3; }
+      .next-wrap { flex-direction: column-reverse; gap: 20px; align-items: flex-start; }
+    }
+
+    /* Modal Dialog */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: #141414;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      width: 100%;
+      max-width: 500px;
+      padding: clamp(28px, 5vw, 42px);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      color: #ffffff;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+    .modal-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: clamp(20px, 2.8vw, 28px);
+      color: #ffffff;
+      margin: 12px 0 8px;
+    }
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--mute);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .modal-form .form-group { margin-bottom: 20px; }
+    .modal-form label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 8px;
+    }
+    .modal-form .form-input {
+      width: 100%;
+      background: #1c1c1c;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      padding: 13px 15px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    .modal-form .form-input:focus { border-color: var(--accent); }
+    .btn-modal-submit {
+      width: 100%;
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid var(--ink);
+      padding: 14px 20px;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .btn-modal-submit:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Dynamic Project Container -->
+  <main id="projectRoot">
+    <!-- (1) Cover Photo -->
+    <section class='cover'>
+      <img id="coverImg" src="nam_luxury_residence_exterior.jpg" width="2000" height="1200" alt="Project Cover" loading="eager" decoding="async">
+      <div class="cover-content">
+        <span class="cover-subtitle" id="coverSubtitle">Residential Architecture</span>
+        <h1 id="projectTitle">Villa Sanctuary</h1>
+      </div>
+    </section>
+
+    <!-- (2) Facts Row -->
+    <section class='facts'>
+      <dl>
+        <div><dt>Location</dt><dd id="factLocation">Punjab, India</dd></div>
+        <div><dt>Area</dt><dd id="factArea">14,000 sq.ft</dd></div>
+        <div><dt>Scope</dt><dd id="factScope">3D design and turnkey execution</dd></div>
+        <div><dt>Year</dt><dd id="factYear">2024</dd></div>
+      </dl>
+      <p id="projectDesc">Project description detailing spatial flow, materiality, and turnkey delivery.</p>
+    </section>
+
+    <!-- (3) Photo Gallery -->
+    <section class="gal-head">
+      <h2>Project Gallery</h2>
+      <p>Click any photo to enlarge and inspect architectural details.</p>
+    </section>
+    <section class='gal' id="galleryContainer">
+      <!-- Photos dynamically injected -->
+    </section>
+
+    <!-- (4) Next Project Link -->
+    <div class="next-wrap">
+      <a class="back-portfolio" href="/portfolio-detail">&larr; Return to Portfolio</a>
+      <a class='next-proj-btn' id="nextProjectLink" href='/project?p=marble-residence'>Next project &rarr;</a>
+    </div>
+
+    <!-- (5) Testimonials -->
+    <div id="testimonials-placeholder"></div>
+
+    <!-- (6) Closing Call to Action -->
+    <section class='cta'>
+      <h2>Have a space in mind? Let’s talk.</h2>
+      <p>Tell us about your home. We reply within one working day.</p>
+      <a class='btn' href='https://wa.me/917710152917?text=Hello%20NAM%20Atelier%2C%20I%20would%20like%20to%20discuss%20an%20interior%20project.' target='_blank' rel='noopener noreferrer'>Chat on WhatsApp</a>
+      <a class='btn ghost' href='javascript:void(0)' onclick="openModal('consultModal')">Book a studio visit</a>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class='lb' id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <button class='close' aria-label='Close'>&times;</button>
+    <button class='prev' aria-label='Previous'>&#8249;</button>
+    <div class="lb-content">
+      <img alt='' id="lightboxImg">
+      <div class="lb-caption" id="lightboxCaption"></div>
+    </div>
+    <button class='next' aria-label='Next'>&#8250;</button>
+  </div>
+
+  <!-- Shared Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Consultation Modal Dialog -->
+  <div class="modal-overlay" id="consultModal" role="dialog" aria-modal="true" aria-label="Book Studio Consultation">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('consultModal')" aria-label="Close dialog">&times;</button>
+      <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);">Architectural consultation</span>
+      <h3 class="modal-title">Book Studio Appointment</h3>
+      <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting across Punjab.</p>
+      <form onsubmit="handleConsultSubmit(event)" class="modal-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" required placeholder="e.g. Ananya Kapoor" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="phoneNum">Mobile / WhatsApp</label>
+          <input type="tel" id="phoneNum" required placeholder="+91 98765 43210" class="form-input">
+        </div>
+        <button type="submit" class="btn-modal-submit">Confirm Consultation</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const PROJECTS = {
+      'villa-sanctuary': {
+        title: 'Villa Sanctuary',
+        subtitle: 'Residential architecture',
+        location: 'Sarabha Nagar, Ludhiana',
+        area: '14,000 sq.ft',
+        scope: '3D design and turnkey execution',
+        year: '2024',
+        desc: 'An iconic European-inspired private residence conceived for monumental presence and tranquil courtyard living. Double-height portal glazing, handcrafted stonework, and a serene reflecting pool anchor the sunken outdoor lounge.',
+        cover: 'nam_luxury_residence_exterior.jpg',
+        photos: [
+          { src: 'nam_luxury_residence_exterior.jpg', alt: 'Villa Sanctuary aerial exterior view and reflecting pool' },
+          { src: 'nam_facade_main.jpg', alt: 'Cantilever architectural facade at dusk' },
+          { src: 'nam_hero_villa_facade.jpg', alt: 'Neoclassical portico columns and symmetry' },
+          { src: 'nam_landscaping_patio.jpg', alt: 'Sunken courtyard terrace and fire feature' },
+          { src: 'nam_facade_thumb1.jpg', alt: 'Daylight facade framing and perimeter grounds' },
+          { src: 'nam_facade_thumb2.jpg', alt: 'Evening architectural lighting study' }
+        ],
+        next: 'marble-residence',
+        nextTitle: 'The Marble Residence'
+      },
+      'marble-residence': {
+        title: 'The Marble Residence',
+        subtitle: 'Bespoke interior architecture',
+        location: 'Cantonment Road, Amritsar',
+        area: '14,000 sq.ft',
+        scope: 'Turnkey interior execution & joinery',
+        year: '2024',
+        desc: 'A refined contemporary sanctuary celebrated for its spatial flow, book-matched marble portals, and bespoke furniture curation. Every surface balances acoustic warmth, indirect recessed illumination, and tactile craftsmanship.',
+        cover: 'nam_living_render.jpg',
+        photos: [
+          { src: 'nam_living_render.jpg', alt: 'Formal marble living lounge with double-height ceiling' },
+          { src: 'nam_dining_interior.jpg', alt: 'Bespoke marble dining room and artisanal pendant lighting' },
+          { src: 'nam_architectural_details.jpg', alt: 'Custom fluted brass and tactile wall panelling' },
+          { src: 'nam_bedroom_render.jpg', alt: 'Primary master suite with integrated acoustic headboard' },
+          { src: 'nam_office_interior.jpg', alt: 'Private executive study and custom millwork' }
+        ],
+        next: 'chefs-kitchen',
+        nextTitle: 'The Chef’s Kitchen'
+      },
+      'chefs-kitchen': {
+        title: 'The Chef’s Kitchen',
+        subtitle: 'Culinary architecture & millwork',
+        location: 'South City, Ludhiana',
+        area: '1,200 sq.ft',
+        scope: 'Custom joinery, lighting & execution',
+        year: '2024',
+        desc: 'An epicurean centerpiece balancing culinary rigor with residential warmth. Tailored breakfast island, integrated European refrigeration suites, and hidden prep pantries engineered for seamless hospitality.',
+        cover: 'nam_kitchen_render.jpg',
+        photos: [
+          { src: 'nam_kitchen_render.jpg', alt: 'Chef kitchen with cantilever travertine breakfast island' },
+          { src: 'nam_dining_interior.jpg', alt: 'Adjacent formal dining room with garden courtyard view' },
+          { src: 'nam_architectural_details.jpg', alt: 'Brushed metal hardware and custom cabinet joinery' },
+          { src: 'nam_atelier_studio.jpg', alt: 'Material specification board and marble sample curation' }
+        ],
+        next: 'acoustic-theatre',
+        nextTitle: 'Private Acoustic Theatre'
+      },
+      'acoustic-theatre': {
+        title: 'Private Acoustic Theatre',
+        subtitle: 'Acoustic lounge & private cinema',
+        location: 'Model Town, Ludhiana',
+        area: '1,800 sq.ft',
+        scope: 'Acoustic engineering & turnkey delivery',
+        year: '2024',
+        desc: 'An uncompromised cinematic environment engineered for audiophiles and private screenings. Custom fabric-wrapped acoustic baffling, calibrated atmospheric illumination, and motorized tiered recliners.',
+        cover: 'nam_cinema_theatre.jpg',
+        photos: [
+          { src: 'nam_cinema_theatre.jpg', alt: 'Private acoustic theatre with tiered velvet recliners' },
+          { src: 'nam_commercial_render.jpg', alt: 'Lobby reception and glass-enclosed bar portal' },
+          { src: 'nam_architectural_details.jpg', alt: 'Custom sound-diffusing walnut acoustic slats' },
+          { src: 'nam_living_render.jpg', alt: 'Entertaining lounge connected to screening room' }
+        ],
+        next: 'penthouse-suite',
+        nextTitle: 'Penthouse Suite'
+      },
+      'penthouse-suite': {
+        title: 'Penthouse Suite',
+        subtitle: 'High-floor minimalist residence',
+        location: 'Mall Road, Amritsar',
+        area: '6,500 sq.ft',
+        scope: 'Penthouse architecture & furnishing',
+        year: '2024',
+        desc: 'Perched high above the city, this penthouse suite commands panoramic horizons through floor-to-ceiling glass. Warm textural linens, recessed cove lighting, and an expansive walk-in dressing salon provide an effortless sanctuary.',
+        cover: 'nam_bedroom_render.jpg',
+        photos: [
+          { src: 'nam_bedroom_render.jpg', alt: 'Penthouse master suite with panoramic city skyline views' },
+          { src: 'nam_dining_interior.jpg', alt: 'Intimate private penthouse dining room' },
+          { src: 'nam_living_render.jpg', alt: 'Main living room with curated mid-century furnishings' },
+          { src: 'nam_landscaping_patio.jpg', alt: 'Sky terrace and landscaped plunge pool' }
+        ],
+        next: 'sunken-courtyard',
+        nextTitle: 'Sunken Courtyard'
+      },
+      'sunken-courtyard': {
+        title: 'Sunken Courtyard',
+        subtitle: 'Landscape & reflection architecture',
+        location: 'Ferozepur Road, Ludhiana',
+        area: '4,200 sq.ft',
+        scope: 'Hardscaping, fire features & water',
+        year: '2024',
+        desc: 'A serene courtyard retreat sunk into the natural landscape to offer absolute seclusion and cool microclimates. Features a monolithic stone fire pit, cantilevered concrete daybeds, and a silent reflecting pool reflecting the night sky.',
+        cover: 'nam_landscaping_patio.jpg',
+        photos: [
+          { src: 'nam_landscaping_patio.jpg', alt: 'Sunken lounge with integrated central fire feature' },
+          { src: 'nam_luxury_residence_exterior.jpg', alt: 'Reflecting pool illuminated against evening facade' },
+          { src: 'nam_facade_main.jpg', alt: 'Framing of courtyard cantilever from private gardens' },
+          { src: 'nam_structural_framework.jpg', alt: 'Exposed architectural concrete execution during construction' }
+        ],
+        next: 'villa-sanctuary',
+        nextTitle: 'Villa Sanctuary'
+      }
+    };
+
+    // Render project based on ?p= slug
+    const slug = new URLSearchParams(location.search).get('p') || 'villa-sanctuary';
+    const P = PROJECTS[slug] || PROJECTS['villa-sanctuary'];
+
+    // Update document head
+    document.title = `${P.title} | NAM Atelier Portfolio`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = `${P.title} in ${P.location} by NAM Atelier. ${P.area}, ${P.scope}.`;
+
+    // Populate facts & cover
+    document.getElementById('coverImg').src = P.cover;
+    document.getElementById('coverImg').alt = `${P.title} Cover Photo`;
+    document.getElementById('coverSubtitle').textContent = P.subtitle;
+    document.getElementById('projectTitle').textContent = P.title;
+    document.getElementById('factLocation').textContent = P.location;
+    document.getElementById('factArea').textContent = P.area;
+    document.getElementById('factScope').textContent = P.scope;
+    document.getElementById('factYear').textContent = P.year;
+    document.getElementById('projectDesc').textContent = P.desc;
+
+    // Populate next link
+    const nextBtn = document.getElementById('nextProjectLink');
+    nextBtn.href = `/project?p=${P.next}`;
+    nextBtn.innerHTML = `Next project: ${P.nextTitle} &rarr;`;
+
+    // Populate gallery
+    const galEl = document.getElementById('galleryContainer');
+    galEl.innerHTML = '';
+    P.photos.forEach((ph, i) => {
+      const a = document.createElement('a');
+      a.href = ph.src;
+      a.dataset.alt = ph.alt;
+      a.setAttribute('aria-label', `Enlarge image: ${ph.alt}`);
+      const img = document.createElement('img');
+      img.src = ph.src;
+      img.alt = ph.alt;
+      img.width = 1600;
+      img.height = 1200;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      a.appendChild(img);
+      galEl.appendChild(a);
+    });
+
+    // Lightbox Functionality
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCaption = document.getElementById('lightboxCaption');
+    let idx = 0;
+    const links = [...document.querySelectorAll('.gal a')];
+
+    function openLb(i) {
+      idx = (i + links.length) % links.length;
+      lbImg.src = links[idx].href;
+      lbImg.alt = links[idx].dataset.alt || '';
+      lbCaption.textContent = links[idx].dataset.alt || '';
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.close').focus();
+    }
+
+    function closeLb() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    }
+
+    links.forEach((a, i) => a.addEventListener('click', e => {
+      e.preventDefault();
+      openLb(i);
+    }));
+
+    lb.querySelector('.close').onclick = closeLb;
+    lb.querySelector('.prev').onclick = () => openLb(idx - 1);
+    lb.querySelector('.next').onclick = () => openLb(idx + 1);
+
+    addEventListener('keydown', e => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') openLb(idx - 1);
+      if (e.key === 'ArrowRight') openLb(idx + 1);
+    });
+
+    // Modal helpers for Consultation
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    function handleConsultSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value;
+      const phone = document.getElementById('phoneNum').value;
+      const text = encodeURIComponent(`Hello NAM Atelier, My name is ${name} (${phone}). I would like to book a studio consultation regarding ${P.title}.`);
+      window.open(`https://wa.me/917710152917?text=${text}`, '_blank');
+      closeModal('consultModal');
+    }
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.handleConsultSubmit = handleConsultSubmit;
+  </script>
+
+  <!-- Shared Engine Script -->
+  <script src="script.js?v=4.3" defer></script>
+</body>
+</html>
