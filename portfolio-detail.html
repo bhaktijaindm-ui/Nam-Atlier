@@ -270,48 +270,212 @@
       color: var(--ink);
     }
 
-    .card p, .stick p {
+    .card p {
       font-size: clamp(14px, 1.1vw, 15px);
       line-height: 1.75;
       color: var(--mute);
     }
 
-    /* Scene 3: Haven */
+    /* Scene 3: Haven — Architectural Interior Suite */
     #s3 {
       position: relative;
-      z-index: 3;
+      z-index: 10;
       margin-top: 250vh;
-      height: 260vh;
       background: var(--panel);
       padding-top: var(--sec);
+      padding-bottom: var(--sec);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    .stick {
+    .haven-container {
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(400px, 1.45fr);
+      gap: clamp(40px, 6vw, 90px);
+      align-items: start;
+    }
+
+    .haven-sticky {
       position: sticky;
-      top: var(--hdr);
-      margin-left: 38%;
-      width: min(560px, 56vw);
-      z-index: 2;
-      pointer-events: none;
+      top: calc(var(--hdr) + 28px);
+      height: fit-content;
+      padding-right: clamp(10px, 2vw, 30px);
     }
 
-    .stick h2 {
-      font-weight: 300;
-      font-size: clamp(20px, 2.6vw, 38px);
-      letter-spacing: .1em;
-      line-height: 1.3;
+    .haven-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      margin-bottom: 16px;
-      color: var(--ink);
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 400;
     }
 
-    .fl {
-      position: absolute;
-      aspect-ratio: 3/4;
-      min-width: 18vw;
-      will-change: transform;
-      z-index: 4;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    .haven-title {
+      font-weight: 300;
+      font-size: clamp(26px, 3.6vw, 50px);
+      letter-spacing: .06em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .haven-desc {
+      font-size: clamp(14px, 1.1vw, 15.5px);
+      color: var(--mute);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .haven-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 26px;
+    }
+
+    .haven-pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .pillar-num {
+      font-size: 11px;
+      letter-spacing: .16em;
+      color: var(--accent);
+      font-weight: 400;
+      padding-top: 2px;
+    }
+
+    .haven-pillar h4 {
+      font-weight: 300;
+      font-size: 13.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .haven-pillar p {
+      font-size: 13px;
+      color: var(--mute);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Gallery Column */
+    .haven-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(16px, 2.5vw, 32px);
+    }
+
+    .haven-item {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 300ms ease, transform 300ms ease;
+    }
+
+    .haven-item:hover {
+      border-color: rgba(197, 164, 109, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .haven-img-wrap {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      background: var(--card);
+    }
+
+    .haven-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .haven-item:hover .haven-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .haven-item-lg .haven-img-wrap {
+      height: clamp(340px, 42vh, 480px);
+    }
+
+    .haven-item-sm .haven-img-wrap {
+      height: clamp(260px, 32vh, 360px);
+    }
+
+    .haven-gallery > .haven-item:nth-child(2) {
+      margin-top: clamp(30px, 6vh, 60px);
+    }
+
+    .haven-gallery > .haven-item:nth-child(4) {
+      margin-top: -30px;
+    }
+
+    .haven-item-full {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+    }
+
+    .haven-item-full .haven-img-wrap {
+      height: clamp(300px, 45vh, 520px);
+    }
+
+    .haven-item-caption {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .caption-tag {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .haven-item-caption p {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      .haven-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .haven-sticky {
+        position: relative;
+        top: 0;
+        padding-right: 0;
+      }
+      .haven-gallery {
+        grid-template-columns: 1fr;
+      }
+      .haven-gallery > .haven-item:nth-child(2),
+      .haven-gallery > .haven-item:nth-child(4) {
+        margin-top: 0;
+      }
+      .haven-item-lg .haven-img-wrap,
+      .haven-item-sm .haven-img-wrap,
+      .haven-item-full .haven-img-wrap {
+        height: 280px;
+      }
     }
 
     /* Scene 4: Realm */
@@ -503,11 +667,7 @@
       #s4 .bal { width: 40%; }
     }
 
-    @media (max-width: 700px) {
-      .fl { min-width: 40vw; }
-      .stick { margin-left: 6vw; width: 88vw; top: 35vh; }
-      #s3 .fl:nth-of-type(n+4) { display: none; }
-    }
+
 
     @media (prefers-reduced-motion: reduce) {
       .clouds i { animation: none; }
@@ -664,17 +824,98 @@
       </div>
     </section>
 
-    <!-- Scene 3 – Haven -->
-    <section id='s3' aria-label="Interior Haven Parallax">
-      <div class='stick'>
-        <h2>A haven crafted<br>for exceptional living</h2>
-        <p>A considered approach to spatial flow, natural materials, architectural lighting and contemporary luxury.</p>
+    <!-- Scene 3 – Haven: Curated Architectural Living Suite -->
+    <section id='s3' class='haven-section' aria-label="Haven Lifestyle and Interiors">
+      <div class='haven-container'>
+        <!-- Sticky Editorial Narrative (Left Column) -->
+        <div class='haven-sticky'>
+          <span class='haven-eyebrow'>Interior Architecture &amp; Living</span>
+          <h2 class='haven-title'>A haven crafted<br>for exceptional living</h2>
+          <p class='haven-desc'>A considered approach to spatial flow, natural materials, architectural lighting and contemporary luxury.</p>
+
+          <div class='haven-pillars'>
+            <div class='haven-pillar'>
+              <span class='pillar-num'>01</span>
+              <div>
+                <h4>Spatial Fluidity</h4>
+                <p>Monumental double-height volumes framed by uninterrupted portal glazing.</p>
+              </div>
+            </div>
+            <div class='haven-pillar'>
+              <span class='pillar-num'>02</span>
+              <div>
+                <h4>Tactile Materiality</h4>
+                <p>Book-matched Italian marble, fluted walnut joinery, and patinated bronze hardware.</p>
+              </div>
+            </div>
+            <div class='haven-pillar'>
+              <span class='pillar-num'>03</span>
+              <div>
+                <h4>Atmospheric Light</h4>
+                <p>Indirect perimeter coves and calibrated low-glare architectural illumination.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrolling Architectural Gallery (Right Column - Dual Staggered Stream) -->
+        <div class='haven-gallery'>
+          <!-- Item 1: Living Sanctuary (Tall portrait) -->
+          <div class='haven-item haven-item-lg'>
+            <div class='haven-img-wrap'>
+              <img src='https://nam-atlier.vercel.app/nam_living_render.jpg' alt='Formal Living Sanctuary Lounge' loading='lazy' decoding='async' width='800' height='1067'>
+            </div>
+            <div class='haven-item-caption'>
+              <span class='caption-tag'>Living Sanctuary</span>
+              <p>Double-height ceiling &amp; fluted acoustic panelling</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Dining Room -->
+          <div class='haven-item haven-item-sm'>
+            <div class='haven-img-wrap'>
+              <img src='https://nam-atlier.vercel.app/nam_dining_interior.jpg' alt='Bespoke Marble Dining Suite' loading='lazy' decoding='async' width='600' height='800'>
+            </div>
+            <div class='haven-item-caption'>
+              <span class='caption-tag'>Dining Architecture</span>
+              <p>Custom travertine table with bespoke brass illumination</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Chef's Kitchen -->
+          <div class='haven-item haven-item-sm'>
+            <div class='haven-img-wrap'>
+              <img src='https://nam-atlier.vercel.app/nam_kitchen_render.jpg' alt='Epicurean Kitchen and Millwork' loading='lazy' decoding='async' width='800' height='1067'>
+            </div>
+            <div class='haven-item-caption'>
+              <span class='caption-tag'>Culinary Suite</span>
+              <p>Cantilever island &amp; concealed refrigeration joinery</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Executive Study -->
+          <div class='haven-item haven-item-lg'>
+            <div class='haven-img-wrap'>
+              <img src='https://nam-atlier.vercel.app/nam_office_interior.jpg' alt='Executive Study and Library' loading='lazy' decoding='async' width='800' height='1067'>
+            </div>
+            <div class='haven-item-caption'>
+              <span class='caption-tag'>Private Library</span>
+              <p>Acoustic ceiling slats &amp; integrated linear illumination</p>
+            </div>
+          </div>
+
+          <!-- Item 5: Patio / Reflecting Pool -->
+          <div class='haven-item haven-item-full'>
+            <div class='haven-img-wrap'>
+              <img src='https://nam-atlier.vercel.app/nam_landscaping_patio.jpg' alt='Sunken Terrace and Reflecting Pool' loading='lazy' decoding='async' width='1600' height='1000'>
+            </div>
+            <div class='haven-item-caption'>
+              <span class='caption-tag'>Sunken Courtyard</span>
+              <p>Outdoor fireplace terrace reflecting the evening sky</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <img class='fl' data-y='-60'  src='https://nam-atlier.vercel.app/nam_living_render.jpg' width='800' height='1067' loading='lazy' decoding='async' alt='Living sanctuary lounge' style='left:4%;top:6%;width:24%'>
-      <img class='fl' data-y='-110' src='https://nam-atlier.vercel.app/nam_dining_interior.jpg' width='600' height='800'  loading='lazy' decoding='async' alt='Bespoke dining room' style='left:30%;top:46%;width:16%'>
-      <img class='fl' data-y='-40'  src='https://nam-atlier.vercel.app/nam_kitchen_render.jpg' width='800' height='1067' loading='lazy' decoding='async' alt='Chef kitchen millwork' style='right:5%;top:34%;width:28%'>
-      <img class='fl' data-y='-150' src='https://nam-atlier.vercel.app/nam_landscaping_patio.jpg' width='600' height='800'  loading='lazy' decoding='async' alt='Patio reflecting pool' style='right:30%;top:78%;width:18%'>
-      <img class='fl' data-y='-80'  src='https://nam-atlier.vercel.app/nam_office_interior.jpg' width='800' height='1067' loading='lazy' decoding='async' alt='Executive study' style='left:8%;top:100%;width:26%'>
     </section>
 
     <!-- Scene 4 – Realm -->
@@ -837,20 +1078,31 @@
         }
       });
 
-      // Scene 3: five photos drift at different speeds (first 3 active on mobile)
-      gsap.utils.toArray('#s3 .fl').forEach(el => {
-        gsap.to(el, {
-          y: () => parseFloat(el.dataset.y) / 100 * innerHeight * (mob ? .6 : 1),
-          ease: 'none',
-          scrollTrigger: { trigger:'#s3', start:'top bottom', end:'bottom top', scrub:true }
-        });
-      });
-      gsap.from('.stick h2,.stick p', {
+      // Scene 3: Haven architectural suite reveal
+      gsap.from('.haven-sticky', {
         autoAlpha: 0,
-        y: 30,
-        stagger: .15,
-        duration: .8,
-        scrollTrigger: { trigger:'#s3', start:'top 60%', toggleActions:'play none none reverse' }
+        y: 40,
+        duration: 0.9,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#s3',
+          start: 'top 75%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.utils.toArray('.haven-item').forEach(item => {
+        gsap.from(item, {
+          autoAlpha: 0,
+          y: 45,
+          duration: 0.85,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse'
+          }
+        });
       });
 
       // Scene 4: two big photos move outward, text in and out
