@@ -1339,15 +1339,22 @@ async function initCinematicAnimationSystem() {
         }
       });
 
-      tl.from(card, {
-        opacity: 0,
-        x: vec.x,
-        y: vec.y,
-        scale: vec.scale,
-        duration: 0.95,
-        delay: (idx % 3) * 0.1,
-        ease: 'power3.out'
-      });
+      tl.fromTo(card,
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.98
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.85,
+          delay: (idx % 4) * 0.08,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity'
+        }
+      );
 
       // Staggered micro-elements within card for refined editorial finish
       const cardImg = card.querySelector('.card-img, .sight-card-media img, .service-img-wrapper img, .journal-media img, .catalog-card-media img, img');
