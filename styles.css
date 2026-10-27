@@ -4386,4 +4386,210 @@ body:not(:has(.cinema-scroll)) .site-header {
   }
 }
 
+/* ==========================================================================
+   SERVICE SUBPAGES DEEP EDITORIAL SECTIONS (TASK 3)
+   ========================================================================== */
+.service-deep-editorial {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 4.5rem;
+}
+
+.editorial-methodology-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .editorial-methodology-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.editorial-prose h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+}
+
+.editorial-prose h3 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 2.25rem 0 0.85rem;
+  letter-spacing: 0.2px;
+}
+
+.editorial-prose p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--svc-text-muted, #B0ADA6);
+  margin-bottom: 1.25rem;
+}
+
+.editorial-prose ul {
+  margin: 1rem 0 1.75rem 1.25rem;
+  padding: 0;
+  color: var(--svc-text-muted, #B0ADA6);
+  line-height: 1.75;
+}
+
+.editorial-prose li {
+  margin-bottom: 0.65rem;
+}
+
+.editorial-prose strong {
+  color: #FFFFFF;
+}
+
+.editorial-process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.process-step-card {
+  background: rgba(18, 18, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.process-step-card:hover {
+  border-color: rgba(198, 173, 133, 0.4);
+  transform: translateY(-3px);
+}
+
+.step-num-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(198, 173, 133, 0.12);
+  border: 1px solid var(--svc-accent-gold, #C6AD83);
+  color: var(--svc-accent-gold, #C6AD83);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.process-step-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+}
+
+.process-step-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--svc-text-muted, #B0ADA6);
+  margin: 0;
+}
+
+.editorial-specs-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(15, 15, 15, 0.5);
+  margin-top: 2rem;
+}
+
+.editorial-specs-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.editorial-specs-table th {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.15rem 1.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--svc-accent-gold, #C6AD83);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.editorial-specs-table td {
+  padding: 1.15rem 1.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--svc-text-muted, #B0ADA6);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.editorial-specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.editorial-specs-table td strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.editorial-faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.faq-card-item {
+  background: rgba(18, 18, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  transition: border-color 0.25s ease;
+}
+
+.faq-card-item:hover {
+  border-color: rgba(198, 173, 133, 0.35);
+}
+
+.faq-card-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.faq-card-item h4 i {
+  color: var(--svc-accent-gold, #C6AD83);
+  font-size: 0.9rem;
+}
+
+.faq-card-item p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--svc-text-muted, #B0ADA6);
+  margin: 0;
+}
+
+
 
