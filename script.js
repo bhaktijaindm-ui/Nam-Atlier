@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try { initSightsSlider(); } catch(e) { console.error('Sights Slider Error:', e); }
   try { initBeforeAfterSlider(); } catch(e) { console.error('BeforeAfter Slider Error:', e); }
   try { initAnimatedTestimonials(); } catch(e) { console.error('Animated Testimonials Error:', e); }
+  try { initCinematicAnimationSystem(); } catch(e) { console.error('Cinematic Animation System Error:', e); }
 });
 
 /* 1. MASTER VIDEO SCROLL-SCRUBBING & TIMELINE SELECTOR ENGINE */
@@ -983,6 +984,448 @@ window.handleConsultSubmit = handleConsultSubmit;
 window.toggleFaq = toggleFaq;
 window.openTestimonialModal = openTestimonialModal;
 window.closeTestimonialModal = closeTestimonialModal;
+
+/* ==========================================================================
+   MASTER CINEMATIC ANIMATION SYSTEM — NAM ATELIER (GSAP + ScrollTrigger)
+   Choreographed motion categories:
+   - Category A: Cinematic image reveals (clip-path, blur-to-sharp, Ken Burns)
+   - Category B: Directional entrances (text from left, media from right)
+   - Category C: Staggered card sequences across all grids
+   - Category D: Scroll-triggered numerical counters (12+, 150+, 100%, Zero)
+   - Category E: Typography mask reveals for section titles
+   - Category F: Micro-interactions & subtle parallax
+   - HERO COMPONENTS EXPLICITLY EXCLUDED TO PRESERVE HERO SCRUBBING & CONTINUITY
+   ========================================================================== */
+
+function ensureGSAPLoaded() {
+  if (typeof window !== 'undefined' && window.gsap && window.ScrollTrigger) {
+    return Promise.resolve(true);
+  }
+  return new Promise((resolve) => {
+    let scriptGSAP = document.querySelector('script[src*="gsap.min.js"]');
+    if (!scriptGSAP) {
+      scriptGSAP = document.createElement('script');
+      scriptGSAP.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+      scriptGSAP.defer = true;
+      document.head.appendChild(scriptGSAP);
+    }
+
+    const loadScrollTrigger = () => {
+      let scriptST = document.querySelector('script[src*="ScrollTrigger.min.js"]');
+      if (!scriptST) {
+        scriptST = document.createElement('script');
+        scriptST.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
+        scriptST.defer = true;
+        document.head.appendChild(scriptST);
+        scriptST.onload = () => {
+          if (window.gsap && window.ScrollTrigger) {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+          }
+          resolve(true);
+        };
+        scriptST.onerror = () => resolve(false);
+      } else if (window.ScrollTrigger) {
+        window.gsap.registerPlugin(window.ScrollTrigger);
+        resolve(true);
+      } else {
+        scriptST.addEventListener('load', () => {
+          if (window.gsap && window.ScrollTrigger) {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+          }
+          resolve(true);
+        });
+      }
+    };
+
+    if (window.gsap) {
+      loadScrollTrigger();
+    } else {
+      scriptGSAP.addEventListener('load', loadScrollTrigger);
+      scriptGSAP.addEventListener('error', () => resolve(false));
+    }
+  });
+}
+
+async function initCinematicAnimationSystem() {
+  if (typeof window === 'undefined') return;
+  if (window.__namCinematicInitialized) return;
+
+  // Accessibility check
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const loaded = await ensureGSAPLoaded();
+  if (!loaded || !window.gsap || !window.ScrollTrigger) return;
+  window.__namCinematicInitialized = true;
+
+  const { gsap, ScrollTrigger } = window;
+
+  /* Helper: Check if element belongs to an excluded hero component */
+  function isExcludedHero(el) {
+    if (!el) return true;
+    return !!el.closest([
+      '.cinema-scroll',
+      '#hero',
+      '#heroVideo',
+      '.stage',
+      '.glass-content-card',
+      '.right-timeline-selector',
+      '.cinematic-service-hero',
+      '#cinematicServiceHero',
+      '.hero-cinematic-bg-container',
+      '.hero-cinematic-overlay',
+      '.cinematic-content-container',
+      '.hero-carousel-container',
+      '#aboutHero',
+      '.editorial-hero-card',
+      '#siteHeader',
+      '.site-header'
+    ].join(','));
+  }
+
+  /* ── 1. SECTION HEADERS & EDITORIAL TITLES (Typography Mask Reveals) ── */
+  const sectionHeaders = document.querySelectorAll(`
+    .section-header,
+    .features-left-block > div:first-child,
+    .approach-header-block,
+    .principals-header,
+    .contact-header,
+    .hague-shelf-header,
+    .team-header,
+    .detail-gallery-section > h3,
+    .narrative-text-box > h3
+  `);
+
+  sectionHeaders.forEach((header) => {
+    if (isExcludedHero(header)) return;
+
+    const subtitle = header.querySelector('.section-subtitle, .eyebrow-tag, .eyebrow-label, .section-tag');
+    const title = header.querySelector('.section-title, .serif-display, .hague-shelf-title, .discuss-title, h2, h3');
+    const desc = header.querySelector('.section-desc, p:not(.section-subtitle)');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 86%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    if (subtitle) {
+      tl.from(subtitle, {
+        opacity: 0,
+        y: -10,
+        duration: 0.6,
+        ease: 'power3.out'
+      }, 0);
+    }
+
+    if (title) {
+      tl.from(title, {
+        opacity: 0,
+        y: 28,
+        duration: 0.85,
+        ease: 'power3.out'
+      }, 0.1);
+    }
+
+    if (desc) {
+      tl.from(desc, {
+        opacity: 0,
+        y: 18,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, 0.22);
+    }
+  });
+
+  /* ── 2. TWO-COLUMN DIRECTIONAL ENTRANCES (Text Left, Image Right) ── */
+
+  // About Section on Index
+  const aboutSec = document.getElementById('about');
+  if (aboutSec && !isExcludedHero(aboutSec)) {
+    const textCol = aboutSec.querySelector('.about-col-text, .about-content');
+    const mediaCol = aboutSec.querySelector('.about-col-media, .about-media');
+    if (textCol && mediaCol) {
+      gsap.from(textCol, {
+        opacity: 0,
+        x: -45,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: aboutSec, start: 'top 80%' }
+      });
+      gsap.from(mediaCol, {
+        opacity: 0,
+        x: 45,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: aboutSec, start: 'top 80%' }
+      });
+    }
+  }
+
+  // Blueprint / Design Philosophy Section
+  const blueprintSec = document.getElementById('blueprint-concept');
+  if (blueprintSec && !isExcludedHero(blueprintSec)) {
+    const svgCol = blueprintSec.querySelector('.blueprint-svg-illustration');
+    const contentCol = blueprintSec.querySelector('.blueprint-content');
+    if (svgCol && contentCol) {
+      gsap.from(svgCol, {
+        opacity: 0,
+        x: -40,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
+      });
+      gsap.from(contentCol, {
+        opacity: 0,
+        x: 40,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
+      });
+    }
+  }
+
+  // Architectural Façades Section
+  const facadeSec = document.getElementById('facade');
+  if (facadeSec && !isExcludedHero(facadeSec)) {
+    const primaryCard = facadeSec.querySelector('.facade-primary-card');
+    const featuresCol = facadeSec.querySelector('.facade-features-col');
+    if (primaryCard && featuresCol) {
+      gsap.from(primaryCard, {
+        opacity: 0,
+        scale: 0.96,
+        duration: 1.1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: facadeSec, start: 'top 80%' }
+      });
+      gsap.from(featuresCol, {
+        opacity: 0,
+        x: 40,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: facadeSec, start: 'top 80%' }
+      });
+    }
+  }
+
+  // On-Site Transformation Section
+  const transformSec = document.getElementById('transformation');
+  if (transformSec && !isExcludedHero(transformSec)) {
+    const slider = transformSec.querySelector('.before-after-slider');
+    if (slider) {
+      gsap.from(slider, {
+        opacity: 0,
+        scale: 0.97,
+        y: 35,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: transformSec, start: 'top 80%' }
+      });
+    }
+  }
+
+  // Principals / Founders Section on Index
+  const principalsSec = document.getElementById('principals');
+  if (principalsSec && !isExcludedHero(principalsSec)) {
+    const cards = principalsSec.querySelectorAll('.principal-card');
+    if (cards.length >= 2) {
+      gsap.from(cards[0], {
+        opacity: 0,
+        x: -45,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: principalsSec, start: 'top 80%' }
+      });
+      gsap.from(cards[1], {
+        opacity: 0,
+        x: 45,
+        duration: 1.0,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: principalsSec, start: 'top 80%' }
+      });
+    }
+  }
+
+  // Consultation / Contact Section on Index
+  const contactSec = document.getElementById('contact');
+  if (contactSec && !isExcludedHero(contactSec)) {
+    const info = contactSec.querySelector('.contact-info');
+    const formBox = contactSec.querySelector('.contact-form-box, form');
+    if (info && formBox) {
+      gsap.from(info, {
+        opacity: 0,
+        x: -40,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: contactSec, start: 'top 82%' }
+      });
+      gsap.from(formBox, {
+        opacity: 0,
+        x: 40,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: contactSec, start: 'top 82%' }
+      });
+    }
+  }
+
+  // Service Detail Features & Methodology
+  const featuresSec = document.querySelector('.features-section');
+  if (featuresSec && !isExcludedHero(featuresSec)) {
+    const leftBlock = featuresSec.querySelector('.features-left-block');
+    const rightBlock = featuresSec.querySelector('.features-right-block');
+    if (leftBlock && rightBlock) {
+      gsap.from(leftBlock, {
+        opacity: 0,
+        x: -40,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: featuresSec, start: 'top 80%' }
+      });
+      gsap.from(rightBlock, {
+        opacity: 0,
+        x: 40,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: featuresSec, start: 'top 80%' }
+      });
+    }
+  }
+
+  /* ── 3. STAGGERED ENTRANCES FOR CARDS & GRIDS (Staggered Entrance Animation) ── */
+  const gridConfigs = [
+    { container: '#projects-showcase', items: '.sight-card', stagger: 0.12 },
+    { container: '#portfolio', items: '.portfolio-card', stagger: 0.1 },
+    { container: '#services', items: '.service-card', stagger: 0.1 },
+    { container: '#faq', items: '.faq-item', stagger: 0.08 },
+    { container: '#journal', items: '.journal-card', stagger: 0.12 },
+    { container: '.team-grid', items: '.team-card', stagger: 0.1 },
+    { container: '.hague-shelf-grid', items: '.hague-story-card', stagger: 0.1 },
+    { container: '.catalog-grid', items: '.service-catalog-card', stagger: 0.1 },
+    { container: '.scope-deliverables-grid', items: '.scope-deliverable-card', stagger: 0.1 },
+    { container: '.process-step-grid', items: '.process-step-card', stagger: 0.12 }
+  ];
+
+  gridConfigs.forEach(({ container, items, stagger }) => {
+    const parent = typeof container === 'string' ? document.querySelector(container) : container;
+    if (!parent || isExcludedHero(parent)) return;
+
+    const cards = parent.querySelectorAll(items);
+    if (!cards || cards.length === 0) return;
+
+    gsap.from(cards, {
+      opacity: 0,
+      y: 40,
+      duration: 0.85,
+      stagger: stagger || 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: parent,
+        start: 'top 84%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
+  /* ── 4. SCROLL-TRIGGERED NUMERICAL STAT COUNTERS (Scroll-Triggered Counter) ── */
+  const statContainers = document.querySelectorAll('.stats-strip, .founder-stats-row');
+  statContainers.forEach(container => {
+    if (isExcludedHero(container)) return;
+
+    const statElements = container.querySelectorAll('.stat-number');
+    if (!statElements || statElements.length === 0) return;
+
+    ScrollTrigger.create({
+      trigger: container,
+      start: 'top 86%',
+      once: true,
+      onEnter: () => {
+        statElements.forEach(el => {
+          const rawText = el.textContent.trim();
+          const match = rawText.match(/^([0-9]+)(\+?%?)$/);
+          if (match) {
+            const targetVal = parseInt(match[1], 10);
+            const suffix = match[2] || '';
+            const counterObj = { val: 0 };
+            gsap.to(counterObj, {
+              val: targetVal,
+              duration: 1.8,
+              ease: 'power2.out',
+              onUpdate: () => {
+                el.textContent = Math.round(counterObj.val) + suffix;
+              }
+            });
+          } else {
+            // For text values like "Zero"
+            gsap.fromTo(el,
+              { opacity: 0, scale: 0.85 },
+              { opacity: 1, scale: 1, duration: 1.0, ease: 'power2.out' }
+            );
+          }
+        });
+      }
+    });
+  });
+
+  /* ── 5. CINEMATIC BLUR-TO-SHARP & CLIP-PATH REVEAL (Blur-to-Sharp & Clip-Path) ── */
+  const cinematicImages = document.querySelectorAll(`
+    .facade-primary-card img,
+    .editorial-hero-bg,
+    .swift-featured-image-container img,
+    .detail-hero-media img,
+    .featured-hero-media img
+  `);
+
+  cinematicImages.forEach(img => {
+    if (isExcludedHero(img)) return;
+
+    gsap.fromTo(img,
+      { filter: 'blur(10px)', scale: 1.06 },
+      {
+        filter: 'blur(0px)',
+        scale: 1.0,
+        duration: 1.25,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: img,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
+
+  /* ── 6. CONTROLLED PARALLAX ON EDITORIAL PORTRAITS & LARGE PANELS ── */
+  if (window.innerWidth >= 1024) {
+    const parallaxImages = document.querySelectorAll('.founder-photo-col img, .detail-narrative-img');
+    parallaxImages.forEach(img => {
+      if (isExcludedHero(img)) return;
+      gsap.fromTo(img,
+        { yPercent: -4 },
+        {
+          yPercent: 4,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img.closest('.founder-card, .detail-narrative-split') || img,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    });
+  }
+
+  // Refresh ScrollTrigger once DOM layout stabilizes
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 400);
+}
+
+window.initCinematicAnimationSystem = initCinematicAnimationSystem;
 
 /* ==========================================================================
    NAM ATELIER AUTOMATED QA AUDIT ENGINE (PHASE 1 - PHASE 11)

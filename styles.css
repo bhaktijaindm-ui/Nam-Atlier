@@ -4810,5 +4810,300 @@ body:not(:has(.cinema-scroll)) .site-header {
   margin: 0;
 }
 
+/* ==========================================================================
+   MASTER CINEMATIC ANIMATION & MOTION SYSTEM — NAM ATELIER (v5.0)
+   Cohesive, premium architectural studio motion:
+   - Atmospheric floating loops
+   - Micro-interactions & subtle gold glows
+   - Cinematic image hover zoom & blur transitions
+   - Light sweep shimmers on luxury CTAs
+   - Directional entrances & smooth accordions
+   - Accessibility & prefers-reduced-motion protection
+   ========================================================================== */
+
+/* ── 1. ATMOSPHERIC FLOATING ELEMENTS (Floating Animation) ── */
+@keyframes namFloatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes namFloatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.facade-thumb-badge,
+.sight-badge,
+.reveal-badge,
+.gold-label,
+.section-tag,
+.eyebrow-tag,
+.eyebrow-label,
+.detail-hero-eyebrow,
+.phone-pulse-icon {
+  animation: namFloatSubtle 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sight-badge,
+.reveal-badge {
+  animation: namFloatSlow 7.5s ease-in-out infinite 0.75s;
+}
+
+/* ── 2. CINEMATIC IMAGE HOVER ZOOM & BLUR-TO-SHARP ── */
+.sight-card-media,
+.journal-media,
+.card-media,
+.facade-thumb-card,
+.facade-primary-card,
+.service-img-wrapper,
+.hague-story-media,
+.featured-hero-media,
+.detail-gallery-item,
+.related-project-card .media-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.sight-card-media img,
+.journal-media img,
+.card-media img,
+.facade-thumb-card img,
+.facade-primary-card img,
+.service-img-wrapper img,
+.hague-story-media img,
+.featured-hero-media img,
+.detail-gallery-item img,
+.related-project-card .media-box img {
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.sight-card:hover .sight-card-media img,
+.journal-card:hover .journal-media img,
+.portfolio-card:hover .card-media img,
+.facade-thumb-card:hover img,
+.service-card:hover .service-img-wrapper img,
+.hague-story-card:hover .hague-story-media img,
+.detail-gallery-item:hover img,
+.related-project-card:hover .media-box img {
+  transform: scale(1.055);
+  filter: contrast(106%) brightness(1.02);
+}
+
+/* ── 3. RESTRAINED GOLD ILLUMINATION & PERSPECTIVE ELEVATION (Glassmorphism & Soft Glow) ── */
+.sight-card,
+.portfolio-card,
+.service-card,
+.blueprint-card,
+.journal-card,
+.team-card,
+.hague-story-card,
+.service-catalog-card,
+.scope-deliverable-card,
+.faq-card-item {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.sight-card:hover,
+.portfolio-card:hover,
+.service-card:hover,
+.journal-card:hover,
+.team-card:hover,
+.hague-story-card:hover,
+.service-catalog-card:hover,
+.scope-deliverable-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(198, 173, 131, 0.18) !important;
+  border-color: rgba(198, 173, 131, 0.45) !important;
+}
+
+/* ── 4. LIGHT SWEEP SHIMMER ON LUXURY CTAS (Light Sweep Animation) ── */
+@keyframes namLightSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+.founder-btn-primary,
+.btn-portfolio-archive,
+.section-header-action-btn,
+.submit-btn,
+.btn-reveal-action,
+.hague-consult-btn,
+.discuss-submit-btn,
+.service-inquiry-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-btn-primary::after,
+.btn-portfolio-archive::after,
+.section-header-action-btn::after,
+.submit-btn::after,
+.btn-reveal-action::after,
+.hague-consult-btn::after,
+.discuss-submit-btn::after,
+.service-inquiry-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.founder-btn-primary:hover::after,
+.btn-portfolio-archive:hover::after,
+.section-header-action-btn:hover::after,
+.submit-btn:hover::after,
+.btn-reveal-action:hover::after,
+.hague-consult-btn:hover::after,
+.discuss-submit-btn:hover::after,
+.service-inquiry-btn:hover::after {
+  animation: namLightSweep 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.founder-btn-primary:hover,
+.btn-portfolio-archive:hover,
+.section-header-action-btn:hover,
+.submit-btn:hover,
+.btn-reveal-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45), 0 0 18px rgba(198, 173, 131, 0.3);
+  border-color: rgba(198, 173, 131, 0.8);
+}
+
+/* ── 5. MAGNETIC BUTTON & ARROW DYNAMICS (Magnetic Button Interaction) ── */
+.journal-read-link,
+.service-explore-link,
+.sight-btn,
+.btn-portfolio-archive,
+.founder-btn-primary,
+.section-header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.journal-read-link i,
+.service-explore-link i,
+.sight-btn i,
+.btn-portfolio-archive i,
+.founder-btn-primary i,
+.section-header-action-btn i {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journal-read-link:hover i,
+.service-explore-link:hover i,
+.sight-btn:hover i,
+.btn-portfolio-archive:hover i,
+.founder-btn-primary:hover i,
+.section-header-action-btn:hover i {
+  transform: translateX(6px);
+}
+
+/* ── 6. SMOOTH ACCORDION & CHEVRON ROTATION (Smooth Accordion Animation) ── */
+.faq-question {
+  transition: color 0.3s ease;
+}
+
+.faq-question i,
+.faq-toggle i {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.active .faq-question i,
+.faq-item.active .faq-toggle i {
+  transform: rotate(45deg);
+  color: var(--accent-gold, #C6AD83);
+}
+
+/* ── 7. LUXURY FORM INPUT FOCUS & AMBIENT GLOW ── */
+.form-group input,
+.form-group select,
+.form-group textarea,
+.inquiry-form-input,
+.inquiry-form-select,
+.inquiry-form-textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.inquiry-form-input:focus,
+.inquiry-form-select:focus,
+.inquiry-form-textarea:focus {
+  border-color: var(--accent-gold, #C6AD83) !important;
+  box-shadow: 0 0 16px rgba(198, 173, 131, 0.22) !important;
+  outline: none;
+  background-color: rgba(26, 24, 22, 0.95);
+}
+
+/* ── 8. ANIMATED NAV & FOOTER UNDERLINES ── */
+.footer-links a,
+.site-nav a:not(.btn-inquire) {
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: var(--accent-gold, #C6AD83);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* ── 9. REDUCED MOTION ACCESSIBILITY (prefers-reduced-motion) ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .facade-thumb-badge,
+  .sight-badge,
+  .reveal-badge,
+  .gold-label,
+  .section-tag,
+  .eyebrow-tag,
+  .eyebrow-label,
+  .detail-hero-eyebrow,
+  .phone-pulse-icon {
+    animation: none !important;
+  }
+  .founder-btn-primary::after,
+  .btn-portfolio-archive::after,
+  .section-header-action-btn::after,
+  .submit-btn::after,
+  .btn-reveal-action::after,
+  .hague-consult-btn::after,
+  .discuss-submit-btn::after,
+  .service-inquiry-btn::after {
+    display: none !important;
+  }
+}
+
 
 
