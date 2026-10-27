@@ -54,6 +54,8 @@
 .text-mask {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
 }
 
 .text-mask__line {
