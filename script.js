@@ -1313,7 +1313,6 @@ async function initCinematicAnimationSystem() {
     { container: '#services', items: '.service-card' },
     { container: '#faq', items: '.faq-item' },
     { container: '#journal', items: '.journal-card' },
-    { container: '.team-grid', items: '.team-card' },
     { container: '.hague-shelf-grid', items: '.hague-story-card' },
     { container: '.catalog-grid', items: '.service-catalog-card' },
     { container: '.scope-deliverables-grid', items: '.scope-deliverable-card' },
@@ -1365,7 +1364,8 @@ async function initCinematicAnimationSystem() {
         tl.from(cardImg, {
           scale: 1.08,
           duration: 1.1,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          clearProps: 'transform'
         }, 0);
       }
       if (cardBadge) {
@@ -1373,7 +1373,8 @@ async function initCinematicAnimationSystem() {
           opacity: 0,
           scale: 0.82,
           duration: 0.5,
-          ease: 'back.out(1.5)'
+          ease: 'back.out(1.5)',
+          clearProps: 'opacity,transform'
         }, 0.18);
       }
       if (cardTitle) {
@@ -1381,7 +1382,8 @@ async function initCinematicAnimationSystem() {
           opacity: 0,
           y: 12,
           duration: 0.6,
-          ease: 'power3.out'
+          ease: 'power3.out',
+          clearProps: 'opacity,transform'
         }, 0.24);
       }
     });

@@ -840,15 +840,18 @@
        § 3  ATELIER COLLECTIVE TEAM
     ══════════════════════════════════════════════════════ */
     #team {
-      padding: 4.5rem 1.5rem;
+      padding: 6.5rem 1.5rem 4.5rem;
+      scroll-margin-top: 100px;
       background: transparent;
       position: relative;
-      z-index: 1;
+      z-index: 5;
     }
     .team-header {
       text-align: center;
       max-width: 640px;
       margin: 0 auto 2.5rem;
+      position: relative;
+      z-index: 2;
     }
 
     .team-grid {
@@ -858,6 +861,7 @@
       max-width: 1320px;
       margin: 0 auto;
       border: none;
+      align-items: stretch;
     }
 
     .team-card {
@@ -865,9 +869,15 @@
       padding: 2.2rem 1.6rem;
       position: relative;
       overflow: hidden;
-      transition: background 0.5s ease;
+      transition: background 0.5s ease, transform 0.4s ease, box-shadow 0.4s ease;
       border: none;
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-sizing: border-box;
+      opacity: 1;
+      visibility: visible;
     }
     .team-card:last-child { border: none; }
 
@@ -885,15 +895,21 @@
     .team-card:hover { background: var(--bg-card-mid); }
 
     .team-icon {
-      width: 46px; height: 46px;
+      width: 48px;
+      height: 48px;
       border: 1px solid var(--border-gold);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       color: var(--gold);
       margin-bottom: 1.35rem;
-      background: rgba(212,175,55,0.05);
+      background: rgba(212, 175, 55, 0.08);
       transition: var(--transition);
+      opacity: 1 !important;
+      visibility: visible !important;
+      flex-shrink: 0;
     }
     .team-card:hover .team-icon {
       background: var(--gold);
@@ -916,16 +932,20 @@
       color: var(--text-travertine);
       line-height: 1.25;
       margin-bottom: 0.85rem;
+      min-height: 3.2rem;
+      display: flex;
+      align-items: flex-start;
     }
 
     .team-desc {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 300;
       color: var(--text-quartz);
       line-height: 1.65;
+      flex-grow: 1;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
       .team-grid { grid-template-columns: repeat(2, 1fr); }
       .team-card { border: none; }
     }
@@ -1674,10 +1694,10 @@
 
 
 
-    /* ── GLOBAL ANIMATION PREP ────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(32px); }
-    .reveal-left { opacity: 0; transform: translateX(-32px); }
-    .reveal-right { opacity: 0; transform: translateX(32px); }
+    /* ── GLOBAL ANIMATION PREP (Default visible so elements never get permanently hidden) ── */
+    .reveal { opacity: 1; }
+    .reveal-left { opacity: 1; }
+    .reveal-right { opacity: 1; }
   </style>
 </head>
 
@@ -1878,25 +1898,25 @@
     </div>
 
     <div class="team-grid">
-      <div class="team-card reveal">
+      <div class="team-card">
         <div class="team-icon"><i class="fa-solid fa-cube"></i></div>
         <div class="team-num">Role 01</div>
         <h3 class="team-role">Senior Architectural BIM Lead</h3>
         <p class="team-desc">Translating conceptual forms into millimetre-perfect Revit &amp; Rhino spatial models. Every junction, ceiling height, and structural void calculated before ground-break.</p>
       </div>
-      <div class="team-card reveal">
+      <div class="team-card">
         <div class="team-icon"><i class="fa-solid fa-helmet-safety"></i></div>
         <div class="team-num">Role 02</div>
         <h3 class="team-role">Chief Site &amp; MEP Project Manager</h3>
         <p class="team-desc">Overseeing turnkey civil execution, plumbing infrastructure, electrical grid integration, and on-site timeline fidelity. Zero rework. Zero compromise.</p>
       </div>
-      <div class="team-card reveal">
+      <div class="team-card">
         <div class="team-icon"><i class="fa-solid fa-gem"></i></div>
         <div class="team-num">Role 03</div>
         <h3 class="team-role">Artisanal Material &amp; Sourcing Specialist</h3>
         <p class="team-desc">Hand-selecting Italian Travertine slabs, German Blum precision fittings, seasoned European oak, and brushed-brass architectural hardware. Every surface curated.</p>
       </div>
-      <div class="team-card reveal">
+      <div class="team-card">
         <div class="team-icon"><i class="fa-solid fa-wave-square"></i></div>
         <div class="team-num">Role 04</div>
         <h3 class="team-role">Acoustic &amp; Luminescence Engineer</h3>
@@ -2460,7 +2480,8 @@
               trigger: el,
               start: 'top 88%',
               toggleActions: 'play none none none'
-            }
+            },
+            clearProps: 'opacity,transform'
           }
         );
       });
@@ -2476,7 +2497,8 @@
               trigger: el,
               start: 'top 88%',
               toggleActions: 'play none none none'
-            }
+            },
+            clearProps: 'opacity,transform'
           }
         );
       });
@@ -2492,10 +2514,33 @@
               trigger: el,
               start: 'top 88%',
               toggleActions: 'play none none none'
-            }
+            },
+            clearProps: 'opacity,transform'
           }
         );
       });
+
+      /* Dedicated Team Cards Stagger */
+      const teamCards = gsap.utils.toArray('.team-card');
+      if (teamCards.length) {
+        gsap.fromTo(teamCards,
+          { opacity: 0, y: 35, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.team-grid',
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            },
+            clearProps: 'all'
+          }
+        );
+      }
 
       /* Founder portrait parallax */
       gsap.utils.toArray('.founder-photo-col img').forEach(img => {
