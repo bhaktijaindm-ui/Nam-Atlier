@@ -4300,10 +4300,148 @@ body:not(:has(.cinema-scroll)) .site-header {
   padding-top: 0 !important;
 }
 
-.service-page .cinematic-service-hero {
+/* ==========================================================================
+   MASTER FULL-BLEED CINEMATIC SERVICE HERO (TASK 1 MASTER REDESIGN)
+   Continuous edge-to-edge background extending behind floating glass header,
+   through editorial left content, and behind lower carousel cards and controls.
+   Zero plain-black strip, no abrupt bottom cutoff, and content-aware sizing.
+   ========================================================================== */
+.service-page .cinematic-service-hero,
+.cinematic-service-hero {
+  position: relative !important;
+  isolation: isolate !important;
+  width: 100% !important;
+  min-height: clamp(600px, 86vh, 780px) !important;
+  height: auto !important;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem) 0 !important;
+  padding: calc(var(--actual-header-bottom, 96px) + 2rem) max(5%, calc((100% - 1320px) / 2)) 44px !important;
+  background-color: #050505 !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  overflow: clip !important;
+  box-sizing: border-box !important;
+}
+
+.hero-cinematic-bg-container {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+.hero-bg-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Seamless bottom fade into page background - eliminates abrupt cutoffs */
+.hero-cinematic-bg-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(60px, 12vh, 130px);
+  background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.75) 60%, #050505 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Contrast Overlay */
+.hero-bg-gradient-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 5, 0.94) 0%,
+    rgba(5, 5, 5, 0.82) 42%,
+    rgba(5, 5, 5, 0.35) 75%,
+    rgba(5, 5, 5, 0.50) 100%
+  ) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Split layout grid: Left editorial content + Right lower carousel */
+.hero-inner-container {
+  position: relative !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr) !important;
+  gap: clamp(2rem, 3.5vw, 4rem) !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  min-height: clamp(440px, 58vh, 560px) !important;
+  box-sizing: border-box !important;
+}
+
+.hero-left-content {
+  align-self: center !important;
+  min-width: 0 !important;
+  max-width: 540px !important;
+  padding: 1rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+.hero-right-carousel {
+  align-self: end !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  gap: 0.85rem !important;
+  box-sizing: border-box !important;
+  margin-top: auto !important;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 960px) {
+  .service-page .cinematic-service-hero,
+  .cinematic-service-hero {
+    margin: 0 0 2.5rem 0 !important;
+    padding: calc(var(--actual-header-bottom, 78px) + 1.5rem) 4% 28px !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+  .hero-inner-container {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+    min-height: auto !important;
+  }
+  .hero-left-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .hero-bg-gradient-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.92) 0%,
+      rgba(5, 5, 5, 0.82) 38%,
+      rgba(5, 5, 5, 0.45) 70%,
+      rgba(5, 5, 5, 0.85) 100%
+    ) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-page .cinematic-service-hero,
+  .cinematic-service-hero {
+    margin: 0 0 2rem 0 !important;
+    padding: calc(var(--actual-header-bottom, 62px) + 1rem) 16px 20px !important;
+  }
+  .hero-inner-container {
+    gap: 1.25rem !important;
+  }
 }
 
 /* Project Cycle Navigation (Previous / Next Project buttons) */

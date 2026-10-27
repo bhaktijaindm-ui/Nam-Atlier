@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -202,10 +202,11 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      min-height: 580px;
-      margin: calc(var(--actual-header-bottom, 82px) + 24px) 0 3.5rem 0;
-      padding: 56px max(5%, calc((100% - 1320px) / 2)) 44px;
-      background-color: #070707;
+      min-height: clamp(600px, 86vh, 780px);
+      height: auto;
+      margin: 0 0 clamp(2.5rem, 5vw, 4rem) 0 !important;
+      padding: calc(var(--actual-header-bottom, 96px) + 2rem) max(5%, calc((100% - 1320px) / 2)) 44px;
+      background-color: #050505;
       border: 0 !important;
       border-radius: 0 !important;
       box-shadow: none !important;
@@ -239,6 +240,19 @@
     .hero-bg-slide.active {
       opacity: 1;
       transform: scale(1);
+    }
+
+    /* Seamless bottom fade into page background - eliminates abrupt cutoffs */
+    .hero-cinematic-bg-container::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: clamp(60px, 12vh, 130px);
+      background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.75) 60%, #050505 100%);
+      pointer-events: none;
+      z-index: 2;
     }
 
     .hero-bg-gradient-overlay {
@@ -578,9 +592,19 @@
     /* ── RESPONSIVE ADAPTATION ── */
     @media (max-width: 960px) {
       .cinematic-service-hero {
-        margin-top: calc(var(--actual-header-bottom, 78px) + 20px);
-        padding: 40px 4% 28px;
-        min-height: auto;
+        margin: 0 0 2.5rem 0 !important;
+        padding: calc(var(--actual-header-bottom, 78px) + 1.5rem) 4% 28px !important;
+        min-height: auto !important;
+        height: auto !important;
+      }
+      .hero-bg-gradient-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(5, 5, 5, 0.92) 0%,
+          rgba(5, 5, 5, 0.82) 38%,
+          rgba(5, 5, 5, 0.45) 70%,
+          rgba(5, 5, 5, 0.85) 100%
+        ) !important;
       }
       .hero-inner-container {
         grid-template-columns: 1fr;
@@ -605,8 +629,8 @@
 
     @media (max-width: 600px) {
       .cinematic-service-hero {
-        margin-top: calc(var(--actual-header-bottom, 62px) + 12px);
-        padding: 24px 14px 18px;
+        margin: 0 0 2rem 0 !important;
+        padding: calc(var(--actual-header-bottom, 62px) + 1rem) 16px 20px !important;
       }
       .hero-inner-container {
         gap: 1.25rem;
