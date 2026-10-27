@@ -854,10 +854,10 @@
     .team-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5px;
+      gap: 1.5rem;
       max-width: 1320px;
       margin: 0 auto;
-      border: 1px solid var(--border-subtle);
+      border: none;
     }
 
     .team-card {
@@ -866,9 +866,10 @@
       position: relative;
       overflow: hidden;
       transition: background 0.5s ease;
-      border-right: 1px solid var(--border-subtle);
+      border: none;
+      border-radius: 8px;
     }
-    .team-card:last-child { border-right: none; }
+    .team-card:last-child { border: none; }
 
     .team-card::before {
       content: '';
@@ -926,7 +927,7 @@
 
     @media (max-width: 1024px) {
       .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-card { border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+      .team-card { border: none; }
     }
     @media (max-width: 600px) {
       .team-grid { grid-template-columns: 1fr; }

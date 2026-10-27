@@ -721,10 +721,10 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .blueprint-card {
-  background: var(--bg-linen);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
-  padding: 3rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 3rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -835,16 +835,16 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .portfolio-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
   overflow: hidden;
   transition: var(--transition-smooth);
 }
 
 .portfolio-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .card-media {
@@ -969,17 +969,16 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .service-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: transparent;
+  border: none;
   padding: 2.25rem 1.75rem;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: var(--transition-smooth);
 }
 
 .service-card:hover {
-  border-color: var(--accent-sage);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .service-icon {
@@ -1024,9 +1023,9 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 /* FOUNDERS & PRINCIPALS SECTION */
 .principals-section {
-  background: var(--bg-linen);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
   padding: 5rem 2rem;
   margin-bottom: 6rem;
 }
@@ -1069,10 +1068,10 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .principal-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  padding: 2.5rem;
-  border-radius: 4px;
+  background: transparent;
+  border: none;
+  padding: 2.5rem 0;
+  border-radius: 0;
   display: flex;
   gap: 2rem;
   align-items: flex-start;
@@ -1205,7 +1204,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--border-dark);
+  border: none;
   box-shadow: var(--shadow-elevated);
   flex: 1;                     /* ← expands to fill .facade-visual-hero height */
   min-height: 420px;           /* minimum so it never collapses */
@@ -1266,11 +1265,11 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .facade-panel-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-dark);
+  background: transparent;
+  border: none;
   border-radius: 16px;
-  padding: 2.5rem 2.5rem 2.25rem;
-  box-shadow: var(--shadow-soft);
+  padding: 2.5rem 1.5rem 2.25rem;
+  box-shadow: none;
   position: relative;
   flex: 1;                     /* fills .facade-details-panel height */
   display: flex;               /* flexbox column so CTA anchors to bottom */
@@ -1371,17 +1370,17 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .facade-thumb-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-dark);
+  background: transparent;
+  border: none;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.4s ease, border-color 0.4s ease;
+  box-shadow: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .facade-thumb-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-gold);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .facade-thumb-media {
@@ -1523,7 +1522,7 @@ body:not(:has(.cinema-scroll)) .site-header {
 /* Left Luxury Architectural Dark Card */
 .footer-left-card {
   background: #101010;
-  border: 1px solid var(--border-dark);
+  border: none;
   border-radius: 20px;
   padding: 2.75rem 2.75rem 2.5rem;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
@@ -1700,7 +1699,7 @@ body:not(:has(.cinema-scroll)) .site-header {
 /* Right Sleek Dark Luxury Panel */
 .footer-right-sage-panel {
   background: linear-gradient(145deg, #141414 0%, #0a0a0a 100%);
-  border: 1px solid var(--border-dark);
+  border: none;
   border-radius: 20px;
   padding: 2.75rem 2.5rem;
   color: #FFFFFF;
@@ -2097,18 +2096,17 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .sight-card {
   flex: 0 0 380px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-dark);
+  background: transparent;
+  border: none;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transition: var(--transition-smooth);
 }
 
 .sight-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-gold);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 173, 133, 0.12);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .card-img-box {
@@ -2228,10 +2226,10 @@ body:not(:has(.cinema-scroll)) .site-header {
    ABOUT PRINCIPAL DESIGNERS & STUDIO SECTION
    ========================================================================== */
 .about-section {
-  background: var(--bg-linen);
+  background: transparent;
   padding: 6rem 2rem;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  border-top: none;
+  border-bottom: none;
   margin: 3rem 0 5rem;
 }
 
@@ -2284,16 +2282,15 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-dark);
-  padding: 1.25rem 1.5rem;
+  background: transparent;
+  border: none;
+  padding: 1.25rem 0;
   border-radius: 8px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transition: var(--transition-smooth);
 }
 
 .pillar-card:hover {
-  border-color: var(--accent-gold);
   transform: translateX(6px);
 }
 
@@ -2303,7 +2300,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   flex-shrink: 0;
   background: rgba(198, 173, 133, 0.12);
   color: var(--accent-gold);
-  border: 1px solid rgba(198, 173, 133, 0.25);
+  border: none;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -2352,7 +2349,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--border-dark);
+  border: none;
   box-shadow: var(--shadow-elevated);
 }
 
@@ -2369,7 +2366,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   background: rgba(16, 16, 16, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-dark);
+  border: none;
   color: #FFFFFF;
   padding: 1.25rem 1.75rem;
   border-radius: 8px;
@@ -2414,8 +2411,8 @@ body:not(:has(.cinema-scroll)) .site-header {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   padding: 1.5rem 0;
-  border-top: 1px solid var(--border-dark);
-  border-bottom: 1px solid var(--border-dark);
+  border-top: none;
+  border-bottom: none;
   margin-bottom: 2rem;
 }
 
@@ -2477,7 +2474,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   aspect-ratio: 16/9;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--border-dark);
+  border: none;
   box-shadow: var(--shadow-elevated);
   user-select: none;
   cursor: ew-resize;
@@ -2695,7 +2692,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   align-items: center;
   text-align: center;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
   overflow: hidden;
   box-sizing: border-box;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2703,12 +2700,11 @@ body:not(:has(.cinema-scroll)) .site-header {
 
 .testi-card-item:hover .testi-card-inner {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(198, 173, 131, 0.6);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(198, 173, 131, 0.2);
 }
 
 .testi-card-inner.card-featured {
-  border: 1px solid rgba(198, 173, 131, 0.45);
+  border: none;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(198, 173, 131, 0.15);
 }
 
@@ -2986,8 +2982,8 @@ body:not(:has(.cinema-scroll)) .site-header {
 .faq-section {
   background: var(--bg-linen);
   padding: 6rem 2rem;
-  border-top: 1px solid var(--border-dark);
-  border-bottom: 1px solid var(--border-dark);
+  border-top: none;
+  border-bottom: none;
 }
 
 .faq-container {
@@ -2999,16 +2995,17 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .faq-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-dark);
-  border-radius: 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
   overflow: hidden;
-  transition: border-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .faq-item:hover,
 .faq-item.active {
-  border-color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .faq-question {
@@ -3072,16 +3069,16 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .journal-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
   overflow: hidden;
   transition: var(--transition-smooth);
 }
 
 .journal-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .journal-media {
@@ -4613,7 +4610,7 @@ body:not(:has(.cinema-scroll)) .site-header {
   display: flex;
   flex-direction: column;
   gap: 4.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
   padding-top: 4.5rem;
 }
 
@@ -4679,16 +4676,17 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .process-step-card {
-  background: rgba(18, 18, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  border: none;
   border-radius: 14px;
   padding: 1.75rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  box-shadow: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .process-step-card:hover {
-  border-color: rgba(198, 173, 133, 0.4);
   transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(198, 173, 131, 0.12);
 }
 
 .step-num-pill {
@@ -4725,7 +4723,7 @@ body:not(:has(.cinema-scroll)) .site-header {
 .editorial-specs-table-wrap {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
   border-radius: 14px;
   background: rgba(15, 15, 15, 0.5);
   margin-top: 2rem;
@@ -4776,15 +4774,16 @@ body:not(:has(.cinema-scroll)) .site-header {
 }
 
 .faq-card-item {
-  background: rgba(18, 18, 18, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 1.75rem 2rem;
-  transition: border-color 0.25s ease;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  padding: 1.75rem 0.5rem;
+  transition: background 0.25s ease;
 }
 
 .faq-card-item:hover {
-  border-color: rgba(198, 173, 133, 0.35);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .faq-card-item h4 {
@@ -4901,10 +4900,18 @@ body:not(:has(.cinema-scroll)) .site-header {
 .hague-story-card,
 .service-catalog-card,
 .scope-deliverable-card,
-.faq-card-item {
+.faq-card-item,
+.process-step-card,
+.detail-gallery-item,
+.related-project-card,
+.facade-thumb-card,
+.facade-panel-card,
+.pillar-card,
+.principal-card,
+.testi-card-inner {
+  border: none !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, box-shadow;
 }
 
@@ -4915,10 +4922,15 @@ body:not(:has(.cinema-scroll)) .site-header {
 .team-card:hover,
 .hague-story-card:hover,
 .service-catalog-card:hover,
-.scope-deliverable-card:hover {
+.scope-deliverable-card:hover,
+.process-step-card:hover,
+.detail-gallery-item:hover,
+.related-project-card:hover,
+.facade-thumb-card:hover,
+.pillar-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(198, 173, 131, 0.18) !important;
-  border-color: rgba(198, 173, 131, 0.45) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(198, 173, 131, 0.16) !important;
+  border: none !important;
 }
 
 /* ── 4. LIGHT SWEEP SHIMMER ON LUXURY CTAS (Light Sweep Animation) ── */

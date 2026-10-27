@@ -1084,7 +1084,7 @@ async function initCinematicAnimationSystem() {
     ].join(','));
   }
 
-  /* ── 1. SECTION HEADERS & EDITORIAL TITLES (Typography Mask Reveals) ── */
+  /* ── 1. SECTION HEADERS & EDITORIAL TITLES (Typography Mask Reveals & Letter-Spacing) ── */
   const sectionHeaders = document.querySelectorAll(`
     .section-header,
     .features-left-block > div:first-child,
@@ -1115,8 +1115,9 @@ async function initCinematicAnimationSystem() {
     if (subtitle) {
       tl.from(subtitle, {
         opacity: 0,
-        y: -10,
-        duration: 0.6,
+        y: -12,
+        letterSpacing: '5px',
+        duration: 0.7,
         ease: 'power3.out'
       }, 0);
     }
@@ -1124,8 +1125,8 @@ async function initCinematicAnimationSystem() {
     if (title) {
       tl.from(title, {
         opacity: 0,
-        y: 28,
-        duration: 0.85,
+        y: 35,
+        duration: 0.9,
         ease: 'power3.out'
       }, 0.1);
     }
@@ -1133,7 +1134,7 @@ async function initCinematicAnimationSystem() {
     if (desc) {
       tl.from(desc, {
         opacity: 0,
-        y: 18,
+        y: 20,
         duration: 0.8,
         ease: 'power3.out'
       }, 0.22);
@@ -1150,15 +1151,15 @@ async function initCinematicAnimationSystem() {
     if (textCol && mediaCol) {
       gsap.from(textCol, {
         opacity: 0,
-        x: -45,
-        duration: 0.95,
+        x: -50,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: aboutSec, start: 'top 80%' }
       });
       gsap.from(mediaCol, {
         opacity: 0,
-        x: 45,
-        duration: 0.95,
+        x: 50,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: aboutSec, start: 'top 80%' }
       });
@@ -1173,14 +1174,14 @@ async function initCinematicAnimationSystem() {
     if (svgCol && contentCol) {
       gsap.from(svgCol, {
         opacity: 0,
-        x: -40,
+        x: -45,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
       });
       gsap.from(contentCol, {
         opacity: 0,
-        x: 40,
+        x: 45,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
@@ -1203,7 +1204,7 @@ async function initCinematicAnimationSystem() {
       });
       gsap.from(featuresCol, {
         opacity: 0,
-        x: 40,
+        x: 45,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: facadeSec, start: 'top 80%' }
@@ -1234,14 +1235,14 @@ async function initCinematicAnimationSystem() {
     if (cards.length >= 2) {
       gsap.from(cards[0], {
         opacity: 0,
-        x: -45,
+        x: -50,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: principalsSec, start: 'top 80%' }
       });
       gsap.from(cards[1], {
         opacity: 0,
-        x: 45,
+        x: 50,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: principalsSec, start: 'top 80%' }
@@ -1257,15 +1258,15 @@ async function initCinematicAnimationSystem() {
     if (info && formBox) {
       gsap.from(info, {
         opacity: 0,
-        x: -40,
-        duration: 0.95,
+        x: -45,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: contactSec, start: 'top 82%' }
       });
       gsap.from(formBox, {
         opacity: 0,
-        x: 40,
-        duration: 0.95,
+        x: 45,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: contactSec, start: 'top 82%' }
       });
@@ -1280,57 +1281,106 @@ async function initCinematicAnimationSystem() {
     if (leftBlock && rightBlock) {
       gsap.from(leftBlock, {
         opacity: 0,
-        x: -40,
-        duration: 0.95,
+        x: -45,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: featuresSec, start: 'top 80%' }
       });
       gsap.from(rightBlock, {
         opacity: 0,
-        x: 40,
-        duration: 0.95,
+        x: 45,
+        duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: { trigger: featuresSec, start: 'top 80%' }
       });
     }
   }
 
-  /* ── 3. STAGGERED ENTRANCES FOR CARDS & GRIDS (Staggered Entrance Animation) ── */
-  const gridConfigs = [
-    { container: '#projects-showcase', items: '.sight-card', stagger: 0.12 },
-    { container: '#portfolio', items: '.portfolio-card', stagger: 0.1 },
-    { container: '#services', items: '.service-card', stagger: 0.1 },
-    { container: '#faq', items: '.faq-item', stagger: 0.08 },
-    { container: '#journal', items: '.journal-card', stagger: 0.12 },
-    { container: '.team-grid', items: '.team-card', stagger: 0.1 },
-    { container: '.hague-shelf-grid', items: '.hague-story-card', stagger: 0.1 },
-    { container: '.catalog-grid', items: '.service-catalog-card', stagger: 0.1 },
-    { container: '.scope-deliverables-grid', items: '.scope-deliverable-card', stagger: 0.1 },
-    { container: '.process-step-grid', items: '.process-step-card', stagger: 0.12 }
+  /* ── 3. INDEPENDENT ELEMENT-BY-ELEMENT & ALTERNATING DIRECTIONAL CARD CHOREOGRAPHY ── */
+  // 6 distinct directional entrance vectors so cards do NOT uniformly fade in from bottom
+  const entranceVectors = [
+    { x: -50, y: 15, scale: 0.98 },  // Card 1: from Left
+    { x: 0, y: 45, scale: 0.96 },   // Card 2: from Bottom
+    { x: 50, y: 15, scale: 0.98 },  // Card 3: from Right
+    { x: -40, y: 35, scale: 0.97 }, // Card 4: from Bottom-Left
+    { x: 40, y: 35, scale: 0.97 },  // Card 5: from Bottom-Right
+    { x: 0, y: -30, scale: 0.95 }   // Card 6: from Top / Scale
   ];
 
-  gridConfigs.forEach(({ container, items, stagger }) => {
+  const gridConfigs = [
+    { container: '#projects-showcase', items: '.sight-card' },
+    { container: '#portfolio', items: '.portfolio-card' },
+    { container: '#services', items: '.service-card' },
+    { container: '#faq', items: '.faq-item' },
+    { container: '#journal', items: '.journal-card' },
+    { container: '.team-grid', items: '.team-card' },
+    { container: '.hague-shelf-grid', items: '.hague-story-card' },
+    { container: '.catalog-grid', items: '.service-catalog-card' },
+    { container: '.scope-deliverables-grid', items: '.scope-deliverable-card' },
+    { container: '.process-step-grid', items: '.process-step-card' }
+  ];
+
+  gridConfigs.forEach(({ container, items }) => {
     const parent = typeof container === 'string' ? document.querySelector(container) : container;
     if (!parent || isExcludedHero(parent)) return;
 
     const cards = parent.querySelectorAll(items);
     if (!cards || cards.length === 0) return;
 
-    gsap.from(cards, {
-      opacity: 0,
-      y: 40,
-      duration: 0.85,
-      stagger: stagger || 0.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: parent,
-        start: 'top 84%',
-        toggleActions: 'play none none none'
+    cards.forEach((card, idx) => {
+      if (isExcludedHero(card)) return;
+      const vec = entranceVectors[idx % entranceVectors.length];
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      tl.from(card, {
+        opacity: 0,
+        x: vec.x,
+        y: vec.y,
+        scale: vec.scale,
+        duration: 0.95,
+        delay: (idx % 3) * 0.1,
+        ease: 'power3.out'
+      });
+
+      // Staggered micro-elements within card for refined editorial finish
+      const cardImg = card.querySelector('.card-img, .sight-card-media img, .service-img-wrapper img, .journal-media img, .catalog-card-media img, img');
+      const cardBadge = card.querySelector('.card-tag, .sight-badge, .service-icon, .team-icon, .step-num-pill');
+      const cardTitle = card.querySelector('.card-title, .sight-title, .service-title, .team-name, .catalog-card-title, h3, h4');
+
+      if (cardImg) {
+        tl.from(cardImg, {
+          scale: 1.08,
+          duration: 1.1,
+          ease: 'power2.out'
+        }, 0);
+      }
+      if (cardBadge) {
+        tl.from(cardBadge, {
+          opacity: 0,
+          scale: 0.82,
+          duration: 0.5,
+          ease: 'back.out(1.5)'
+        }, 0.18);
+      }
+      if (cardTitle) {
+        tl.from(cardTitle, {
+          opacity: 0,
+          y: 12,
+          duration: 0.6,
+          ease: 'power3.out'
+        }, 0.24);
       }
     });
   });
 
-  /* ── 4. SCROLL-TRIGGERED NUMERICAL STAT COUNTERS (Scroll-Triggered Counter) ── */
+  /* ── 4. SCROLL-TRIGGERED NUMERICAL STAT COUNTERS ── */
   const statContainers = document.querySelectorAll('.stats-strip, .founder-stats-row');
   statContainers.forEach(container => {
     if (isExcludedHero(container)) return;
@@ -1370,54 +1420,47 @@ async function initCinematicAnimationSystem() {
     });
   });
 
-  /* ── 5. CINEMATIC BLUR-TO-SHARP & CLIP-PATH REVEAL (Blur-to-Sharp & Clip-Path) ── */
-  const cinematicImages = document.querySelectorAll(`
-    .facade-primary-card img,
+  /* ── 5. TRUE SCROLL-SYNCHRONIZED (SCRUB: 0.25) ARCHITECTURAL IMAGE REVEALS & PARALLAX ── */
+  // Direct scroll-scrubbed motion: slow scroll = gradual reveal; reverse scroll = plays in reverse; stop = pauses.
+  const scrubbedImages = document.querySelectorAll(`
+    .facade-main-img,
+    .about-col-media img,
+    .about-media img,
+    .about-photo,
+    .ba-img img,
     .editorial-hero-bg,
     .swift-featured-image-container img,
     .detail-hero-media img,
-    .featured-hero-media img
+    .featured-hero-media img,
+    .founder-photo-col img,
+    .detail-narrative-img
   `);
 
-  cinematicImages.forEach(img => {
+  scrubbedImages.forEach(img => {
     if (isExcludedHero(img)) return;
 
     gsap.fromTo(img,
-      { filter: 'blur(10px)', scale: 1.06 },
       {
-        filter: 'blur(0px)',
+        clipPath: 'inset(10% 0% 10% 0%)',
+        scale: 1.08,
+        yPercent: -6,
+        filter: 'brightness(0.92) contrast(106%)'
+      },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)',
         scale: 1.0,
-        duration: 1.25,
-        ease: 'power3.out',
+        yPercent: 6,
+        filter: 'brightness(1.0) contrast(100%)',
+        ease: 'none',
         scrollTrigger: {
-          trigger: img,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
+          trigger: img.closest('.facade-image-frame, .about-photo-wrapper, .ba-slider-container, section, div') || img,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.25
         }
       }
     );
   });
-
-  /* ── 6. CONTROLLED PARALLAX ON EDITORIAL PORTRAITS & LARGE PANELS ── */
-  if (window.innerWidth >= 1024) {
-    const parallaxImages = document.querySelectorAll('.founder-photo-col img, .detail-narrative-img');
-    parallaxImages.forEach(img => {
-      if (isExcludedHero(img)) return;
-      gsap.fromTo(img,
-        { yPercent: -4 },
-        {
-          yPercent: 4,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: img.closest('.founder-card, .detail-narrative-split') || img,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-    });
-  }
 
   // Refresh ScrollTrigger once DOM layout stabilizes
   setTimeout(() => {
