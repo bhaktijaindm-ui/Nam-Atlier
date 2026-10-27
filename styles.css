@@ -5311,7 +5311,14 @@ body:not(:has(.cinema-scroll)) .site-header {
   .service-inquiry-btn::after {
     display: none !important;
   }
+  .wave-image {
+    filter: none !important;
+  }
 }
 
-
-
+/* ─── CURSOR-DRIVEN WAVE DISTORTION ─── */
+.wave-image {
+  filter: url(#image-wave-filter);
+  transition: filter 250ms ease;
+  will-change: filter, transform;
+}

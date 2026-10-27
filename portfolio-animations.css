@@ -804,4 +804,94 @@ body.portfolio-body-bg {
   .portfolio-detail-page .portfolio-architecture-outline path {
     stroke-dashoffset: 0 !important;
   }
+
+  .sa-card,
+  .sa-float,
+  .sa-parallax,
+  .sa-zoom-image,
+  .sa-zoom-layer {
+    will-change: auto !important;
+  }
 }
+
+/* ==========================================================================
+   GSAP SCROLL ANIMATION & WAVE DISTORTION SYSTEM (PART 3 & PART 4)
+   ========================================================================== */
+.sa-root {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+}
+
+.sa-card,
+.sa-float,
+.sa-parallax {
+  will-change: transform, opacity;
+}
+
+.sa-scene {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 480px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.sa-scene-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sa-zoom-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.sa-zoom-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.sa-progress-track {
+  position: absolute;
+  bottom: 24px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+  z-index: 10;
+}
+
+.sa-progress {
+  width: 100%;
+  height: 100%;
+  background: var(--portfolio-accent, #c5a46d);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media (max-width: 767px) {
+  .sa-scene {
+    height: 65vh;
+    min-height: 380px;
+  }
+}
+
+/* ── CURSOR-DRIVEN WAVE DISTORTION (PART 4) ── */
+.wave-image {
+  filter: url(#image-wave-filter);
+  transition: filter 250ms ease;
+  will-change: filter, transform;
+}
+

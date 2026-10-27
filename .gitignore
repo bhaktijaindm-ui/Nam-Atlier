@@ -1,0 +1,4 @@
+# Local scratch & test files
+scratch/
+qa_screenshots/
+*.tmp

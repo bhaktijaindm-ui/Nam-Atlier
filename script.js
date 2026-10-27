@@ -1619,5 +1619,77 @@ window.initCinematicAnimationSystem = initCinematicAnimationSystem;
     document.addEventListener('DOMContentLoaded', runQAAudit);
     window.addEventListener('load', runQAAudit);
   }
+
+  /* ── PART 4: CURSOR-DRIVEN WAVE DISTORTION SYSTEM ── */
+  function initGlobalWaveDistortion() {
+    if (!document.getElementById("image-wave-filter")) {
+      const svgWrap = document.createElement("div");
+      svgWrap.innerHTML = `
+        <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
+          <filter id="image-wave-filter">
+            <feTurbulence class="wave-noise" type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="3" result="noise" />
+            <feDisplacementMap class="wave-displacement" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+      `;
+      if (document.body) {
+        document.body.appendChild(svgWrap.firstElementChild);
+      }
+    }
+
+    window.handleWaveMove = function (event) {
+      const filter = document.getElementById("image-wave-filter");
+      if (!filter) return;
+      const noise = filter.querySelector(".wave-noise");
+      const displacement = filter.querySelector(".wave-displacement");
+      const speed = Math.hypot(event.movementX || 0, event.movementY || 0);
+
+      if (noise) {
+        const frequency = 0.012 + Math.min(speed * 0.0008, 0.025);
+        noise.setAttribute("baseFrequency", `${frequency.toFixed(4)} ${(frequency * 1.4).toFixed(4)}`);
+      }
+      if (displacement) {
+        const scaleVal = Math.min(24, 5 + speed * 1.2);
+        displacement.setAttribute("scale", scaleVal.toFixed(2));
+      }
+    };
+
+    window.handleWaveLeave = function () {
+      const filter = document.getElementById("image-wave-filter");
+      if (!filter) return;
+      const noise = filter.querySelector(".wave-noise");
+      const displacement = filter.querySelector(".wave-displacement");
+
+      if (typeof gsap !== "undefined") {
+        gsap.to(displacement, {
+          attr: { scale: 0 },
+          duration: 0.65,
+          ease: "power2.out",
+          onComplete: () => {
+            if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
+          }
+        });
+      } else {
+        if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
+        if (displacement) displacement.setAttribute("scale", "0");
+      }
+    };
+
+    const waveTargets = document.querySelectorAll(".wave-image, .project-card img, .portfolio-card img");
+    waveTargets.forEach((img) => {
+      img.classList.add("wave-image");
+      img.removeEventListener("pointermove", window.handleWaveMove);
+      img.removeEventListener("pointerleave", window.handleWaveLeave);
+      img.addEventListener("pointermove", window.handleWaveMove, { passive: true });
+      img.addEventListener("pointerleave", window.handleWaveLeave);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlobalWaveDistortion);
+  } else {
+    initGlobalWaveDistortion();
+  }
+  window.addEventListener('load', initGlobalWaveDistortion);
 })();
 

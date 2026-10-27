@@ -30,7 +30,12 @@
   
   <!-- Global & Component Styles -->
   <link rel="stylesheet" href="styles.css?v=5.0" />
-  <link rel="stylesheet" href="portfolio-animations.css?v=2.2" />
+  <link rel="stylesheet" href="portfolio-animations.css?v=2.3" />
+  <link rel="stylesheet" href="components/ScrollAnimationSection.css" />
+
+  <!-- GSAP 3 & ScrollTrigger for Cinematic Motion Engine (Part 3) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Structured Data: BreadcrumbList and CollectionPage -->
   <script type="application/ld+json">
@@ -236,13 +241,38 @@
 </head>
 <body class="portfolio-body-bg">
 
+  <!-- PART 4: SVG FILTER FOR FLUID CURSOR-DRIVEN WAVE DISTORTION -->
+  <svg
+    aria-hidden="true"
+    style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;"
+  >
+    <filter id="image-wave-filter">
+      <feTurbulence
+        class="wave-noise"
+        type="fractalNoise"
+        baseFrequency="0.012 0.018"
+        numOctaves="2"
+        seed="3"
+        result="noise"
+      />
+      <feDisplacementMap
+        class="wave-displacement"
+        in="SourceGraphic"
+        in2="noise"
+        scale="0"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </svg>
+
   <!-- ═════════════════════════════════════════════════════════════════════════
        SHARED HEADER (SINGLE SOURCE OF TRUTH)
        Header & mobile drawer are loaded dynamically from: components/header.html
        ═════════════════════════════════════════════════════════════════════════ -->
   <div id="header-placeholder"></div>
 
-  <main class="portfolio-detail-page" id="mainContent">
+  <main class="portfolio-detail-page sa-root" id="mainContent">
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          SECTION 1 — CINEMATIC ARCHITECTURAL OPENING
@@ -257,13 +287,16 @@
         </div>
       </div>
 
-      <div class="portfolio-image-reveal portfolio-opening__media">
+      <div class="portfolio-image-reveal portfolio-opening__media sa-card">
         <img
           src="nam_luxury_residence_exterior.jpg"
           alt="NAM Atelier luxury architectural residence exterior at twilight"
+          class="wave-image"
           fetchpriority="high"
           loading="eager"
           onclick="openLightbox(this.src, 'Villa Sanctuary — Twilight Facade & Reflection Pool')"
+          onpointermove="handleWaveMove(event)"
+          onpointerleave="handleWaveLeave(event)"
           style="cursor: zoom-in;"
         />
       </div>
@@ -276,34 +309,43 @@
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          SECTION 2 — FLOATING ARCHITECTURAL IMAGE COMPOSITION
-         Asymmetric composition with dominant visual and supporting floating elements
+         Directional scroll-driven entrance (Part 2.B) with cursor wave displacement
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="portfolio-float-section" id="section-floating" aria-label="Floating Architectural Composition">
       <div class="portfolio-float-layout">
-        <div class="portfolio-float-item portfolio-float-item--main reveal-image">
+        <div class="portfolio-float-item portfolio-float-item--main sa-float reveal-image">
           <img
             src="nam_facade_main.jpg"
             alt="Sculptural architectural facade cantilever"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Villa Sanctuary — Front Elevation Geometric Cantilever')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </div>
-        <div class="portfolio-float-item portfolio-float-item--small reveal-image">
+        <div class="portfolio-float-item portfolio-float-item--small sa-float reveal-image">
           <img
             src="nam_architectural_details.jpg"
             alt="Bespoke architectural joinery and material detail"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Honed Travertine & Brass Joinery Detail')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </div>
-        <div class="portfolio-float-item portfolio-float-item--lower reveal-image">
+        <div class="portfolio-float-item portfolio-float-item--lower sa-float reveal-image">
           <img
             src="nam_bedroom_render.jpg"
             alt="Minimalist luxury bedroom suite interior"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Bespoke Master Suite Transition')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </div>
@@ -337,17 +379,37 @@
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          SECTION 4 — FULL-WIDTH ARCHITECTURAL EXPERIENCE
-         Panoramic architectural exterior with continuous scroll-progress parallax
+         Part 2.C Scroll-Driven Zoom, Part 2.D Image Transitions & Part 2.E Pinned Scrolling
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="portfolio-scroll-section" id="section-fullwidth" aria-label="Full-Width Architectural Experience">
-      <div class="portfolio-scroll-image scroll-image reveal-image">
-        <img
-          src="nam_commercial_render.jpg"
-          alt="Palatial estate colonnade and contemporary facade"
-          loading="lazy"
-          onclick="openLightbox(this.src, 'The Marble Residence — Main Architectural Colonnade')"
-          style="cursor: zoom-in;"
-        />
+      <div class="sa-scene" id="pinnedScene">
+        <div class="sa-scene-viewport">
+          <div class="sa-zoom-image">
+            <img
+              src="nam_commercial_render.jpg"
+              alt="Palatial estate colonnade and contemporary facade"
+              class="sa-zoom-layer wave-image"
+              loading="lazy"
+              onclick="openLightbox(this.src, 'The Marble Residence — Main Architectural Colonnade')"
+              onpointermove="handleWaveMove(event)"
+              onpointerleave="handleWaveLeave(event)"
+              style="cursor: zoom-in;"
+            />
+            <img
+              src="nam_hero_villa_facade.jpg"
+              alt="Hero contemporary villa facade under twilight sky"
+              class="sa-zoom-layer wave-image"
+              loading="lazy"
+              style="opacity: 0; visibility: hidden; cursor: zoom-in;"
+              onclick="openLightbox(this.src, 'Villa Sanctuary — Monumental Facade Perspective')"
+              onpointermove="handleWaveMove(event)"
+              onpointerleave="handleWaveLeave(event)"
+            />
+          </div>
+          <div class="sa-progress-track">
+            <div class="sa-progress"></div>
+          </div>
+        </div>
       </div>
       <div class="portfolio-scroll-meta reveal-on-scroll">
         <span class="portfolio-scroll-caption">THE MARBLE RESIDENCE — SARABHA NAGAR, LUDHIANA</span>
@@ -360,12 +422,15 @@
          Two-column editorial with tall image, copy block, and lower detail image
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="portfolio-editorial" id="section-editorial" aria-label="Asymmetric Interior Editorial">
-      <div class="portfolio-editorial__image reveal-image">
+      <div class="portfolio-editorial__image sa-parallax reveal-image">
         <img
           src="nam_living_render.jpg"
           alt="Luxury contemporary living room interior with monolithic travertine"
+          class="wave-image"
           loading="lazy"
           onclick="openLightbox(this.src, 'Obsidian Penthouse — Grand Living Room Perspective')"
+          onpointermove="handleWaveMove(event)"
+          onpointerleave="handleWaveLeave(event)"
           style="cursor: zoom-in;"
         />
       </div>
@@ -399,12 +464,15 @@
         </div>
       </div>
 
-      <div class="portfolio-editorial__detail reveal-image">
+      <div class="portfolio-editorial__detail sa-card reveal-image">
         <img
           src="nam_dining_interior.jpg"
           alt="Close-up of refined minimalist dining and kitchen interior"
+          class="wave-image"
           loading="lazy"
           onclick="openLightbox(this.src, 'Sculptural Kitchen Island & Dining')"
+          onpointermove="handleWaveMove(event)"
+          onpointerleave="handleWaveLeave(event)"
           style="cursor: zoom-in;"
         />
       </div>
@@ -415,13 +483,16 @@
          Building and sky dominate the viewport with clipping reveal
          ═══════════════════════════════════════════════════════════════════════ -->
     <section class="portfolio-cinematic-wrap" id="section-cinematic" aria-label="Immersive Architectural Perspective">
-      <div class="portfolio-cinematic reveal-on-scroll">
+      <div class="portfolio-cinematic sa-card reveal-on-scroll">
         <div class="portfolio-cinematic__media">
           <img
             src="nam_hero_villa_facade.jpg"
             alt="Hero contemporary villa facade under dramatic sky"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Villa Sanctuary — Monumental Facade Perspective')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </div>
@@ -441,32 +512,41 @@
       </div>
 
       <div class="portfolio-gallery__grid">
-        <figure class="portfolio-gallery__item portfolio-gallery__item--wide reveal-image">
+        <figure class="portfolio-gallery__item portfolio-gallery__item--wide sa-card reveal-image">
           <img
             src="nam_cinema_theatre.jpg"
             alt="Dolby Atmos private cinema lounge interior"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Velvet Cinema Lounge — Acoustic Wall Panelling & 4K Projection')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </figure>
 
-        <figure class="portfolio-gallery__item portfolio-gallery__item--portrait reveal-image">
+        <figure class="portfolio-gallery__item portfolio-gallery__item--portrait sa-card reveal-image">
           <img
             src="nam_kitchen_render.jpg"
             alt="Sculptural minimalist kitchen and breakfast island"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Obsidian Kitchen — Monolithic Quartz Island & Smoked Glass')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </figure>
 
-        <figure class="portfolio-gallery__item portfolio-gallery__item--detail reveal-image">
+        <figure class="portfolio-gallery__item portfolio-gallery__item--detail sa-card reveal-image">
           <img
             src="nam_architectural_details.jpg"
             alt="Refined material transitions and joinery detail"
+            class="wave-image"
             loading="lazy"
             onclick="openLightbox(this.src, 'Architectural Detailing — Brass Inlays & Travertine Joinery')"
+            onpointermove="handleWaveMove(event)"
+            onpointerleave="handleWaveLeave(event)"
             style="cursor: zoom-in;"
           />
         </figure>
@@ -527,12 +607,15 @@
         </div>
       </div>
 
-      <div class="portfolio-final__imagery reveal-image">
+      <div class="portfolio-final__imagery sa-card reveal-image">
         <img
           src="nam_landscaping_patio.jpg"
           alt="Architectural sunken courtyard, terrace, and reflection landscape"
+          class="wave-image"
           loading="lazy"
           onclick="openLightbox(this.src, 'Villa Sanctuary — Sunken Courtyard & Covered Patio')"
+          onpointermove="handleWaveMove(event)"
+          onpointerleave="handleWaveLeave(event)"
           style="cursor: zoom-in;"
         />
       </div>
@@ -628,6 +711,47 @@
       }
     });
 
+    // ── PART 4: CURSOR-DRIVEN WAVE DISTORTION ──
+    function handleWaveMove(event) {
+      const filter = document.getElementById("image-wave-filter");
+      if (!filter) return;
+      const noise = filter.querySelector(".wave-noise");
+      const displacement = filter.querySelector(".wave-displacement");
+      const speed = Math.hypot(event.movementX || 0, event.movementY || 0);
+
+      if (noise) {
+        const frequency = 0.012 + Math.min(speed * 0.0008, 0.025);
+        noise.setAttribute("baseFrequency", `${frequency.toFixed(4)} ${(frequency * 1.4).toFixed(4)}`);
+      }
+      if (displacement) {
+        const scaleVal = Math.min(24, 5 + speed * 1.2);
+        displacement.setAttribute("scale", scaleVal.toFixed(2));
+      }
+    }
+    window.handleWaveMove = handleWaveMove;
+
+    function handleWaveLeave() {
+      const filter = document.getElementById("image-wave-filter");
+      if (!filter) return;
+      const noise = filter.querySelector(".wave-noise");
+      const displacement = filter.querySelector(".wave-displacement");
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(displacement, {
+          attr: { scale: 0 },
+          duration: 0.65,
+          ease: "power2.out",
+          onComplete: () => {
+            if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
+          }
+        });
+      } else {
+        if (noise) noise.setAttribute("baseFrequency", "0.012 0.018");
+        if (displacement) displacement.setAttribute("scale", "0");
+      }
+    }
+    window.handleWaveLeave = handleWaveLeave;
+
     // Immediate viewport visibility check to avoid blank states during page load or headless captures
     (function checkInitial() {
       function evaluate() {
@@ -669,8 +793,8 @@
     })();
   </script>
 
-  <!-- ANIMATION ENGINE SCRIPT (Scroll-Reveal & Parallax Progress) -->
-  <script src="portfolio-animations.js?v=2.2" defer></script>
+  <!-- ANIMATION ENGINE SCRIPT (GSAP ScrollTrigger & Wave Displacement) -->
+  <script src="portfolio-animations.js?v=2.3" defer></script>
 
   <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
   <script src="script.js?v=4.3" defer></script>
