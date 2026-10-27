@@ -1,0 +1,355 @@
+/* ==========================================================================
+   NAM ATELIER — COMPLETE PORTFOLIO ANIMATION SYSTEM
+   Implementation of CODE B, C, D, E, F, G, H, I, J
+   ========================================================================== */
+
+/* ── CODE B: BASE REVEAL & DIRECTIONAL ENTRANCES ── */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal--fade {
+  transform: none;
+}
+
+.reveal--up {
+  transform: translate3d(0, 28px, 0);
+}
+
+.reveal--left {
+  transform: translate3d(-32px, 0, 0);
+}
+
+.reveal--right {
+  transform: translate3d(32px, 0, 0);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Staggered timing delays */
+.reveal--delay-1 {
+  transition-delay: 100ms;
+}
+
+.reveal--delay-2 {
+  transition-delay: 200ms;
+}
+
+.reveal--delay-3 {
+  transition-delay: 300ms;
+}
+
+.reveal--delay-4 {
+  transition-delay: 400ms;
+}
+
+/* ── CODE B: LINE-BY-LINE TEXT MASK REVEAL ── */
+.text-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.text-mask__line {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition:
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.text-mask.is-visible .text-mask__line {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Inline variant for headings with inline elements */
+.text-mask-inline {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.text-mask-inline .text-mask__line {
+  display: inline-block;
+}
+
+/* ── CODE C: IMAGE MASK REVEAL (CURTAIN SHUTTER EFFECT) ── */
+.portfolio-image-reveal {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.portfolio-image-reveal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition:
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.portfolio-image-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition:
+    transform 950ms cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portfolio-image-reveal.is-visible::after {
+  transform: scaleY(0);
+}
+
+.portfolio-image-reveal.is-visible img {
+  transform: scale(1);
+}
+
+/* ── CODE D: IMAGE SCALE AND HOVER EFFECTS ── */
+.portfolio-image-hover {
+  overflow: hidden;
+}
+
+.portfolio-image-hover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-image-hover:hover img {
+    transform: scale(1.035);
+  }
+}
+
+/* ── CODE E: SCROLL-LINKED IMAGE MOVEMENT (PARALLAX & PROGRESS) ── */
+.scroll-image {
+  --scroll-progress: 0.5;
+  overflow: hidden;
+}
+
+.scroll-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform:
+    translate3d(
+      0,
+      calc((0.5 - var(--scroll-progress)) * 24px),
+      0
+    )
+    scale(
+      calc(1.04 - var(--scroll-progress) * 0.04)
+    );
+  will-change: transform;
+}
+
+/* ── CODE F: ASYMMETRICAL IMAGE COMPOSITION ── */
+.portfolio-asymmetric {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(0, 0.75fr);
+  gap: clamp(20px, 4vw, 64px);
+  align-items: start;
+}
+
+.portfolio-asymmetric__primary {
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+}
+
+.portfolio-asymmetric__secondary {
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  margin-top: clamp(48px, 12vw, 180px);
+}
+
+.portfolio-asymmetric img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .portfolio-asymmetric {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .portfolio-asymmetric__primary {
+    aspect-ratio: 4 / 5;
+  }
+
+  .portfolio-asymmetric__secondary {
+    width: 82%;
+    margin-top: 0;
+    margin-left: auto;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* ── CODE G: CINEMATIC SECTION TRANSITIONS ── */
+.portfolio-cinematic-section {
+  position: relative;
+  isolation: isolate;
+  background: #000000;
+}
+
+.portfolio-cinematic-section__content {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.portfolio-cinematic-section.is-visible .portfolio-cinematic-section__content {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ── CODE H: PREMIUM BUTTON AND LINK INTERACTIONS ── */
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition:
+    color 250ms ease,
+    gap 250ms ease;
+  cursor: pointer;
+}
+
+.portfolio-link__arrow {
+  display: inline-block;
+  transition: transform 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-link:hover {
+    color: #c5a46d;
+    gap: 18px;
+  }
+
+  .portfolio-link:hover .portfolio-link__arrow {
+    transform: translateX(4px);
+  }
+}
+
+.portfolio-link:focus-visible {
+  outline: 2px solid #c5a46d;
+  outline-offset: 5px;
+}
+
+/* ── CODE I: RESPONSIVE TYPOGRAPHY AND SPACING ── */
+.portfolio-container {
+  width: min(100% - 96px, 1440px);
+  margin-inline: auto;
+}
+
+.portfolio-heading {
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 7vw, 7.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.portfolio-description {
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .portfolio-container {
+    width: calc(100% - 64px);
+  }
+
+  .portfolio-heading {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio-container {
+    width: calc(100% - 40px);
+  }
+
+  .portfolio-heading {
+    max-width: 100%;
+    font-size: clamp(2.1rem, 10vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .portfolio-description {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 374px) {
+  .portfolio-container {
+    width: calc(100% - 32px);
+  }
+
+  .portfolio-heading {
+    font-size: clamp(1.9rem, 9vw, 2.5rem);
+  }
+}
+
+/* ── CODE J: REDUCED-MOTION ACCESSIBILITY AND FAILURE SAFETY ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal--up,
+  .reveal--left,
+  .reveal--right,
+  .text-mask__line,
+  .portfolio-image-reveal img,
+  .portfolio-image-reveal::after,
+  .scroll-image img,
+  .portfolio-cinematic-section__content {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .reveal,
+  .reveal.is-visible,
+  .text-mask__line,
+  .portfolio-cinematic-section__content {
+    opacity: 1 !important;
+  }
+
+  .portfolio-image-reveal::after {
+    display: none !important;
+  }
+
+  .portfolio-link,
+  .portfolio-link__arrow {
+    transition: none !important;
+  }
+}

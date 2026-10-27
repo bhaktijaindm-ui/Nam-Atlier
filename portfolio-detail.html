@@ -30,6 +30,7 @@
   
   <!-- Global & Component Styles -->
   <link rel="stylesheet" href="styles.css?v=5.0" />
+  <link rel="stylesheet" href="portfolio-animations.css?v=2.1" />
 
   <!-- Structured Data: BreadcrumbList and CollectionPage -->
   <script type="application/ld+json">
@@ -110,6 +111,287 @@
       --port-radius-lg: 24px;
       --port-radius-md: 16px;
       --port-radius-sm: 10px;
+    }
+
+    /* ── CODE B: BASE REVEAL & DIRECTIONAL ENTRANCES ── */
+    .reveal {
+      opacity: 0;
+      transition:
+        opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal--fade {
+      transform: none;
+    }
+
+    .reveal--up {
+      transform: translate3d(0, 28px, 0);
+    }
+
+    .reveal--left {
+      transform: translate3d(-32px, 0, 0);
+    }
+
+    .reveal--right {
+      transform: translate3d(32px, 0, 0);
+    }
+
+    .reveal.is-visible {
+      opacity: 1 !important;
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    /* Staggered timing delays */
+    .reveal--delay-1 {
+      transition-delay: 100ms;
+    }
+
+    .reveal--delay-2 {
+      transition-delay: 200ms;
+    }
+
+    .reveal--delay-3 {
+      transition-delay: 300ms;
+    }
+
+    .reveal--delay-4 {
+      transition-delay: 400ms;
+    }
+
+    /* ── CODE B: LINE-BY-LINE TEXT MASK REVEAL ── */
+    .text-mask {
+      display: block;
+      overflow: hidden;
+    }
+
+    .text-mask__line {
+      display: block;
+      transform: translate3d(0, 110%, 0);
+      transition:
+        transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .text-mask.is-visible .text-mask__line {
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    /* ── CODE C: IMAGE MASK REVEAL (CURTAIN SHUTTER EFFECT) ── */
+    .portfolio-image-reveal {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .portfolio-image-reveal img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      transition:
+        transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .portfolio-image-reveal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #000000;
+      transform: scaleY(1);
+      transform-origin: top;
+      transition:
+        transform 950ms cubic-bezier(0.76, 0, 0.24, 1);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .portfolio-image-reveal.is-visible::after {
+      transform: scaleY(0) !important;
+    }
+
+    .portfolio-image-reveal.is-visible img {
+      transform: scale(1) !important;
+    }
+
+    /* ── CODE D: IMAGE SCALE AND HOVER EFFECTS ── */
+    .portfolio-image-hover {
+      overflow: hidden;
+    }
+
+    .portfolio-image-hover img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition:
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .portfolio-image-hover:hover img {
+        transform: scale(1.035);
+      }
+    }
+
+    /* ── CODE E: SCROLL-LINKED IMAGE MOVEMENT (PARALLAX & PROGRESS) ── */
+    .scroll-image {
+      --scroll-progress: 0.5;
+      overflow: hidden;
+    }
+
+    .scroll-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform:
+        translate3d(
+          0,
+          calc((0.5 - var(--scroll-progress, 0.5)) * 24px),
+          0
+        )
+        scale(
+          calc(1.04 - var(--scroll-progress, 0.5) * 0.04)
+        );
+      will-change: transform;
+    }
+
+    /* ── CODE F: ASYMMETRICAL IMAGE COMPOSITION ── */
+    .portfolio-asymmetric {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(0, 0.75fr);
+      gap: clamp(20px, 4vw, 64px);
+      align-items: start;
+    }
+
+    .portfolio-asymmetric__primary {
+      min-width: 0;
+      aspect-ratio: 4 / 5;
+    }
+
+    .portfolio-asymmetric__secondary {
+      min-width: 0;
+      aspect-ratio: 3 / 4;
+      margin-top: clamp(48px, 12vw, 180px);
+    }
+
+    .portfolio-asymmetric img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 767px) {
+      .portfolio-asymmetric {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      .portfolio-asymmetric__primary {
+        aspect-ratio: 4 / 5;
+      }
+
+      .portfolio-asymmetric__secondary {
+        width: 82%;
+        margin-top: 0;
+        margin-left: auto;
+        aspect-ratio: 4 / 5;
+      }
+    }
+
+    /* ── CODE G: CINEMATIC SECTION TRANSITIONS ── */
+    .portfolio-cinematic-section {
+      position: relative;
+      isolation: isolate;
+      background: #000000;
+    }
+
+    .portfolio-cinematic-section__content {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+      transition:
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .portfolio-cinematic-section.is-visible .portfolio-cinematic-section__content {
+      opacity: 1 !important;
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    /* ── CODE H: PREMIUM BUTTON AND LINK INTERACTIONS ── */
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFFFFF;
+      text-decoration: none;
+      transition:
+        color 250ms ease,
+        gap 250ms ease;
+      cursor: pointer;
+    }
+
+    .portfolio-link__arrow {
+      display: inline-block;
+      transition: transform 250ms ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .portfolio-link:hover {
+        color: #c5a46d;
+        gap: 18px;
+      }
+
+      .portfolio-link:hover .portfolio-link__arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    .portfolio-link:focus-visible {
+      outline: 2px solid #c5a46d;
+      outline-offset: 5px;
+    }
+
+    /* ── CODE J: REDUCED-MOTION ACCESSIBILITY AND FAILURE SAFETY ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .reveal--up,
+      .reveal--left,
+      .reveal--right,
+      .text-mask__line,
+      .portfolio-image-reveal img,
+      .portfolio-image-reveal::after,
+      .scroll-image img,
+      .portfolio-cinematic-section__content {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+      }
+
+      .reveal,
+      .reveal.is-visible,
+      .text-mask__line,
+      .portfolio-cinematic-section__content {
+        opacity: 1 !important;
+      }
+
+      .portfolio-image-reveal::after {
+        display: none !important;
+      }
+
+      .portfolio-link,
+      .portfolio-link__arrow {
+        transition: none !important;
+      }
     }
 
     html, body {
@@ -1546,12 +1828,12 @@
     <div id="portfolioShowcaseView">
 
       <!-- SECTION 1: EDITORIAL ARCHITECTURAL HERO -->
-      <section class="editorial-hero-card" aria-label="Portfolio Introduction">
+      <section class="editorial-hero-card scroll-image" aria-label="Portfolio Introduction">
         <img class="editorial-hero-bg" src="nam_luxury_residence_exterior.jpg" alt="NAM Atelier Luxury Architectural Residence Exterior at Twilight" fetchpriority="high" />
         <div class="editorial-hero-overlay" aria-hidden="true"></div>
 
         <!-- Top Watermark Typography -->
-        <div class="hero-top-watermark">
+        <div class="hero-top-watermark reveal reveal--fade">
           <h1 class="hero-watermark-title">NAM ATELIER</h1>
           <p class="hero-watermark-subtitle">INTERIORS &amp; ARCHITECTURE</p>
         </div>
@@ -1559,20 +1841,27 @@
         <!-- Bottom Informational Bar -->
         <div class="hero-bottom-grid">
           <div class="hero-headline-block">
-            <h2 class="hero-main-heading">Designing spaces.<br>Elevating lives.</h2>
-            <p class="hero-main-subtext">Architecture that inspires. Interiors that reflect your authentic aspirations.</p>
-            <span class="hero-vintage-badge">SINCE 2020</span>
+            <h2 class="hero-main-heading">
+              <span class="text-mask">
+                <span class="text-mask__line">Designing spaces.</span>
+              </span>
+              <span class="text-mask">
+                <span class="text-mask__line">Elevating lives.</span>
+              </span>
+            </h2>
+            <p class="hero-main-subtext reveal reveal--up reveal--delay-1">Architecture that inspires. Interiors that reflect your authentic aspirations.</p>
+            <span class="hero-vintage-badge reveal reveal--fade reveal--delay-2">SINCE 2020</span>
           </div>
 
-          <div class="hero-cta-center">
-            <a href="#selectedProjectsSection" class="btn-hero-pill" aria-label="Scroll to projects showcase">
+          <div class="hero-cta-center reveal reveal--up reveal--delay-2">
+            <a href="#selectedProjectsSection" class="btn-hero-pill portfolio-link" aria-label="Scroll to projects showcase">
               <span>View Projects</span>
-              <span class="arrow-circle"><i class="fa-solid fa-arrow-down"></i></span>
+              <span class="arrow-circle portfolio-link__arrow"><i class="fa-solid fa-arrow-down"></i></span>
             </a>
           </div>
 
           <!-- Frosted Statistics Box -->
-          <div class="hero-stats-panel">
+          <div class="hero-stats-panel reveal reveal--up reveal--delay-3">
             <div class="stat-row">
               <span class="stat-num">5+</span>
               <span class="stat-label">Years of Design &amp; Civil Excellence</span>
@@ -1590,43 +1879,50 @@
       </section>
 
       <!-- SECTION 2: STUDIO PHILOSOPHY -->
-      <section class="philosophy-section" aria-label="About NAM Atelier Philosophy">
-        <div class="philosophy-content-col">
-          <span class="eyebrow-label">ABOUT NAM ATELIER</span>
-          <h2 class="editorial-heading">Inspired by purpose.<br>Driven by detail.</h2>
-          <p class="editorial-desc">
+      <section class="philosophy-section portfolio-cinematic-section" aria-label="About NAM Atelier Philosophy">
+        <div class="philosophy-content-col portfolio-cinematic-section__content">
+          <span class="eyebrow-label reveal reveal--fade">ABOUT NAM ATELIER</span>
+          <h2 class="editorial-heading">
+            <span class="text-mask">
+              <span class="text-mask__line">Inspired by purpose.</span>
+            </span>
+            <span class="text-mask">
+              <span class="text-mask__line">Driven by detail.</span>
+            </span>
+          </h2>
+          <p class="editorial-desc reveal reveal--up reveal--delay-1">
             NAM Atelier is a premier architecture and 3D interior design studio based in Ludhiana &amp; Amritsar, creating timeless spaces since 2020. We believe in thoughtful design that blends functionality, aesthetics, and craftsmanship — tailored to the way you live, work, and dream.
           </p>
 
           <div class="philosophy-pillars-grid">
-            <div class="pillar-card">
+            <div class="pillar-card reveal reveal--up reveal--delay-1">
               <div class="pillar-icon-box"><i class="fa-regular fa-lightbulb"></i></div>
               <h3 class="pillar-title">Client First</h3>
               <p class="pillar-desc">Your personal vision is our primary architectural foundation.</p>
             </div>
-            <div class="pillar-card">
+            <div class="pillar-card reveal reveal--up reveal--delay-2">
               <div class="pillar-icon-box"><i class="fa-regular fa-compass"></i></div>
               <h3 class="pillar-title">Timeless Design</h3>
               <p class="pillar-desc">Spaces that age beautifully and function effortlessly across generations.</p>
             </div>
-            <div class="pillar-card">
+            <div class="pillar-card reveal reveal--up reveal--delay-3">
               <div class="pillar-icon-box"><i class="fa-regular fa-gem"></i></div>
               <h3 class="pillar-title">End-to-End Expertise</h3>
               <p class="pillar-desc">From 3D photorealistic BIM walkthroughs to turnkey civil execution.</p>
             </div>
           </div>
 
-          <div>
-            <a href="about.html" class="btn-editorial-pill">
+          <div class="reveal reveal--up reveal--delay-3">
+            <a href="about.html" class="btn-editorial-pill portfolio-link">
               <span>More About Us</span>
-              <i class="fa-solid fa-arrow-right"></i>
+              <span class="portfolio-link__arrow"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
           </div>
         </div>
 
-        <div class="philosophy-media-box">
+        <div class="philosophy-media-box portfolio-image-reveal portfolio-image-hover scroll-image">
           <img src="nam_dining_interior.jpg" alt="NAM Atelier Monolithic Dining &amp; Kitchen Interior" loading="lazy" />
-          <div class="media-floating-badge">
+          <div class="media-floating-badge reveal reveal--fade reveal--delay-2">
             <span class="badge-sub">SINCE</span>
             <div class="badge-main">2020</div>
             <p class="badge-footer">Building trust.<br>Designing the future.</p>
@@ -1638,11 +1934,18 @@
       <section class="filter-section" id="selectedProjectsSection" aria-label="Project Categories &amp; Filters">
         <div class="section-header-row">
           <div>
-            <span class="eyebrow-label">OUR DISCIPLINES</span>
-            <h2 class="editorial-heading" style="margin-bottom: 0;">Complete design solutions<br>for every space.</h2>
+            <span class="eyebrow-label reveal reveal--fade">OUR DISCIPLINES</span>
+            <h2 class="editorial-heading" style="margin-bottom: 0;">
+              <span class="text-mask">
+                <span class="text-mask__line">Complete design solutions</span>
+              </span>
+              <span class="text-mask">
+                <span class="text-mask__line">for every space.</span>
+              </span>
+            </h2>
           </div>
           
-          <div class="filter-tabs-scroller" role="tablist" aria-label="Filter projects by category">
+          <div class="filter-tabs-scroller reveal reveal--up reveal--delay-1" role="tablist" aria-label="Filter projects by category">
             <button class="filter-tab-pill active" onclick="filterProjects('all', this)" role="tab" aria-selected="true">
               All Projects <span class="filter-count">(6)</span>
             </button>
@@ -1666,15 +1969,15 @@
           <!-- Populated dynamically and populated statically for instant SEO/rendering -->
           
           <!-- Project Card 1: Villa Sanctuary -->
-          <article class="project-card" data-category="residential" onclick="openProject('villa-sanctuary')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-1" data-category="residential" onclick="openProject('villa-sanctuary')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">01 / RESIDENTIAL VILLA</span>
               <img src="nam_luxury_residence_exterior.jpg" alt="Villa Sanctuary - Luxury Residential Architecture in Amritsar" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">Villa Sanctuary</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">European-inspired palatial sanctuary featuring sunken courtyard, glass portals, and serene reflecting pool.</p>
               <div class="card-meta-chips">
@@ -1686,15 +1989,15 @@
           </article>
 
           <!-- Project Card 2: Obsidian Penthouse -->
-          <article class="project-card" data-category="interior" onclick="openProject('obsidian-penthouse')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-2" data-category="interior" onclick="openProject('obsidian-penthouse')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">02 / PENTHOUSE INTERIOR</span>
               <img src="nam_living_render.jpg" alt="Obsidian Penthouse - Monolithic Travertine Living Hall in Ludhiana" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">Obsidian Penthouse</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">Double-height monolithic travertine living hall with floating stairs, Italian joinery, and custom recessed LED illumination.</p>
               <div class="card-meta-chips">
@@ -1706,15 +2009,15 @@
           </article>
 
           <!-- Project Card 3: The Marble Residence -->
-          <article class="project-card" data-category="commercial" onclick="openProject('the-marble-residence')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-3" data-category="commercial" onclick="openProject('the-marble-residence')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">03 / TURNKEY ESTATE</span>
               <img src="nam_commercial_render.jpg" alt="The Marble Residence - 14,000 sq ft Palatial Estate in Ludhiana" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">The Marble Residence</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">A landmark 14,000 sq.ft estate pairing classic Rajput colonnades with sleek Milanese interior minimalism.</p>
               <div class="card-meta-chips">
@@ -1726,15 +2029,15 @@
           </article>
 
           <!-- Project Card 4: Amber Heritage Suite -->
-          <article class="project-card" data-category="interior" onclick="openProject('amber-heritage-suite')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-1" data-category="interior" onclick="openProject('amber-heritage-suite')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">04 / MASTER SUITE</span>
               <img src="nam_bedroom_render.jpg" alt="Amber Heritage Suite - Bespoke Bedroom with Brass Inlays in Amritsar" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">Amber Heritage Suite</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">Tactile brass inlays with soft ambient backlighting, fluted acoustic headboard, and integrated marble spa wardrobe.</p>
               <div class="card-meta-chips">
@@ -1746,15 +2049,15 @@
           </article>
 
           <!-- Project Card 5: The Rosewood Villa Kitchen -->
-          <article class="project-card" data-category="interior" onclick="openProject('the-rosewood-villa')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-2" data-category="interior" onclick="openProject('the-rosewood-villa')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">05 / CHEF'S KITCHEN</span>
               <img src="nam_dining_interior.jpg" alt="The Rosewood Villa - Chef's Kitchen &amp; Monolithic Marble Island in Amritsar" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">The Rosewood Villa</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">Fluted dark walnut joinery with integrated monolithic marble island, German Blum hardware, and smart prep station.</p>
               <div class="card-meta-chips">
@@ -1766,15 +2069,15 @@
           </article>
 
           <!-- Project Card 6: Velvet Cinema Lounge -->
-          <article class="project-card" data-category="acoustic" onclick="openProject('velvet-cinema-lounge')">
-            <div class="card-media-wrapper">
+          <article class="project-card reveal reveal--up reveal--delay-3" data-category="acoustic" onclick="openProject('velvet-cinema-lounge')">
+            <div class="card-media-wrapper portfolio-image-reveal portfolio-image-hover">
               <span class="card-tag-badge">06 / ACOUSTIC THEATRE</span>
               <img src="nam_cinema_theatre.jpg" alt="Velvet Cinema Lounge - Dolby Atmos 9.4.4 Private Theatre in Ludhiana" loading="lazy" />
             </div>
             <div class="card-content-block">
-              <div class="card-title-row">
+              <div class="card-title-row portfolio-link">
                 <h3 class="card-project-title">Velvet Cinema Lounge</h3>
-                <i class="fa-solid fa-arrow-up-right card-arrow-icon" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-up-right card-arrow-icon portfolio-link__arrow" aria-hidden="true"></i>
               </div>
               <p class="card-project-desc">Dolby Atmos 9.4.4 private theatre with motorized emerald recliners, starry ceiling, and room-within-a-room acoustic isolation.</p>
               <div class="card-meta-chips">
@@ -1789,15 +2092,22 @@
       </section>
 
       <!-- SECTION 5: FEATURED PROJECT SECTION -->
-      <section class="featured-project-section" aria-label="Featured Architectural Project">
-        <div class="featured-content-padding">
-          <span class="eyebrow-label">FEATURED PROJECT</span>
-          <h2 class="editorial-heading">Modern living.<br>Timeless elegance.</h2>
-          <p class="editorial-desc" style="margin-bottom: 1.5rem;">
+      <section class="featured-project-section portfolio-cinematic-section" aria-label="Featured Architectural Project">
+        <div class="featured-content-padding portfolio-cinematic-section__content">
+          <span class="eyebrow-label reveal reveal--fade">FEATURED PROJECT</span>
+          <h2 class="editorial-heading">
+            <span class="text-mask">
+              <span class="text-mask__line">Modern living.</span>
+            </span>
+            <span class="text-mask">
+              <span class="text-mask__line">Timeless elegance.</span>
+            </span>
+          </h2>
+          <p class="editorial-desc reveal reveal--up reveal--delay-1" style="margin-bottom: 1.5rem;">
             Villa Sanctuary represents the pinnacle of contemporary architectural balance. Strong cantilevered stone geometry blends seamlessly with warm interior oak, sunken garden courtyards, and a serene perimeter reflecting pool.
           </p>
 
-          <ul class="featured-meta-list">
+          <ul class="featured-meta-list reveal reveal--up reveal--delay-2">
             <li class="featured-meta-item">
               <i class="fa-solid fa-location-dot"></i>
               <span>Location: <strong>Mall Road, Amritsar</strong></span>
@@ -1816,13 +2126,15 @@
             </li>
           </ul>
 
-          <button onclick="openProject('villa-sanctuary')" class="btn-editorial-pill">
-            <span>Explore Project</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          <div class="reveal reveal--up reveal--delay-3">
+            <button onclick="openProject('villa-sanctuary')" class="btn-editorial-pill portfolio-link">
+              <span>Explore Project</span>
+              <span class="portfolio-link__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+          </div>
         </div>
 
-        <div class="featured-media-frame">
+        <div class="featured-media-frame portfolio-image-reveal portfolio-image-hover scroll-image">
           <img src="nam_luxury_residence_exterior.jpg" alt="Villa Sanctuary - Featured Architectural Masterpiece" loading="lazy" />
         </div>
       </section>
@@ -1830,13 +2142,20 @@
       <!-- SECTION 6: STRICT EXCLUSION OF TESTIMONIALS (Omitted per Section 7 Rule) -->
 
       <!-- SECTION 7: BOTTOM CTA BANNER -->
-      <section class="portfolio-cta-banner" aria-label="Consultation Call to Action">
-        <div>
-          <h2 class="cta-heading">Let's create something<br>extraordinary together.</h2>
-          <p class="cta-subtext">Book a personal architectural consultation with our design directors.</p>
+      <section class="portfolio-cta-banner portfolio-cinematic-section" aria-label="Consultation Call to Action">
+        <div class="portfolio-cinematic-section__content">
+          <h2 class="cta-heading">
+            <span class="text-mask">
+              <span class="text-mask__line">Let's create something</span>
+            </span>
+            <span class="text-mask">
+              <span class="text-mask__line">extraordinary together.</span>
+            </span>
+          </h2>
+          <p class="cta-subtext reveal reveal--up reveal--delay-1">Book a personal architectural consultation with our design directors.</p>
         </div>
 
-        <div class="cta-contact-chips">
+        <div class="cta-contact-chips reveal reveal--up reveal--delay-2">
           <div class="contact-chip-item">
             <i class="fa-solid fa-phone"></i>
             <div>
@@ -1858,10 +2177,10 @@
           </div>
         </div>
 
-        <div>
-          <button class="btn-hero-pill" onclick="openModal('consultModal')">
+        <div class="reveal reveal--up reveal--delay-3">
+          <button class="btn-hero-pill portfolio-link" onclick="openModal('consultModal')">
             <span>Book Consultation</span>
-            <span class="arrow-circle"><i class="fa-solid fa-arrow-right"></i></span>
+            <span class="arrow-circle portfolio-link__arrow"><i class="fa-solid fa-arrow-right"></i></span>
           </button>
         </div>
       </section>
@@ -1887,14 +2206,16 @@
 
       <!-- Detail Hero Section -->
       <section class="project-detail-hero">
-        <span class="detail-hero-eyebrow" id="detailCategory">RESIDENTIAL VILLA</span>
-        <h1 class="detail-hero-title" id="detailTitle">VILLA SANCTUARY</h1>
-        <p class="detail-hero-tagline" id="detailTagline">
+        <span class="detail-hero-eyebrow reveal reveal--fade" id="detailCategory">RESIDENTIAL VILLA</span>
+        <h1 class="detail-hero-title text-mask" id="detailTitleMask">
+          <span class="text-mask__line" id="detailTitle">VILLA SANCTUARY</span>
+        </h1>
+        <p class="detail-hero-tagline reveal reveal--up reveal--delay-1" id="detailTagline">
           European-inspired palatial sanctuary featuring sunken courtyard, glass portals, and serene reflecting pool.
         </p>
 
         <!-- Project Meta Strip -->
-        <div class="detail-meta-strip">
+        <div class="detail-meta-strip reveal reveal--up reveal--delay-2">
           <div class="detail-meta-item">
             <h6>LOCATION</h6>
             <p id="detailLocation">Mall Road, Amritsar</p>
@@ -1918,14 +2239,14 @@
         </div>
 
         <!-- Main Panoramic Hero Render -->
-        <div class="detail-main-media">
+        <div class="detail-main-media portfolio-image-reveal portfolio-image-hover scroll-image">
           <img id="detailHeroImage" src="nam_luxury_residence_exterior.jpg" alt="Signature Project Render" fetchpriority="high" />
         </div>
       </section>
 
       <!-- Architectural Concept & Curated Materials Split -->
       <section class="detail-narrative-grid">
-        <div class="narrative-text-box">
+        <div class="narrative-text-box reveal reveal--up reveal--delay-1">
           <h3 id="detailNarrativeHeading">Architectural Blueprint &amp; Civil Narrative</h3>
           <p id="detailDesc1">
             At NAM Atelier, every structural element is calculated in 3D photorealism before site groundbreaking begins. This residence features double-height cantilever ceilings, concealed HVAC slot diffusers, and monolithic stone flooring engineered to withstand Punjab's thermal cycles.
@@ -1935,14 +2256,14 @@
           </p>
           
           <div style="margin-top: 2rem;">
-            <button onclick="openModal('consultModal')" class="btn-editorial-pill">
+            <button onclick="openModal('consultModal')" class="btn-editorial-pill portfolio-link">
               <span>Commission a Similar Project</span>
-              <i class="fa-solid fa-arrow-right"></i>
+              <span class="portfolio-link__arrow"><i class="fa-solid fa-arrow-right"></i></span>
             </button>
           </div>
         </div>
 
-        <div class="materials-sidebar-card">
+        <div class="materials-sidebar-card reveal reveal--up reveal--delay-2">
           <h4 class="materials-sidebar-title">Curated Material Palette</h4>
           <div class="palette-list" id="detailPaletteContainer">
             <!-- Populated dynamically via JS -->
@@ -1951,8 +2272,8 @@
       </section>
 
       <!-- Architectural & Interior Image Gallery -->
-      <section class="detail-gallery-section">
-        <span class="eyebrow-label">PROJECT GALLERY</span>
+      <section class="detail-gallery-section portfolio-cinematic-section">
+        <span class="eyebrow-label reveal reveal--fade">PROJECT GALLERY</span>
         <h3 class="editorial-heading" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Visual Documentation &amp; Renders</h3>
         <p class="editorial-desc" style="margin-bottom: 1.5rem;">High-resolution exterior perspectives, spatial interiors, and material craftsmanship details.</p>
 
@@ -2250,6 +2571,10 @@
           card.style.display = 'none';
         }
       });
+
+      if (window.initPortfolioAnimations) {
+        window.initPortfolioAnimations();
+      }
     }
 
     // ── Open Individual Project Detail View ──
@@ -2301,7 +2626,7 @@
       galleryContainer.innerHTML = '';
       proj.gallery.forEach(img => {
         const thumb = document.createElement('div');
-        thumb.className = 'gallery-thumb-item';
+        thumb.className = 'gallery-thumb-item portfolio-image-reveal portfolio-image-hover';
         thumb.onclick = () => openLightbox(img.src, img.title);
         thumb.innerHTML = `
           <img src="${img.src}" alt="${img.title}" loading="lazy" />
@@ -2336,6 +2661,10 @@
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (window.initPortfolioAnimations) {
+        setTimeout(window.initPortfolioAnimations, 40);
+      }
     }
 
     // ── Navigate Adjacent Project ──
@@ -2357,6 +2686,10 @@
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (window.initPortfolioAnimations) {
+        setTimeout(window.initPortfolioAnimations, 40);
+      }
     }
 
     // ── Accessible Image Lightbox ──
@@ -2403,6 +2736,9 @@
       }
     });
   </script>
+
+  <!-- ANIMATION ENGINE SCRIPT (Scroll-Reveal & Parallax Progress) -->
+  <script src="portfolio-animations.js?v=2.1" defer></script>
 
   <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
   <script src="script.js?v=4.3" defer></script>
