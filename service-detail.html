@@ -374,15 +374,28 @@
     }
 
     /* ── CAROUSEL CARDS ── */
+    .hero-right-carousel {
+      align-self: end;
+      min-width: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0.85rem;
+      box-sizing: border-box;
+      margin-top: auto;
+    }
+
     .service-carousel-card {
-      flex: 0 0 clamp(190px, 17vw, 240px);
+      flex: 0 0 clamp(170px, 15vw, 210px);
       min-width: 0;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.45rem;
       cursor: pointer;
       box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .service-card-media {
@@ -390,16 +403,18 @@
       isolation: isolate;
       display: flex;
       align-items: flex-end;
-      aspect-ratio: 3 / 4;
-      min-height: 250px;
-      padding: 1.15rem;
-      border-radius: 14px;
+      aspect-ratio: 16 / 10;
+      min-height: unset !important;
+      height: 120px;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
       overflow: hidden;
-      background-color: #1a1a1a;
+      background-color: #161616;
       text-decoration: none;
       border: 1px solid rgba(255, 255, 255, 0.12);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       box-sizing: border-box;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
     }
 
     .service-card-media img {
@@ -408,6 +423,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       z-index: 1;
       transition: transform 0.5s ease;
     }
@@ -418,8 +434,9 @@
       z-index: 2;
       background: linear-gradient(
         to bottom,
-        transparent 38%,
-        rgba(0, 0, 0, 0.85) 100%
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(0, 0, 0, 0.3) 45%,
+        rgba(0, 0, 0, 0.88) 100%
       );
       pointer-events: none;
     }
@@ -429,43 +446,47 @@
       z-index: 3;
       color: #FFFFFF;
       font-family: var(--font-serif, 'Playfair Display', serif);
-      font-size: 1.05rem;
+      font-size: 0.86rem;
       font-weight: 500;
       line-height: 1.25;
-      letter-spacing: 0.3px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
       transition: color 0.25s ease;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .service-card-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       color: var(--svc-accent-gold, #C6AD83);
       font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
       transition: color 0.25s ease, transform 0.25s ease;
       width: fit-content;
-      padding: 0.15rem 0;
+      padding: 0.1rem 0;
     }
 
     .service-card-btn .btn-arrow {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       transition: transform 0.25s ease;
     }
 
     .service-carousel-card:hover .service-card-media {
-      border-color: rgba(198, 173, 131, 0.5);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-      transform: translateY(-3px);
+      border-color: rgba(198, 173, 131, 0.55);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+      transform: translateY(-2px);
     }
 
     .service-carousel-card:hover .service-card-media img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     .service-carousel-card:hover .service-card-btn {
@@ -473,12 +494,12 @@
     }
 
     .service-carousel-card:hover .service-card-btn .btn-arrow {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
 
     .service-carousel-card.active .service-card-media {
       border-color: var(--svc-accent-gold, #C6AD83);
-      box-shadow: 0 0 0 1px var(--svc-accent-gold, #C6AD83), 0 12px 32px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 0 0 1px var(--svc-accent-gold, #C6AD83), 0 8px 24px rgba(0, 0, 0, 0.7);
     }
 
     /* ── CONTROLS BAR: ARROWS + PROGRESS ── */
@@ -558,12 +579,12 @@
     @media (max-width: 960px) {
       .cinematic-service-hero {
         margin-top: calc(var(--actual-header-bottom, 78px) + 20px);
-        padding: 44px 5% 32px;
+        padding: 40px 4% 28px;
         min-height: auto;
       }
       .hero-inner-container {
         grid-template-columns: 1fr;
-        gap: 2.25rem;
+        gap: 2rem;
         min-height: auto;
       }
       .hero-left-content {
@@ -571,36 +592,80 @@
         padding: 0;
       }
       .hero-service-title {
-        font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+        font-size: clamp(1.85rem, 4.2vw, 2.5rem);
       }
       .service-carousel-card {
-        flex-basis: 200px;
+        flex: 0 0 clamp(155px, 22vw, 190px);
       }
       .service-card-media {
-        min-height: 230px;
+        min-height: unset !important;
+        height: 110px;
       }
     }
 
     @media (max-width: 600px) {
       .cinematic-service-hero {
-        margin-top: calc(var(--actual-header-bottom, 62px) + 16px);
-        padding: 32px 18px 24px;
+        margin-top: calc(var(--actual-header-bottom, 62px) + 12px);
+        padding: 24px 14px 18px;
       }
       .hero-inner-container {
-        gap: 1.75rem;
+        gap: 1.25rem;
       }
       .hero-service-title {
-        font-size: clamp(1.65rem, 6.8vw, 2.1rem);
+        font-size: clamp(1.45rem, 6.2vw, 1.85rem);
+        line-height: 1.15;
+        margin-bottom: 0.5rem;
       }
       .hero-service-subheading {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        margin-bottom: 1.15rem;
+        max-width: 100%;
+      }
+      .hero-btn-primary {
+        min-height: 38px;
+        padding: 0 1.35rem;
+        font-size: 0.7rem;
+      }
+      .hero-right-carousel {
+        gap: 0.65rem;
+      }
+      .hero-carousel-viewport {
+        padding: 0.2rem 0.1rem;
+      }
+      .hero-carousel-track {
+        gap: 0.65rem;
       }
       .service-carousel-card {
-        flex-basis: min(72vw, 240px);
+        flex: 0 0 clamp(135px, 40vw, 160px);
+        gap: 0.35rem;
       }
       .service-card-media {
-        min-height: 220px;
+        aspect-ratio: 16 / 10;
+        min-height: unset !important;
+        height: 94px;
+        padding: 0.45rem 0.55rem;
+        border-radius: 8px;
+      }
+      .service-card-title {
+        font-size: 0.75rem;
+        line-height: 1.2;
+      }
+      .service-card-btn {
+        font-size: 0.62rem;
+        padding: 0;
+      }
+      .hero-controls-bar {
+        padding-top: 0.25rem;
+        gap: 0.75rem;
+      }
+      .hero-nav-arrow-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.72rem;
+      }
+      .hero-status-pill {
+        font-size: 0.68rem;
       }
     }
 

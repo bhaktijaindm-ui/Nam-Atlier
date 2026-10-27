@@ -4340,3 +4340,50 @@ body:not(:has(.cinema-scroll)) .site-header {
   color: inherit !important;
 }
 
+/* ==========================================================================
+   GLOBAL RESPONSIVE OPTIMIZATIONS — TASK 1 & TASK 2
+   Ensuring zero horizontal overflow, fluid typography, and mobile-first heroes
+   across all viewports (320px to 2560px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .swift-page-wrapper {
+    padding: calc(var(--actual-header-bottom, 62px) + 14px) 12px 2.5rem !important;
+  }
+  .swift-main-article-card {
+    padding: 1.15rem 1rem !important;
+    border-radius: 12px !important;
+  }
+  .swift-featured-image-box {
+    height: clamp(200px, 48vw, 280px) !important;
+    border-radius: 10px !important;
+  }
+  .swift-article-h1 {
+    font-size: clamp(1.45rem, 6vw, 1.85rem) !important;
+    line-height: 1.2 !important;
+  }
+  .swift-article-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.15rem !important;
+  }
+  .detail-meta-strip {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.85rem !important;
+    padding: 0.9rem 1rem !important;
+  }
+  .detail-meta-item h6 {
+    font-size: 0.65rem !important;
+  }
+  .detail-meta-item p {
+    font-size: 1.05rem !important;
+  }
+  .detail-main-media {
+    margin-bottom: 2.5rem !important;
+    border-radius: 12px !important;
+  }
+  .detail-main-media img {
+    height: clamp(220px, 50vw, 360px) !important;
+  }
+}
+
+
