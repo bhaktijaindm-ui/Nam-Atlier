@@ -861,23 +861,67 @@ function initAnimatedTestimonials() {
 
   function updateControls() {
     if (!scrollLeftBtn || !scrollRightBtn) return;
-    scrollLeftBtn.disabled = track.scrollLeft <= 0;
-    scrollRightBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+    scrollLeftBtn.disabled = track.scrollLeft <= 5;
+    scrollRightBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 10;
   }
 
   if (scrollLeftBtn) {
     scrollLeftBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -360, behavior: 'smooth' });
+      const cardWidth = track.querySelector('.testi-card-item')?.offsetWidth || 350;
+      track.scrollBy({ left: -(cardWidth + 28), behavior: 'smooth' });
     });
   }
 
   if (scrollRightBtn) {
     scrollRightBtn.addEventListener('click', () => {
-      track.scrollBy({ left: 360, behavior: 'smooth' });
+      const cardWidth = track.querySelector('.testi-card-item')?.offsetWidth || 350;
+      track.scrollBy({ left: (cardWidth + 28), behavior: 'smooth' });
     });
   }
 
-  track.addEventListener('scroll', updateControls);
+  // Smooth mouse drag-to-scroll support
+  let isDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let hasMoved = false;
+
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    hasMoved = false;
+    startX = e.pageX - track.offsetLeft;
+    scrollStart = track.scrollLeft;
+    track.style.scrollBehavior = 'auto';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    if (Math.abs(walk) > 6) {
+      hasMoved = true;
+    }
+    track.scrollLeft = scrollStart - walk;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    track.style.scrollBehavior = 'smooth';
+    updateControls();
+  });
+
+  // Prevent click from opening modal if user was dragging
+  track.querySelectorAll('.testi-card-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      if (hasMoved) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        hasMoved = false;
+      }
+    }, true);
+  });
+
+  track.addEventListener('scroll', updateControls, { passive: true });
   updateControls();
 }
 
