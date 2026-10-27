@@ -2512,29 +2512,6 @@
           }
         );
       });
-
-      /* Pinned Scroll-Driven Sketchbook Flip on Laptop/Desktop */
-      const sbFrame = document.getElementById('namSketchbookFrame');
-      const sbSection = document.getElementById('sketchbook');
-      if (sbFrame && sbSection && typeof gsap.matchMedia === 'function') {
-        const mm = gsap.matchMedia();
-        mm.add("(min-width: 769px)", () => {
-          ScrollTrigger.create({
-            trigger: '#sketchbook',
-            start: 'top top+=75',
-            end: '+=2000',
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-            onUpdate: (self) => {
-              const targetIndex = Math.min(6, Math.floor(self.progress * 7));
-              if (sbFrame && sbFrame.contentWindow) {
-                sbFrame.contentWindow.postMessage({ type: 'SCROLL_PLATE', index: targetIndex }, '*');
-              }
-            }
-          });
-        });
-      }
     }
 
     /* Forward wheel events and handle dynamic height from sketchbook iframe */
