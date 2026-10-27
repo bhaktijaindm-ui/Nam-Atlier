@@ -3666,6 +3666,19 @@ body:not(:has(.cinema-scroll)) .site-header {
     }
   }
 
+  @media (max-width: 360px) {
+    .site-header {
+      width: 96% !important;
+      padding: 0.35rem 0.65rem !important;
+    }
+    .header-brand-nav-stack {
+      max-width: 110px !important;
+    }
+    .btn-inquire-pill {
+      display: none !important;
+    }
+  }
+
   /* MOBILE HAMBURGER TOGGLE BUTTON */
   .mobile-menu-toggle {
     display: flex !important;
