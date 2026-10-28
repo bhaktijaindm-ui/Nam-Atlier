@@ -1166,25 +1166,43 @@ async function initCinematicAnimationSystem() {
     }
   }
 
-  // Blueprint / Design Philosophy Section
+  // Blueprint / Design Philosophy Section (Centered with Staggered Scroll Animation)
   const blueprintSec = document.getElementById('blueprint-concept');
   if (blueprintSec && !isExcludedHero(blueprintSec)) {
     const svgCol = blueprintSec.querySelector('.blueprint-svg-illustration');
     const contentCol = blueprintSec.querySelector('.blueprint-content');
-    if (svgCol && contentCol) {
+    const tag = blueprintSec.querySelector('.blueprint-tag');
+    const heading = blueprintSec.querySelector('.blueprint-heading');
+    const text = blueprintSec.querySelector('.blueprint-text');
+
+    if (svgCol) {
       gsap.from(svgCol, {
         opacity: 0,
-        x: -45,
-        duration: 1.0,
+        y: -25,
+        scale: 0.96,
+        duration: 1.1,
         ease: 'power3.out',
-        scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
+        scrollTrigger: {
+          trigger: blueprintSec,
+          start: 'top 82%',
+          toggleActions: 'play none none reverse'
+        }
       });
-      gsap.from(contentCol, {
+    }
+
+    if (contentCol) {
+      const animElements = [tag, heading, text].filter(Boolean);
+      gsap.from(animElements, {
         opacity: 0,
-        x: 45,
+        y: 36,
         duration: 1.0,
+        stagger: 0.18,
         ease: 'power3.out',
-        scrollTrigger: { trigger: blueprintSec, start: 'top 82%' }
+        scrollTrigger: {
+          trigger: blueprintSec,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
       });
     }
   }
