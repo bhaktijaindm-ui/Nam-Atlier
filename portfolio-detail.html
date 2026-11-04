@@ -580,242 +580,361 @@
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
-       4. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
+       3. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
        ══════════════════════════════════════════════════════════════════════════ */
+    .materials-section {
+      position: relative;
+      background: var(--surface);
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px);
+      z-index: 6;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .materials-inner {
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    .materials-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(48px, 8vh, 96px);
+    }
+
+    .materials-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .materials-title {
+      font-family: var(--font-jost);
+      font-weight: 300;
+      font-size: clamp(32px, 4.4vw, 62px);
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .materials-desc {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: var(--mute);
+      line-height: 1.8;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
+    }
+
+    .material-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .material-card:nth-child(2) {
+      margin-top: clamp(0px, 6vh, 80px);
+    }
+
+    .material-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 2px;
+      background: #111;
+      position: relative;
+    }
+
+    .material-img-wrap img {
+      width: 100%;
+      height: 116%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+      margin-top: -8%;
+    }
+
+    .material-caption h3 {
+      font-family: var(--font-jost);
+      font-weight: 400;
+      font-size: clamp(18px, 1.6vw, 24px);
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .material-caption p {
+      font-size: 14px;
+      color: var(--mute);
+      line-height: 1.7;
+    }
+
     /* ══════════════════════════════════════════════════════════════════════════
-       5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL (Unboxed, Freely Moving)
+       4. SIGNATURE CIRCULAR 3D ARC SERVICES CAROUSEL SECTION
        ══════════════════════════════════════════════════════════════════════════ */
-    .wr-section {
+    .circ-section {
       position: relative;
       width: 100%;
-      height: 90vh;
-      min-height: clamp(620px, 86vh, 920px);
-      max-height: 980px;
       background: var(--bg);
+      padding: clamp(80px, 11vh, 140px) clamp(20px, 4vw, 60px);
       overflow: hidden;
       z-index: 6;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       flex-direction: column;
-    }
-
-    .wr-carousel {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      flex: 1;
-      overflow: hidden;
-      touch-action: pan-y;
-      user-select: none;
-    }
-
-    .wr-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      z-index: 1;
-      cursor: grab;
-      touch-action: pan-y;
-    }
-
-    .wr-canvas:active {
-      cursor: grabbing;
-    }
-
-    /* Ambient Edge Gradient (No card boxes, pure liquid bleed) */
-    .wr-carousel::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, 
-        rgba(11, 11, 11, 0.75) 0%, 
-        rgba(11, 11, 11, 0.1) 25%, 
-        rgba(11, 11, 11, 0.15) 70%, 
-        rgba(11, 11, 11, 0.88) 100%);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* Floating Unboxed Editorial Overlay */
-    .wr-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(32px, 5vh, 60px) clamp(24px, 5vw, 80px);
-    }
-
-    /* Top Strip: Eyebrow + Counter */
-    .wr-top-bar {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      pointer-events: auto;
+      justify-content: center;
     }
 
-    .wr-brand-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .circ-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto clamp(36px, 6vh, 64px);
     }
 
-    .wr-tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--brass);
-      box-shadow: 0 0 10px var(--brass-glow);
-    }
-
-    .wr-tag-text {
+    .circ-eyebrow {
       font-family: var(--font-jost);
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--brass);
+      margin-bottom: 12px;
+      display: block;
     }
 
-    .wr-counter {
-      font-family: var(--font-jost);
-      font-size: 0.84rem;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      color: rgba(243, 238, 230, 0.55);
-    }
-
-    .wr-counter-curr {
-      color: var(--ink);
-      font-weight: 500;
-      font-size: 1.15rem;
-    }
-
-    /* Bottom Strip: Info Block + Controls Block */
-    .wr-bottom-bar {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: clamp(24px, 4vw, 64px);
-      width: 100%;
-      pointer-events: none;
-    }
-
-    .wr-info-block {
-      max-width: 640px;
-      pointer-events: auto;
-    }
-
-    .wr-pill {
-      display: inline-block;
-      font-family: var(--font-jost);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 14px;
-      background: rgba(184, 147, 90, 0.12);
-      border: 1px solid rgba(184, 147, 90, 0.28);
-      padding: 6px 14px;
-      border-radius: 99px;
-      backdrop-filter: blur(12px);
-    }
-
-    .wr-title {
+    .circ-title {
       font-family: var(--font-jost);
       font-weight: 300;
-      font-size: clamp(28px, 4.2vw, 56px);
-      letter-spacing: clamp(0.04em, 0.3vw, 0.08em);
+      font-size: clamp(30px, 4.2vw, 56px);
+      letter-spacing: clamp(0.06em, 0.4vw, 0.12em);
       line-height: 1.15;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 14px;
-      will-change: transform, opacity;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      margin-bottom: 12px;
     }
 
-    .wr-caption {
+    .circ-script {
+      font-family: var(--font-script);
+      font-weight: 400;
+      font-size: clamp(38px, 5.5vw, 76px);
+      color: var(--script-color);
+      display: block;
+      margin-top: -6px;
+      margin-bottom: 12px;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: 0.9;
+    }
+
+    .circ-desc {
       font-family: var(--font-jost);
+      font-size: clamp(14px, 1.1vw, 16px);
       font-weight: 300;
-      font-size: clamp(14px, 1.15vw, 17px);
-      color: rgba(243, 238, 230, 0.78);
+      color: var(--mute);
       line-height: 1.7;
-      margin-bottom: 24px;
-      max-width: 540px;
-      will-change: transform, opacity;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
     }
 
-    .wr-action-row {
+    /* 3D Arc Stage */
+    .circ-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1300px;
+      height: clamp(440px, 52vh, 520px);
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      overflow: visible;
+      touch-action: pan-y;
+      user-select: none;
     }
 
-    .wr-link {
+    /* Backing Center Counter */
+    .circ-center-counter {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .circ-center-num {
+      font-family: var(--font-jost);
+      font-size: clamp(84px, 14vw, 180px);
+      font-weight: 100;
+      letter-spacing: 0.08em;
+      color: rgba(243, 238, 230, 0.045);
+      line-height: 0.85;
+      user-select: none;
+    }
+
+    .circ-center-sub {
+      font-family: var(--font-jost);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(184, 147, 90, 0.4);
+      margin-top: 8px;
+    }
+
+    /* Circular Cards */
+    .circ-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(260px, 24vw, 320px);
+      border-radius: 20px;
+      background: rgba(19, 18, 16, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      transform-origin: center center;
+      will-change: transform, opacity;
+      z-index: 2;
+    }
+
+    .circ-card.active {
+      border-color: rgba(184, 147, 90, 0.65);
+      box-shadow: 0 24px 64px -8px rgba(0, 0, 0, 0.85), 0 0 24px rgba(184, 147, 90, 0.25);
+    }
+
+    .circ-card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .circ-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .circ-card:hover .circ-card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .circ-card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--font-jost);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+      background: rgba(11, 11, 11, 0.72);
+      border: 1px solid rgba(184, 147, 90, 0.35);
+      padding: 5px 12px;
+      border-radius: 99px;
+      backdrop-filter: blur(10px);
+    }
+
+    .circ-card-body {
+      padding: clamp(16px, 2vw, 20px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .circ-card-title {
+      font-family: var(--font-jost);
+      font-weight: 500;
+      font-size: clamp(15px, 1.15vw, 17px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .circ-card-desc {
+      font-family: var(--font-jost);
+      font-weight: 300;
+      font-size: 0.82rem;
+      color: var(--mute);
+      line-height: 1.55;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .circ-card-btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       font-family: var(--font-jost);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #0b0b0b;
-      background: var(--ink);
-      border: 1px solid var(--ink);
-      padding: 11px 24px;
-      border-radius: 99px;
+      color: var(--brass);
       text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      margin-top: 6px;
+      transition: all 0.25s ease;
+      width: fit-content;
     }
 
-    .wr-link:hover {
-      background: var(--brass);
-      border-color: var(--brass);
-      color: #0b0b0b;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px var(--brass-glow);
+    .circ-card-btn:hover {
+      color: var(--ink);
+      transform: translateX(3px);
     }
 
-    .wr-link svg {
+    .circ-card-btn svg {
       transition: transform 0.25s ease;
     }
 
-    .wr-link:hover svg {
-      transform: translateX(4px);
+    .circ-card-btn:hover svg {
+      transform: translate(2px, -2px);
     }
 
-    /* Controls: Circular Navigation Buttons & Autoplay Progress Bar */
-    .wr-controls-block {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 18px;
-      pointer-events: auto;
-    }
-
-    .wr-nav-buttons {
+    /* Controls: Circular Navigation Buttons & Dot Indicators */
+    .circ-controls {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 20px;
+      margin-top: clamp(32px, 5vh, 48px);
+      z-index: 10;
     }
 
-    .wr-btn {
-      width: 52px;
-      height: 52px;
+    .circ-nav-btn {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: rgba(11, 11, 11, 0.75);
-      border: 1px solid rgba(243, 238, 230, 0.22);
+      background: rgba(19, 18, 16, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--ink);
       display: flex;
       align-items: center;
@@ -826,95 +945,93 @@
       -webkit-backdrop-filter: blur(16px);
     }
 
-    .wr-btn:hover {
-      background: rgba(184, 147, 90, 0.22);
+    .circ-nav-btn:hover {
       border-color: var(--brass);
       color: var(--brass);
-      transform: scale(1.06);
+      background: rgba(184, 147, 90, 0.15);
+      transform: scale(1.08);
       box-shadow: 0 0 16px var(--brass-glow);
     }
 
-    .wr-btn:active {
-      transform: scale(0.96);
+    .circ-nav-btn:active {
+      transform: scale(0.95);
     }
 
-    /* Autoplay Progress Track */
-    .wr-track {
-      width: 140px;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.16);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
+    .circ-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .wr-fill {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--brass);
-      transform-origin: left center;
-      transform: scaleX(0);
-      box-shadow: 0 0 8px var(--brass-glow);
-    }
-
-    .wr-fill[data-run="1"] {
-      animation: wrAutoplay 7s linear forwards;
-    }
-
-    @keyframes wrAutoplay {
-      0% { transform: scaleX(0); }
-      100% { transform: scaleX(1); }
-    }
-
-    /* Screen Reader Text */
-    .wr-sr {
-      position: absolute;
-      width: 1px;
-      height: 1px;
+    .circ-dot {
+      height: 6px;
+      width: 6px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      border: none;
       padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    }
+
+    .circ-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .circ-dot.active {
+      width: 28px;
+      background: var(--brass);
+      box-shadow: 0 0 10px var(--brass-glow);
     }
 
     /* Responsive Adjustments for Mobile & Tablet */
     @media (max-width: 899px) {
-      .wr-section {
-        height: auto;
-        min-height: 640px;
+      .materials-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
       }
-      .wr-overlay {
-        padding: 24px 20px;
+
+      .material-card:nth-child(2) {
+        margin-top: 0;
       }
-      .wr-bottom-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+
+      .circ-section {
+        padding: 60px 20px;
       }
-      .wr-controls-block {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+
+      .circ-stage {
+        height: 400px;
       }
-      .wr-title {
-        font-size: clamp(24px, 5.5vw, 36px);
+
+      .circ-card {
+        width: 250px;
       }
-      .wr-caption {
+
+      .circ-nav-btn {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    @media (max-width: 599px) {
+      .circ-stage {
+        height: 360px;
+      }
+
+      .circ-card {
+        width: 220px;
+      }
+
+      .circ-card-body {
+        padding: 12px;
+      }
+
+      .circ-card-title {
         font-size: 14px;
-        margin-bottom: 18px;
       }
-      .wr-btn {
-        width: 44px;
-        height: 44px;
-      }
-      .wr-track {
-        width: 100px;
+
+      .circ-card-desc {
+        display: none; /* Keep clean on small mobile */
       }
     }
 
@@ -1362,73 +1479,214 @@
   </section>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL
+       3. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
        ═════════════════════════════════════════════════════════════════════════ -->
-  <section class="wr-section" id="services-ripple-section" aria-label="Curated Architectural Disciplines & Services">
-    <div class="wr-carousel" id="wrCarousel">
-      <!-- WebGL Liquid Refraction Canvas -->
-      <canvas id="wrCanvas" class="wr-canvas"></canvas>
-
-      <!-- Unboxed Editorial Overlay Floating Over Canvas -->
-      <div class="wr-overlay" id="wrOverlay">
-        
-        <!-- Header Strip -->
-        <div class="wr-top-bar">
-          <div class="wr-brand-tag">
-            <span class="wr-tag-dot"></span>
-            <span class="wr-tag-text">ARTISANAL SOURCING &amp; DISCIPLINES</span>
-          </div>
-          <div class="wr-counter">
-            <span class="wr-counter-curr" id="wrCurNum">01</span>
-            <span class="wr-counter-total"> / 07</span>
-          </div>
-        </div>
-
-        <!-- Floating Info & Navigation Bottom Block -->
-        <div class="wr-bottom-bar">
-          <div class="wr-info-block">
-            <span class="wr-pill" id="wrPill">01 &bull; Architectural Planning &amp; Facades</span>
-            <h2 class="wr-title" id="wrTitle">Monolithic Facades &amp; Villa Planning</h2>
-            <p class="wr-caption" id="wrCaption">Parametric limestone envelopes, cantilever geometry, and private courtyard estates across Punjab.</p>
-            
-            <div class="wr-action-row">
-              <a href="services/architectural-design" class="wr-link" id="wrLink" onclick="event.stopPropagation();">
-                <span>Explore Discipline</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Controls: Buttons + Autoplay Track -->
-          <div class="wr-controls-block">
-            <div class="wr-nav-buttons">
-              <button type="button" class="wr-btn wr-prev" id="wrPrevBtn" aria-label="Previous Slide" onclick="event.stopPropagation(); wrGo(-1);">
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="m10 13-5-5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <button type="button" class="wr-btn wr-next" id="wrNextBtn" aria-label="Next Slide" onclick="event.stopPropagation(); wrGo(1);">
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Progress Track -->
-            <div class="wr-track" aria-hidden="true">
-              <div class="wr-fill" id="wrFill"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Screen reader live announcement -->
-        <div class="wr-sr" id="wrSr" aria-live="polite">
-          Slide 1 of 7: Monolithic Facades &amp; Villa Planning
-        </div>
-
+  <section class="materials-section" id="materials-section" aria-label="Materials we love">
+    <div class="materials-inner">
+      <div class="materials-head">
+        <span class="materials-eyebrow">Materiality &amp; Tactile Craft</span>
+        <h2 class="materials-title">Materials we love</h2>
+        <p class="materials-desc">We select unrepeatable natural stones, raw timbers, and warm metals that age with grace, grounding every private space in authenticity.</p>
       </div>
+
+      <div class="materials-grid">
+        <!-- Card 1 -->
+        <article class="material-card">
+          <div class="material-img-wrap">
+            <img src="images/portfolio/hero-material.webp" alt="Roman Travertine and raw stone architectural palette" class="mat-parallax-1" loading="lazy" decoding="async" width="1440" height="1800">
+          </div>
+          <div class="material-caption">
+            <h3>Roman Travertine &amp; Honed Limestone</h3>
+            <p>Quarried blocks selected personally from Tivoli and Rajasthan, cut with zero-joint precision and honed for soft natural light reflection.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="material-card">
+          <div class="material-img-wrap">
+            <img src="images/portfolio/hero-spa.webp" alt="Smoked walnut joinery and patinated brass details" class="mat-parallax-2" loading="lazy" decoding="async" width="1440" height="1800">
+          </div>
+          <div class="material-caption">
+            <h3>Smoked Walnut &amp; Architectural Brass</h3>
+            <p>Hand-fluted timber slats with brushed patinated brass reveals and acoustic isolation, creating intimate, tactile warmth in master suites.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       4. SIGNATURE CIRCULAR 3D ARC SERVICES CAROUSEL SECTION
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="circ-section" id="services-circular-section" aria-label="Curated Architectural Disciplines &amp; Services">
+    <div class="circ-header">
+      <span class="circ-eyebrow">DISCIPLINES &amp; EXPERTISE</span>
+      <h2 class="circ-title">OUR ARCHITECTURAL DISCIPLINES</h2>
+      <span class="circ-script">Curated Services</span>
+      <p class="circ-desc">Every spatial typology executed with obsessive craftsmanship, uncompromising materials, and turnkey precision.</p>
+    </div>
+
+    <!-- 3D Arc Interactive Stage -->
+    <div class="circ-stage" id="circStage" role="region" aria-roledescription="carousel" aria-label="Services 3D Carousel">
+      
+      <!-- Center Number Backdrop -->
+      <div class="circ-center-counter" aria-hidden="true">
+        <span class="circ-center-num" id="circCenterNum">01</span>
+        <span class="circ-center-sub">OF 07 SERVICES</span>
+      </div>
+
+      <!-- 7 3D Circular Arc Cards -->
+      <!-- Card 0 -->
+      <article class="circ-card active" data-idx="0" role="group" aria-roledescription="slide" aria-label="1 of 7: Architectural Planning &amp; Facades">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/01-facades.webp" alt="Architectural Planning &amp; Facades" width="1440" height="900" loading="eager">
+          <span class="circ-card-tag">01 &middot; ARCHITECTURE</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Architectural Planning &amp; Facades</h3>
+          <p class="circ-card-desc">Monolithic limestone envelopes, cantilever geometry, and private courtyard estates across Punjab.</p>
+          <a href="services/architectural-design" class="circ-card-btn" aria-label="Explore Architectural Planning &amp; Facades service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 1 -->
+      <article class="circ-card" data-idx="1" role="group" aria-roledescription="slide" aria-label="2 of 7: Bespoke Interior Architecture">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/02-interiors.webp" alt="Bespoke Interior Architecture" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">02 &middot; INTERIORS</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Bespoke Interior Architecture</h3>
+          <p class="circ-card-desc">Double-height living spaces, fluted walnut joinery, bookmatched travertine, and calibrated light.</p>
+          <a href="services/interior-design" class="circ-card-btn" aria-label="Explore Bespoke Interior Architecture service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="circ-card" data-idx="2" role="group" aria-roledescription="slide" aria-label="3 of 7: Turnkey Civil Execution">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/03-civil.webp" alt="Turnkey Civil Execution" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">03 &middot; CIVIL</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Turnkey Civil Execution</h3>
+          <p class="circ-card-desc">Laser-levelled high-density RCC framing, structural waterproofing, and German MEP integration.</p>
+          <a href="services/turnkey-civil-execution" class="circ-card-btn" aria-label="Explore Turnkey Civil Execution service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="circ-card" data-idx="3" role="group" aria-roledescription="slide" aria-label="4 of 7: Acoustic Private Cinemas">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/04-theatres.webp" alt="Acoustic Private Cinemas" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">04 &middot; CINEMA</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Acoustic Private Theatres</h3>
+          <p class="circ-card-desc">Room-within-a-room acoustic baffling, tuned fabric wall panels, and 4K laser Dolby Atmos.</p>
+          <a href="services/acoustic-theatre-design" class="circ-card-btn" aria-label="Explore Acoustic Private Theatres service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="circ-card" data-idx="4" role="group" aria-roledescription="slide" aria-label="5 of 7: Kitchen &amp; Dining Architecture">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/05-kitchens.webp" alt="Kitchen &amp; Dining Architecture" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">05 &middot; KITCHEN</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Kitchen &amp; Dining Architecture</h3>
+          <p class="circ-card-desc">Continuous Calacatta quartz waterfalls, concealed pocket pantries, and integrated Miele appliances.</p>
+          <a href="services/kitchen-dining" class="circ-card-btn" aria-label="Explore Kitchen &amp; Dining Architecture service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="circ-card" data-idx="5" role="group" aria-roledescription="slide" aria-label="6 of 7: Master Suites &amp; Private Spas">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/06-suites.webp" alt="Master Suites &amp; Private Spas" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">06 &middot; SUITES</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Master Suites &amp; Private Spas</h3>
+          <p class="circ-card-desc">Acoustic floating headboards, walk-in dressing sanctuaries, and heated freestanding stone tubs.</p>
+          <a href="services/master-suites" class="circ-card-btn" aria-label="Explore Master Suites &amp; Private Spas service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="circ-card" data-idx="6" role="group" aria-roledescription="slide" aria-label="7 of 7: Terraces &amp; Outdoor Living">
+        <div class="circ-card-img-wrap">
+          <img src="images/services-carousel/07-outdoors.webp" alt="Terraces &amp; Outdoor Living" width="1440" height="900" loading="lazy">
+          <span class="circ-card-tag">07 &middot; OUTDOORS</span>
+        </div>
+        <div class="circ-card-body">
+          <h3 class="circ-card-title">Terraces &amp; Outdoor Living</h3>
+          <p class="circ-card-desc">Seamless indoor-outdoor transitions, teak pergolas, and reflective water features for villa gardens.</p>
+          <a href="services/outdoor-living" class="circ-card-btn" aria-label="Explore Terraces &amp; Outdoor Living service">
+            <span>Explore Service</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Navigation Controls & Dots -->
+    <div class="circ-controls" aria-label="Carousel navigation">
+      <button type="button" class="circ-nav-btn" id="circPrev" aria-label="Previous service" onclick="circGo(-1)">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m10 13-5-5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="circ-dots" id="circDots" role="tablist" aria-label="Select service slide">
+        <button type="button" class="circ-dot active" role="tab" aria-selected="true" aria-label="Slide 1" onclick="circGoTo(0)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 2" onclick="circGoTo(1)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 3" onclick="circGoTo(2)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 4" onclick="circGoTo(3)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 5" onclick="circGoTo(4)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 6" onclick="circGoTo(5)"></button>
+        <button type="button" class="circ-dot" role="tab" aria-selected="false" aria-label="Slide 7" onclick="circGoTo(6)"></button>
+      </div>
+
+      <button type="button" class="circ-nav-btn" id="circNext" aria-label="Next service" onclick="circGo(1)">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </section>
 
@@ -1770,393 +2028,226 @@
       }
 
       // ══════════════════════════════════════════════════════════════════════════
-      // 5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL ENGINE
+      // 3. MATERIALS STRIP OPPOSITE PARALLAX
       // ══════════════════════════════════════════════════════════════════════════
-      const WR_SLIDES = [
-        {
-          image: "images/services-carousel/01-facades.webp",
-          pill: "01 · Architectural Planning & Facades",
-          title: "Monolithic Facades & Villa Planning",
-          caption: "Parametric limestone envelopes, cantilever geometry, and private courtyard estates across Punjab.",
-          href: "services/architectural-design"
-        },
-        {
-          image: "images/services-carousel/02-interiors.webp",
-          pill: "02 · Luxury Interior Architecture",
-          title: "Double-Height Living & Fluted Walnut",
-          caption: "Bookmatched Roman travertine, bespoke brass joinery, and calibrated architectural lighting.",
-          href: "services/interior-design"
-        },
-        {
-          image: "images/services-carousel/03-civil.webp",
-          pill: "03 · Turnkey Civil Execution",
-          title: "Precision Structural Engineering",
-          caption: "Zero-tolerance laser levelling, high-density RCC framing, and German MEP integration.",
-          href: "services/turnkey-civil-execution"
-        },
-        {
-          image: "images/services-carousel/04-theatres.webp",
-          pill: "04 · Acoustic Private Cinemas",
-          title: "Private Cinema & Whisky Lounges",
-          caption: "Room-within-a-room sound isolation, tuned fabric bass traps, and Dolby Atmos acoustic baffling.",
-          href: "services/acoustic-theatre-design"
-        },
-        {
-          image: "images/services-carousel/05-kitchens.webp",
-          pill: "05 · Kitchen & Dining Architecture",
-          title: "Chef's Kitchens & Marble Islands",
-          caption: "Continuous Calacatta quartz waterfalls, concealed pocket pantries, and integrated Miele appliances.",
-          href: "services/kitchen-dining"
-        },
-        {
-          image: "images/services-carousel/06-suites.webp",
-          pill: "06 · Master Suites & Private Spas",
-          title: "Bespoke Suites & Honed-Marble Spas",
-          caption: "Circadian wake-up lighting, floating acoustic bedheads, and rainfall thermal wellness portals.",
-          href: "services/master-suites"
-        },
-        {
-          image: "images/services-carousel/07-outdoors.webp",
-          pill: "07 · Terraces & Outdoor Living",
-          title: "Biophilic Terraces & Infinity Pools",
-          caption: "Seamless indoor-outdoor transitions, teak pergolas, and reflective water features for villa gardens.",
-          href: "services/outdoor-living"
-        }
-      ];
-
-      let wrCurrentIdx = 0;
-      let wrNextIdx = 1;
-      let wrIsTransitioning = false;
-      let wrTransitionProgress = 0;
-      let wrTransitionStartTime = 0;
-      const WR_DURATION = 1900; // ms
-      const WR_AUTOPLAY = 7000; // ms
-      let wrAutoplayTimeout = null;
-
-      const wrCanvas = document.getElementById("wrCanvas");
-      const wrGl = wrCanvas ? wrCanvas.getContext("webgl", { antialias: true, alpha: false, preserveDrawingBuffer: false }) : null;
-
-      if (!wrGl) {
-        console.warn("WebGL not supported for water ripple; using fallback rendering.");
-      } else {
-        // Vertex Shader
-        const wrVsSource = `
-          attribute vec2 aPosition;
-          varying vec2 vUv;
-          void main() {
-            vUv = (aPosition + 1.0) * 0.5;
-            vUv.y = 1.0 - vUv.y;
-            gl_Position = vec4(aPosition, 0.0, 1.0);
-          }
-        `;
-
-        // Fragment Shader: Water Ripple Refraction & Chromatic Dispersion
-        const wrFsSource = `
-          precision highp float;
-          varying vec2 vUv;
-          uniform sampler2D uTexCurrent;
-          uniform sampler2D uTexNext;
-          uniform float uProgress;
-          uniform float uStrength;
-          uniform float uTime;
-          uniform vec2 uResolution;
-          uniform vec2 uTexResolution;
-          uniform vec2 uPointer;
-
-          vec2 getCoverUv(vec2 uv, vec2 screenRes, vec2 texRes) {
-            float screenAspect = screenRes.x / screenRes.y;
-            float texAspect = texRes.x / texRes.y;
-            vec2 newUv = uv;
-            if (screenAspect > texAspect) {
-              float scale = screenAspect / texAspect;
-              newUv.y = (uv.y - 0.5) / scale + 0.5;
-            } else {
-              float scale = texAspect / screenAspect;
-              newUv.x = (uv.x - 0.5) / scale + 0.5;
-            }
-            return newUv;
-          }
-
-          void main() {
-            vec2 uv = vUv;
-            vec2 coverUv = getCoverUv(uv, uResolution, uTexResolution);
-
-            // Radial liquid displacement
-            vec2 p = uv * 2.0 - 1.0;
-            p.x *= uResolution.x / uResolution.y;
-
-            vec2 pointerP = uPointer * 2.0 - 1.0;
-            pointerP.x *= uResolution.x / uResolution.y;
-
-            float dist = length(p);
-            float pointerDist = length(p - pointerP * 0.5);
-
-            // Water wave propagation
-            float wave = sin(dist * 20.0 - uProgress * 14.0 + uTime * 2.2) * exp(-dist * 2.2);
-            float pointerWave = sin(pointerDist * 16.0 - uTime * 3.5) * exp(-pointerDist * 3.5) * 0.15;
-
-            float dispMag = (wave * sin(uProgress * 3.14159) * uStrength + pointerWave * (1.0 - uProgress)) * 0.045;
-            vec2 dir = normalize(p + 0.0001);
-            vec2 dispUv = coverUv + dir * dispMag;
-
-            // Chromatic dispersion (RGB split)
-            float r = texture2D(uTexCurrent, dispUv + dir * dispMag * 0.28).r;
-            float g = texture2D(uTexCurrent, dispUv).g;
-            float b = texture2D(uTexCurrent, dispUv - dir * dispMag * 0.28).b;
-            vec4 colorCur = vec4(r, g, b, 1.0);
-
-            float nr = texture2D(uTexNext, dispUv + dir * (1.0 - uProgress) * 0.02).r;
-            float ng = texture2D(uTexNext, dispUv).g;
-            float nb = texture2D(uTexNext, dispUv - dir * (1.0 - uProgress) * 0.02).b;
-            vec4 colorNxt = vec4(nr, ng, nb, 1.0);
-
-            vec4 finalColor = mix(colorCur, colorNxt, smoothstep(0.12, 0.88, uProgress));
-
-            // Subtle warm crest tint
-            vec3 crestTint = vec3(0.95, 0.93, 0.88);
-            finalColor.rgb = mix(finalColor.rgb, crestTint, abs(wave) * sin(uProgress * 3.14159) * 0.12);
-
-            gl_FragColor = finalColor;
-          }
-        `;
-
-        function wrCreateShader(gl, type, src) {
-          const s = gl.createShader(type);
-          gl.shaderSource(s, src);
-          gl.compileShader(s);
-          if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            console.error(gl.getShaderInfoLog(s));
-            gl.deleteShader(s);
-            return null;
-          }
-          return s;
-        }
-
-        const wrVS = wrCreateShader(wrGl, wrGl.VERTEX_SHADER, wrVsSource);
-        const wrFS = wrCreateShader(wrGl, wrGl.FRAGMENT_SHADER, wrFsSource);
-        const wrProg = wrGl.createProgram();
-        wrGl.attachShader(wrProg, wrVS);
-        wrGl.attachShader(wrProg, wrFS);
-        wrGl.linkProgram(wrProg);
-        wrGl.useProgram(wrProg);
-
-        // Quad Buffer
-        const wrBuf = wrGl.createBuffer();
-        wrGl.bindBuffer(wrGl.ARRAY_BUFFER, wrBuf);
-        wrGl.bufferData(wrGl.ARRAY_BUFFER, new Float32Array([
-          -1, -1,
-           1, -1,
-          -1,  1,
-          -1,  1,
-           1, -1,
-           1,  1
-        ]), wrGl.STATIC_DRAW);
-
-        const aPosLoc = wrGl.getAttribLocation(wrProg, "aPosition");
-        wrGl.enableVertexAttribArray(aPosLoc);
-        wrGl.vertexAttribPointer(aPosLoc, 2, wrGl.FLOAT, false, 0, 0);
-
-        // Uniforms
-        const uProgL = wrGl.getUniformLocation(wrProg, "uProgress");
-        const uStrL = wrGl.getUniformLocation(wrProg, "uStrength");
-        const uTimL = wrGl.getUniformLocation(wrProg, "uTime");
-        const uResL = wrGl.getUniformLocation(wrProg, "uResolution");
-        const uTexResL = wrGl.getUniformLocation(wrProg, "uTexResolution");
-        const uCurTexL = wrGl.getUniformLocation(wrProg, "uTexCurrent");
-        const uNxtTexL = wrGl.getUniformLocation(wrProg, "uTexNext");
-        const uPntrL = wrGl.getUniformLocation(wrProg, "uPointer");
-
-        wrGl.uniform1i(uCurTexL, 0);
-        wrGl.uniform1i(uNxtTexL, 1);
-        wrGl.uniform1f(uStrL, 1.1);
-        wrGl.uniform2f(uPntrL, 0.5, 0.5);
-
-        const wrTexCache = {};
-        function wrLoadTex(src) {
-          if (wrTexCache[src]) return wrTexCache[src];
-          const tex = wrGl.createTexture();
-          wrGl.bindTexture(wrGl.TEXTURE_2D, tex);
-          wrGl.texImage2D(wrGl.TEXTURE_2D, 0, wrGl.RGBA, 1, 1, 0, wrGl.RGBA, wrGl.UNSIGNED_BYTE, new Uint8Array([11, 11, 11, 255]));
-
-          const img = new Image();
-          img.crossOrigin = "anonymous";
-          img.onload = () => {
-            wrGl.bindTexture(wrGl.TEXTURE_2D, tex);
-            wrGl.texImage2D(wrGl.TEXTURE_2D, 0, wrGl.RGBA, wrGl.RGBA, wrGl.UNSIGNED_BYTE, img);
-            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_WRAP_S, wrGl.CLAMP_TO_EDGE);
-            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_WRAP_T, wrGl.CLAMP_TO_EDGE);
-            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_MIN_FILTER, wrGl.LINEAR);
-            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_MAG_FILTER, wrGl.LINEAR);
-          };
-          img.src = src;
-          wrTexCache[src] = tex;
-          return tex;
-        }
-
-        // Preload slides
-        WR_SLIDES.forEach(s => wrLoadTex(s.image));
-
-        function wrResize() {
-          if (!wrCanvas) return;
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          wrCanvas.width = wrCanvas.clientWidth * dpr;
-          wrCanvas.height = wrCanvas.clientHeight * dpr;
-          wrGl.viewport(0, 0, wrCanvas.width, wrCanvas.height);
-          wrGl.uniform2f(uResL, wrCanvas.width, wrCanvas.height);
-          wrGl.uniform2f(uTexResL, 1800, 1012);
-        }
-        window.addEventListener("resize", wrResize);
-        wrResize();
-
-        function wrRender(now) {
-          const sec = now * 0.001;
-          wrGl.uniform1f(uTimL, sec);
-
-          if (wrIsTransitioning) {
-            const elapsed = performance.now() - wrTransitionStartTime;
-            let p = elapsed / WR_DURATION;
-            if (p >= 1.0) {
-              p = 1.0;
-              wrIsTransitioning = false;
-              wrCurrentIdx = wrNextIdx;
-              wrTransitionProgress = 0;
-              wrGl.uniform1f(uProgL, 0);
-              wrResetAutoplay();
-            } else {
-              wrTransitionProgress = p;
-              wrGl.uniform1f(uProgL, p);
-            }
-          }
-
-          const tCur = wrLoadTex(WR_SLIDES[wrCurrentIdx].image);
-          const tNxt = wrLoadTex(WR_SLIDES[wrNextIdx].image);
-
-          wrGl.activeTexture(wrGl.TEXTURE0);
-          wrGl.bindTexture(wrGl.TEXTURE_2D, tCur);
-
-          wrGl.activeTexture(wrGl.TEXTURE1);
-          wrGl.bindTexture(wrGl.TEXTURE_2D, tNxt);
-
-          wrGl.drawArrays(wrGl.TRIANGLES, 0, 6);
-          requestAnimationFrame(wrRender);
-        }
-        requestAnimationFrame(wrRender);
-
-        function wrTrigger(targetIdx) {
-          if (wrIsTransitioning || targetIdx === wrCurrentIdx) return;
-          wrIsTransitioning = true;
-          wrNextIdx = targetIdx;
-          wrTransitionStartTime = performance.now();
-
-          // Update Overlay UI
-          const d = WR_SLIDES[targetIdx];
-          const numEl = document.getElementById("wrCurNum");
-          const srEl = document.getElementById("wrSr");
-          if (numEl) numEl.textContent = String(targetIdx + 1).padStart(2, '0');
-          if (srEl) srEl.textContent = "Slide " + (targetIdx + 1) + " of " + WR_SLIDES.length + ": " + d.title;
-
-          const pillEl = document.getElementById("wrPill");
-          const titleEl = document.getElementById("wrTitle");
-          const capEl = document.getElementById("wrCaption");
-          const linkEl = document.getElementById("wrLink");
-
-          if (pillEl && titleEl && capEl && linkEl) {
-            gsap.to([pillEl, titleEl, capEl], {
-              opacity: 0,
-              y: -8,
-              duration: 0.22,
-              onComplete: () => {
-                pillEl.textContent = d.pill;
-                titleEl.textContent = d.title;
-                capEl.textContent = d.caption;
-                linkEl.href = d.href;
-                gsap.fromTo([pillEl, titleEl, capEl], 
-                  { opacity: 0, y: 10 }, 
-                  { opacity: 1, y: 0, duration: 0.42, ease: "power2.out", stagger: 0.05 }
-                );
-              }
-            });
-          }
-
-          // Reset progress bar animation
-          const fillEl = document.getElementById("wrFill");
-          if (fillEl) {
-            fillEl.removeAttribute("data-run");
-            void fillEl.offsetWidth;
-            fillEl.setAttribute("data-run", "1");
-          }
-        }
-
-        function wrGo(dir) {
-          const next = (wrCurrentIdx + dir + WR_SLIDES.length) % WR_SLIDES.length;
-          wrTrigger(next);
-        }
-        window.wrGo = wrGo;
-
-        function wrResetAutoplay() {
-          const fillEl = document.getElementById("wrFill");
-          if (fillEl) {
-            fillEl.removeAttribute("data-run");
-            void fillEl.offsetWidth;
-            fillEl.setAttribute("data-run", "1");
-          }
-          if (wrAutoplayTimeout) clearTimeout(wrAutoplayTimeout);
-          wrAutoplayTimeout = setTimeout(() => {
-            wrGo(1);
-          }, WR_AUTOPLAY);
-        }
-        wrResetAutoplay();
-
-        const wrFillEl = document.getElementById("wrFill");
-        if (wrFillEl) {
-          wrFillEl.addEventListener("animationend", () => {
-            wrGo(1);
-          });
-        }
-
-        // Pointer wake ripple interaction
-        wrCanvas.addEventListener("mousemove", (e) => {
-          const rect = wrCanvas.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width;
-          const py = 1.0 - (e.clientY - rect.top) / rect.height;
-          wrGl.uniform2f(uPntrL, px, py);
-        });
-
-        // Touch & Drag Handling on Canvas
-        let wrTouchStartX = 0;
-        wrCanvas.addEventListener("touchstart", (e) => {
-          wrTouchStartX = e.touches[0].clientX;
-          const rect = wrCanvas.getBoundingClientRect();
-          const px = (e.touches[0].clientX - rect.left) / rect.width;
-          const py = 1.0 - (e.touches[0].clientY - rect.top) / rect.height;
-          wrGl.uniform2f(uPntrL, px, py);
-        }, { passive: true });
-
-        wrCanvas.addEventListener("touchend", (e) => {
-          const diff = wrTouchStartX - e.changedTouches[0].clientX;
-          if (Math.abs(diff) > 40) {
-            if (diff > 0) wrGo(1);
-            else wrGo(-1);
+      const matSec = document.getElementById("materials-section");
+      if (matSec && typeof ScrollTrigger !== "undefined") {
+        gsap.to(".mat-parallax-1", {
+          yPercent: 12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: matSec,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
           }
         });
-
-        let wrMouseDownX = 0;
-        let wrIsMouseDown = false;
-        wrCanvas.addEventListener("mousedown", (e) => {
-          wrIsMouseDown = true;
-          wrMouseDownX = e.clientX;
-        });
-
-        window.addEventListener("mouseup", (e) => {
-          if (!wrIsMouseDown) return;
-          wrIsMouseDown = false;
-          const diff = wrMouseDownX - e.clientX;
-          if (Math.abs(diff) > 40) {
-            if (diff > 0) wrGo(1);
-            else wrGo(-1);
+        gsap.to(".mat-parallax-2", {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: matSec,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
           }
         });
       }
+
+      // ══════════════════════════════════════════════════════════════════════════
+      // 4. SIGNATURE CIRCULAR 3D ARC SERVICES CAROUSEL ENGINE
+      // ══════════════════════════════════════════════════════════════════════════
+      const circCards = Array.from(document.querySelectorAll(".circ-card"));
+      const circDots = Array.from(document.querySelectorAll(".circ-dot"));
+      const circCenterNum = document.getElementById("circCenterNum");
+      const circStage = document.getElementById("circStage");
+      const CIRC_TOTAL = circCards.length; // 7
+
+      let circActiveIdx = 0;
+      let circAutoplayTimer = null;
+      let circIsPaused = false;
+
+      function getCircularConfig() {
+        const w = window.innerWidth;
+        if (w < 600) {
+          return {
+            visibleCount: 3,
+            radiusX: Math.min(w * 0.34, 140),
+            radiusY: 48,
+            maxRotateY: 18
+          };
+        } else if (w < 1024) {
+          return {
+            visibleCount: 5,
+            radiusX: Math.min(w * 0.32, 260),
+            radiusY: 80,
+            maxRotateY: 22
+          };
+        } else {
+          return {
+            visibleCount: 5,
+            radiusX: Math.min(w * 0.28, 380),
+            radiusY: 105,
+            maxRotateY: 25
+          };
+        }
+      }
+
+      function getItemPosition(index, activeIndex, total, cfg) {
+        const offset = index - activeIndex;
+        const half = Math.floor(cfg.visibleCount / 2);
+        let adjustedOffset = offset;
+
+        if (offset > half) adjustedOffset = offset - total;
+        if (offset < -half) adjustedOffset = offset + total;
+
+        if (Math.abs(adjustedOffset) > half * 2) return null;
+
+        const angle = (adjustedOffset / cfg.visibleCount) * Math.PI;
+        const x = Math.sin(angle) * cfg.radiusX;
+        const y = -Math.cos(angle) * cfg.radiusY;
+
+        const distance = Math.abs(adjustedOffset);
+        const maxDistance = half + 1;
+        const scale = Math.max(0, 1 - (distance / maxDistance) * 0.28);
+        const opacity = Math.max(0.25, 1 - (distance / maxDistance) * 0.72);
+        const zIndex = cfg.visibleCount - distance + 2;
+        const rotateY = (adjustedOffset / cfg.visibleCount) * -cfg.maxRotateY;
+
+        return { x, y, scale, opacity, zIndex, rotateY };
+      }
+
+      function updateCircularPositions(newActiveIdx) {
+        circActiveIdx = (newActiveIdx + CIRC_TOTAL) % CIRC_TOTAL;
+        const cfg = getCircularConfig();
+
+        circCards.forEach((card, idx) => {
+          const pos = getItemPosition(idx, circActiveIdx, CIRC_TOTAL, cfg);
+          const isActive = idx === circActiveIdx;
+
+          if (isActive) {
+            card.classList.add("active");
+            card.setAttribute("aria-hidden", "false");
+          } else {
+            card.classList.remove("active");
+            card.setAttribute("aria-hidden", "true");
+          }
+
+          if (pos === null) {
+            card.style.opacity = "0";
+            card.style.pointerEvents = "none";
+            card.style.zIndex = "0";
+            card.style.transform = `translate(-50%, -50%) translate3d(0px, 0px, 0px) scale(0.6)`;
+          } else {
+            card.style.opacity = String(pos.opacity);
+            card.style.pointerEvents = "auto";
+            card.style.zIndex = String(pos.zIndex);
+            card.style.transform = `translate(-50%, -50%) translate3d(${pos.x.toFixed(1)}px, ${pos.y.toFixed(1)}px, 0px) scale(${pos.scale.toFixed(3)}) perspective(900px) rotateY(${pos.rotateY.toFixed(1)}deg)`;
+          }
+        });
+
+        // Center counter number
+        if (circCenterNum) {
+          circCenterNum.textContent = String(circActiveIdx + 1).padStart(2, "0");
+        }
+
+        // Dot indicators
+        circDots.forEach((dot, idx) => {
+          if (idx === circActiveIdx) {
+            dot.classList.add("active");
+            dot.setAttribute("aria-selected", "true");
+          } else {
+            dot.classList.remove("active");
+            dot.setAttribute("aria-selected", "false");
+          }
+        });
+      }
+
+      function circGo(dir) {
+        updateCircularPositions(circActiveIdx + dir);
+        restartAutoplay();
+      }
+      window.circGo = circGo;
+
+      function circGoTo(targetIdx) {
+        updateCircularPositions(targetIdx);
+        restartAutoplay();
+      }
+      window.circGoTo = circGoTo;
+
+      // Autoplay
+      function startAutoplay() {
+        if (circAutoplayTimer) clearInterval(circAutoplayTimer);
+        circAutoplayTimer = setInterval(() => {
+          if (!circIsPaused) {
+            circGo(1);
+          }
+        }, 4000);
+      }
+
+      function restartAutoplay() {
+        if (circAutoplayTimer) clearInterval(circAutoplayTimer);
+        startAutoplay();
+      }
+
+      // Card click interaction: if inactive, rotate into active view. If active, navigate to link.
+      circCards.forEach((card, idx) => {
+        card.addEventListener("click", (e) => {
+          if (idx !== circActiveIdx) {
+            e.preventDefault();
+            circGoTo(idx);
+          }
+        });
+      });
+
+      // Pause autoplay on mouse hover / focus
+      if (circStage) {
+        circStage.addEventListener("mouseenter", () => { circIsPaused = true; });
+        circStage.addEventListener("mouseleave", () => { circIsPaused = false; });
+      }
+
+      // Keyboard navigation (Arrow keys)
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          circGo(-1);
+        } else if (e.key === "ArrowRight") {
+          circGo(1);
+        }
+      });
+
+      // Touch swipe / drag support on circStage
+      let circTouchStartX = 0;
+      let circTouchEndX = 0;
+
+      if (circStage) {
+        circStage.addEventListener("touchstart", (e) => {
+          circIsPaused = true;
+          circTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        circStage.addEventListener("touchend", (e) => {
+          circTouchEndX = e.changedTouches[0].clientX;
+          const diff = circTouchStartX - circTouchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) circGo(1);
+            else circGo(-1);
+          }
+          circIsPaused = false;
+        }, { passive: true });
+      }
+
+      // Handle window resize
+      let circResizeDebounce = null;
+      window.addEventListener("resize", () => {
+        if (circResizeDebounce) clearTimeout(circResizeDebounce);
+        circResizeDebounce = setTimeout(() => {
+          updateCircularPositions(circActiveIdx);
+        }, 100);
+      });
+
+      // Initialize circular carousel
+      updateCircularPositions(0);
+      startAutoplay();
 
       window.addEventListener("load", () => ScrollTrigger.refresh());
     });
