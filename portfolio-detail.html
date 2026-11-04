@@ -582,98 +582,340 @@
     /* ══════════════════════════════════════════════════════════════════════════
        4. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
        ══════════════════════════════════════════════════════════════════════════ */
-    .materials-section {
+    /* ══════════════════════════════════════════════════════════════════════════
+       5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL (Unboxed, Freely Moving)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .wr-section {
       position: relative;
-      background: var(--surface);
-      padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px);
+      width: 100%;
+      height: 90vh;
+      min-height: clamp(620px, 86vh, 920px);
+      max-height: 980px;
+      background: var(--bg);
+      overflow: hidden;
       z-index: 6;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
     }
 
-    .materials-inner {
-      max-width: 1540px;
-      margin: 0 auto;
+    .wr-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      overflow: hidden;
+      touch-action: pan-y;
+      user-select: none;
     }
 
-    .materials-head {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto clamp(48px, 8vh, 96px);
+    .wr-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      cursor: grab;
+      touch-action: pan-y;
     }
 
-    .materials-eyebrow {
+    .wr-canvas:active {
+      cursor: grabbing;
+    }
+
+    /* Ambient Edge Gradient (No card boxes, pure liquid bleed) */
+    .wr-carousel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, 
+        rgba(11, 11, 11, 0.75) 0%, 
+        rgba(11, 11, 11, 0.1) 25%, 
+        rgba(11, 11, 11, 0.15) 70%, 
+        rgba(11, 11, 11, 0.88) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Floating Unboxed Editorial Overlay */
+    .wr-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(32px, 5vh, 60px) clamp(24px, 5vw, 80px);
+    }
+
+    /* Top Strip: Eyebrow + Counter */
+    .wr-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      pointer-events: auto;
+    }
+
+    .wr-brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wr-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brass);
+      box-shadow: 0 0 10px var(--brass-glow);
+    }
+
+    .wr-tag-text {
+      font-family: var(--font-jost);
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--brass);
-      margin-bottom: 14px;
-      display: block;
     }
 
-    .materials-title {
+    .wr-counter {
+      font-family: var(--font-jost);
+      font-size: 0.84rem;
       font-weight: 300;
-      font-size: clamp(32px, 4.4vw, 62px);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.18em;
+      color: rgba(243, 238, 230, 0.55);
+    }
+
+    .wr-counter-curr {
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 1.15rem;
+    }
+
+    /* Bottom Strip: Info Block + Controls Block */
+    .wr-bottom-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: clamp(24px, 4vw, 64px);
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .wr-info-block {
+      max-width: 640px;
+      pointer-events: auto;
+    }
+
+    .wr-pill {
+      display: inline-block;
+      font-family: var(--font-jost);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      background: rgba(184, 147, 90, 0.12);
+      border: 1px solid rgba(184, 147, 90, 0.28);
+      padding: 6px 14px;
+      border-radius: 99px;
+      backdrop-filter: blur(12px);
+    }
+
+    .wr-title {
+      font-family: var(--font-jost);
+      font-weight: 300;
+      font-size: clamp(28px, 4.2vw, 56px);
+      letter-spacing: clamp(0.04em, 0.3vw, 0.08em);
       line-height: 1.15;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      will-change: transform, opacity;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
     }
 
-    .materials-desc {
-      font-size: clamp(14px, 1.1vw, 16px);
-      color: var(--mute);
-      line-height: 1.8;
+    .wr-caption {
+      font-family: var(--font-jost);
+      font-weight: 300;
+      font-size: clamp(14px, 1.15vw, 17px);
+      color: rgba(243, 238, 230, 0.78);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 540px;
+      will-change: transform, opacity;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
     }
 
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(32px, 5vw, 80px);
-      align-items: start;
+    .wr-action-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .material-card {
+    .wr-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-jost);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #0b0b0b;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 11px 24px;
+      border-radius: 99px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .wr-link:hover {
+      background: var(--brass);
+      border-color: var(--brass);
+      color: #0b0b0b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px var(--brass-glow);
+    }
+
+    .wr-link svg {
+      transition: transform 0.25s ease;
+    }
+
+    .wr-link:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Controls: Circular Navigation Buttons & Autoplay Progress Bar */
+    .wr-controls-block {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      align-items: flex-end;
+      gap: 18px;
+      pointer-events: auto;
     }
 
-    .material-card:nth-child(2) {
-      margin-top: clamp(0px, 6vh, 80px);
+    .wr-nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .material-img-wrap {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
+    .wr-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(11, 11, 11, 0.75);
+      border: 1px solid rgba(243, 238, 230, 0.22);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .wr-btn:hover {
+      background: rgba(184, 147, 90, 0.22);
+      border-color: var(--brass);
+      color: var(--brass);
+      transform: scale(1.06);
+      box-shadow: 0 0 16px var(--brass-glow);
+    }
+
+    .wr-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Autoplay Progress Track */
+    .wr-track {
+      width: 140px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.16);
       border-radius: 2px;
-      background: #111;
+      overflow: hidden;
       position: relative;
     }
 
-    .material-img-wrap img {
+    .wr-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 116%;
-      object-fit: cover;
-      display: block;
-      will-change: transform;
-      margin-top: -8%;
+      height: 100%;
+      background: var(--brass);
+      transform-origin: left center;
+      transform: scaleX(0);
+      box-shadow: 0 0 8px var(--brass-glow);
     }
 
-    .material-caption h3 {
-      font-weight: 400;
-      font-size: clamp(18px, 1.6vw, 24px);
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      margin-bottom: 6px;
+    .wr-fill[data-run="1"] {
+      animation: wrAutoplay 7s linear forwards;
     }
 
-    .material-caption p {
-      font-size: 14px;
-      color: var(--mute);
-      line-height: 1.7;
+    @keyframes wrAutoplay {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+
+    /* Screen Reader Text */
+    .wr-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Responsive Adjustments for Mobile & Tablet */
+    @media (max-width: 899px) {
+      .wr-section {
+        height: auto;
+        min-height: 640px;
+      }
+      .wr-overlay {
+        padding: 24px 20px;
+      }
+      .wr-bottom-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .wr-controls-block {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .wr-title {
+        font-size: clamp(24px, 5.5vw, 36px);
+      }
+      .wr-caption {
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+      .wr-btn {
+        width: 44px;
+        height: 44px;
+      }
+      .wr-track {
+        width: 100px;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
@@ -816,15 +1058,6 @@
       .deck-hint {
         justify-content: center;
         margin-top: 14px;
-      }
-
-      .materials-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .material-card:nth-child(2) {
-        margin-top: 0;
       }
     }
 
@@ -1129,38 +1362,72 @@
   </section>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       5. MATERIALS STRIP (Opposite Direction Parallax)
+       5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL
        ═════════════════════════════════════════════════════════════════════════ -->
-  <section class="materials-section" id="materials-section" aria-label="Curated Materials">
-    <div class="materials-inner">
-      <div class="materials-head">
-        <span class="materials-eyebrow">ARTISANAL SOURCING</span>
-        <h2 class="materials-title">Materials we love</h2>
-        <p class="materials-desc">Tactile travertine, bookmatched fluted walnut, hand-brushed brass and honed marble crafted for architectural longevity.</p>
-      </div>
+  <section class="wr-section" id="services-ripple-section" aria-label="Curated Architectural Disciplines & Services">
+    <div class="wr-carousel" id="wrCarousel">
+      <!-- WebGL Liquid Refraction Canvas -->
+      <canvas id="wrCanvas" class="wr-canvas"></canvas>
 
-      <div class="materials-grid">
-        <!-- Item 1: Material Texture -->
-        <article class="material-card">
-          <div class="material-img-wrap">
-            <img src="images/portfolio/hero-material.webp" alt="Macro close-up of walnut veneer, brushed brass and beige travertine" class="mat-parallax-1" width="1440" height="1800" loading="lazy" decoding="async">
+      <!-- Unboxed Editorial Overlay Floating Over Canvas -->
+      <div class="wr-overlay" id="wrOverlay">
+        
+        <!-- Header Strip -->
+        <div class="wr-top-bar">
+          <div class="wr-brand-tag">
+            <span class="wr-tag-dot"></span>
+            <span class="wr-tag-text">ARTISANAL SOURCING &amp; DISCIPLINES</span>
           </div>
-          <div class="material-caption">
-            <h3>Walnut Veneer &amp; Brushed Brass</h3>
-            <p>Book-matched architectural joinery meeting clean travertine reveals.</p>
+          <div class="wr-counter">
+            <span class="wr-counter-curr" id="wrCurNum">01</span>
+            <span class="wr-counter-total"> / 07</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Item 2: Spa Architecture -->
-        <article class="material-card">
-          <div class="material-img-wrap">
-            <img src="images/portfolio/hero-spa.webp" alt="Spa-style master bathroom with honed beige marble walls" class="mat-parallax-2" width="1440" height="1800" loading="lazy" decoding="async">
+        <!-- Floating Info & Navigation Bottom Block -->
+        <div class="wr-bottom-bar">
+          <div class="wr-info-block">
+            <span class="wr-pill" id="wrPill">01 &bull; Architectural Planning &amp; Facades</span>
+            <h2 class="wr-title" id="wrTitle">Monolithic Facades &amp; Villa Planning</h2>
+            <p class="wr-caption" id="wrCaption">Parametric limestone envelopes, cantilever geometry, and private courtyard estates across Punjab.</p>
+            
+            <div class="wr-action-row">
+              <a href="services/architectural-design" class="wr-link" id="wrLink" onclick="event.stopPropagation();">
+                <span>Explore Discipline</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
           </div>
-          <div class="material-caption">
-            <h3>Honed Beige Marble &amp; Rain Portals</h3>
-            <p>Atmospheric private spa suites with natural daylight falloff.</p>
+
+          <!-- Controls: Buttons + Autoplay Track -->
+          <div class="wr-controls-block">
+            <div class="wr-nav-buttons">
+              <button type="button" class="wr-btn wr-prev" id="wrPrevBtn" aria-label="Previous Slide" onclick="event.stopPropagation(); wrGo(-1);">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m10 13-5-5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button type="button" class="wr-btn wr-next" id="wrNextBtn" aria-label="Next Slide" onclick="event.stopPropagation(); wrGo(1);">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Progress Track -->
+            <div class="wr-track" aria-hidden="true">
+              <div class="wr-fill" id="wrFill"></div>
+            </div>
           </div>
-        </article>
+        </div>
+
+        <!-- Screen reader live announcement -->
+        <div class="wr-sr" id="wrSr" aria-live="polite">
+          Slide 1 of 7: Monolithic Facades &amp; Villa Planning
+        </div>
+
       </div>
     </div>
   </section>
@@ -1502,28 +1769,394 @@
         }
       }
 
-      // ── 5. Materials Strip: Opposite Parallax Scrub ──
-      gsap.to(".mat-parallax-1", {
-        yPercent: -12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#materials-section",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
+      // ══════════════════════════════════════════════════════════════════════════
+      // 5. SIGNATURE SERVICES WATER RIPPLE SHADER CAROUSEL ENGINE
+      // ══════════════════════════════════════════════════════════════════════════
+      const WR_SLIDES = [
+        {
+          image: "images/services-carousel/01-facades.webp",
+          pill: "01 · Architectural Planning & Facades",
+          title: "Monolithic Facades & Villa Planning",
+          caption: "Parametric limestone envelopes, cantilever geometry, and private courtyard estates across Punjab.",
+          href: "services/architectural-design"
+        },
+        {
+          image: "images/services-carousel/02-interiors.webp",
+          pill: "02 · Luxury Interior Architecture",
+          title: "Double-Height Living & Fluted Walnut",
+          caption: "Bookmatched Roman travertine, bespoke brass joinery, and calibrated architectural lighting.",
+          href: "services/interior-design"
+        },
+        {
+          image: "images/services-carousel/03-civil.webp",
+          pill: "03 · Turnkey Civil Execution",
+          title: "Precision Structural Engineering",
+          caption: "Zero-tolerance laser levelling, high-density RCC framing, and German MEP integration.",
+          href: "services/turnkey-civil-execution"
+        },
+        {
+          image: "images/services-carousel/04-theatres.webp",
+          pill: "04 · Acoustic Private Cinemas",
+          title: "Private Cinema & Whisky Lounges",
+          caption: "Room-within-a-room sound isolation, tuned fabric bass traps, and Dolby Atmos acoustic baffling.",
+          href: "services/acoustic-theatre-design"
+        },
+        {
+          image: "images/services-carousel/05-kitchens.webp",
+          pill: "05 · Kitchen & Dining Architecture",
+          title: "Chef's Kitchens & Marble Islands",
+          caption: "Continuous Calacatta quartz waterfalls, concealed pocket pantries, and integrated Miele appliances.",
+          href: "services/kitchen-dining"
+        },
+        {
+          image: "images/services-carousel/06-suites.webp",
+          pill: "06 · Master Suites & Private Spas",
+          title: "Bespoke Suites & Honed-Marble Spas",
+          caption: "Circadian wake-up lighting, floating acoustic bedheads, and rainfall thermal wellness portals.",
+          href: "services/master-suites"
+        },
+        {
+          image: "images/services-carousel/07-outdoors.webp",
+          pill: "07 · Terraces & Outdoor Living",
+          title: "Biophilic Terraces & Infinity Pools",
+          caption: "Seamless indoor-outdoor transitions, teak pergolas, and reflective water features for villa gardens.",
+          href: "services/outdoor-living"
         }
-      });
+      ];
 
-      gsap.to(".mat-parallax-2", {
-        yPercent: 12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#materials-section",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
+      let wrCurrentIdx = 0;
+      let wrNextIdx = 1;
+      let wrIsTransitioning = false;
+      let wrTransitionProgress = 0;
+      let wrTransitionStartTime = 0;
+      const WR_DURATION = 1900; // ms
+      const WR_AUTOPLAY = 7000; // ms
+      let wrAutoplayTimeout = null;
+
+      const wrCanvas = document.getElementById("wrCanvas");
+      const wrGl = wrCanvas ? wrCanvas.getContext("webgl", { antialias: true, alpha: false, preserveDrawingBuffer: false }) : null;
+
+      if (!wrGl) {
+        console.warn("WebGL not supported for water ripple; using fallback rendering.");
+      } else {
+        // Vertex Shader
+        const wrVsSource = `
+          attribute vec2 aPosition;
+          varying vec2 vUv;
+          void main() {
+            vUv = (aPosition + 1.0) * 0.5;
+            vUv.y = 1.0 - vUv.y;
+            gl_Position = vec4(aPosition, 0.0, 1.0);
+          }
+        `;
+
+        // Fragment Shader: Water Ripple Refraction & Chromatic Dispersion
+        const wrFsSource = `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uTexCurrent;
+          uniform sampler2D uTexNext;
+          uniform float uProgress;
+          uniform float uStrength;
+          uniform float uTime;
+          uniform vec2 uResolution;
+          uniform vec2 uTexResolution;
+          uniform vec2 uPointer;
+
+          vec2 getCoverUv(vec2 uv, vec2 screenRes, vec2 texRes) {
+            float screenAspect = screenRes.x / screenRes.y;
+            float texAspect = texRes.x / texRes.y;
+            vec2 newUv = uv;
+            if (screenAspect > texAspect) {
+              float scale = screenAspect / texAspect;
+              newUv.y = (uv.y - 0.5) / scale + 0.5;
+            } else {
+              float scale = texAspect / screenAspect;
+              newUv.x = (uv.x - 0.5) / scale + 0.5;
+            }
+            return newUv;
+          }
+
+          void main() {
+            vec2 uv = vUv;
+            vec2 coverUv = getCoverUv(uv, uResolution, uTexResolution);
+
+            // Radial liquid displacement
+            vec2 p = uv * 2.0 - 1.0;
+            p.x *= uResolution.x / uResolution.y;
+
+            vec2 pointerP = uPointer * 2.0 - 1.0;
+            pointerP.x *= uResolution.x / uResolution.y;
+
+            float dist = length(p);
+            float pointerDist = length(p - pointerP * 0.5);
+
+            // Water wave propagation
+            float wave = sin(dist * 20.0 - uProgress * 14.0 + uTime * 2.2) * exp(-dist * 2.2);
+            float pointerWave = sin(pointerDist * 16.0 - uTime * 3.5) * exp(-pointerDist * 3.5) * 0.15;
+
+            float dispMag = (wave * sin(uProgress * 3.14159) * uStrength + pointerWave * (1.0 - uProgress)) * 0.045;
+            vec2 dir = normalize(p + 0.0001);
+            vec2 dispUv = coverUv + dir * dispMag;
+
+            // Chromatic dispersion (RGB split)
+            float r = texture2D(uTexCurrent, dispUv + dir * dispMag * 0.28).r;
+            float g = texture2D(uTexCurrent, dispUv).g;
+            float b = texture2D(uTexCurrent, dispUv - dir * dispMag * 0.28).b;
+            vec4 colorCur = vec4(r, g, b, 1.0);
+
+            float nr = texture2D(uTexNext, dispUv + dir * (1.0 - uProgress) * 0.02).r;
+            float ng = texture2D(uTexNext, dispUv).g;
+            float nb = texture2D(uTexNext, dispUv - dir * (1.0 - uProgress) * 0.02).b;
+            vec4 colorNxt = vec4(nr, ng, nb, 1.0);
+
+            vec4 finalColor = mix(colorCur, colorNxt, smoothstep(0.12, 0.88, uProgress));
+
+            // Subtle warm crest tint
+            vec3 crestTint = vec3(0.95, 0.93, 0.88);
+            finalColor.rgb = mix(finalColor.rgb, crestTint, abs(wave) * sin(uProgress * 3.14159) * 0.12);
+
+            gl_FragColor = finalColor;
+          }
+        `;
+
+        function wrCreateShader(gl, type, src) {
+          const s = gl.createShader(type);
+          gl.shaderSource(s, src);
+          gl.compileShader(s);
+          if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+            console.error(gl.getShaderInfoLog(s));
+            gl.deleteShader(s);
+            return null;
+          }
+          return s;
         }
-      });
+
+        const wrVS = wrCreateShader(wrGl, wrGl.VERTEX_SHADER, wrVsSource);
+        const wrFS = wrCreateShader(wrGl, wrGl.FRAGMENT_SHADER, wrFsSource);
+        const wrProg = wrGl.createProgram();
+        wrGl.attachShader(wrProg, wrVS);
+        wrGl.attachShader(wrProg, wrFS);
+        wrGl.linkProgram(wrProg);
+        wrGl.useProgram(wrProg);
+
+        // Quad Buffer
+        const wrBuf = wrGl.createBuffer();
+        wrGl.bindBuffer(wrGl.ARRAY_BUFFER, wrBuf);
+        wrGl.bufferData(wrGl.ARRAY_BUFFER, new Float32Array([
+          -1, -1,
+           1, -1,
+          -1,  1,
+          -1,  1,
+           1, -1,
+           1,  1
+        ]), wrGl.STATIC_DRAW);
+
+        const aPosLoc = wrGl.getAttribLocation(wrProg, "aPosition");
+        wrGl.enableVertexAttribArray(aPosLoc);
+        wrGl.vertexAttribPointer(aPosLoc, 2, wrGl.FLOAT, false, 0, 0);
+
+        // Uniforms
+        const uProgL = wrGl.getUniformLocation(wrProg, "uProgress");
+        const uStrL = wrGl.getUniformLocation(wrProg, "uStrength");
+        const uTimL = wrGl.getUniformLocation(wrProg, "uTime");
+        const uResL = wrGl.getUniformLocation(wrProg, "uResolution");
+        const uTexResL = wrGl.getUniformLocation(wrProg, "uTexResolution");
+        const uCurTexL = wrGl.getUniformLocation(wrProg, "uTexCurrent");
+        const uNxtTexL = wrGl.getUniformLocation(wrProg, "uTexNext");
+        const uPntrL = wrGl.getUniformLocation(wrProg, "uPointer");
+
+        wrGl.uniform1i(uCurTexL, 0);
+        wrGl.uniform1i(uNxtTexL, 1);
+        wrGl.uniform1f(uStrL, 1.1);
+        wrGl.uniform2f(uPntrL, 0.5, 0.5);
+
+        const wrTexCache = {};
+        function wrLoadTex(src) {
+          if (wrTexCache[src]) return wrTexCache[src];
+          const tex = wrGl.createTexture();
+          wrGl.bindTexture(wrGl.TEXTURE_2D, tex);
+          wrGl.texImage2D(wrGl.TEXTURE_2D, 0, wrGl.RGBA, 1, 1, 0, wrGl.RGBA, wrGl.UNSIGNED_BYTE, new Uint8Array([11, 11, 11, 255]));
+
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => {
+            wrGl.bindTexture(wrGl.TEXTURE_2D, tex);
+            wrGl.texImage2D(wrGl.TEXTURE_2D, 0, wrGl.RGBA, wrGl.RGBA, wrGl.UNSIGNED_BYTE, img);
+            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_WRAP_S, wrGl.CLAMP_TO_EDGE);
+            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_WRAP_T, wrGl.CLAMP_TO_EDGE);
+            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_MIN_FILTER, wrGl.LINEAR);
+            wrGl.texParameteri(wrGl.TEXTURE_2D, wrGl.TEXTURE_MAG_FILTER, wrGl.LINEAR);
+          };
+          img.src = src;
+          wrTexCache[src] = tex;
+          return tex;
+        }
+
+        // Preload slides
+        WR_SLIDES.forEach(s => wrLoadTex(s.image));
+
+        function wrResize() {
+          if (!wrCanvas) return;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          wrCanvas.width = wrCanvas.clientWidth * dpr;
+          wrCanvas.height = wrCanvas.clientHeight * dpr;
+          wrGl.viewport(0, 0, wrCanvas.width, wrCanvas.height);
+          wrGl.uniform2f(uResL, wrCanvas.width, wrCanvas.height);
+          wrGl.uniform2f(uTexResL, 1800, 1012);
+        }
+        window.addEventListener("resize", wrResize);
+        wrResize();
+
+        function wrRender(now) {
+          const sec = now * 0.001;
+          wrGl.uniform1f(uTimL, sec);
+
+          if (wrIsTransitioning) {
+            const elapsed = performance.now() - wrTransitionStartTime;
+            let p = elapsed / WR_DURATION;
+            if (p >= 1.0) {
+              p = 1.0;
+              wrIsTransitioning = false;
+              wrCurrentIdx = wrNextIdx;
+              wrTransitionProgress = 0;
+              wrGl.uniform1f(uProgL, 0);
+              wrResetAutoplay();
+            } else {
+              wrTransitionProgress = p;
+              wrGl.uniform1f(uProgL, p);
+            }
+          }
+
+          const tCur = wrLoadTex(WR_SLIDES[wrCurrentIdx].image);
+          const tNxt = wrLoadTex(WR_SLIDES[wrNextIdx].image);
+
+          wrGl.activeTexture(wrGl.TEXTURE0);
+          wrGl.bindTexture(wrGl.TEXTURE_2D, tCur);
+
+          wrGl.activeTexture(wrGl.TEXTURE1);
+          wrGl.bindTexture(wrGl.TEXTURE_2D, tNxt);
+
+          wrGl.drawArrays(wrGl.TRIANGLES, 0, 6);
+          requestAnimationFrame(wrRender);
+        }
+        requestAnimationFrame(wrRender);
+
+        function wrTrigger(targetIdx) {
+          if (wrIsTransitioning || targetIdx === wrCurrentIdx) return;
+          wrIsTransitioning = true;
+          wrNextIdx = targetIdx;
+          wrTransitionStartTime = performance.now();
+
+          // Update Overlay UI
+          const d = WR_SLIDES[targetIdx];
+          const numEl = document.getElementById("wrCurNum");
+          const srEl = document.getElementById("wrSr");
+          if (numEl) numEl.textContent = String(targetIdx + 1).padStart(2, '0');
+          if (srEl) srEl.textContent = "Slide " + (targetIdx + 1) + " of " + WR_SLIDES.length + ": " + d.title;
+
+          const pillEl = document.getElementById("wrPill");
+          const titleEl = document.getElementById("wrTitle");
+          const capEl = document.getElementById("wrCaption");
+          const linkEl = document.getElementById("wrLink");
+
+          if (pillEl && titleEl && capEl && linkEl) {
+            gsap.to([pillEl, titleEl, capEl], {
+              opacity: 0,
+              y: -8,
+              duration: 0.22,
+              onComplete: () => {
+                pillEl.textContent = d.pill;
+                titleEl.textContent = d.title;
+                capEl.textContent = d.caption;
+                linkEl.href = d.href;
+                gsap.fromTo([pillEl, titleEl, capEl], 
+                  { opacity: 0, y: 10 }, 
+                  { opacity: 1, y: 0, duration: 0.42, ease: "power2.out", stagger: 0.05 }
+                );
+              }
+            });
+          }
+
+          // Reset progress bar animation
+          const fillEl = document.getElementById("wrFill");
+          if (fillEl) {
+            fillEl.removeAttribute("data-run");
+            void fillEl.offsetWidth;
+            fillEl.setAttribute("data-run", "1");
+          }
+        }
+
+        function wrGo(dir) {
+          const next = (wrCurrentIdx + dir + WR_SLIDES.length) % WR_SLIDES.length;
+          wrTrigger(next);
+        }
+        window.wrGo = wrGo;
+
+        function wrResetAutoplay() {
+          const fillEl = document.getElementById("wrFill");
+          if (fillEl) {
+            fillEl.removeAttribute("data-run");
+            void fillEl.offsetWidth;
+            fillEl.setAttribute("data-run", "1");
+          }
+          if (wrAutoplayTimeout) clearTimeout(wrAutoplayTimeout);
+          wrAutoplayTimeout = setTimeout(() => {
+            wrGo(1);
+          }, WR_AUTOPLAY);
+        }
+        wrResetAutoplay();
+
+        const wrFillEl = document.getElementById("wrFill");
+        if (wrFillEl) {
+          wrFillEl.addEventListener("animationend", () => {
+            wrGo(1);
+          });
+        }
+
+        // Pointer wake ripple interaction
+        wrCanvas.addEventListener("mousemove", (e) => {
+          const rect = wrCanvas.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width;
+          const py = 1.0 - (e.clientY - rect.top) / rect.height;
+          wrGl.uniform2f(uPntrL, px, py);
+        });
+
+        // Touch & Drag Handling on Canvas
+        let wrTouchStartX = 0;
+        wrCanvas.addEventListener("touchstart", (e) => {
+          wrTouchStartX = e.touches[0].clientX;
+          const rect = wrCanvas.getBoundingClientRect();
+          const px = (e.touches[0].clientX - rect.left) / rect.width;
+          const py = 1.0 - (e.touches[0].clientY - rect.top) / rect.height;
+          wrGl.uniform2f(uPntrL, px, py);
+        }, { passive: true });
+
+        wrCanvas.addEventListener("touchend", (e) => {
+          const diff = wrTouchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) wrGo(1);
+            else wrGo(-1);
+          }
+        });
+
+        let wrMouseDownX = 0;
+        let wrIsMouseDown = false;
+        wrCanvas.addEventListener("mousedown", (e) => {
+          wrIsMouseDown = true;
+          wrMouseDownX = e.clientX;
+        });
+
+        window.addEventListener("mouseup", (e) => {
+          if (!wrIsMouseDown) return;
+          wrIsMouseDown = false;
+          const diff = wrMouseDownX - e.clientX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) wrGo(1);
+            else wrGo(-1);
+          }
+        });
+      }
 
       window.addEventListener("load", () => ScrollTrigger.refresh());
     });
