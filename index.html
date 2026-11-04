@@ -439,102 +439,47 @@
         </div>
       </section>
 
-      <!-- FIVE-SCENE LUXURY INTERIOR TRANSFORMATION EXPERIENCE -->
-      <section class="transformation-section" id="transformation-experience" aria-label="Five-Scene Luxury Interior Transformation Experience">
-        <div class="transformation-container">
-          <header class="transformation-intro text-center">
-            <span class="transformation-eyebrow"><span class="gold-dot" aria-hidden="true"></span> ON-SITE TRANSFORMATION</span>
-            <h2 class="transformation-heading">From Bare Structure<br>to Bespoke Luxury.</h2>
-            <p class="transformation-desc">
-              Every extraordinary interior begins with an empty structure. Explore how thoughtful architecture, material selection and meticulous execution transform a raw space into an extraordinary living experience.
-            </p>
-          </header>
+      <!-- SCANNER-CONVEYOR TRANSFORMATION SECTION -->
+      <section id="nam-transform" aria-label="Raw structure to bespoke luxury">
+        <div class="nt-head">
+          <p class="nt-eyebrow">THE TRANSFORMATION</p>
+          <h2>From Raw Structure<br><em>to Bespoke Luxury.</em></h2>
+          <p class="nt-sub">Watch an empty shell become a finished, lived-in interior, layer by layer.</p>
+        </div>
 
-          <div class="transformation-stage-pin" id="transformationStagePin">
-            <div class="transformation-stage" id="transformationStage">
-              <!-- Stage Top Bar: Active Scene Indicator -->
-              <div class="stage-top-bar">
-                <div class="scene-progress" id="sceneProgress" aria-live="polite">
-                  <span class="scene-num" id="sceneNum">01 / 05</span>
-                  <span class="scene-bullet" aria-hidden="true">•</span>
-                  <span class="scene-title" id="sceneTitle">LIVING ROOM</span>
-                </div>
-                <div class="scene-tagline" id="sceneTagline">Formal Reception &amp; Garden Lounge</div>
-              </div>
-
-              <!-- Main Comparison Viewport -->
-              <div class="comparison-viewport" id="comparisonViewport" role="region" aria-label="Interactive before and after transformation comparison slider">
-                <!-- Bottom Layer: Finished Luxury Interior -->
-                <div class="comparison-layer finished-layer" id="finishedLayer">
-                  <img id="finishedImg" src="images/01-living-finished.webp" alt="Completed bespoke luxury living room interior by NAM Atelier" loading="eager" decoding="async">
-                  <div class="layer-badge badge-after" aria-hidden="true">
-                    <span class="badge-dot gold"></span>
-                    <span>BESPOKE LUXURY</span>
-                  </div>
-                </div>
-
-                <!-- Top Layer: Raw Unfinished Construction (Clipped) -->
-                <div class="comparison-layer raw-layer" id="rawLayer" style="clip-path: inset(0 50% 0 0);">
-                  <img id="rawImg" src="images/01-living-raw.webp" alt="Raw construction structural shell living room before execution" loading="eager" decoding="async">
-                  <div class="layer-badge badge-before" aria-hidden="true">
-                    <span class="badge-dot"></span>
-                    <span>RAW STRUCTURE</span>
-                  </div>
-                </div>
-
-                <!-- Draggable Divider -->
-                <div class="comparison-divider" id="comparisonDivider" style="left: 50%;">
-                  <div class="divider-line"></div>
-                  <div class="divider-handle" id="dividerHandle" role="slider" tabindex="0" aria-label="Comparison divider position" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                    <svg class="handle-arrow left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    <span class="handle-grip-line" aria-hidden="true"></span>
-                    <svg class="handle-arrow right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Scene Navigation Tabs -->
-              <nav class="transformation-nav-tabs" aria-label="Transformation scenes">
-                <button type="button" class="scene-tab active" data-index="0" aria-label="Jump to Scene 1: Living Room">
-                  <span class="tab-index">01</span>
-                  <span class="tab-name">Living Room</span>
-                </button>
-                <button type="button" class="scene-tab" data-index="1" aria-label="Jump to Scene 2: Master Bedroom">
-                  <span class="tab-index">02</span>
-                  <span class="tab-name">Master Bedroom</span>
-                </button>
-                <button type="button" class="scene-tab" data-index="2" aria-label="Jump to Scene 3: Designer Kitchen">
-                  <span class="tab-index">03</span>
-                  <span class="tab-name">Designer Kitchen</span>
-                </button>
-                <button type="button" class="scene-tab" data-index="3" aria-label="Jump to Scene 4: Private Home Theatre">
-                  <span class="tab-index">04</span>
-                  <span class="tab-name">Home Theatre</span>
-                </button>
-                <button type="button" class="scene-tab" data-index="4" aria-label="Jump to Scene 5: Grand Foyer">
-                  <span class="tab-index">05</span>
-                  <span class="tab-name">Grand Foyer</span>
-                </button>
-              </nav>
-
-              <!-- Footer with subtle guidance hint -->
-              <footer class="transformation-footer">
-                <div class="hint-pill">
-                  <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="7 8 3 12 7 16"></polyline>
-                    <polyline points="17 8 21 12 17 16"></polyline>
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                  </svg>
-                  <span>Drag divider to inspect raw construction vs executed luxury</span>
-                  <span class="hint-sep" aria-hidden="true">•</span>
-                  <span>Scroll to explore all 5 spaces</span>
-                </div>
-              </footer>
-            </div>
+        <div class="nt-belt">
+          <div class="nt-track">
+            <figure class="nt-frame" data-room="Living Room">
+              <img class="lux" src="assets/transform/lux-1.webp" alt="Finished luxury living room" draggable="false">
+              <img class="raw" src="assets/transform/raw-1.webp" alt="Raw structure of the living room" draggable="false">
+            </figure>
+            <figure class="nt-frame" data-room="Master Bedroom">
+              <img class="lux" src="assets/transform/lux-2.webp" alt="Finished luxury master bedroom" draggable="false" loading="lazy" decoding="async">
+              <img class="raw" src="assets/transform/raw-2.webp" alt="Raw structure of the master bedroom" draggable="false" loading="lazy" decoding="async">
+            </figure>
+            <figure class="nt-frame" data-room="Modular Kitchen">
+              <img class="lux" src="assets/transform/lux-3.webp" alt="Finished luxury modular kitchen" draggable="false" loading="lazy" decoding="async">
+              <img class="raw" src="assets/transform/raw-3.webp" alt="Raw structure of the modular kitchen" draggable="false" loading="lazy" decoding="async">
+            </figure>
+            <figure class="nt-frame" data-room="Dining Area">
+              <img class="lux" src="assets/transform/lux-4.webp" alt="Finished luxury dining area" draggable="false" loading="lazy" decoding="async">
+              <img class="raw" src="assets/transform/raw-4.webp" alt="Raw structure of the dining area" draggable="false" loading="lazy" decoding="async">
+            </figure>
+            <figure class="nt-frame" data-room="Home Study">
+              <img class="lux" src="assets/transform/lux-5.webp" alt="Finished luxury home study and library" draggable="false" loading="lazy" decoding="async">
+              <img class="raw" src="assets/transform/raw-5.webp" alt="Raw structure of the home study" draggable="false" loading="lazy" decoding="async">
+            </figure>
+            <figure class="nt-frame" data-room="Spa Bathroom">
+              <img class="lux" src="assets/transform/lux-6.webp" alt="Finished luxury spa bathroom" draggable="false" loading="lazy" decoding="async">
+              <img class="raw" src="assets/transform/raw-6.webp" alt="Raw structure of the spa bathroom" draggable="false" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <canvas class="nt-fx" aria-hidden="true"></canvas>
+          <div class="nt-scan" aria-hidden="true"><i></i><b></b></div>
+          <div class="nt-badge" aria-live="off">
+            <span class="nt-label">Transformation</span>
+            <span class="nt-pill"><span class="nt-room">Living Room</span><span class="nt-pct">0% complete</span></span>
+            <span class="nt-layer">Structure</span>
           </div>
         </div>
       </section>

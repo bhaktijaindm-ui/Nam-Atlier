@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try { initSightsSlider(); } catch(e) { console.error('Sights Slider Error:', e); }
   try { initBeforeAfterSlider(); } catch(e) { console.error('BeforeAfter Slider Error:', e); }
   try { initAnimatedTestimonials(); } catch(e) { console.error('Animated Testimonials Error:', e); }
-  try { initTransformationExperience(); } catch(e) { console.error('Transformation Experience Error:', e); }
+  try { initScannerConveyor(); } catch(e) { console.error('Scanner Conveyor Error:', e); }
   try { initCinematicAnimationSystem(); } catch(e) { console.error('Cinematic Animation System Error:', e); }
 });
 
@@ -816,187 +816,224 @@ function initBeforeAfterSlider() {
 }
 
 /* ==========================================================================
-   12. FIVE-SCENE LUXURY INTERIOR TRANSFORMATION EXPERIENCE ENGINE
+   12. "RAW → BESPOKE" SCANNER-CONVEYOR ENGINE
    ========================================================================== */
-const transformationScenes = [
-  {
-    id: 1,
-    title: "LIVING ROOM",
-    tagline: "Formal Reception & Garden Lounge",
-    raw: "images/01-living-raw.webp",
-    finished: "images/01-living-finished.webp"
-  },
-  {
-    id: 2,
-    title: "MASTER BEDROOM",
-    tagline: "Primary Suite & Dressing Sanctuary",
-    raw: "images/02-bedroom-raw.webp",
-    finished: "images/02-bedroom-finished.webp"
-  },
-  {
-    id: 3,
-    title: "DESIGNER KITCHEN",
-    tagline: "Italian Monolith & Culinary Architecture",
-    raw: "images/03-kitchen-raw.webp",
-    finished: "images/03-kitchen-finished.webp"
-  },
-  {
-    id: 4,
-    title: "PRIVATE HOME THEATRE",
-    tagline: "Acoustic Cinema & Private Screening Room",
-    raw: "images/04-theatre-raw.webp",
-    finished: "images/04-theatre-finished.webp"
-  },
-  {
-    id: 5,
-    title: "GRAND FOYER",
-    tagline: "Double-Height Travertine Arrival",
-    raw: "images/05-foyer-raw.webp",
-    finished: "images/05-foyer-finished.webp"
-  }
-];
+function initScannerConveyor() {
+  const root = document.getElementById('nam-transform');
+  if (!root) return;
 
-let activeTransformationIndex = 0;
-let currentSliderValue = 50;
+  const belt = root.querySelector('.nt-belt');
+  const frames = [...root.querySelectorAll('.nt-frame')];
+  const cv = root.querySelector('.nt-fx');
+  if (!belt || !frames.length || !cv) return;
 
-function initTransformationExperience() {
-  const section = document.getElementById('transformation-experience');
-  if (!section) return;
+  const ctx = cv.getContext('2d');
+  const roomEl = root.querySelector('.nt-room');
+  const pctEl = root.querySelector('.nt-pct');
+  const layerEl = root.querySelector('.nt-layer');
+  const LAYERS = ['Structure', 'False ceiling & cove lighting', 'Wall panelling', 'Flooring', 'Furniture', 'Styling & décor'];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAL = ['#8a6a45', '#c9a57b', '#d9b88c', '#e8c9a0', '#f3dfc2', '#fff3df'];
+  const N = frames.length;
+  const TOP = parseFloat(getComputedStyle(root).getPropertyValue('--pad')) || 36;
 
-  const viewport = document.getElementById('comparisonViewport');
-  const rawLayer = document.getElementById('rawLayer');
-  const rawImg = document.getElementById('rawImg');
-  const finishedImg = document.getElementById('finishedImg');
-  const divider = document.getElementById('comparisonDivider');
-  const dividerHandle = document.getElementById('dividerHandle');
-  const sceneNum = document.getElementById('sceneNum');
-  const sceneTitle = document.getElementById('sceneTitle');
-  const sceneTagline = document.getElementById('sceneTagline');
-  const tabs = document.querySelectorAll('.transformation-nav-tabs .scene-tab');
+  let W = 0, H = 0, fw = 0, fh = 0, gap = 0, span = 0, period = 0, Lx = 0, dpr = 1;
+  let off = 0, vel = 0, hover = 0, drag = false, lastX = 0, lastT = 0, run = false, prev = 0, shown = 0, curIdx = -1;
+  const sparks = [];
 
-  if (!viewport || !rawLayer || !divider || !dividerHandle) return;
+  const mod = (a, n) => ((a % n) + n) % n;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const hash = (a, b, c) => {
+    let h = (Math.imul(a, 374761393) + Math.imul(b, 668265263) + Math.imul(c, 2147483647)) | 0;
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+  };
 
-  // Preload all 10 images into memory
-  transformationScenes.forEach(scene => {
-    const rImg = new Image();
-    rImg.src = scene.raw;
-    const fImg = new Image();
-    fImg.src = scene.finished;
-  });
-
-  // Comparison update
-  function updateComparison(percentage) {
-    const value = Math.max(0, Math.min(100, percentage));
-    currentSliderValue = value;
-    rawLayer.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-    divider.style.left = `${value}%`;
-    dividerHandle.setAttribute('aria-valuenow', Math.round(value));
-  }
-
-  // Pointer drag logic (Mouse, Touch, Stylus)
-  let isDragging = false;
-
-  function getPctFromEvent(e) {
-    const rect = viewport.getBoundingClientRect();
-    const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    const offsetX = clientX - rect.left;
-    return (offsetX / rect.width) * 100;
-  }
-
-  function onPointerDown(e) {
-    if (e.button !== undefined && e.button !== 0) return;
-    isDragging = true;
-    dividerHandle.classList.add('is-dragging');
-    try {
-      viewport.setPointerCapture(e.pointerId);
-    } catch (err) {}
-    updateComparison(getPctFromEvent(e));
-  }
-
-  function onPointerMove(e) {
-    if (!isDragging) return;
-    updateComparison(getPctFromEvent(e));
-  }
-
-  function onPointerUp(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    dividerHandle.classList.remove('is-dragging');
-    try {
-      viewport.releasePointerCapture(e.pointerId);
-    } catch (err) {}
-  }
-
-  viewport.addEventListener('pointerdown', onPointerDown);
-  viewport.addEventListener('pointermove', onPointerMove);
-  viewport.addEventListener('pointerup', onPointerUp);
-  viewport.addEventListener('pointercancel', onPointerUp);
-
-  // Keyboard accessibility
-  dividerHandle.addEventListener('keydown', (e) => {
-    let delta = 0;
-    if (e.key === 'ArrowLeft') delta = -4;
-    else if (e.key === 'ArrowRight') delta = 4;
-    else if (e.key === 'Home') { updateComparison(0); e.preventDefault(); return; }
-    else if (e.key === 'End') { updateComparison(100); e.preventDefault(); return; }
-
-    if (delta !== 0) {
-      e.preventDefault();
-      updateComparison(currentSliderValue + delta);
+  function measure() {
+    const r = belt.getBoundingClientRect();
+    W = r.width;
+    H = r.height;
+    if (frames[0]) {
+      fw = frames[0].offsetWidth;
+      fh = frames[0].offsetHeight;
     }
-  });
-
-  // Scene switcher
-  function setTransformationScene(index, smooth = true) {
-    if (index < 0 || index >= transformationScenes.length) return;
-    activeTransformationIndex = index;
-    const scene = transformationScenes[index];
-
-    if (sceneNum) sceneNum.textContent = `0${scene.id} / 05`;
-    if (sceneTitle) sceneTitle.textContent = scene.title;
-    if (sceneTagline) sceneTagline.textContent = scene.tagline;
-
-    tabs.forEach((tab, i) => {
-      tab.classList.toggle('active', i === index);
-    });
-
-    if (smooth && rawImg && finishedImg) {
-      rawImg.style.opacity = '0.35';
-      finishedImg.style.opacity = '0.35';
-      setTimeout(() => {
-        rawImg.src = scene.raw;
-        finishedImg.src = scene.finished;
-        rawImg.style.opacity = '1';
-        finishedImg.style.opacity = '1';
-      }, 120);
-    } else if (rawImg && finishedImg) {
-      rawImg.src = scene.raw;
-      finishedImg.src = scene.finished;
-      rawImg.style.opacity = '1';
-      finishedImg.style.opacity = '1';
-    }
+    const gapProp = parseFloat(getComputedStyle(root).getPropertyValue('--gap')) || 4;
+    gap = (gapProp / 100) * window.innerWidth || fw * 0.06;
+    span = fw + gap;
+    period = span * N;
+    Lx = W / 2;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = W * dpr;
+    cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  // Navigation tab clicks
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const idx = parseInt(tab.getAttribute('data-index'), 10);
-      if (!isNaN(idx)) {
-        setTransformationScene(idx, true);
-        if (window.ScrollTrigger && window.__transformationST) {
-          const st = window.__transformationST;
-          const targetY = st.start + (st.end - st.start) * (idx / 4.9);
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        }
+  const autoSpeed = () => reduce ? 0 : -0.06 * window.innerWidth; // px/s, leftwards
+
+  function frame(t) {
+    if (!run) { prev = 0; return; }
+    const dt = Math.min(0.05, (t - (prev || t)) / 1000);
+    prev = t;
+
+    hover += ((belt.matches(':hover') ? 1 : 0) - hover) * Math.min(1, dt * 4);
+    if (!drag) {
+      const target = autoSpeed() * (1 - 0.65 * hover);
+      vel += (target - vel) * (1 - Math.exp(-2.2 * dt));
+      off += vel * dt;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+    let crossing = -1, cross = 0;
+
+    frames.forEach((f, i) => {
+      const x = mod(off + i * span + span + (W / 2 - 0.62 * fw), period) - span; // start with frame 1 just past the line
+      const cut = clamp(Lx - x, 0, fw);
+      f.style.transform = `translate3d(${x}px,0,0)`;
+
+      // raw (top layer) is removed left of the scanner; luxury underneath is revealed there
+      if (f.children[1]) {
+        f.children[1].style.clipPath = cut > 0 ? `inset(0 0 0 ${cut}px)` : 'none';
+        f.children[1].style.opacity = 1;
+      }
+
+      if (cut > 0 && cut < fw) {
+        crossing = i;
+        cross = cut / fw;
+      }
+      if (cut > 0 && x + fw > Lx) {
+        drawDissolve(i, x, cut, t);
       }
     });
+
+    drawSparks(dt);
+
+    if (crossing > -1) {
+      if (crossing !== curIdx) {
+        curIdx = crossing;
+        if (roomEl) roomEl.textContent = frames[crossing].dataset.room || '';
+        shown = cross * 100;
+      }
+      shown += (cross * 100 - shown) * Math.min(1, dt * 14);
+      if (pctEl) pctEl.textContent = Math.round(shown) + '% complete';
+      if (layerEl) layerEl.textContent = LAYERS[Math.min(LAYERS.length - 1, Math.floor(cross * LAYERS.length))];
+    }
+
+    if (run) requestAnimationFrame(frame);
+  }
+
+  function drawDissolve(i, x, cut, t) {
+    const top = TOP, R = 0.17 * fw, CELL = 3, rows = Math.ceil(fh / CELL);
+    const g = ctx.createLinearGradient(Lx, 0, Lx + 120, 0); // soft gold haze on the raw side
+    g.addColorStop(0, 'rgba(198,173,133,.35)');
+    g.addColorStop(1, 'rgba(198,173,133,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(Lx, top, Math.max(0, Math.min(120, x + fw - Lx)), fh);
+
+    const tw = reduce ? 0 : Math.floor(t / 1000 * 9);
+    const gx0 = Math.floor(cut / CELL), gx1 = Math.min(Math.floor(fw / CELL), Math.floor((cut + R) / CELL));
+
+    for (let gx = gx0; gx <= gx1; gx++) {
+      const sx = x + gx * CELL, d = sx - Lx;
+      if (d < 0) continue;
+      const p = Math.pow(1 - d / R, 1.7);
+      if (p <= 0) continue;
+
+      for (let row = -5; row < rows + 5; row++) {
+        const inside = row >= 0 && row < rows;
+        const prob = inside ? p * 0.92 : p * 0.16 * Math.max(0, 1 - (row < 0 ? -row : row - rows + 1) / 5);
+        if (hash(gx, row, i) >= prob) continue;
+        if (!reduce && hash(gx, row, tw + 97) < 0.22) continue; // twinkle
+        const h2 = hash(row, gx, i + 31);
+        const ci = d < 10 ? 4 + Math.floor(h2 * 2) : Math.floor(h2 * h2 * 5);
+        const s = 1.1 + h2 * 1.6, j = reduce ? 0 : (hash(gx, row, tw + 5) - 0.5) * 1.6;
+        ctx.fillStyle = PAL[ci] || PAL[1];
+        ctx.fillRect(sx + j, top + row * CELL + j, s, s);
+      }
+    }
+
+    if (!reduce) {
+      for (let k = 0; k < 3; k++) {
+        if (Math.random() < 0.7) {
+          sparks.push({
+            x: Lx + Math.random() * 30,
+            y: top + Math.random() * (fh + 20) - 10,
+            vx: -30 + Math.random() * 70 + vel * 0.6,
+            vy: (Math.random() - 0.5) * 50,
+            s: 0.8 + Math.random() * 1.8,
+            c: PAL[(Math.random() * PAL.length) | 0],
+            life: 0.3 + Math.random() * 0.8
+          });
+        }
+      }
+    }
+  }
+
+  function drawSparks(dt) {
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      s.life -= dt;
+      if (s.life <= 0) {
+        sparks.splice(i, 1);
+        continue;
+      }
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+      ctx.globalAlpha = Math.min(1, s.life * 2.2);
+      ctx.fillStyle = s.c;
+      ctx.fillRect(s.x, s.y, s.s, s.s);
+    }
+    ctx.globalAlpha = 1;
+    if (sparks.length > 400) sparks.splice(0, sparks.length - 400);
+  }
+
+  // drag + inertia (drag right = rebuild raw)
+  belt.addEventListener('pointerdown', e => {
+    drag = true;
+    belt.classList.add('drag');
+    belt.setPointerCapture(e.pointerId);
+    lastX = e.clientX;
+    lastT = performance.now();
   });
 
-  window.__setTransformationScene = setTransformationScene;
+  belt.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const n = performance.now();
+    const dx = e.clientX - lastX;
+    off += dx;
+    vel = (dx / Math.max(8, n - lastT)) * 1000 * 0.8 + vel * 0.2;
+    lastX = e.clientX;
+    lastT = n;
+  });
 
-  // Initialize at 50/50 with Scene 1
-  updateComparison(50);
-  setTransformationScene(0, false);
+  const endDrag = () => {
+    drag = false;
+    belt.classList.remove('drag');
+  };
+  belt.addEventListener('pointerup', endDrag);
+  belt.addEventListener('pointercancel', endDrag);
+
+  belt.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      vel += -e.deltaX * 6;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // run only while visible
+  const obs = new IntersectionObserver(([en]) => {
+    run = en.isIntersecting && !document.hidden;
+    if (run) requestAnimationFrame(frame);
+  });
+  obs.observe(root);
+
+  document.addEventListener('visibilitychange', () => {
+    run = !document.hidden && root.getBoundingClientRect().bottom > 0;
+    if (run) requestAnimationFrame(frame);
+  });
+
+  new ResizeObserver(measure).observe(belt);
+  Promise.all(frames.flatMap(f => [...f.querySelectorAll('img')].map(i => i.decode?.().catch(() => {})))).then(measure);
+  measure();
 }
 
 /* 13. ANIMATED TESTIMONIALS CAROUSEL & EXPANDABLE MODAL HANDLER */
@@ -1351,49 +1388,24 @@ async function initCinematicAnimationSystem() {
     }
   }
 
-  // ── FIVE-SCENE LUXURY INTERIOR TRANSFORMATION PINNED SCROLL TRIGGER ──
-  const transformationExpSec = document.getElementById('transformation-experience');
-  const stagePin = document.getElementById('transformationStagePin');
-  if (transformationExpSec && stagePin && typeof window.ScrollTrigger !== 'undefined') {
-    // Intro header entrance animation
-    const introEl = transformationExpSec.querySelector('.transformation-intro');
-    if (introEl) {
-      gsap.from(introEl.children, {
+  // ── "RAW → BESPOKE" SCANNER-CONVEYOR SECTION ENTRANCE ANIMATION ──
+  const namTransformSec = document.getElementById('nam-transform');
+  if (namTransformSec && !isExcludedHero(namTransformSec)) {
+    const headEl = namTransformSec.querySelector('.nt-head');
+    if (headEl) {
+      gsap.from(headEl.children, {
         opacity: 0,
         y: 28,
         duration: 0.9,
         stagger: 0.15,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: transformationExpSec,
+          trigger: namTransformSec,
           start: 'top 82%',
           toggleActions: 'play none none reverse'
         }
       });
     }
-
-    // Pinned scroll sequence across all 5 scenes
-    const isMobile = window.innerWidth <= 768;
-    const pinDistance = isMobile ? '+=220%' : '+=340%';
-
-    window.__transformationST = ScrollTrigger.create({
-      trigger: transformationExpSec,
-      start: 'top top+=75',
-      end: pinDistance,
-      pin: stagePin,
-      pinSpacing: true,
-      anticipatePin: 1,
-      scrub: 0.3,
-      onUpdate: (self) => {
-        // Map scroll progress (0.0 to 1.0) to 5 scenes
-        // Holding scene 5 (Grand Foyer) at the end before releasing
-        const p = self.progress;
-        const targetScene = Math.min(4, Math.floor(p * 5));
-        if (targetScene !== activeTransformationIndex && typeof window.__setTransformationScene === 'function') {
-          window.__setTransformationScene(targetScene, true);
-        }
-      }
-    });
   }
 
   // Architectural Façades Section
