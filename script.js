@@ -833,9 +833,9 @@ function initScannerConveyor() {
   const layerEl = root.querySelector('.nt-layer');
   const LAYERS = ['Structure', 'False ceiling & cove lighting', 'Wall panelling', 'Flooring', 'Furniture', 'Styling & décor'];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const PAL = ['#8a6a45', '#c9a57b', '#d9b88c', '#e8c9a0', '#f3dfc2', '#fff3df'];
+  const PAL = ['#8a6a45', '#c9a57b', '#d9b88c', '#e8c9a0', '#ffd27a', '#ffe3a8'];
   const N = frames.length;
-  const TOP = parseFloat(getComputedStyle(root).getPropertyValue('--pad')) || 36;
+  let TOP = 84;
 
   let W = 0, H = 0, fw = 0, fh = 0, gap = 0, span = 0, period = 0, Lx = 0, dpr = 1;
   let off = 0, vel = 0, hover = 0, drag = false, lastX = 0, lastT = 0, run = false, prev = 0, shown = 0, curIdx = -1;
@@ -857,6 +857,7 @@ function initScannerConveyor() {
       fw = frames[0].offsetWidth;
       fh = frames[0].offsetHeight;
     }
+    TOP = parseFloat(getComputedStyle(root).getPropertyValue('--badge-zone')) || (frames[0] ? frames[0].offsetTop : 84);
     const gapProp = parseFloat(getComputedStyle(root).getPropertyValue('--gap')) || 4;
     gap = (gapProp / 100) * window.innerWidth || fw * 0.06;
     span = fw + gap;
@@ -924,8 +925,8 @@ function initScannerConveyor() {
   function drawDissolve(i, x, cut, t) {
     const top = TOP, R = 0.17 * fw, CELL = 3, rows = Math.ceil(fh / CELL);
     const g = ctx.createLinearGradient(Lx, 0, Lx + 120, 0); // soft gold haze on the raw side
-    g.addColorStop(0, 'rgba(198,173,133,.35)');
-    g.addColorStop(1, 'rgba(198,173,133,0)');
+    g.addColorStop(0, 'rgba(255,210,122,.38)');
+    g.addColorStop(1, 'rgba(255,210,122,0)');
     ctx.fillStyle = g;
     ctx.fillRect(Lx, top, Math.max(0, Math.min(120, x + fw - Lx)), fh);
 
