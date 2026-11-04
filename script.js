@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try { initSightsSlider(); } catch(e) { console.error('Sights Slider Error:', e); }
   try { initBeforeAfterSlider(); } catch(e) { console.error('BeforeAfter Slider Error:', e); }
   try { initAnimatedTestimonials(); } catch(e) { console.error('Animated Testimonials Error:', e); }
+  try { initTransformationExperience(); } catch(e) { console.error('Transformation Experience Error:', e); }
   try { initCinematicAnimationSystem(); } catch(e) { console.error('Cinematic Animation System Error:', e); }
 });
 
@@ -814,6 +815,190 @@ function initBeforeAfterSlider() {
   });
 }
 
+/* ==========================================================================
+   12. FIVE-SCENE LUXURY INTERIOR TRANSFORMATION EXPERIENCE ENGINE
+   ========================================================================== */
+const transformationScenes = [
+  {
+    id: 1,
+    title: "LIVING ROOM",
+    tagline: "Formal Reception & Garden Lounge",
+    raw: "images/01-living-raw.webp",
+    finished: "images/01-living-finished.webp"
+  },
+  {
+    id: 2,
+    title: "MASTER BEDROOM",
+    tagline: "Primary Suite & Dressing Sanctuary",
+    raw: "images/02-bedroom-raw.webp",
+    finished: "images/02-bedroom-finished.webp"
+  },
+  {
+    id: 3,
+    title: "DESIGNER KITCHEN",
+    tagline: "Italian Monolith & Culinary Architecture",
+    raw: "images/03-kitchen-raw.webp",
+    finished: "images/03-kitchen-finished.webp"
+  },
+  {
+    id: 4,
+    title: "PRIVATE HOME THEATRE",
+    tagline: "Acoustic Cinema & Private Screening Room",
+    raw: "images/04-theatre-raw.webp",
+    finished: "images/04-theatre-finished.webp"
+  },
+  {
+    id: 5,
+    title: "GRAND FOYER",
+    tagline: "Double-Height Travertine Arrival",
+    raw: "images/05-foyer-raw.webp",
+    finished: "images/05-foyer-finished.webp"
+  }
+];
+
+let activeTransformationIndex = 0;
+let currentSliderValue = 50;
+
+function initTransformationExperience() {
+  const section = document.getElementById('transformation-experience');
+  if (!section) return;
+
+  const viewport = document.getElementById('comparisonViewport');
+  const rawLayer = document.getElementById('rawLayer');
+  const rawImg = document.getElementById('rawImg');
+  const finishedImg = document.getElementById('finishedImg');
+  const divider = document.getElementById('comparisonDivider');
+  const dividerHandle = document.getElementById('dividerHandle');
+  const sceneNum = document.getElementById('sceneNum');
+  const sceneTitle = document.getElementById('sceneTitle');
+  const sceneTagline = document.getElementById('sceneTagline');
+  const tabs = document.querySelectorAll('.transformation-nav-tabs .scene-tab');
+
+  if (!viewport || !rawLayer || !divider || !dividerHandle) return;
+
+  // Preload all 10 images into memory
+  transformationScenes.forEach(scene => {
+    const rImg = new Image();
+    rImg.src = scene.raw;
+    const fImg = new Image();
+    fImg.src = scene.finished;
+  });
+
+  // Comparison update
+  function updateComparison(percentage) {
+    const value = Math.max(0, Math.min(100, percentage));
+    currentSliderValue = value;
+    rawLayer.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+    divider.style.left = `${value}%`;
+    dividerHandle.setAttribute('aria-valuenow', Math.round(value));
+  }
+
+  // Pointer drag logic (Mouse, Touch, Stylus)
+  let isDragging = false;
+
+  function getPctFromEvent(e) {
+    const rect = viewport.getBoundingClientRect();
+    const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const offsetX = clientX - rect.left;
+    return (offsetX / rect.width) * 100;
+  }
+
+  function onPointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    isDragging = true;
+    dividerHandle.classList.add('is-dragging');
+    try {
+      viewport.setPointerCapture(e.pointerId);
+    } catch (err) {}
+    updateComparison(getPctFromEvent(e));
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    updateComparison(getPctFromEvent(e));
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    dividerHandle.classList.remove('is-dragging');
+    try {
+      viewport.releasePointerCapture(e.pointerId);
+    } catch (err) {}
+  }
+
+  viewport.addEventListener('pointerdown', onPointerDown);
+  viewport.addEventListener('pointermove', onPointerMove);
+  viewport.addEventListener('pointerup', onPointerUp);
+  viewport.addEventListener('pointercancel', onPointerUp);
+
+  // Keyboard accessibility
+  dividerHandle.addEventListener('keydown', (e) => {
+    let delta = 0;
+    if (e.key === 'ArrowLeft') delta = -4;
+    else if (e.key === 'ArrowRight') delta = 4;
+    else if (e.key === 'Home') { updateComparison(0); e.preventDefault(); return; }
+    else if (e.key === 'End') { updateComparison(100); e.preventDefault(); return; }
+
+    if (delta !== 0) {
+      e.preventDefault();
+      updateComparison(currentSliderValue + delta);
+    }
+  });
+
+  // Scene switcher
+  function setTransformationScene(index, smooth = true) {
+    if (index < 0 || index >= transformationScenes.length) return;
+    activeTransformationIndex = index;
+    const scene = transformationScenes[index];
+
+    if (sceneNum) sceneNum.textContent = `0${scene.id} / 05`;
+    if (sceneTitle) sceneTitle.textContent = scene.title;
+    if (sceneTagline) sceneTagline.textContent = scene.tagline;
+
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+    });
+
+    if (smooth && rawImg && finishedImg) {
+      rawImg.style.opacity = '0.35';
+      finishedImg.style.opacity = '0.35';
+      setTimeout(() => {
+        rawImg.src = scene.raw;
+        finishedImg.src = scene.finished;
+        rawImg.style.opacity = '1';
+        finishedImg.style.opacity = '1';
+      }, 120);
+    } else if (rawImg && finishedImg) {
+      rawImg.src = scene.raw;
+      finishedImg.src = scene.finished;
+      rawImg.style.opacity = '1';
+      finishedImg.style.opacity = '1';
+    }
+  }
+
+  // Navigation tab clicks
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = parseInt(tab.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) {
+        setTransformationScene(idx, true);
+        if (window.ScrollTrigger && window.__transformationST) {
+          const st = window.__transformationST;
+          const targetY = st.start + (st.end - st.start) * (idx / 4.9);
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  window.__setTransformationScene = setTransformationScene;
+
+  // Initialize at 50/50 with Scene 1
+  updateComparison(50);
+  setTransformationScene(0, false);
+}
+
 /* 13. ANIMATED TESTIMONIALS CAROUSEL & EXPANDABLE MODAL HANDLER */
 const testimonialsData = [
   {
@@ -1166,45 +1351,49 @@ async function initCinematicAnimationSystem() {
     }
   }
 
-  // Blueprint / Design Philosophy Section (Centered with Staggered Scroll Animation)
-  const blueprintSec = document.getElementById('blueprint-concept');
-  if (blueprintSec && !isExcludedHero(blueprintSec)) {
-    const svgCol = blueprintSec.querySelector('.blueprint-svg-illustration');
-    const contentCol = blueprintSec.querySelector('.blueprint-content');
-    const tag = blueprintSec.querySelector('.blueprint-tag');
-    const heading = blueprintSec.querySelector('.blueprint-heading');
-    const text = blueprintSec.querySelector('.blueprint-text');
-
-    if (svgCol) {
-      gsap.from(svgCol, {
+  // ── FIVE-SCENE LUXURY INTERIOR TRANSFORMATION PINNED SCROLL TRIGGER ──
+  const transformationExpSec = document.getElementById('transformation-experience');
+  const stagePin = document.getElementById('transformationStagePin');
+  if (transformationExpSec && stagePin && typeof window.ScrollTrigger !== 'undefined') {
+    // Intro header entrance animation
+    const introEl = transformationExpSec.querySelector('.transformation-intro');
+    if (introEl) {
+      gsap.from(introEl.children, {
         opacity: 0,
-        y: -25,
-        scale: 0.96,
-        duration: 1.1,
+        y: 28,
+        duration: 0.9,
+        stagger: 0.15,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: blueprintSec,
+          trigger: transformationExpSec,
           start: 'top 82%',
           toggleActions: 'play none none reverse'
         }
       });
     }
 
-    if (contentCol) {
-      const animElements = [tag, heading, text].filter(Boolean);
-      gsap.from(animElements, {
-        opacity: 0,
-        y: 36,
-        duration: 1.0,
-        stagger: 0.18,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: blueprintSec,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
+    // Pinned scroll sequence across all 5 scenes
+    const isMobile = window.innerWidth <= 768;
+    const pinDistance = isMobile ? '+=220%' : '+=340%';
+
+    window.__transformationST = ScrollTrigger.create({
+      trigger: transformationExpSec,
+      start: 'top top+=75',
+      end: pinDistance,
+      pin: stagePin,
+      pinSpacing: true,
+      anticipatePin: 1,
+      scrub: 0.3,
+      onUpdate: (self) => {
+        // Map scroll progress (0.0 to 1.0) to 5 scenes
+        // Holding scene 5 (Grand Foyer) at the end before releasing
+        const p = self.progress;
+        const targetScene = Math.min(4, Math.floor(p * 5));
+        if (targetScene !== activeTransformationIndex && typeof window.__setTransformationScene === 'function') {
+          window.__setTransformationScene(targetScene, true);
         }
-      });
-    }
+      }
+    });
   }
 
   // Architectural Façades Section
