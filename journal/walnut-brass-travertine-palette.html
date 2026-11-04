@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walnut, Brass and Travertine: Building a Timeless Palette | NAM Atelier Journal</title>
+  <meta name="description" content="Why does the combination of warm American walnut, unlacquered architectural brass, and honed Italian travertine endure across design eras? An essay on the physical harmony between earth, timber, and metal.">
+  <link rel="canonical" href="https://nam-atlier.vercel.app/journal/walnut-brass-travertine-palette">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Walnut, Brass and Travertine: Building a Timeless Palette | NAM Atelier">
+  <meta property="og:description" content="The Geological, Botanical, and Metallurgical Symbiosis Behind NAM Atelier's Signature Interior Aesthetic">
+  <meta property="og:image" content="https://nam-atlier.vercel.app/images/journal/walnut-brass-travertine-palette.webp">
+  <meta property="og:url" content="https://nam-atlier.vercel.app/journal/walnut-brass-travertine-palette">
+  <meta property="og:type" content="article">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --surface: #151412;
+      --ivory: #f3eee6;
+      --mute: #a89f92;
+      --brass: #b8935a;
+      --script-color: #d9cfc0;
+      --hairline: rgba(243, 238, 230, 0.12);
+      --font-jost: 'Jost', -apple-system, sans-serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ivory);
+      font-family: var(--font-jost);
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Navbar */
+    .site-header {
+      position: fixed !important;
+      top: 18px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 94% !important;
+      max-width: 1380px !important;
+      height: 68px !important;
+      background: rgba(11, 11, 11, 0.72) !important;
+      backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(243, 238, 230, 0.1) !important;
+      border-radius: 99px !important;
+      z-index: 9999 !important;
+      padding: 0 28px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    .brand-logo img { max-height: 22px !important; }
+    .nav-link { color: rgba(243, 238, 230, 0.75) !important; text-decoration: none !important; font-size: 0.82rem !important; letter-spacing: 0.22em !important; text-transform: uppercase !important; }
+
+    /* Article Hero */
+    .art-hero {
+      position: relative;
+      height: 85vh;
+      height: 85svh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 6vw, 100px);
+    }
+
+    .art-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .art-hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(11,11,11,0.3) 0%, rgba(11,11,11,0.6) 60%, rgba(11,11,11,0.98) 100%);
+      z-index: 2;
+    }
+
+    .art-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1000px;
+    }
+
+    .art-cat-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .art-title {
+      font-family: var(--font-jost);
+      font-size: clamp(32px, 5vw, 68px);
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      color: var(--ivory);
+      margin-bottom: 14px;
+    }
+
+    .art-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 1.6vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mute);
+      line-height: 1.6;
+    }
+
+    /* Meta Details */
+    .art-meta-bar {
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      padding: 20px clamp(24px, 6vw, 100px);
+      background: var(--bg);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mute);
+      display: flex;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Reading Column */
+    .art-reading-sec {
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 6vw, 100px);
+      background: var(--bg);
+    }
+
+    .art-reading-col {
+      max-width: 68ch;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .art-p {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      line-height: 1.85;
+      color: rgba(243, 238, 230, 0.9);
+      font-weight: 400;
+    }
+
+    .art-p:first-of-type::first-letter {
+      font-family: var(--font-jost);
+      font-size: 4.8rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 18px;
+      margin-top: 6px;
+      color: var(--brass);
+      font-weight: 200;
+    }
+
+    /* Read Next */
+    .art-read-next {
+      padding: 60px clamp(24px, 6vw, 100px);
+      background: var(--surface);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    .art-read-next a {
+      color: var(--ivory);
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+    }
+
+    .art-read-next a:hover {
+      color: var(--brass);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <a href="../../index.html" class="brand-logo">
+      <img src="../../nam_logo_white.png" alt="NAM Atelier Logo" />
+    </a>
+    <nav class="main-nav">
+      <a href="../../about.html" class="nav-link">ABOUT</a>
+      <a href="../../portfolio-detail.html" class="nav-link">3D PORTFOLIO</a>
+      <a href="../../blog.html" class="nav-link active">JOURNAL</a>
+    </nav>
+    <a href="../../portfolio-detail.html" class="btn-inquire-pill" style="font-size: 0.72rem; padding: 8px 18px;">
+      &larr; BACK
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <article>
+    <header class="art-hero">
+      <img src="../../images/journal/walnut-brass-travertine-palette.webp" alt="Walnut, Brass and Travertine: Building a Timeless Palette" />
+      <div class="art-hero-gradient"></div>
+      <div class="art-hero-content">
+        <span class="art-cat-pill">Design Philosophy</span>
+        <h1 class="art-title">Walnut, Brass and Travertine: Building a Timeless Palette</h1>
+        <p class="art-subtitle">The Geological, Botanical, and Metallurgical Symbiosis Behind NAM Atelier's Signature Interior Aesthetic</p>
+      </div>
+    </header>
+
+    <div class="art-meta-bar">
+      <span>By NAM Atelier Studio</span>
+      <span>August 2024 &bull; 9 min read</span>
+    </div>
+
+    <!-- READING COLUMN -->
+    <div class="art-reading-sec">
+      <div class="art-reading-col">
+        <p class="art-p">In an interior design landscape dominated by fleeting digital trends—where colors and synthetic finishes are popularized on social media only to look dated within thirty-six months—creating an interior that feels genuinely timeless is the ultimate test of architectural discipline. At NAM Atelier, our work consistently returns to an enduring holy trinity of natural materials: quarter-sawn American black walnut, hand-patinated unlacquered brass, and honed Roman travertine.</p><p class="art-p">This palette is neither accidental nor arbitrary. It represents a profound physical and emotional dialogue between the three kingdoms of our physical world: the geological (stone), the botanical (timber), and the metallurgical (brass). When these three substances meet in the right proportion, they satisfy our innate human craving for sensory authenticity, warmth, and permanence.</p><p class="art-p">Travertine provides the neutral geological foundation. Formed by rapid mineral precipitation over thousands of years in geothermal limestone springs, its creamy beige background, subtle linear striations, and soft textural cavities evoke the monumental calm of ancient Roman architecture. Unlike cold, high-contrast black-and-white marbles that can feel sterile and clinical in large volumes, travertine has a warm, honeyed undertone that absorbs harsh tropical daylight and diffuses it with gentle, pearlescent warmth. It is grounding, quiet, and endlessly forgiving of daily family wear.</p><p class="art-p">American black walnut introduces botanical soul, acoustic dampening, and human warmth. Selected for its deep espresso undertones, straight quarter-sawn grain, and absence of orange or red stains, walnut provides the visual weight necessary to anchor large, airy architectural volumes. Because wood is naturally fibrous and cellular, walnut wall panelling and custom millwork absorb high-frequency flutter echoes, instantly lowering ambient acoustic reverberation and imparting an audible hush to living spaces. Finished with natural organic hardwax oils rather than thick synthetic plastic polyurethanes, the timber retains its open-pore breathability and subtle woody scent, inviting the hand to trace its grain.</p><p class="art-p">Unlacquered brass provides the luminous, jewelry-like focal point. Synthetic gold chrome or electroplated plastics look flashy when brand new, but chip, peel, and tarnish horribly over time. Genuine solid brass, conversely, is an honest metallurgical alloy that lives with the building. When left unlacquered, it begins as a radiant, satin-brushed gold that gently oxidizes in response to humidity, air, and the touch of human hands, developing a rich, burnished antique patina that tells the story of human habitation. The handles of a front door, the rim of a cocktail bar, and the nosing of a stone stair become richer and more characterful with each passing year.</p><p class="art-p">Proportion and contrast are paramount when orchestrating this triumvirate. We adhere to a compositional balance: approximately sixty percent mineral travertine across floors and key monolithic feature walls, thirty percent walnut joinery across vertical screens, cabinetry, and ceilings, and ten percent brass accents across hardware, transition strips, and light fittings. This strict ratio prevents the timber from making spaces feel too dark or heavy, while ensuring that the stone never feels cold or cavernous.</p><p class="art-p">Transition detailing is where the craftsmanship reveals itself. We never allow walnut to touch travertine without an intentional architectural shadow gap or a 3mm brass inlay reveal. This hairline demarcation honors the boundary between two disparate materials with different rates of thermal expansion, transforming a potential structural crack into an exquisite moment of poetic craft.</p><p class="art-p">Textile accompaniment is the final unifying layer. To soften the architectural geometry of stone and timber, we introduce heavy unbleached Belgian linen, tactile wool-bouclé upholstery, and shearling cushions in shades of warm oat, pumice, and raw umber. These textural weaves introduce organic softness without introducing disruptive synthetic color pops.</p><p class="art-p">Climate performance in central India is another key reason this palette endures. Travertine remains naturally cool to the barefoot touch throughout dry 45-degree summers, while walnut panels provide thermal insulation against exterior heat transfer, creating an envelope that feels naturally conditioned even before mechanical systems engage.</p><p class="art-p">In the end, trends come and go, but the combination of earth, tree, and metal is etched into human ancestral memory. A room composed of walnut, brass, and travertine will never go out of style—because it was never in style; it simply belongs to the natural order of beauty.</p><p class="art-p">The tactile interplay between soft bouclé, raw linen, and hard stone prevents the palette from feeling too rigid or austere. When deep oatmeal linen curtains pool gently on honed travertine floors, and a shearling armchair sits beside a fluted walnut credenza, the room attains a multi-layered sensory richness that satisfies every sense.</p><p class="art-p">Aging with dignity is the ultimate hallmark of this material trio. While lacquered furniture, painted MDF, and plastic laminates chip and degrade irreversibly over time, unlacquered brass oxidizes into a rich, antique sculpture, walnut develops deep honeyed tones, and travertine softens into a silky, lived-in skin. The materials record the joyous passage of family life.</p><p class="art-p">In an Indian architectural context, this palette also bridges ancestral memory with modernist poise. Travertine recalls the timeless stone courtyards of Rajasthan, walnut echoes the rich teak and rosewood joinery of traditional Havelis, and brass honors the sacred metallurgical arts of Indian brassware, making the home feel authentically rooted in its cultural homeland.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- READ NEXT -->
+  <aside class="art-read-next">
+    <span style="font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--brass); display: block; margin-bottom: 12px;">READ NEXT ESSAY</span>
+    <a href="../designing-home-theatre-acoustics">
+      Designing a Home Theatre with Real Acoustics &rarr;
+    </a>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer style="background: #0b0b0b; padding: 40px 5vw; text-align: center;">
+    <a href="../../blog.html" style="font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ivory); text-decoration: none;">
+      &larr; Return to Journal Index
+    </a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Velvet Cinema — Home Theatre and Bar | NAM Atelier</title>
+  <meta name="description" content="Built inside a premier private residence in South Delhi, The Velvet Cinema is a twelve-seat private screening room and cocktail lounge engineered to commercial reference standards. Wrapped in custom acoustic wall panels upholstered in deep olive mohair velvet, ribbed walnut joinery, and an integrated bar, the space delivers cinematic immersion with five-star luxury.">
+  <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio/the-velvet-cinema">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Velvet Cinema | NAM Atelier">
+  <meta property="og:description" content="Dolby Atmos Acoustic Precision Wrapped in Olive Mohair Velvet">
+  <meta property="og:image" content="https://nam-atlier.vercel.app/images/portfolio/the-velvet-cinema/hero.webp">
+  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio/the-velvet-cinema">
+  <meta property="og:type" content="article">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "The Velvet Cinema",
+    "headline": "Dolby Atmos Acoustic Precision Wrapped in Olive Mohair Velvet",
+    "description": "Built inside a premier private residence in South Delhi, The Velvet Cinema is a twelve-seat private screening room and cocktail lounge engineered to commercial reference standards. Wrapped in custom acoustic wall panels upholstered in deep olive mohair velvet, ribbed walnut joinery, and an integrated bar, the space delivers cinematic immersion with five-star luxury.",
+    "image": "https://nam-atlier.vercel.app/images/portfolio/the-velvet-cinema/hero.webp",
+    "author": {
+      "@type": "Organization",
+      "name": "NAM Atelier"
+    },
+    "locationCreated": {
+      "@type": "Place",
+      "name": "Delhi, India"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: Jost, Great Vibes, Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --surface: #151412;
+      --ivory: #f3eee6;
+      --mute: #a89f92;
+      --brass: #b8935a;
+      --brass-glow: rgba(184, 147, 90, 0.25);
+      --script-color: #d9cfc0;
+      --hairline: rgba(243, 238, 230, 0.12);
+      --font-jost: 'Jost', -apple-system, sans-serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ivory);
+      font-family: var(--font-jost);
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Navbar */
+    .site-header {
+      position: fixed !important;
+      top: 18px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 94% !important;
+      max-width: 1380px !important;
+      height: 68px !important;
+      background: rgba(11, 11, 11, 0.72) !important;
+      backdrop-filter: blur(20px) saturate(160%) !important;
+      border: 1px solid rgba(243, 238, 230, 0.1) !important;
+      border-radius: 99px !important;
+      z-index: 9999 !important;
+      padding: 0 28px !important;
+    }
+
+    .header-inner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .header-brand-nav-stack {
+      display: flex !important;
+      align-items: center !important;
+      gap: 52px !important;
+    }
+
+    .brand-logo img {
+      max-height: 22px !important;
+      width: auto !important;
+    }
+
+    .main-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 36px !important;
+    }
+
+    .nav-link {
+      font-size: 0.82rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: rgba(243, 238, 230, 0.75) !important;
+      text-decoration: none !important;
+      transition: color 0.3s ease !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--ivory) !important;
+    }
+
+    .btn-inquire-pill {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.16em !important;
+      text-transform: uppercase !important;
+      color: #0b0b0b !important;
+      background: var(--ivory) !important;
+      border: 1px solid var(--ivory) !important;
+      padding: 10px 24px !important;
+      border-radius: 99px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .btn-inquire-pill:hover {
+      background: var(--brass) !important;
+      border-color: var(--brass) !important;
+      color: #0b0b0b !important;
+    }
+
+    /* 1. PROJECT HERO */
+    .proj-hero {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 6vw, 100px);
+    }
+
+    .proj-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transform: scale(1.15);
+      animation: heroZoomIn 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes heroZoomIn {
+      to { transform: scale(1.0); }
+    }
+
+    .proj-hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(11, 11, 11, 0.2) 0%, rgba(11, 11, 11, 0.4) 50%, rgba(11, 11, 11, 0.95) 100%);
+      z-index: 2;
+    }
+
+    .proj-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1400px;
+    }
+
+    .proj-service-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .proj-main-title {
+      font-family: var(--font-jost);
+      font-size: clamp(38px, 6.5vw, 92px);
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      line-height: 1.08;
+      color: var(--ivory);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .proj-script-tagline {
+      font-family: var(--font-script);
+      font-size: clamp(32px, 4.5vw, 68px);
+      line-height: 1.1;
+      color: var(--script-color);
+      display: block;
+    }
+
+    /* 2. META ROW (Hairline separated, no boxes) */
+    .proj-meta-bar {
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg);
+      padding: 34px clamp(24px, 6vw, 100px);
+    }
+
+    .meta-bar-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+
+    .meta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .meta-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .meta-val {
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ivory);
+    }
+
+    /* 3. INTRO SUMMARY */
+    .proj-summary-sec {
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 100px);
+      background: var(--bg);
+    }
+
+    .proj-summary-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .proj-lead-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2.4vw, 36px);
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--ivory);
+      font-style: italic;
+    }
+
+    /* 4. LONG-FORM EDITORIAL STORY */
+    .proj-story-sec {
+      padding: 40px clamp(24px, 6vw, 100px) clamp(80px, 12vh, 140px);
+      background: var(--bg);
+    }
+
+    .proj-story-col {
+      max-width: 68ch;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .story-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .story-heading {
+      font-family: var(--font-jost);
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      position: relative;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .story-para {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.8;
+      color: rgba(243, 238, 230, 0.85);
+      font-weight: 400;
+    }
+
+    /* Brass Drop Cap on first paragraph of first story block */
+    .story-block:first-child .story-para:first-of-type::first-letter {
+      font-family: var(--font-jost);
+      font-size: 4.8rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 18px;
+      margin-top: 6px;
+      color: var(--brass);
+      font-weight: 200;
+    }
+
+    /* 5. FULL BLEED GALLERY */
+    .proj-gallery-sec {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(40px, 6vw, 90px);
+      background: var(--bg);
+      padding-bottom: clamp(80px, 12vh, 160px);
+    }
+
+    .gallery-full {
+      width: 100%;
+      height: 90vh;
+      height: 90svh;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .gallery-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .gallery-full:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 24px;
+      left: clamp(24px, 5vw, 80px);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(243, 238, 230, 0.8);
+      background: rgba(11, 11, 11, 0.65);
+      padding: 8px 18px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--hairline);
+    }
+
+    .gallery-duo {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 64px);
+    }
+
+    .gallery-duo-item {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .gallery-duo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .gallery-duo-item:hover img {
+      transform: scale(1.03);
+    }
+
+    /* 6. MATERIALS & PALETTE */
+    .proj-specs-sec {
+      background: var(--surface);
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 100px);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .specs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(40px, 6vw, 90px);
+    }
+
+    .specs-col-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .materials-typographic-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mat-list-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-jost);
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mat-list-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--brass);
+      border-radius: 50%;
+    }
+
+    .palette-swatches-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .swatch-plain-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .swatch-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(243, 238, 230, 0.2);
+    }
+
+    .swatch-name {
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+    }
+
+    .swatch-hex {
+      font-size: 0.75rem;
+      color: var(--mute);
+      letter-spacing: 0.1em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 7. PULL QUOTE */
+    .proj-quote-sec {
+      padding: clamp(90px, 14vh, 180px) clamp(24px, 6vw, 100px);
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .quote-box {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 0.6;
+      color: var(--brass);
+      opacity: 0.6;
+    }
+
+    .quote-body-text {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 2.8vw, 42px);
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--ivory);
+    }
+
+    .quote-attribution {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass);
+    }
+
+    /* 8. NEXT PROJECT TEASER */
+    .next-proj-teaser {
+      position: relative;
+      height: 80vh;
+      height: 80svh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ivory);
+    }
+
+    .next-teaser-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .next-proj-teaser:hover .next-teaser-bg {
+      transform: scale(1.05);
+    }
+
+    .next-teaser-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 11, 11, 0.68);
+      backdrop-filter: blur(3px);
+      z-index: 2;
+      transition: background 0.5s ease;
+    }
+
+    .next-proj-teaser:hover .next-teaser-overlay {
+      background: rgba(11, 11, 11, 0.52);
+    }
+
+    .next-teaser-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 5vw;
+    }
+
+    .next-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .next-proj-name {
+      font-family: var(--font-jost);
+      font-size: clamp(34px, 5.5vw, 78px);
+      font-weight: 200;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .next-arrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #0b0b0b;
+      background: var(--ivory);
+      padding: 12px 28px;
+      border-radius: 99px;
+      transition: all 0.3s ease;
+    }
+
+    .next-proj-teaser:hover .next-arrow-pill {
+      background: var(--brass);
+      transform: translateX(4px);
+    }
+
+    /* Fullscreen Modal Lightbox */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 100000;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .lightbox-modal img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: var(--ivory);
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .meta-bar-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .gallery-duo {
+        grid-template-columns: 1fr;
+      }
+      .specs-inner {
+        grid-template-columns: 1fr;
+      }
+      .site-header {
+        height: 60px !important;
+        padding: 0 18px !important;
+      }
+      .main-nav {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-brand-nav-stack">
+        <a href="../../index.html" class="brand-logo" title="NAM Atelier Studio">
+          <img src="../../nam_logo_white.png" alt="NAM Atelier Official Logo" />
+        </a>
+        <nav class="main-nav" aria-label="Main Navigation">
+          <a href="../../about.html" class="nav-link">ABOUT STUDIO</a>
+          <a href="../../portfolio-detail.html" class="nav-link active">3D PORTFOLIO</a>
+          <a href="../../service-detail.html" class="nav-link">SERVICES</a>
+          <a href="../../blog.html" class="nav-link">JOURNAL</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <a href="../../portfolio-detail.html" class="btn-inquire-pill">
+          &larr; ALL PROJECTS
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="proj-hero">
+    <img src="../../images/portfolio/the-velvet-cinema/hero.webp" alt="The Velvet Cinema" class="proj-hero-bg" />
+    <div class="proj-hero-gradient"></div>
+    <div class="proj-hero-content">
+      <span class="proj-service-tag">Home Theatre and Bar</span>
+      <h1 class="proj-main-title">The Velvet Cinema</h1>
+      <span class="proj-script-tagline">Dolby Atmos Acoustic Precision Wrapped in Olive Mohair Velvet</span>
+    </div>
+  </section>
+
+  <!-- 2. META ROW -->
+  <section class="proj-meta-bar">
+    <div class="meta-bar-grid">
+      <div class="meta-col">
+        <span class="meta-label">Location</span>
+        <span class="meta-val">Delhi, India</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Year Completed</span>
+        <span class="meta-val">2025</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Enclosed Area</span>
+        <span class="meta-val" id="areaNumber">2,200 SQ FT</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Execution Duration</span>
+        <span class="meta-val">7 Months</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Architectural Service</span>
+        <span class="meta-val">Home Theatre and Bar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTRO PULL SUMMARY -->
+  <section class="proj-summary-sec">
+    <div class="proj-summary-inner">
+      <p class="proj-lead-quote">&ldquo;Built inside a premier private residence in South Delhi, The Velvet Cinema is a twelve-seat private screening room and cocktail lounge engineered to commercial reference standards. Wrapped in custom acoustic wall panels upholstered in deep olive mohair velvet, ribbed walnut joinery, and an integrated bar, the space delivers cinematic immersion with five-star luxury.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 4. LONG-FORM 800+ WORD STORY -->
+  <section class="proj-story-sec">
+    <div class="proj-story-col">
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Brief</h2>
+        <p class="story-para">The client, a prominent Bollywood film producer and cinema connoisseur, commissioned NAM Atelier to build an uncompromising private cinema in his South Delhi villa. The facility had to deliver commercial reference-level Dolby Atmos 9.4.6 audio and 4K laser projection capable of screening uncompressed DCI cinema masters, while avoiding the tacky 'spaceship' or sterile corporate aesthetics common to high-end home theaters.</p><p class="story-para">The space required twelve luxurious motorized recliners arranged across three stepped tiers, along with a full-service hospitality cocktail bar at the rear for post-screening discussions.</p><p class="story-para">Crucially, the client requested that all electronic equipment, surround speakers, subwoofers, and acoustic treatment panels be completely hidden from sight, allowing pure architectural materials and luxurious textiles to dominate the space.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Challenge</h2>
+        <p class="story-para">The theatre was situated in the basement level directly beneath the villa’s primary master bedroom suite. Ensuring zero acoustic bass transmission at sound pressure levels exceeding 105 decibels required constructing a completely decoupled 'room-within-a-room' floating structure.</p><p class="story-para">Furthermore, achieving ideal reverberation decay times (RT60 of 0.28 seconds) across all audio frequencies without making the room sound 'dead' or boxy demanded an intricate balance of concealed bass traps, resonant membrane absorbers, and quadratic residue diffusers disguised behind seamless architectural upholstery.</p><p class="story-para">Sub-floor thermal insulation was also critical to prevent basement humidity from affecting the electronic amplification racks and delicate projection lenses.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Concept</h2>
+        <p class="story-para">Our aesthetic direction, 'Nocturnal Velvet', draws inspiration from classic mid-century European cinema palaces, reimagined through clean architectural geometry. We wrapped the room in deep olive mohair velvet, rich fluted walnut, and brushed brass details that create a warm, sensual atmosphere even when the screen is powered down.</p><p class="story-para">All technical equipment—including fifteen surround speakers, four high-excursion subwoofers, and acoustic treatment panels—was completely concealed behind acoustically transparent fabric walls, allowing pure architecture and luxurious textiles to define the experience.</p><p class="story-para">The spatial layout seamlessly marries acoustic physics with hospitality: a full-service cocktail bar at the rear allows guests to refresh drinks without leaving the cinematic environment.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Space by Space</h2>
+        <p class="story-para">Entry is via a pressurized sound-lock vestibule featuring acoustic seals and a low-lit brass signage niche. Inside, twelve custom recliners upholstered in olive mohair velvet occupy three stepped tiers, each equipped with an integrated brass cocktail side table and silent motorized recline controls.</p><p class="story-para">At the rear of the theater, the floor rises to the cocktail bar platform. Here, a curved bar counter in Saint Laurent marble and fluted walnut joinery provides wine chillers, crystal glassware storage, and an espresso station for intermissions.</p><p class="story-para">The projection screen is a 180-inch micro-perforated acoustically transparent curved display, behind which the primary front screen channels and twin subwoofers deliver dialogue directly through the picture plane.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Materials and Finishes</h2>
+        <p class="story-para">The primary wall covering is custom-loomed olive mohair velvet, selected for its luxurious sheen, durability, and natural high-frequency sound-absorbing properties. The timber elements are crafted from dark American walnut, treated with deep matte oils.</p><p class="story-para">The bar counter features honed Saint Laurent black marble with golden veins, complemented by unlacquered antique brass foot rails. The floor is lined with high-density acoustic underlayment beneath custom 1200-gram pure wool carpeting designed to absorb footfall noise.</p><p class="story-para">Ceiling treatments utilize dark charcoal acoustic plaster that absorbs stray light scatter from the screen while preventing sound flutter.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Light and Atmosphere</h2>
+        <p class="story-para">Lighting is calibrated with three distinct operational scenes: Reception, Screening, and Cocktail Hour. During reception, warm 2200K cove grazing accents the fluted walnut walls and the marble bar counter.</p><p class="story-para">During screenings, all illumination fades to absolute black, leaving only micro-step low-level LED safety runners operating at less than 1% brightness to allow safe movement without casting stray light onto the 180-inch micro-perforated projection screen.</p><p class="story-para">At the end of a film, the lighting smoothly fades up over eight seconds to a warm candlelit glow, ensuring eyes adjust gently to ambient light.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Craft and Execution</h2>
+        <p class="story-para">Civil construction involved pouring a 100mm reinforced concrete floating slab isolated from the main foundation by heavy-duty Sylomer elastomer springs, creating a mechanical barrier that eliminates sub-bass structural vibration.</p><p class="story-para">The projection booth was isolated in a separate acoustic chamber behind double-glazed optical glass, silencing projector cooling fans. The HVAC system utilized oversized low-velocity sound attenuators, achieving an ultra-quiet Noise Criterion rating of NC-20 inside the room during full operation.</p><p class="story-para">All acoustic fabric panels were stretched using precision track systems with concealed tensioning splines, guaranteeing razor-sharp seams across fifteen meters of wall.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Result</h2>
+        <p class="story-para">The Velvet Cinema stands as a benchmark of residential acoustic engineering and bespoke interior luxury in New Delhi. It proves that technical acoustic perfection does not require compromising on sumptuous material beauty and timeless architectural poise.</p><p class="story-para">It provides the homeowner with a world-class private screening venue that rivals commercial Hollywood mixing stages in performance and surpasses five-star hotels in comfort.</p><p class="story-para">The client frequently hosts exclusive premiere screenings for fellow directors, all of whom marvel at the room's extraordinary acoustic neutrality and sumptuous luxury.</p>
+      </article>
+      
+    </div>
+  </section>
+
+  <!-- 5. FULL-BLEED GALLERY -->
+  <section class="proj-gallery-sec">
+    <!-- Image 1: Full-width -->
+    <div class="gallery-full" onclick="openLightbox('../../images/portfolio/the-velvet-cinema/gallery-1.webp')">
+      <img src="../../images/portfolio/the-velvet-cinema/gallery-1.webp" alt="Private home theatre with olive green velvet recliners and acoustically tuned wall paneling" loading="lazy" />
+      <span class="gallery-caption">Tiered seating array with motorized olive mohair recliners and integrated brass cocktail tables.</span>
+    </div>
+
+    <!-- Image 2 & 3: Duo Layout -->
+    <div class="gallery-duo">
+      <div class="gallery-duo-item" onclick="openLightbox('../../images/portfolio/the-velvet-cinema/gallery-2.webp')">
+        <img src="../../images/portfolio/the-velvet-cinema/gallery-2.webp" alt="Concealed speaker baffles and warm linear step lighting" loading="lazy" />
+        <span class="gallery-caption">Acoustically transparent micro-suede wall panels concealing high-output Dolby Atmos speakers.</span>
+      </div>
+      <div class="gallery-duo-item" onclick="openLightbox('../../images/portfolio/the-velvet-cinema/gallery-3.webp')">
+        <img src="../../images/portfolio/the-velvet-cinema/gallery-3.webp" alt="Rear cocktail bar with fluted walnut paneling and backlit bottle display" loading="lazy" />
+        <span class="gallery-caption">Integrated rear cocktail bar with fluted walnut cabinetry and honed Saint Laurent marble counter.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MATERIALS & COLOR PALETTE -->
+  <section class="proj-specs-sec">
+    <div class="specs-inner">
+      <div>
+        <span class="specs-col-title">ARCHITECTURAL MATERIAL MATRIX</span>
+        <div class="materials-typographic-list">
+          <div class="mat-list-item">Olive Mohair Velvet</div><div class="mat-list-item">American Black Walnut</div><div class="mat-list-item">Micro-Perforated Acoustic Fabric</div><div class="mat-list-item">Saint Laurent Marble</div><div class="mat-list-item">Antique Patinated Brass</div><div class="mat-list-item">Acoustically Decoupled Floating Concrete</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="specs-col-title">CURATED COLOR PALETTE</span>
+        <div class="palette-swatches-grid">
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #4b533a;"></div>
+            <div>
+              <div class="swatch-name">Olive Velvet</div>
+              <div class="swatch-hex">#4b533a</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #161616;"></div>
+            <div>
+              <div class="swatch-name">Deep Charcoal</div>
+              <div class="swatch-hex">#161616</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #38291d;"></div>
+            <div>
+              <div class="swatch-name">Dark Walnut</div>
+              <div class="swatch-hex">#38291d</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #c29d5b;"></div>
+            <div>
+              <div class="swatch-name">Warm Gold</div>
+              <div class="swatch-hex">#c29d5b</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PULL QUOTE -->
+  <section class="proj-quote-sec">
+    <div class="quote-box">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="quote-body-text">The sound clarity is astonishing—you can hear the subtlest rustle of leaves as clearly as a roaring jet engine. Yet when you turn on the bar lights, it becomes the most stylish lounge in our home.</p>
+      <span class="quote-attribution">&mdash; The Film Producer, New Delhi</span>
+    </div>
+  </section>
+
+  <!-- 8. NEXT PROJECT TEASER -->
+  <a href="../the-whisky-library" class="next-proj-teaser">
+    <img src="../../images/portfolio/the-whisky-library/hero.webp" alt="The Whisky Library" class="next-teaser-bg" />
+    <div class="next-teaser-overlay"></div>
+    <div class="next-teaser-content">
+      <span class="next-eyebrow">NEXT ARCHITECTURAL NARRATIVE</span>
+      <h2 class="next-proj-name">The Whisky Library</h2>
+      <span class="next-arrow-pill">Explore Project &rarr;</span>
+    </div>
+  </a>
+
+  <!-- FOOTER -->
+  <footer style="background: #0b0b0b; padding: 40px 5vw; text-align: center; border-top: 1px solid var(--hairline);">
+    <a href="../../portfolio-detail.html" style="font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ivory); text-decoration: none;">
+      &larr; Return to 3D Portfolio Archive
+    </a>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close">&times;</button>
+    <img src="" id="lightboxImg" alt="Enlarged Architectural Detail" />
+  </div>
+
+  <!-- GSAP Motion Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Count Up Area Number
+    const areaEl = document.getElementById("areaNumber");
+    const targetArea = 2200;
+    let currentArea = 0;
+    
+    ScrollTrigger.create({
+      trigger: ".proj-meta-bar",
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to({ val: 0 }, {
+          val: targetArea,
+          duration: 1.8,
+          ease: "power2.out",
+          onUpdate: function() {
+            areaEl.textContent = Math.round(this.targets()[0].val).toLocaleString() + " SQ FT";
+          }
+        });
+      }
+    });
+
+    // Story Paragraphs Stagger Fade In
+    gsap.utils.toArray(".story-block").forEach(block => {
+      gsap.from(block, {
+        opacity: 0,
+        y: 35,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: block,
+          start: "top 85%"
+        }
+      });
+    });
+
+    // Lightbox Helpers
+    function openLightbox(src) {
+      document.getElementById("lightboxImg").src = src;
+      document.getElementById("lightboxModal").style.display = "flex";
+    }
+    function closeLightbox() {
+      document.getElementById("lightboxModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>

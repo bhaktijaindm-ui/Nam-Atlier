@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sandstone Palace — Luxury Villa Design | NAM Atelier</title>
+  <meta name="description" content="Set against the central Indian plateau in Indore, The Sandstone Palace balances stately neoclassical symmetry with whisper-quiet contemporary spatial planning. Clad in hand-hewn Rajasthan Dholpur sandstone, the residence accommodates three generations under one continuous architectural narrative, uniting monumental colonnades with intimate internal courtyards and temperature-buffered living halls.">
+  <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio/the-sandstone-palace">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Sandstone Palace | NAM Atelier">
+  <meta property="og:description" content="A Classical Monolith Reimagined for Modern Dynasty Living">
+  <meta property="og:image" content="https://nam-atlier.vercel.app/images/portfolio/the-sandstone-palace/hero.webp">
+  <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio/the-sandstone-palace">
+  <meta property="og:type" content="article">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "The Sandstone Palace",
+    "headline": "A Classical Monolith Reimagined for Modern Dynasty Living",
+    "description": "Set against the central Indian plateau in Indore, The Sandstone Palace balances stately neoclassical symmetry with whisper-quiet contemporary spatial planning. Clad in hand-hewn Rajasthan Dholpur sandstone, the residence accommodates three generations under one continuous architectural narrative, uniting monumental colonnades with intimate internal courtyards and temperature-buffered living halls.",
+    "image": "https://nam-atlier.vercel.app/images/portfolio/the-sandstone-palace/hero.webp",
+    "author": {
+      "@type": "Organization",
+      "name": "NAM Atelier"
+    },
+    "locationCreated": {
+      "@type": "Place",
+      "name": "Indore, India"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: Jost, Great Vibes, Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --surface: #151412;
+      --ivory: #f3eee6;
+      --mute: #a89f92;
+      --brass: #b8935a;
+      --brass-glow: rgba(184, 147, 90, 0.25);
+      --script-color: #d9cfc0;
+      --hairline: rgba(243, 238, 230, 0.12);
+      --font-jost: 'Jost', -apple-system, sans-serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ivory);
+      font-family: var(--font-jost);
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Navbar */
+    .site-header {
+      position: fixed !important;
+      top: 18px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 94% !important;
+      max-width: 1380px !important;
+      height: 68px !important;
+      background: rgba(11, 11, 11, 0.72) !important;
+      backdrop-filter: blur(20px) saturate(160%) !important;
+      border: 1px solid rgba(243, 238, 230, 0.1) !important;
+      border-radius: 99px !important;
+      z-index: 9999 !important;
+      padding: 0 28px !important;
+    }
+
+    .header-inner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .header-brand-nav-stack {
+      display: flex !important;
+      align-items: center !important;
+      gap: 52px !important;
+    }
+
+    .brand-logo img {
+      max-height: 22px !important;
+      width: auto !important;
+    }
+
+    .main-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 36px !important;
+    }
+
+    .nav-link {
+      font-size: 0.82rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: rgba(243, 238, 230, 0.75) !important;
+      text-decoration: none !important;
+      transition: color 0.3s ease !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--ivory) !important;
+    }
+
+    .btn-inquire-pill {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.16em !important;
+      text-transform: uppercase !important;
+      color: #0b0b0b !important;
+      background: var(--ivory) !important;
+      border: 1px solid var(--ivory) !important;
+      padding: 10px 24px !important;
+      border-radius: 99px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .btn-inquire-pill:hover {
+      background: var(--brass) !important;
+      border-color: var(--brass) !important;
+      color: #0b0b0b !important;
+    }
+
+    /* 1. PROJECT HERO */
+    .proj-hero {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 6vw, 100px);
+    }
+
+    .proj-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transform: scale(1.15);
+      animation: heroZoomIn 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes heroZoomIn {
+      to { transform: scale(1.0); }
+    }
+
+    .proj-hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(11, 11, 11, 0.2) 0%, rgba(11, 11, 11, 0.4) 50%, rgba(11, 11, 11, 0.95) 100%);
+      z-index: 2;
+    }
+
+    .proj-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1400px;
+    }
+
+    .proj-service-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .proj-main-title {
+      font-family: var(--font-jost);
+      font-size: clamp(38px, 6.5vw, 92px);
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      line-height: 1.08;
+      color: var(--ivory);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .proj-script-tagline {
+      font-family: var(--font-script);
+      font-size: clamp(32px, 4.5vw, 68px);
+      line-height: 1.1;
+      color: var(--script-color);
+      display: block;
+    }
+
+    /* 2. META ROW (Hairline separated, no boxes) */
+    .proj-meta-bar {
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg);
+      padding: 34px clamp(24px, 6vw, 100px);
+    }
+
+    .meta-bar-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+
+    .meta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .meta-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .meta-val {
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ivory);
+    }
+
+    /* 3. INTRO SUMMARY */
+    .proj-summary-sec {
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 100px);
+      background: var(--bg);
+    }
+
+    .proj-summary-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .proj-lead-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2.4vw, 36px);
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--ivory);
+      font-style: italic;
+    }
+
+    /* 4. LONG-FORM EDITORIAL STORY */
+    .proj-story-sec {
+      padding: 40px clamp(24px, 6vw, 100px) clamp(80px, 12vh, 140px);
+      background: var(--bg);
+    }
+
+    .proj-story-col {
+      max-width: 68ch;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .story-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .story-heading {
+      font-family: var(--font-jost);
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      position: relative;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .story-para {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.8;
+      color: rgba(243, 238, 230, 0.85);
+      font-weight: 400;
+    }
+
+    /* Brass Drop Cap on first paragraph of first story block */
+    .story-block:first-child .story-para:first-of-type::first-letter {
+      font-family: var(--font-jost);
+      font-size: 4.8rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 18px;
+      margin-top: 6px;
+      color: var(--brass);
+      font-weight: 200;
+    }
+
+    /* 5. FULL BLEED GALLERY */
+    .proj-gallery-sec {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(40px, 6vw, 90px);
+      background: var(--bg);
+      padding-bottom: clamp(80px, 12vh, 160px);
+    }
+
+    .gallery-full {
+      width: 100%;
+      height: 90vh;
+      height: 90svh;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .gallery-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .gallery-full:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 24px;
+      left: clamp(24px, 5vw, 80px);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(243, 238, 230, 0.8);
+      background: rgba(11, 11, 11, 0.65);
+      padding: 8px 18px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--hairline);
+    }
+
+    .gallery-duo {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 64px);
+    }
+
+    .gallery-duo-item {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .gallery-duo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .gallery-duo-item:hover img {
+      transform: scale(1.03);
+    }
+
+    /* 6. MATERIALS & PALETTE */
+    .proj-specs-sec {
+      background: var(--surface);
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 6vw, 100px);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .specs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(40px, 6vw, 90px);
+    }
+
+    .specs-col-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .materials-typographic-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mat-list-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-jost);
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mat-list-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--brass);
+      border-radius: 50%;
+    }
+
+    .palette-swatches-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .swatch-plain-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .swatch-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(243, 238, 230, 0.2);
+    }
+
+    .swatch-name {
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+    }
+
+    .swatch-hex {
+      font-size: 0.75rem;
+      color: var(--mute);
+      letter-spacing: 0.1em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 7. PULL QUOTE */
+    .proj-quote-sec {
+      padding: clamp(90px, 14vh, 180px) clamp(24px, 6vw, 100px);
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .quote-box {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 0.6;
+      color: var(--brass);
+      opacity: 0.6;
+    }
+
+    .quote-body-text {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 2.8vw, 42px);
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--ivory);
+    }
+
+    .quote-attribution {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass);
+    }
+
+    /* 8. NEXT PROJECT TEASER */
+    .next-proj-teaser {
+      position: relative;
+      height: 80vh;
+      height: 80svh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ivory);
+    }
+
+    .next-teaser-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .next-proj-teaser:hover .next-teaser-bg {
+      transform: scale(1.05);
+    }
+
+    .next-teaser-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 11, 11, 0.68);
+      backdrop-filter: blur(3px);
+      z-index: 2;
+      transition: background 0.5s ease;
+    }
+
+    .next-proj-teaser:hover .next-teaser-overlay {
+      background: rgba(11, 11, 11, 0.52);
+    }
+
+    .next-teaser-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 5vw;
+    }
+
+    .next-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .next-proj-name {
+      font-family: var(--font-jost);
+      font-size: clamp(34px, 5.5vw, 78px);
+      font-weight: 200;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .next-arrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #0b0b0b;
+      background: var(--ivory);
+      padding: 12px 28px;
+      border-radius: 99px;
+      transition: all 0.3s ease;
+    }
+
+    .next-proj-teaser:hover .next-arrow-pill {
+      background: var(--brass);
+      transform: translateX(4px);
+    }
+
+    /* Fullscreen Modal Lightbox */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 100000;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .lightbox-modal img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: var(--ivory);
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .meta-bar-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .gallery-duo {
+        grid-template-columns: 1fr;
+      }
+      .specs-inner {
+        grid-template-columns: 1fr;
+      }
+      .site-header {
+        height: 60px !important;
+        padding: 0 18px !important;
+      }
+      .main-nav {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-brand-nav-stack">
+        <a href="../../index.html" class="brand-logo" title="NAM Atelier Studio">
+          <img src="../../nam_logo_white.png" alt="NAM Atelier Official Logo" />
+        </a>
+        <nav class="main-nav" aria-label="Main Navigation">
+          <a href="../../about.html" class="nav-link">ABOUT STUDIO</a>
+          <a href="../../portfolio-detail.html" class="nav-link active">3D PORTFOLIO</a>
+          <a href="../../service-detail.html" class="nav-link">SERVICES</a>
+          <a href="../../blog.html" class="nav-link">JOURNAL</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <a href="../../portfolio-detail.html" class="btn-inquire-pill">
+          &larr; ALL PROJECTS
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="proj-hero">
+    <img src="../../images/portfolio/the-sandstone-palace/hero.webp" alt="The Sandstone Palace" class="proj-hero-bg" />
+    <div class="proj-hero-gradient"></div>
+    <div class="proj-hero-content">
+      <span class="proj-service-tag">Luxury Villa Design</span>
+      <h1 class="proj-main-title">The Sandstone Palace</h1>
+      <span class="proj-script-tagline">A Classical Monolith Reimagined for Modern Dynasty Living</span>
+    </div>
+  </section>
+
+  <!-- 2. META ROW -->
+  <section class="proj-meta-bar">
+    <div class="meta-bar-grid">
+      <div class="meta-col">
+        <span class="meta-label">Location</span>
+        <span class="meta-val">Indore, India</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Year Completed</span>
+        <span class="meta-val">2024</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Enclosed Area</span>
+        <span class="meta-val" id="areaNumber">14,500 SQ FT</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Execution Duration</span>
+        <span class="meta-val">18 Months</span>
+      </div>
+      <div class="meta-col">
+        <span class="meta-label">Architectural Service</span>
+        <span class="meta-val">Luxury Villa Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTRO PULL SUMMARY -->
+  <section class="proj-summary-sec">
+    <div class="proj-summary-inner">
+      <p class="proj-lead-quote">&ldquo;Set against the central Indian plateau in Indore, The Sandstone Palace balances stately neoclassical symmetry with whisper-quiet contemporary spatial planning. Clad in hand-hewn Rajasthan Dholpur sandstone, the residence accommodates three generations under one continuous architectural narrative, uniting monumental colonnades with intimate internal courtyards and temperature-buffered living halls.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 4. LONG-FORM 800+ WORD STORY -->
+  <section class="proj-story-sec">
+    <div class="proj-story-col">
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Brief</h2>
+        <p class="story-para">When the patrons approached NAM Atelier, their aspiration was unapologetically ambitious: to create an enduring ancestral estate in Indore capable of hosting high-profile cultural receptions while safeguarding intimate daily rituals for three generations of an industrialist family. The family required seven comprehensive bedroom suites, private lounge enclaves, dual commercial and presentation kitchens, and an integrated wellness wing, all anchored within a site exposed to intense central Indian solar radiation.</p><p class="story-para">Rather than replicating pastiche European neoclassical templates with hollow plaster moldings and synthetic trims, the commission demanded an authentic dialogue between regional stone masonry and high-precision civil engineering. The architecture needed to convey generational permanence without imposing cavernous, unlivable volumes onto everyday family life.</p><p class="story-para">Furthermore, the patrons emphasized the integration of traditional joint-family dynamics: creating shared communal spaces where grandchildren and grandparents naturally congregate, balanced with private, soundproof retreat zones where adult family members could manage global business operations without domestic disruption.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Challenge</h2>
+        <p class="story-para">Indore experiences extreme dry heat during summer months, with ambient temperatures routinely exceeding 44 degrees Celsius, followed by intense monsoon downpours. Maintaining passive thermal comfort across a 14,500-square-foot footprint required eliminating direct solar gain on expansive west and south elevations while admitting tempered northern daylight into core living areas.</p><p class="story-para">Furthermore, the patrons insisted on zero acoustic bleed between the public banqueting wings and the private master sanctuary suites upstairs. Structurally, cantilevered porticos and 24-foot double-height spans had to be cast in zero-deflection reinforced concrete before the delicate external sandstone envelope could be mechanically anchored without visible fasteners.</p><p class="story-para">Beneath the surface, the site presented expansive black cotton clay soil, notorious across Madhya Pradesh for violent seasonal swelling and shrinkage. This demanded deep bored-pile civil foundations down to hard basalt strata, coupled with a ventilated subterranean plinth beam grid to completely decouple the architectural envelope from subterranean soil movement.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Concept</h2>
+        <p class="story-para">Our design concept centered on the idea of 'The Inhabited Colonnade'—an external thermal buffer perimeter inspired by historical Indian haveli porticos, executed with the crisp, monumental discipline of neoclassical architecture. Deep 3.2-meter colonnaded loggias wrap the outer perimeter, shading full-height triple-glazed openings from midday sun.</p><p class="story-para">Internally, the floor plan abandons continuous monumental sightlines in favor of a layered sequence of vestibules, sightline bends, and compressed transitional thresholds. One moves from grand reception volumes into cocooned, acoustic timber-paneled family quarters where ceilings lower and tactile materials welcome the touch.</p><p class="story-para">This spatial rhythm of compression and release evokes the sensory journey of historic temple architecture, where arrival begins in bright open courtyards before gently transitioning into sheltered, intimate sanctuaries bathed in filtered atmospheric light.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Space by Space</h2>
+        <p class="story-para">The grand arrival vestibule establishes an immediate sense of scale with a six-meter-high ceiling clad in acoustic plaster and bordered by cove-concealed warm illumination. Fluted pilasters carved from solid blocks of Rajasthan Dholpur sandstone guide guests into the sunken formal salon, where bespoke low-slung bouclé seating rests upon monolithic slabs of Navona travertine.</p><p class="story-para">In the family living pavilion, walls transition from cool limestone to quarter-sawn American walnut slats, incorporating hidden flush storage and concealed climate ducting. An expansive dining hall is anchored by a custom four-meter walnut dining table that looks out over the tranquil reflection pool through motorized bronze-framed sliding glass panels.</p><p class="story-para">Upstairs, the master retreat unfolds through an anteroom library into a bedroom suite featuring an expansive linen-padded headboard wall, leading to his-and-hers walk-in dressing galleries lined with fluted smoked glass and brushed brass garment rails. A private terrace overlooks the gardens, shielded by hand-carved stone screens that filter the morning sun.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Materials and Finishes</h2>
+        <p class="story-para">The material palette is deliberately restrained, relying on the raw textural beauty of natural earth substances. More than four hundred tons of cream Dholpur sandstone were hand-inspected at the quarry to ensure consistent mineral grain, subtle pink-gold striations, and total absence of ferrous oxidation pockets.</p><p class="story-para">Flooring throughout the public circulation zones comprises honed beige Italian travertine, treated with matte penetrating sealers to preserve the tactile warmth of barefoot walking without glossy reflective glares. Cabinetry and millwork utilize crown-cut and quarter-sawn American walnut treated with non-yellowing natural oils, complemented by bespoke unlacquered brass hardware that will age with an authentic, touch-burnished patina over decades.</p><p class="story-para">Textiles were sourced from Belgian flax mills and hand-loomed Kashmir wool weavers, providing heavy textural counterpoints to the stone walls. In the private cinema and executive study, acoustic wall panels are upholstered in ribbed wool-cashmere blends that deaden echo while enriching the tactile landscape.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Light and Atmosphere</h2>
+        <p class="story-para">Lighting was engineered as a dynamic circadian composition rather than a grid of ceiling spotlights. Deep window reveals cast soft, feathered daylight gradients across walls throughout the day, while exterior reflecting pools bounce ripples of shimmering light onto the coffered loggia ceilings.</p><p class="story-para">At twilight, concealed 2400K architectural cove lighting activates, grazing stone surfaces with amber luminescence while keeping ceiling planes uncluttered. Every fixture is strictly shielded with 40-degree anti-glare snoots, ensuring that the light sources themselves remain invisible, allowing the sculpted mass of stone and timber to step forward.</p><p class="story-para">During nighttime events, low-level floor lanterns and concealed step risers provide gentle orientation, creating pools of intimate golden illumination that invite guests to gather in smaller, relaxed groups around the hearth and outdoor colonnade.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">Craft and Execution</h2>
+        <p class="story-para">Execution demanded obsessive tolerance control across civil construction and joinery disciplines. Sandstone facade blocks were dry-hung using marine-grade 316 stainless steel bracketry, engineered to accommodate micro-expansion under 45-degree summer temperatures without stressing mortar lines.</p><p class="story-para">Carpentry tolerances were locked to 1.5-millimeter reveal gaps across all 3.2-meter-tall pivot doors. The structural team utilized self-compacting concrete mixes to achieve razor-sharp chamfers on exposed beam elements, ensuring that civil concrete precision mirrored the exacting standards of luxury custom millwork.</p><p class="story-para">Over sixty master stonemasons from Dholpur were housed on site for twelve months, hand-dressing each column flute with traditional tooth-chisels to impart a subtle, living texture that softens the sharp geometry of the neoclassical orders.</p>
+      </article>
+      
+      <article class="story-block">
+        <h2 class="story-heading">The Result</h2>
+        <p class="story-para">The completed Sandstone Palace stands as a calm, authoritative landmark in Indore's architectural landscape. Within its walls, the ambient interior temperature remains seven degrees cooler than the outside air even before HVAC activation, testifying to the efficacy of its thick thermal envelope and deep shading porticos.</p><p class="story-para">It is a residence where monumental dignity never compromises domestic tenderness—an estate built with generational engineering precision, tactile material honesty, and an enduring architectural vision.</p><p class="story-para">For NAM Atelier, the project represents the definitive synthesis of civil rigor and sensory opulence, proving that contemporary Indian luxury achieves its greatest power when rooted in the permanence of regional stone and human craftsmanship.</p>
+      </article>
+      
+    </div>
+  </section>
+
+  <!-- 5. FULL-BLEED GALLERY -->
+  <section class="proj-gallery-sec">
+    <!-- Image 1: Full-width -->
+    <div class="gallery-full" onclick="openLightbox('../../images/portfolio/the-sandstone-palace/gallery-1.webp')">
+      <img src="../../images/portfolio/the-sandstone-palace/gallery-1.webp" alt="Double-height colonnade and reflecting pool at dusk" loading="lazy" />
+      <span class="gallery-caption">Hand-dressed Dholpur sandstone fluted columns reflected in the heated travertine pool.</span>
+    </div>
+
+    <!-- Image 2 & 3: Duo Layout -->
+    <div class="gallery-duo">
+      <div class="gallery-duo-item" onclick="openLightbox('../../images/portfolio/the-sandstone-palace/gallery-2.webp')">
+        <img src="../../images/portfolio/the-sandstone-palace/gallery-2.webp" alt="Detail of book-matched walnut joinery and patinated brass door handles" loading="lazy" />
+        <span class="gallery-caption">Bespoke brass hardware cast in Amritsar paired with quarter-sawn American walnut panelling.</span>
+      </div>
+      <div class="gallery-duo-item" onclick="openLightbox('../../images/portfolio/the-sandstone-palace/gallery-3.webp')">
+        <img src="../../images/portfolio/the-sandstone-palace/gallery-3.webp" alt="Sunken formal reception hall looking towards private terrace" loading="lazy" />
+        <span class="gallery-caption">Honed beige travertine floors laid in large monolithic slabs to minimise visible grout joints.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MATERIALS & COLOR PALETTE -->
+  <section class="proj-specs-sec">
+    <div class="specs-inner">
+      <div>
+        <span class="specs-col-title">ARCHITECTURAL MATERIAL MATRIX</span>
+        <div class="materials-typographic-list">
+          <div class="mat-list-item">Dholpur Sandstone</div><div class="mat-list-item">Honed Navona Travertine</div><div class="mat-list-item">Quarter-Sawn American Walnut</div><div class="mat-list-item">Brushed Unlacquered Brass</div><div class="mat-list-item">Acoustic Linen Wall Coverings</div><div class="mat-list-item">Triple-Glazed Low-E Bronze Glass</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="specs-col-title">CURATED COLOR PALETTE</span>
+        <div class="palette-swatches-grid">
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #e7decb;"></div>
+            <div>
+              <div class="swatch-name">Sandstone Cream</div>
+              <div class="swatch-hex">#e7decb</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #3a2c23;"></div>
+            <div>
+              <div class="swatch-name">Smoked Walnut</div>
+              <div class="swatch-hex">#3a2c23</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #b8935a;"></div>
+            <div>
+              <div class="swatch-name">Antique Brass</div>
+              <div class="swatch-hex">#b8935a</div>
+            </div>
+          </div>
+          
+          <div class="swatch-plain-row">
+            <div class="swatch-circle" style="background-color: #1f1d1b;"></div>
+            <div>
+              <div class="swatch-name">Monolith Charcoal</div>
+              <div class="swatch-hex">#1f1d1b</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PULL QUOTE -->
+  <section class="proj-quote-sec">
+    <div class="quote-box">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="quote-body-text">NAM Atelier gave our family home an architectural gravitas that feels ancient yet effortless. It is rare to walk into a house of this scale and instantly feel wrapped in quiet warmth rather than cold grandiosity.</p>
+      <span class="quote-attribution">&mdash; The Homeowner, Indore</span>
+    </div>
+  </section>
+
+  <!-- 8. NEXT PROJECT TEASER -->
+  <a href="../the-courtyard-residence" class="next-proj-teaser">
+    <img src="../../images/portfolio/the-courtyard-residence/hero.webp" alt="The Courtyard Residence" class="next-teaser-bg" />
+    <div class="next-teaser-overlay"></div>
+    <div class="next-teaser-content">
+      <span class="next-eyebrow">NEXT ARCHITECTURAL NARRATIVE</span>
+      <h2 class="next-proj-name">The Courtyard Residence</h2>
+      <span class="next-arrow-pill">Explore Project &rarr;</span>
+    </div>
+  </a>
+
+  <!-- FOOTER -->
+  <footer style="background: #0b0b0b; padding: 40px 5vw; text-align: center; border-top: 1px solid var(--hairline);">
+    <a href="../../portfolio-detail.html" style="font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ivory); text-decoration: none;">
+      &larr; Return to 3D Portfolio Archive
+    </a>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close">&times;</button>
+    <img src="" id="lightboxImg" alt="Enlarged Architectural Detail" />
+  </div>
+
+  <!-- GSAP Motion Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Count Up Area Number
+    const areaEl = document.getElementById("areaNumber");
+    const targetArea = 14500;
+    let currentArea = 0;
+    
+    ScrollTrigger.create({
+      trigger: ".proj-meta-bar",
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to({ val: 0 }, {
+          val: targetArea,
+          duration: 1.8,
+          ease: "power2.out",
+          onUpdate: function() {
+            areaEl.textContent = Math.round(this.targets()[0].val).toLocaleString() + " SQ FT";
+          }
+        });
+      }
+    });
+
+    // Story Paragraphs Stagger Fade In
+    gsap.utils.toArray(".story-block").forEach(block => {
+      gsap.from(block, {
+        opacity: 0,
+        y: 35,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: block,
+          start: "top 85%"
+        }
+      });
+    });
+
+    // Lightbox Helpers
+    function openLightbox(src) {
+      document.getElementById("lightboxImg").src = src;
+      document.getElementById("lightboxModal").style.display = "flex";
+    }
+    function closeLightbox() {
+      document.getElementById("lightboxModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
