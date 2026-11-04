@@ -3,46 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>3D Architecture &amp; Interior Design Portfolio | NAM Atelier</title>
-  <meta name="description" content="Explore NAM Atelier's bespoke architectural portfolio across Ludhiana and Amritsar. Luxury residential villas, penthouses, chef's kitchens, private acoustic theatres, and turnkey civil execution.">
+  <title>3D Architecture &amp; Interior Portfolio | NAM Atelier</title>
+  <meta name="description" content="Explore NAM Atelier's bespoke 3D architectural and interior design portfolio. Luxury residences, penthouses, bespoke kitchens, and private theatres.">
   <link rel="canonical" href="https://nam-atlier.vercel.app/portfolio-detail">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="3D Architecture &amp; Interior Design Portfolio | NAM Atelier">
-  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors in Punjab by Udhay Seth &amp; Mudita D Seth.">
-  <meta property="og:image" content="https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg">
+  <meta property="og:title" content="3D Architecture &amp; Interior Portfolio | NAM Atelier">
+  <meta property="og:description" content="Curated luxury residences, penthouses, and bespoke interiors by Udhay Seth &amp; Mudita D Seth.">
+  <meta property="og:image" content="https://nam-atlier.vercel.app/images/portfolio/p1-villa.webp">
   <meta property="og:url" content="https://nam-atlier.vercel.app/portfolio-detail">
-  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
 
-  <!-- Google Fonts: Jost (200-500) and Mrs Saint Delafield (Script accent) -->
+  <!-- Google Fonts: Jost (headings/UI) & Allura / Great Vibes (script accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
-  <!-- Global Design System & Component Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.1">
+  <!-- Global Design System -->
+  <link rel="stylesheet" href="styles.css?v=5.2">
 
   <style>
     /* ==========================================================================
-       THEME & COLOR TOKENS (NAM ATELIER UPGRADED ARCHITECTURE)
+       NAM ATELIER — 3D PORTFOLIO DESIGN SYSTEM & TOKENS
        ========================================================================== */
     :root {
-      --hdr: 112px;
-      --sec: clamp(72px, 10vw, 140px);
-      --bg: #0a0a0a;
-      --panel: #121212;
-      --ink: #f4f1ec;
-      --mute: #c9c3ba;
-      --card: #1b1b1b;
-      --accent: #c5a46d;
+      --bg: #0b0b0b;
+      --surface: #151412;
+      --ink: #f3eee6;
+      --mute: #a89f92;
+      --brass: #b8935a;
+      --brass-glow: rgba(184, 147, 90, 0.35);
+      --script-color: #d9cfc0;
+      --hdr-height: 84px;
+      --font-jost: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-script: 'Allura', 'Great Vibes', cursive;
     }
 
     *, *::before, *::after {
@@ -52,631 +53,854 @@
     }
 
     html {
-      scroll-padding-top: var(--hdr);
       background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-jost);
       scroll-behavior: auto;
       overflow-x: hidden;
       width: 100%;
     }
 
-    body {
+    body.portfolio-page {
       background: var(--bg);
       color: var(--ink);
-      font-family: 'Jost', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: var(--font-jost);
       font-weight: 300;
       overflow-x: hidden;
       margin: 0;
       padding: 0;
+      width: 100%;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      width: 100%;
     }
 
-    p, li {
-      color: var(--mute);
-      line-height: 1.75;
-    }
-
-    img {
-      display: block;
-      max-width: none;
-      object-fit: cover;
-      user-select: none;
-      -webkit-user-drag: none;
-      aspect-ratio: attr(width) / attr(height);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    /* Fixed z-index for shared header */
-    .site-header {
+    /* ══════════════════════════════════════════════════════════════════════════
+       1. NAVBAR OVERRIDES (Spacious, Elegantly Separated, Active Underline)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .portfolio-page .site-header {
+      position: fixed !important;
+      top: 0.6rem !important;
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      width: 94% !important;
+      max-width: 1400px !important;
+      height: auto !important;
+      min-height: 64px !important;
       z-index: 1000 !important;
+      background: rgba(11, 11, 11, 0.85) !important;
+      backdrop-filter: blur(24px) saturate(140%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(140%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 24px !important;
+      padding: 0.7rem clamp(20px, 3vw, 36px) !important;
+      display: flex !important;
+      align-items: center !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
     }
 
-    /* ==========================================================================
-       SCROLL CONTAINER ARCHITECTURE & SCENES
-       ========================================================================== */
-    .s {
+    .portfolio-page .header-inner {
+      width: 100% !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    .portfolio-page .header-brand-nav-stack {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: clamp(24px, 3.5vw, 48px) !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+
+    .portfolio-page .brand-logo {
+      width: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+    }
+
+    .portfolio-page .official-brand-logo-img {
+      height: 28px !important;
+      width: auto !important;
+      max-width: 220px !important;
+      display: block !important;
+    }
+
+    .portfolio-page .main-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: clamp(16px, 2.2vw, 32px) !important;
+      width: auto !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .portfolio-page .nav-link {
+      font-family: var(--font-jost) !important;
+      font-size: 0.82rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.16em !important;
+      text-transform: uppercase !important;
+      color: rgba(243, 238, 230, 0.72) !important;
+      text-decoration: none !important;
+      position: relative !important;
+      padding: 6px 0 !important;
+      transition: color 0.25s ease !important;
+      white-space: nowrap !important;
+    }
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(243, 238, 230, 0.72);
+      text-decoration: none;
       position: relative;
-      height: 100vh;
-      height: 100svh;
-      overflow: hidden;
-      background: var(--bg);
+      padding: 6px 0;
+      transition: color 0.25s ease;
+      white-space: nowrap;
     }
 
-    /* Scene 0: Hero */
-    #s0 {
-      z-index: 1;
+    .portfolio-page .nav-link:hover {
+      color: var(--ink);
     }
 
-    #s0 .bg {
+    /* Active link underline on 3D Portfolio */
+    .portfolio-page .nav-link[href*="portfolio"] {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .portfolio-page .nav-link[href*="portfolio"]::after {
+      content: '';
       position: absolute;
-      inset: 0;
+      bottom: -2px;
+      left: 0;
       width: 100%;
-      height: 100%;
-      will-change: transform;
+      height: 1.5px;
+      background: var(--brass);
+      box-shadow: 0 0 10px var(--brass-glow);
     }
 
-    #s0::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.6) 100%);
-      pointer-events: none;
-    }
-
-    .hero-t {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      text-shadow: 0 0 30px rgba(0,0,0,.6);
-      z-index: 5;
-      padding: 0 5vw;
-      will-change: transform, opacity;
-      pointer-events: none;
-    }
-
-    .hero-t p {
-      font-size: clamp(11px, 1.2vw, 14px);
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--mute);
-      margin-bottom: 14px;
-      font-weight: 400;
-    }
-
-    .hero-t h1 {
-      font-weight: 200;
-      font-size: clamp(34px, 7vw, 110px);
-      letter-spacing: .08em;
-      line-height: 1.05;
-      text-transform: uppercase;
-      color: var(--ink);
-    }
-
-    /* Scene 1: Clouds */
-    #s1 {
-      z-index: 2;
-      background: #101010;
-    }
-
-    .clouds i {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(closest-side, rgba(255,255,255,.09), transparent);
-      filter: blur(24px);
-      animation: drift 18s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-
-    .clouds i:nth-child(1) { width: 55vw; height: 40vh; left: -8vw; top: 4vh; }
-    .clouds i:nth-child(2) { width: 50vw; height: 36vh; right: -6vw; bottom: -6vh; animation-delay: -5s; }
-    .clouds i:nth-child(3) { width: 40vw; height: 30vh; left: 30vw; top: -8vh; animation-delay: -9s; }
-
-    @keyframes drift {
-      to { transform: translate3d(6vw, 3vh, 0); }
-    }
-
-    .th {
-      position: absolute;
-      aspect-ratio: 4/3;
-      will-change: transform, width, left, top, right, bottom;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-
-    .s1-t {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 0 6vw;
-      z-index: 5;
-      pointer-events: none;
-      will-change: transform, opacity;
-    }
-
-    .s1-t h2 {
-      font-weight: 300;
-      font-size: clamp(24px, 5.2vw, 78px);
-      letter-spacing: .06em;
-      line-height: 1.12;
-      text-transform: uppercase;
-      color: var(--ink);
-    }
-
-    .script {
-      display: block;
-      font-family: 'Mrs Saint Delafield', cursive;
-      font-size: clamp(72px, 14vw, 220px);
-      line-height: .55;
-      text-transform: none;
-      letter-spacing: 0;
-      color: #d9d2c7;
-      margin-top: .05em;
-      clip-path: inset(0 100% 0 0);
-      will-change: clip-path;
-    }
-
-    /* Scene 2: Reveal */
-    #s2 {
-      z-index: 2;
-      background: #101010;
-    }
-
-    .box {
-      position: absolute;
-      inset: 0;
-      clip-path: inset(24% 22%);
-      will-change: clip-path;
-    }
-
-    .box img {
-      width: 100%;
-      height: 100%;
-      will-change: transform;
-    }
-
-    .card {
-      position: absolute;
-      left: 4vw;
-      bottom: 8vh;
-      width: min(380px, 86vw);
-      background: rgba(27,27,27,.94);
-      padding: 26px 24px;
-      z-index: 6;
-      will-change: transform, opacity;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .card h3 {
-      font-weight: 400;
-      font-size: 16px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-
-    .card p {
-      font-size: clamp(14px, 1.1vw, 15px);
-      line-height: 1.75;
-      color: var(--mute);
-    }
-
-    /* Scene 3: Haven — Architectural Interior Suite */
-    #s3 {
-      position: relative;
-      z-index: 10;
-      margin-top: 250vh;
-      background: var(--panel);
-      padding-top: var(--sec);
-      padding-bottom: var(--sec);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .haven-container {
-      max-width: 1680px;
-      margin: 0 auto;
-      padding: 0 clamp(24px, 5vw, 80px);
-      display: grid;
-      grid-template-columns: minmax(320px, 1fr) minmax(400px, 1.45fr);
-      gap: clamp(40px, 6vw, 90px);
-      align-items: start;
-    }
-
-    .haven-sticky {
-      position: sticky;
-      top: calc(var(--hdr) + 28px);
-      height: fit-content;
-      padding-right: clamp(10px, 2vw, 30px);
-    }
-
-    .haven-eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-      font-weight: 400;
-    }
-
-    .haven-title {
-      font-weight: 300;
-      font-size: clamp(26px, 3.6vw, 50px);
-      letter-spacing: .06em;
-      line-height: 1.2;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .haven-desc {
-      font-size: clamp(14px, 1.1vw, 15.5px);
-      color: var(--mute);
-      line-height: 1.8;
-      margin-bottom: 36px;
-      max-width: 520px;
-    }
-
-    .haven-pillars {
+    /* Inquire Studio Pill Button */
+    .portfolio-page .header-actions {
       display: flex;
-      flex-direction: column;
-      gap: 22px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 26px;
-    }
-
-    .haven-pillar {
-      display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 16px;
     }
 
-    .pillar-num {
-      font-size: 11px;
-      letter-spacing: .16em;
-      color: var(--accent);
-      font-weight: 400;
-      padding-top: 2px;
-    }
-
-    .haven-pillar h4 {
-      font-weight: 300;
-      font-size: 13.5px;
-      letter-spacing: .1em;
+    .portfolio-page .btn-inquire-pill {
+      font-family: var(--font-jost);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 4px;
+      color: #111;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 10px 22px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
     }
 
-    .haven-pillar p {
-      font-size: 13px;
-      color: var(--mute);
-      line-height: 1.6;
-      margin: 0;
+    .portfolio-page .btn-inquire-pill:hover {
+      background: var(--brass);
+      border-color: var(--brass);
+      color: #0b0b0b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--brass-glow);
     }
 
-    /* Gallery Column */
-    .haven-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(16px, 2.5vw, 32px);
-    }
-
-    .haven-item {
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: border-color 300ms ease, transform 300ms ease;
-    }
-
-    .haven-item:hover {
-      border-color: rgba(197, 164, 109, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .haven-img-wrap {
-      overflow: hidden;
-      width: 100%;
+    /* ══════════════════════════════════════════════════════════════════════════
+       2. HERO SECTION (100vh, Pure Black #0b0b0b, Grain, Drifting Blur)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .hero-wrap {
       position: relative;
-      background: var(--card);
-    }
-
-    .haven-img-wrap img {
+      height: 100vh;
+      height: 100svh;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .haven-item:hover .haven-img-wrap img {
-      transform: scale(1.04);
-    }
-
-    .haven-item-lg .haven-img-wrap {
-      height: clamp(340px, 42vh, 480px);
-    }
-
-    .haven-item-sm .haven-img-wrap {
-      height: clamp(260px, 32vh, 360px);
-    }
-
-    .haven-gallery > .haven-item:nth-child(2) {
-      margin-top: clamp(30px, 6vh, 60px);
-    }
-
-    .haven-gallery > .haven-item:nth-child(4) {
-      margin-top: -30px;
-    }
-
-    .haven-item-full {
-      grid-column: 1 / -1;
-      margin-top: 10px;
-    }
-
-    .haven-item-full .haven-img-wrap {
-      height: clamp(300px, 45vh, 520px);
-    }
-
-    .haven-item-caption {
-      padding: 16px 20px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .caption-tag {
-      display: block;
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .haven-item-caption p {
-      font-size: 13px;
-      color: var(--ink);
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    @media (max-width: 960px) {
-      .haven-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .haven-sticky {
-        position: relative;
-        top: 0;
-        padding-right: 0;
-      }
-      .haven-gallery {
-        grid-template-columns: 1fr;
-      }
-      .haven-gallery > .haven-item:nth-child(2),
-      .haven-gallery > .haven-item:nth-child(4) {
-        margin-top: 0;
-      }
-      .haven-item-lg .haven-img-wrap,
-      .haven-item-sm .haven-img-wrap,
-      .haven-item-full .haven-img-wrap {
-        height: 280px;
-      }
-    }
-
-    /* Scene 4: Realm */
-    #s4 {
-      z-index: 4;
+      overflow: hidden;
       background: var(--bg);
-    }
-
-    #s4 .bal {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 34%;
-      z-index: 2;
+      z-index: 10;
       will-change: transform;
     }
 
-    .bal-l { left: 0; }
-    .bal-r { right: 0; }
-
-    .s4-t {
+    .hero-grain {
       position: absolute;
       inset: 0;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      font-size: clamp(18px, 3vw, 40px);
-      letter-spacing: .12em;
-      line-height: 1.5;
-      text-transform: uppercase;
-      padding: 0 10vw;
-      opacity: 0;
-      z-index: 5;
-      color: var(--ink);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: 0.8;
       pointer-events: none;
-      will-change: opacity;
+      z-index: 2;
     }
 
-    /* ==========================================================================
-       SECTION 3: SELECTED WORKS (HORIZONTAL GALLERY REPLACING LOCATIONS)
-       ========================================================================== */
-    #works {
-      background: var(--bg, #0a0a0a);
-      padding: var(--sec) 0;
+    .hero-backdrop {
+      position: absolute;
+      inset: -8%;
+      width: 116%;
+      height: 116%;
+      object-fit: cover;
+      opacity: 0.12;
+      filter: blur(18px) brightness(0.7);
+      pointer-events: none;
+      z-index: 1;
+      animation: heroDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroDrift {
+      0% { transform: scale(1) translate3d(0, 0, 0); }
+      100% { transform: scale(1.08) translate3d(-2%, -3%, 0); }
+    }
+
+    .hero-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5vw;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-headline-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-line-mask {
+      overflow: hidden;
+      display: block;
+    }
+
+    .hero-line {
+      font-family: var(--font-jost);
+      font-weight: 200;
+      font-size: clamp(26px, 5.4vw, 86px);
+      letter-spacing: clamp(0.12em, 0.7vw, 0.22em);
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--ink);
+      display: block;
+      will-change: transform, opacity;
+      margin: 0;
+    }
+
+    .hero-script-mask {
+      overflow: visible;
+      margin-top: clamp(4px, 1.2vh, 16px);
+    }
+
+    .hero-script {
+      font-family: var(--font-script);
+      font-weight: 400;
+      font-size: clamp(74px, 15vw, 220px);
+      line-height: 0.8;
+      color: var(--script-color);
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+      will-change: transform, opacity;
+    }
+
+    /* Scroll Hint with Animated Line */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 4vh;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .scroll-hint-label {
+      font-family: var(--font-jost);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .scroll-hint-track {
+      width: 1px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-hint-runner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 45%;
+      background: linear-gradient(to bottom, transparent, var(--brass), transparent);
+      animation: hintScroll 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes hintScroll {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(220%); }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       3. TUMBLE DECK SECTION (Pinned, 3D Tumble Physics, Synced Info)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .deck-section {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      width: 100%;
+      background: var(--bg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .deck-container {
+      width: 100%;
+      max-width: 1600px;
+      height: 100%;
+      margin: 0 auto;
+      padding: clamp(80px, 10vh, 120px) clamp(24px, 5vw, 80px) clamp(40px, 6vh, 60px);
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.25fr);
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+
+    /* Left Info Column */
+    .deck-info-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 6;
+    }
+
+    .deck-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .deck-counter {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 24px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .deck-cur-no {
+      font-size: clamp(38px, 4.8vw, 64px);
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .deck-total-no {
+      font-size: clamp(16px, 1.8vw, 24px);
+      font-weight: 300;
+      color: var(--mute);
+      letter-spacing: 0.05em;
+    }
+
+    .deck-text-swap {
+      min-height: 190px;
+      position: relative;
+    }
+
+    .deck-title {
+      font-size: clamp(28px, 3.4vw, 52px);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .deck-meta {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 18px;
+    }
+
+    .deck-desc {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: var(--mute);
+      line-height: 1.8;
+      max-width: 480px;
+    }
+
+    /* Progress Bar & Indicators */
+    .deck-progress-wrapper {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 440px;
+    }
+
+    .deck-progress-track {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 2px;
       overflow: hidden;
       position: relative;
-      z-index: 5;
     }
 
-    .works-head {
-      padding: 0 6vw 5vh;
+    .deck-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 20%;
+      background: var(--brass);
+      box-shadow: 0 0 8px var(--brass);
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .works-head h2 {
-      font-weight: 300;
-      font-size: clamp(24px, 3.4vw, 48px);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .works-head p {
-      font-size: 14px;
-      color: var(--mute);
-    }
-
-    .works-track {
+    .deck-dots-row {
       display: flex;
-      gap: 2.5vw;
-      padding: 0 6vw;
-      will-change: transform;
+      align-items: center;
+      gap: 12px;
     }
 
-    .work {
-      flex: 0 0 min(46vw, 640px);
-      color: inherit;
-      text-decoration: none;
-      display: block;
-    }
-
-    .work img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 14px;
-      transition: transform 0.6s ease;
-    }
-
-    .work:hover img {
-      transform: scale(1.03);
-    }
-
-    .work h3 {
-      font-weight: 400;
-      font-size: 18px;
-      letter-spacing: .06em;
-      margin-bottom: 4px;
-      color: var(--ink);
-    }
-
-    .work p {
-      font-size: 13px;
-      color: var(--mute);
-      margin-bottom: 8px;
-    }
-
-    .work span {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      border-bottom: 1px solid currentColor;
-      padding-bottom: 2px;
-      color: var(--accent);
-      transition: color 0.3s ease;
-    }
-
-    .work:hover span {
-      color: var(--ink);
-    }
-
-    /* ==========================================================================
-       CLOSING CALL TO ACTION
-       ========================================================================== */
-    .cta {
-      text-align: center;
-      padding: var(--sec) 6vw;
-      border-top: 1px solid rgba(255,255,255,.12);
-      background: var(--bg);
-      position: relative;
-      z-index: 5;
-    }
-
-    .cta h2 {
-      font-weight: 300;
-      font-size: clamp(24px, 4vw, 52px);
-      letter-spacing: .06em;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-
-    .cta p {
-      max-width: 440px;
-      margin: 0 auto 28px;
-      font-size: 14px;
-      color: var(--mute);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 26px;
-      border: 1px solid #f4f1ec;
-      border-radius: 99px;
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin: 0 6px 10px;
-      color: #0a0a0a;
-      background: #f4f1ec;
-      text-decoration: none;
+    .deck-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
       cursor: pointer;
-      font-weight: 400;
       transition: all 0.3s ease;
     }
 
-    .btn.ghost {
-      background: none;
-      color: #f4f1ec;
+    .deck-dot.active {
+      background: var(--brass);
+      transform: scale(1.4);
+      box-shadow: 0 0 8px var(--brass);
     }
 
-    .btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #0a0a0a;
+    .deck-hint {
+      margin-top: 24px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .btn.ghost:hover {
-      background: #f4f1ec;
-      color: #0a0a0a;
+    /* Right Column: 3D Stage & Cards */
+    .deck-stage-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 100%;
     }
 
-    /* Responsive Rules */
-    @media (max-width: 820px) {
-      .works-track { flex-direction: column; gap: 36px; }
-      .work { flex-basis: auto; }
-      #s4 .bal { width: 40%; }
+    .deck-stage {
+      position: relative;
+      width: min(440px, 40vw);
+      aspect-ratio: 4 / 5;
+      perspective: 1400px;
+      perspective-origin: 50% 50%;
+      transform-style: preserve-3d;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
     }
 
+    .deck-stage.is-dragging {
+      cursor: grabbing;
+    }
 
+    .tumble-card {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: 50% 100%;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.4);
+      background: #141312;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+    }
 
+    .tumble-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .card-glass-rim {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       4. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .materials-section {
+      position: relative;
+      background: var(--surface);
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px);
+      z-index: 6;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .materials-inner {
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    .materials-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(48px, 8vh, 96px);
+    }
+
+    .materials-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .materials-title {
+      font-weight: 300;
+      font-size: clamp(32px, 4.4vw, 62px);
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .materials-desc {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: var(--mute);
+      line-height: 1.8;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
+    }
+
+    .material-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .material-card:nth-child(2) {
+      margin-top: clamp(0px, 6vh, 80px);
+    }
+
+    .material-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 2px;
+      background: #111;
+      position: relative;
+    }
+
+    .material-img-wrap img {
+      width: 100%;
+      height: 116%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+      margin-top: -8%;
+    }
+
+    .material-caption h3 {
+      font-weight: 400;
+      font-size: clamp(18px, 1.6vw, 24px);
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .material-caption p {
+      font-size: 14px;
+      color: var(--mute);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       5. CLOSING CTA SECTION
+       ══════════════════════════════════════════════════════════════════════════ */
+    .portfolio-cta {
+      position: relative;
+      background: var(--bg);
+      padding: clamp(96px, 14vh, 180px) clamp(24px, 5vw, 80px);
+      text-align: center;
+      z-index: 6;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cta-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-script {
+      font-family: var(--font-script);
+      font-size: clamp(56px, 10vw, 130px);
+      line-height: 0.9;
+      color: var(--script-color);
+      display: block;
+    }
+
+    .cta-title {
+      font-family: var(--font-jost);
+      font-weight: 200;
+      font-size: clamp(34px, 6.2vw, 92px);
+      letter-spacing: clamp(0.12em, 0.8vw, 0.24em);
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .cta-desc {
+      font-size: clamp(14px, 1.15vw, 17px);
+      color: var(--mute);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 38px;
+    }
+
+    .cta-btn-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-inquire-large {
+      padding: 15px 34px !important;
+      font-size: 0.85rem !important;
+    }
+
+    .btn-inquire-outline {
+      background: transparent !important;
+      color: var(--ink) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .btn-inquire-outline:hover {
+      border-color: var(--brass) !important;
+      color: var(--brass) !important;
+      background: rgba(184, 147, 90, 0.1) !important;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════
+       RESPONSIVE BREAKPOINTS (Mobile 360-768px, Tablet 768-1024px)
+       ══════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 899px) {
+      :root {
+        --hdr-height: 72px;
+      }
+
+      .portfolio-page .site-header {
+        padding: 0 18px;
+      }
+
+      .portfolio-page .header-brand-nav-stack {
+        gap: 0;
+      }
+
+      .portfolio-page .main-nav {
+        display: none; /* Mobile menu drawer takes over */
+      }
+
+      .deck-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: calc(var(--hdr-height) + 16px);
+        padding-bottom: 20px;
+        text-align: center;
+      }
+
+      .deck-info-col {
+        order: 2;
+        align-items: center;
+      }
+
+      .deck-stage-col {
+        order: 1;
+        height: auto;
+      }
+
+      .deck-stage {
+        width: min(280px, 68vw);
+        max-height: 40vh;
+      }
+
+      .deck-counter {
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .deck-text-swap {
+        min-height: 100px;
+      }
+
+      .deck-desc {
+        margin: 0 auto;
+      }
+
+      .deck-progress-wrapper {
+        margin: 14px auto 0;
+        align-items: center;
+      }
+
+      .deck-dots-row {
+        justify-content: center;
+      }
+
+      .deck-hint {
+        justify-content: center;
+        margin-top: 14px;
+      }
+
+      .materials-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .material-card:nth-child(2) {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 599px) {
+      .deck-container {
+        gap: 12px;
+        padding-top: calc(var(--hdr-height) + 8px);
+        padding-bottom: 16px;
+      }
+
+      .deck-stage {
+        width: min(220px, 58vw);
+        max-height: 32vh;
+      }
+
+      .deck-eyebrow {
+        font-size: 0.65rem;
+        margin-bottom: 6px;
+      }
+
+      .deck-cur-no {
+        font-size: 32px;
+      }
+
+      .deck-title {
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      .deck-meta {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+      }
+
+      .deck-desc {
+        font-size: 13px;
+        line-height: 1.45;
+        max-width: 300px;
+      }
+
+      .deck-progress-wrapper {
+        margin: 10px auto 0;
+      }
+
+      .deck-hint {
+        margin-top: 10px;
+        font-size: 0.65rem;
+      }
+    }
+
+    /* Prefers Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
-      .clouds i { animation: none; }
-      .script { clip-path: none; }
-      .s4-t { opacity: 1; }
-      .s { height: auto; min-height: 100vh; }
-      #s3 { margin-top: 0; height: auto; padding: 10vh 0; }
-      .works-track { flex-direction: column; gap: 36px; }
-      .work { flex-basis: auto; }
+      .hero-backdrop {
+        animation: none;
+      }
+      .scroll-hint-runner {
+        animation: none;
+      }
+      .deck-section {
+        height: auto;
+        padding: 80px 24px;
+      }
+      .deck-container {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+      }
+      .deck-stage {
+        display: none;
+      }
+      .reduced-motion-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        width: 100%;
+      }
     }
 
     /* Modal dialog styles for consultation */
@@ -725,7 +949,7 @@
     }
     .modal-close-btn:hover { opacity: 1; }
     .modal-title {
-      font-family: 'Jost', sans-serif;
+      font-family: var(--font-jost);
       font-weight: 300;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -760,7 +984,7 @@
       outline: none;
       transition: border-color 200ms ease;
     }
-    .modal-form .form-input:focus { border-color: var(--accent); }
+    .modal-form .form-input:focus { border-color: var(--brass); }
     .btn-modal-submit {
       width: 100%;
       background: var(--ink);
@@ -772,222 +996,196 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       cursor: pointer;
-      font-weight: 400;
+      font-weight: 600;
       transition: all 250ms ease;
     }
     .btn-modal-submit:hover {
-      background: transparent;
-      color: var(--ink);
+      background: var(--brass);
+      border-color: var(--brass);
+      color: #0b0b0b;
     }
   </style>
 </head>
-<body>
+<body class="portfolio-page">
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       SHARED HEADER (SINGLE SOURCE OF TRUTH)
+       SHARED NAVBAR (Single Source of Truth)
        Loaded dynamically from: components/header.html via script.js
        ═════════════════════════════════════════════════════════════════════════ -->
   <div id="header-placeholder"></div>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       MAIN VISUAL ARCHITECTURE & SCENES
+       2 & 3. HERO & REVEAL SECTION
+       100vh Pure Black Hero scrubbing UP on scroll to reveal Tumble Deck
        ═════════════════════════════════════════════════════════════════════════ -->
-  <main>
-    <!-- Scene 0 – Hero -->
-    <section class='s' id='s0' aria-label="Hero Showcase">
-      <img class='bg' src='https://nam-atlier.vercel.app/nam_hero_villa_facade.jpg' alt='NAM Atelier villa facade' loading='eager' decoding='async' width='1920' height='1080'>
-      <div class='hero-t'>
-        <p>NAM ATELIER</p>
-        <h1>ONE SPACE<br>AT A TIME</h1>
-      </div>
-    </section>
-
-    <!-- Scene 1 – Clouds -->
-    <section class='s' id='s1' aria-label="Clouds and Flying Imagery">
-      <div class='clouds'><i></i><i></i><i></i></div>
-      <img class='th t-a' src='https://nam-atlier.vercel.app/nam_facade_main.jpg' alt='Cantilever architectural facade' loading='eager' decoding='async' width='800' height='600'>
-      <img class='th t-b' src='https://nam-atlier.vercel.app/nam_architectural_details.jpg' alt='Artisanal brass detailing' loading='eager' decoding='async' width='800' height='600'>
-      <img class='th t-c' src='https://nam-atlier.vercel.app/nam_bedroom_render.jpg' alt='Luxury master suite' loading='eager' decoding='async' width='800' height='600'>
-      <div class='s1-t'>
-        <h2>Step into a reality<br>that transcends<span class='script'>Luxury</span></h2>
-      </div>
-    </section>
-
-    <!-- Scene 2 – Reveal -->
-    <section class='s' id='s2' aria-label="Villa Sanctuary Reveal">
-      <div class='box'>
-        <img src='https://nam-atlier.vercel.app/nam_luxury_residence_exterior.jpg' alt='Villa Sanctuary aerial pool and facade' loading='eager' decoding='async' width='1920' height='1080'>
-      </div>
-      <div class='card'>
-        <h3>Villa Sanctuary</h3>
-        <p>European-inspired palatial residence featuring sunken courtyard, glass portals, and serene reflecting pool.</p>
-      </div>
-    </section>
-
-    <!-- Scene 3 – Haven: Curated Architectural Living Suite -->
-    <section id='s3' class='haven-section' aria-label="Haven Lifestyle and Interiors">
-      <div class='haven-container'>
-        <!-- Sticky Editorial Narrative (Left Column) -->
-        <div class='haven-sticky'>
-          <span class='haven-eyebrow'>Interior Architecture &amp; Living</span>
-          <h2 class='haven-title'>A haven crafted<br>for exceptional living</h2>
-          <p class='haven-desc'>A considered approach to spatial flow, natural materials, architectural lighting and contemporary luxury.</p>
-
-          <div class='haven-pillars'>
-            <div class='haven-pillar'>
-              <span class='pillar-num'>01</span>
-              <div>
-                <h4>Spatial Fluidity</h4>
-                <p>Monumental double-height volumes framed by uninterrupted portal glazing.</p>
-              </div>
-            </div>
-            <div class='haven-pillar'>
-              <span class='pillar-num'>02</span>
-              <div>
-                <h4>Tactile Materiality</h4>
-                <p>Book-matched Italian marble, fluted walnut joinery, and patinated bronze hardware.</p>
-              </div>
-            </div>
-            <div class='haven-pillar'>
-              <span class='pillar-num'>03</span>
-              <div>
-                <h4>Atmospheric Light</h4>
-                <p>Indirect perimeter coves and calibrated low-glare architectural illumination.</p>
-              </div>
-            </div>
+  <div id="hero-trigger" style="height: 100vh; position: relative;">
+    <section class="hero-wrap" id="hero-layer" aria-label="Hero Introduction">
+      <div class="hero-grain"></div>
+      <img src="images/portfolio/hero-material.webp" alt="NAM Atelier Material Texture" class="hero-backdrop" width="1440" height="1800" loading="eager" decoding="async">
+      
+      <div class="hero-center">
+        <div class="hero-headline-box">
+          <div class="hero-line-mask">
+            <h1 class="hero-line">STEP INTO A REALITY</h1>
           </div>
-        </div>
-
-        <!-- Scrolling Architectural Gallery (Right Column - Dual Staggered Stream) -->
-        <div class='haven-gallery'>
-          <!-- Item 1: Living Sanctuary (Tall portrait) -->
-          <div class='haven-item haven-item-lg'>
-            <div class='haven-img-wrap'>
-              <img src='https://nam-atlier.vercel.app/nam_living_render.jpg' alt='Formal Living Sanctuary Lounge' loading='lazy' decoding='async' width='800' height='1067'>
-            </div>
-            <div class='haven-item-caption'>
-              <span class='caption-tag'>Living Sanctuary</span>
-              <p>Double-height ceiling &amp; fluted acoustic panelling</p>
-            </div>
+          <div class="hero-line-mask">
+            <span class="hero-line">THAT TRANSCENDS</span>
           </div>
-
-          <!-- Item 2: Dining Room -->
-          <div class='haven-item haven-item-sm'>
-            <div class='haven-img-wrap'>
-              <img src='https://nam-atlier.vercel.app/nam_dining_interior.jpg' alt='Bespoke Marble Dining Suite' loading='lazy' decoding='async' width='600' height='800'>
-            </div>
-            <div class='haven-item-caption'>
-              <span class='caption-tag'>Dining Architecture</span>
-              <p>Custom travertine table with bespoke brass illumination</p>
-            </div>
-          </div>
-
-          <!-- Item 3: Chef's Kitchen -->
-          <div class='haven-item haven-item-sm'>
-            <div class='haven-img-wrap'>
-              <img src='https://nam-atlier.vercel.app/nam_kitchen_render.jpg' alt='Epicurean Kitchen and Millwork' loading='lazy' decoding='async' width='800' height='1067'>
-            </div>
-            <div class='haven-item-caption'>
-              <span class='caption-tag'>Culinary Suite</span>
-              <p>Cantilever island &amp; concealed refrigeration joinery</p>
-            </div>
-          </div>
-
-          <!-- Item 4: Executive Study -->
-          <div class='haven-item haven-item-lg'>
-            <div class='haven-img-wrap'>
-              <img src='https://nam-atlier.vercel.app/nam_office_interior.jpg' alt='Executive Study and Library' loading='lazy' decoding='async' width='800' height='1067'>
-            </div>
-            <div class='haven-item-caption'>
-              <span class='caption-tag'>Private Library</span>
-              <p>Acoustic ceiling slats &amp; integrated linear illumination</p>
-            </div>
-          </div>
-
-          <!-- Item 5: Patio / Reflecting Pool -->
-          <div class='haven-item haven-item-full'>
-            <div class='haven-img-wrap'>
-              <img src='https://nam-atlier.vercel.app/nam_landscaping_patio.jpg' alt='Sunken Terrace and Reflecting Pool' loading='lazy' decoding='async' width='1600' height='1000'>
-            </div>
-            <div class='haven-item-caption'>
-              <span class='caption-tag'>Sunken Courtyard</span>
-              <p>Outdoor fireplace terrace reflecting the evening sky</p>
-            </div>
+          <div class="hero-script-mask">
+            <span class="hero-script">Luxury</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Scene 4 – Realm -->
-    <section class='s' id='s4' aria-label="Architectural Realm Showcase">
-      <img class='bal bal-l' src='https://nam-atlier.vercel.app/nam_commercial_render.jpg' alt='Commercial glass portal' loading='lazy' decoding='async' width='800' height='1200'>
-      <img class='bal bal-r' src='https://nam-atlier.vercel.app/nam_cinema_theatre.jpg' alt='Acoustic cinema theatre' loading='lazy' decoding='async' width='800' height='1200'>
-      <p class='s4-t'>It’s a realm where luxury lives in every detail</p>
-    </section>
-
-    <!-- Section: Selected works (Horizontal Scroll on Desktop, Stack on Mobile) -->
-    <section id='works' aria-label="Selected Architectural Works">
-      <div class='works-head'>
-        <h2>Selected works</h2>
-        <p>Six residences, from first render to finished rooms.</p>
-      </div>
-      <div class='works-track'>
-        <a class='work' href='/project?p=villa-sanctuary'>
-          <img src='https://nam-atlier.vercel.app/nam_facade_thumb1.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='Villa Sanctuary exterior facade and grounds'>
-          <h3>Villa Sanctuary</h3>
-          <p>Private residence, sunken courtyard</p>
-          <span>View project</span>
-        </a>
-        <a class='work' href='/project?p=marble-residence'>
-          <img src='https://nam-atlier.vercel.app/nam_atelier_studio.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='The Marble Residence materials and curation'>
-          <h3>The Marble Residence</h3>
-          <p>14,000 sq.ft turnkey estate</p>
-          <span>View project</span>
-        </a>
-        <a class='work' href='/project?p=chefs-kitchen'>
-          <img src='https://nam-atlier.vercel.app/nam_facade_thumb2.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='The Chef’s Kitchen bespoke architectural detailing'>
-          <h3>The Chef’s Kitchen</h3>
-          <p>Breakfast island and joinery</p>
-          <span>View project</span>
-        </a>
-        <a class='work' href='/project?p=acoustic-theatre'>
-          <img src='https://nam-atlier.vercel.app/nam_blog_featured_hero.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='Private Acoustic Theatre showcase'>
-          <h3>Private Acoustic Theatre</h3>
-          <p>Dolby Atmos lounge</p>
-          <span>View project</span>
-        </a>
-        <a class='work' href='/project?p=penthouse-suite'>
-          <img src='https://nam-atlier.vercel.app/nam_facade_thumb3.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='Penthouse Suite cantilever terraces'>
-          <h3>Penthouse Suite</h3>
-          <p>Minimalist bedroom</p>
-          <span>View project</span>
-        </a>
-        <a class='work' href='/project?p=sunken-courtyard'>
-          <img src='https://nam-atlier.vercel.app/nam_structural_framework.jpg' width='1600' height='1200' loading='lazy' decoding='async' alt='Sunken courtyard structural framework and concrete execution'>
-          <h3>Sunken Courtyard</h3>
-          <p>Terrace and reflection pool</p>
-          <span>View project</span>
-        </a>
+      <!-- Animated Scroll Hint -->
+      <div class="hero-scroll-hint">
+        <span class="scroll-hint-label">SCROLL</span>
+        <div class="scroll-hint-track">
+          <div class="scroll-hint-runner"></div>
+        </div>
       </div>
     </section>
-
-    <!-- ═════════════════════════════════════════════════════════════════════════
-         SHARED TESTIMONIALS CAROUSEL (SINGLE SOURCE OF TRUTH)
-         Loaded dynamically from: components/testimonials.html via script.js
-         ═════════════════════════════════════════════════════════════════════════ -->
-    <div id="testimonials-placeholder"></div>
-
-    <!-- Section: Closing Call to Action -->
-    <section class='cta' aria-label="Connect with NAM Atelier">
-      <h2>Have a space in mind? Let’s talk.</h2>
-      <p>Tell us about your home. We reply within one working day.</p>
-      <a class='btn' href='https://wa.me/917710152917?text=Hello%20NAM%20Atelier%2C%20I%20would%20like%20to%20discuss%20an%20interior%20project.' target='_blank' rel='noopener noreferrer'>Chat on WhatsApp</a>
-      <a class='btn ghost' href='javascript:void(0)' onclick="openModal('consultModal')">Book a studio visit</a>
-    </section>
-  </main>
+  </div>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       SHARED FOOTER (SINGLE SOURCE OF TRUTH)
+       4. TUMBLE DECK SECTION (Pinned, 5 Cards Flipping Sequentially)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="deck-section" id="tumble-section" aria-label="Selected 3D Architectural Works">
+    <div class="deck-container">
+      
+      <!-- Left Column: Synced Info Block -->
+      <div class="deck-info-col">
+        <span class="deck-eyebrow">PORTFOLIO ARCHIVE</span>
+        
+        <div class="deck-counter">
+          <span class="deck-cur-no" id="deckCurNo">01</span>
+          <span class="deck-total-no">/ 05</span>
+        </div>
+
+        <div class="deck-text-swap" id="deckTextSwap">
+          <h2 class="deck-title" id="deckTitle">The Sandstone Palace</h2>
+          <p class="deck-meta" id="deckMeta">Indore &bull; 2024</p>
+          <p class="deck-desc" id="deckDesc">A neoclassical villa in cream sandstone with a reflecting pool.</p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="deck-progress-wrapper">
+          <div class="deck-progress-track">
+            <div class="deck-progress-fill" id="deckProgressFill"></div>
+          </div>
+          <div class="deck-dots-row" id="deckDots">
+            <span class="deck-dot active" data-idx="0" title="01 - The Sandstone Palace"></span>
+            <span class="deck-dot" data-idx="1" title="02 - Skyline Penthouse"></span>
+            <span class="deck-dot" data-idx="2" title="03 - Walnut Suite"></span>
+            <span class="deck-dot" data-idx="3" title="04 - Marble Table"></span>
+            <span class="deck-dot" data-idx="4" title="05 - The Velvet Lounge"></span>
+          </div>
+        </div>
+
+        <div class="deck-hint">
+          <i class="fa-solid fa-arrow-down-up-across-line" style="color: var(--brass);"></i>
+          <span>Scroll down to tumble through projects</span>
+        </div>
+      </div>
+
+      <!-- Right Column: 3D Tumbling Card Deck -->
+      <div class="deck-stage-col">
+        <div class="deck-stage" id="deckStage" title="Click or drag to flip cards">
+          
+          <!-- Card 0: Villa -->
+          <article class="tumble-card" data-idx="0" style="z-index: 5;">
+            <img src="images/portfolio/p1-villa.webp" alt="Palatial neoclassical villa exterior at dusk" width="1440" height="1800" loading="eager" decoding="async">
+            <div class="card-glass-rim"></div>
+          </article>
+
+          <!-- Card 1: Penthouse -->
+          <article class="tumble-card" data-idx="1" style="z-index: 4;">
+            <img src="images/portfolio/p2-penthouse.webp" alt="Double-height penthouse living room" width="1440" height="1800" loading="eager" decoding="async">
+            <div class="card-glass-rim"></div>
+          </article>
+
+          <!-- Card 2: Bedroom -->
+          <article class="tumble-card" data-idx="2" style="z-index: 3;">
+            <img src="images/portfolio/p3-bedroom.webp" alt="Master bedroom suite with walnut panelling" width="1440" height="1800" loading="eager" decoding="async">
+            <div class="card-glass-rim"></div>
+          </article>
+
+          <!-- Card 3: Kitchen -->
+          <article class="tumble-card" data-idx="3" style="z-index: 2;">
+            <img src="images/portfolio/p4-kitchen.webp" alt="Marble island kitchen and dining" width="1440" height="1800" loading="eager" decoding="async">
+            <div class="card-glass-rim"></div>
+          </article>
+
+          <!-- Card 4: Theatre -->
+          <article class="tumble-card" data-idx="4" style="z-index: 1;">
+            <img src="images/portfolio/p5-theatre.webp" alt="Private home theatre and whisky lounge" width="1440" height="1800" loading="eager" decoding="async">
+            <div class="card-glass-rim"></div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       5. MATERIALS STRIP (Opposite Direction Parallax)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="materials-section" id="materials-section" aria-label="Curated Materials">
+    <div class="materials-inner">
+      <div class="materials-head">
+        <span class="materials-eyebrow">ARTISANAL SOURCING</span>
+        <h2 class="materials-title">Materials we love</h2>
+        <p class="materials-desc">Tactile travertine, bookmatched fluted walnut, hand-brushed brass and honed marble crafted for architectural longevity.</p>
+      </div>
+
+      <div class="materials-grid">
+        <!-- Item 1: Material Texture -->
+        <article class="material-card">
+          <div class="material-img-wrap">
+            <img src="images/portfolio/hero-material.webp" alt="Macro close-up of walnut veneer, brushed brass and beige travertine" class="mat-parallax-1" width="1440" height="1800" loading="lazy" decoding="async">
+          </div>
+          <div class="material-caption">
+            <h3>Walnut Veneer &amp; Brushed Brass</h3>
+            <p>Book-matched architectural joinery meeting clean travertine reveals.</p>
+          </div>
+        </article>
+
+        <!-- Item 2: Spa Architecture -->
+        <article class="material-card">
+          <div class="material-img-wrap">
+            <img src="images/portfolio/hero-spa.webp" alt="Spa-style master bathroom with honed beige marble walls" class="mat-parallax-2" width="1440" height="1800" loading="lazy" decoding="async">
+          </div>
+          <div class="material-caption">
+            <h3>Honed Beige Marble &amp; Rain Portals</h3>
+            <p>Atmospheric private spa suites with natural daylight falloff.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       6. CLOSING CALL TO ACTION
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="portfolio-cta" id="cta-section" aria-label="Commission Studio">
+    <div class="cta-inner">
+      <span class="cta-script">Let's build your</span>
+      <h2 class="cta-title">REALITY.</h2>
+      <p class="cta-desc">From 3D photorealistic visualization to turnkey civil contracting across Punjab. Connect directly with our founding team.</p>
+      <div class="cta-btn-row">
+        <button class="btn btn-inquire-pill btn-inquire-large" onclick="openModal('consultModal')">
+          INQUIRE STUDIO <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <a href="https://wa.me/917710152917?text=Hello%20NAM%20Atelier%2C%20I%20would%20like%20to%20discuss%20an%20interior%20project." target="_blank" rel="noopener noreferrer" class="btn btn-inquire-pill btn-inquire-large btn-inquire-outline">
+          Chat on WhatsApp <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       7. SHARED FOOTER (Single Source of Truth)
        Loaded dynamically from: components/footer.html via script.js
        ═════════════════════════════════════════════════════════════════════════ -->
   <div id="footer-placeholder"></div>
@@ -996,7 +1194,7 @@
   <div class="modal-overlay" id="consultModal" role="dialog" aria-modal="true" aria-label="Book Studio Consultation">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal('consultModal')" aria-label="Close dialog">&times;</button>
-      <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);">Architectural consultation</span>
+      <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--brass);">Architectural consultation</span>
       <h3 class="modal-title">Book Studio Appointment</h3>
       <p class="modal-subtitle">Connect personally with Udhay Seth &amp; Mudita D Seth for 3D interior renders &amp; turnkey civil contracting across Punjab.</p>
       <form onsubmit="handleConsultSubmit(event)" class="modal-form">
@@ -1013,129 +1211,324 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
+  <!-- ═════════════════════════════════════════════════════════════════════════
        GSAP 3.12.5 + SCROLLTRIGGER + LENIS SMOOTH SCROLL ENGINE
-       ========================================================================== -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'></script>
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 
   <script>
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.config({ignoreMobileResize:true});
+    // ── PORTFOLIO DATA (Single Source of Truth) ──
+    const PORTFOLIO_PROJECTS = [
+      {
+        no: "01",
+        name: "The Sandstone Palace",
+        place: "Indore",
+        year: "2024",
+        line: "A neoclassical villa in cream sandstone with a reflecting pool.",
+        src: "images/portfolio/p1-villa.webp",
+        alt: "Palatial neoclassical villa exterior at dusk"
+      },
+      {
+        no: "02",
+        name: "Skyline Penthouse",
+        place: "Mumbai",
+        year: "2024",
+        line: "Double-height living with walnut slats and travertine.",
+        src: "images/portfolio/p2-penthouse.webp",
+        alt: "Double-height penthouse living room"
+      },
+      {
+        no: "03",
+        name: "Walnut Suite",
+        place: "Bhopal",
+        year: "2023",
+        line: "A quiet master suite with fluted panelling and cove light.",
+        src: "images/portfolio/p3-bedroom.webp",
+        alt: "Master bedroom suite with walnut panelling"
+      },
+      {
+        no: "04",
+        name: "Marble Table",
+        place: "Pune",
+        year: "2023",
+        line: "Calacatta island kitchen with a warm, lived-in dining zone.",
+        src: "images/portfolio/p4-kitchen.webp",
+        alt: "Marble island kitchen and dining"
+      },
+      {
+        no: "05",
+        name: "The Velvet Lounge",
+        place: "Delhi",
+        year: "2025",
+        line: "Home theatre and whisky bar in olive velvet and dark wood.",
+        src: "images/portfolio/p5-theatre.webp",
+        alt: "Private home theatre and whisky lounge"
+      }
+    ];
 
-    // Lenis Smooth Scroll Initialisation
-    const lenis = new Lenis({lerp:.09});
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.config({ ignoreMobileResize: true });
 
-    const mm = gsap.matchMedia();
-    mm.add({
-      mob: '(max-width:640px)',
-      tab: '(min-width:641px) and (max-width:1024px)',
-      desk: '(min-width:1025px)',
-      calm: '(prefers-reduced-motion: reduce)'
-    }, ctx => {
-      const { mob, tab, desk, calm } = ctx.conditions;
-      if (calm) return;
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const sz = mob ? { A:['26vw','58vw'], B:['14vw','40vw'], C:['10vw','24vw'] }
-               : tab ? { A:['20vw','42vw'], B:['9vw','30vw'], C:['7vw','16vw'] }
-                     : { A:['16vw','34vw'], B:['7vw','26vw'], C:['5vw','12vw'] };
-      const inset = mob ? 'inset(30% 8% 30% 8%)' : 'inset(24% 22% 24% 22%)';
+      // ── 1. Lenis Smooth Scroll ──
+      let lenis = null;
+      if (!isReduced && typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+          duration: 1.15,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          smoothTouch: false
+        });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
 
-      // Scene 0: hero zooms and fades; scene 1 slides over it
-      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s0', start:'top top', end:'+=100%', pin:true, pinSpacing:false, scrub:true}})
-        .to('#s0 .bg', {scale:1.18}, 0)
-        .to('.hero-t', {yPercent:-40, autoAlpha:0}, 0);
+      // ── 2. Hero Headline Slide-Up Reveal on Load ──
+      const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTimeline
+        .fromTo(".hero-line", 
+          { y: 80, autoAlpha: 0 }, 
+          { y: 0, autoAlpha: 1, duration: 1.1, stagger: 0.12, delay: 0.15 }
+        )
+        .fromTo(".hero-script", 
+          { y: 50, autoAlpha: 0, scale: 0.94 }, 
+          { y: 0, autoAlpha: 1, scale: 1, duration: 1.3, ease: "power2.out" }, 
+          "-=0.7"
+        )
+        .fromTo(".hero-scroll-hint", 
+          { autoAlpha: 0, y: 15 }, 
+          { autoAlpha: 1, y: 0, duration: 0.8 }, 
+          "-=0.5"
+        );
 
-      // Scene 1: thumbs grow outward, text in, script wipe, all out
-      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s1', start:'top top', end:'+=300%', pin:true, scrub:1}})
-        .fromTo('.t-a', {width:sz.A[0], left:'6vw', bottom:'12vh'}, {width:sz.A[1], left:0, bottom:0, duration:2.4}, 0)
-        .fromTo('.t-b', {width:sz.B[0], right:'28vw', top:'22vh'}, {width:sz.B[1], right:0, top:0, duration:2.4}, 0)
-        .fromTo('.t-c', {width:sz.C[0], left:'40vw', top:'8vh'}, {width:sz.C[1], left:'2vw', top:0, duration:2.4}, 0)
-        .fromTo('.s1-t', {autoAlpha:0, scale:.85}, {autoAlpha:1, scale:1, duration:1}, .4)
-        .fromTo('.script', {clipPath:'inset(0 100% 0 0)'}, {clipPath:'inset(0 0% 0 0)', duration:1}, 1.5)
-        .to(['.s1-t','.t-a','.t-b','.t-c'], {autoAlpha:0, duration:.5}, 3);
+      if (isReduced) return;
 
-      // Scene 2: box expands to full screen, card slides up; scene 3 covers it
-      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s2', start:'top top', end:'+=250%', pin:true, pinSpacing:false, scrub:1}})
-        .fromTo('.box', {clipPath:inset}, {clipPath:'inset(0% 0% 0% 0%)', duration:1.2}, 0)
-        .fromTo('.box img', {scale:1.15}, {scale:1, duration:1.2}, 0)
-        .fromTo('.card', {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:.6}, 1.3);
+      // ── 3. Reveal Transition: Hero Layer Slides UP on Scroll ──
+      ScrollTrigger.create({
+        trigger: "#hero-trigger",
+        start: "top top",
+        end: "+=100%",
+        pin: true,
+        pinSpacing: false,
+        scrub: true,
+        animation: gsap.to("#hero-layer", {
+          yPercent: -100,
+          ease: "power2.inOut"
+        })
+      });
 
-      // Fix card colliding with header by fading it out before it reaches top
-      gsap.to('.card', {
-        autoAlpha: 0,
-        y: -30,
-        ease: 'none',
+      // ── 4. Pinned 3D Tumble Deck Showcase ──
+      const deckSection = document.getElementById("tumble-section");
+      const cards = gsap.utils.toArray(".tumble-card");
+      const deckCurNo = document.getElementById("deckCurNo");
+      const deckTitle = document.getElementById("deckTitle");
+      const deckMeta = document.getElementById("deckMeta");
+      const deckDesc = document.getElementById("deckDesc");
+      const deckProgressFill = document.getElementById("deckProgressFill");
+      const deckDots = gsap.utils.toArray(".deck-dot");
+      const totalCards = cards.length; // 5
+
+      let currentActiveCard = 0;
+
+      function updateDeckInfo(idx) {
+        if (idx === currentActiveCard) return;
+        currentActiveCard = idx;
+        const data = PORTFOLIO_PROJECTS[idx];
+        if (!data) return;
+
+        // Animate Info Swap
+        gsap.to("#deckTextSwap", {
+          autoAlpha: 0,
+          y: -12,
+          duration: 0.22,
+          ease: "power2.in",
+          onComplete: () => {
+            deckCurNo.textContent = data.no;
+            deckTitle.textContent = data.name;
+            deckMeta.innerHTML = `${data.place} &bull; ${data.year}`;
+            deckDesc.textContent = data.line;
+            gsap.fromTo("#deckTextSwap", 
+              { autoAlpha: 0, y: 14 }, 
+              { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out" }
+            );
+          }
+        });
+
+        // Update Progress Bar
+        const pct = ((idx + 1) / totalCards) * 100;
+        deckProgressFill.style.width = pct + "%";
+
+        // Update Dots
+        deckDots.forEach((dot, dIdx) => {
+          dot.classList.toggle("active", dIdx === idx);
+        });
+      }
+
+      // Master ScrollTrigger for the Deck (Scroll distance ~ 5 x 100vh)
+      const deckScrollTrigger = ScrollTrigger.create({
+        trigger: "#tumble-section",
+        start: "top top",
+        end: "+=500%",
+        pin: true,
+        scrub: 0.6,
+        onUpdate: (self) => {
+          const p = self.progress; // 0 to 1
+          const scrollPos = p * (totalCards - 1); // 0 to 4
+          const isSmall = window.innerWidth < 600;
+          const yForward = isSmall ? 40 : (window.innerWidth < 900 ? 90 : 190);
+          const yExit = isSmall ? 60 : (window.innerWidth < 900 ? 120 : 220);
+
+          cards.forEach((card, i) => {
+            const diff = scrollPos - i;
+
+            if (diff >= 1) {
+              // Card has tumbled completely away
+              gsap.set(card, {
+                opacity: 0,
+                rotateX: -85,
+                y: yExit,
+                z: 0,
+                scale: 0.9,
+                pointerEvents: "none"
+              });
+            } else if (diff > 0 && diff < 1) {
+              // Active card tumbling forward
+              const easeDiff = Math.pow(diff, 1.25);
+              gsap.set(card, {
+                opacity: 1 - Math.pow(diff, 2.2),
+                rotateX: -75 * easeDiff,
+                y: yForward * easeDiff,
+                z: -40 * easeDiff,
+                scale: 1 - 0.08 * easeDiff,
+                pointerEvents: diff < 0.4 ? "auto" : "none"
+              });
+            } else if (diff <= 0 && diff > -1) {
+              // Upcoming card rising from behind into view
+              const riseRatio = 1 + diff; // 0 to 1
+              gsap.set(card, {
+                opacity: Math.max(0.2, riseRatio),
+                rotateX: 18 * (1 - riseRatio),
+                y: 0,
+                z: -140 * (1 - riseRatio),
+                scale: 0.93 + 0.07 * riseRatio,
+                pointerEvents: riseRatio > 0.8 ? "auto" : "none"
+              });
+            } else {
+              // Cards deeper in stack
+              const depth = Math.min(3, Math.abs(diff));
+              gsap.set(card, {
+                opacity: depth > 1.8 ? 0 : 0.25,
+                rotateX: 18,
+                y: 0,
+                z: -140 * depth,
+                scale: Math.max(0.85, 1 - depth * 0.07),
+                pointerEvents: "none"
+              });
+            }
+          });
+
+          // Determine active index for info block
+          const activeIndex = Math.min(totalCards - 1, Math.max(0, Math.round(scrollPos)));
+          updateDeckInfo(activeIndex);
+        }
+      });
+
+      // Interactive Click on Stage: advance card
+      const deckStage = document.getElementById("deckStage");
+      if (deckStage) {
+        deckStage.addEventListener("click", () => {
+          const nextIdx = (currentActiveCard + 1) % totalCards;
+          scrollToCard(nextIdx);
+        });
+
+        // Drag / Swipe support
+        let startY = 0, isDragging = false;
+        deckStage.addEventListener("pointerdown", (e) => {
+          startY = e.clientY;
+          isDragging = true;
+          deckStage.classList.add("is-dragging");
+        });
+        window.addEventListener("pointermove", (e) => {
+          if (!isDragging) return;
+          const dy = startY - e.clientY;
+          if (Math.abs(dy) > 40) {
+            isDragging = false;
+            deckStage.classList.remove("is-dragging");
+            if (dy > 0 && currentActiveCard < totalCards - 1) {
+              scrollToCard(currentActiveCard + 1);
+            } else if (dy < 0 && currentActiveCard > 0) {
+              scrollToCard(currentActiveCard - 1);
+            }
+          }
+        });
+        window.addEventListener("pointerup", () => {
+          isDragging = false;
+          deckStage.classList.remove("is-dragging");
+        });
+      }
+
+      // Dot Click Navigation
+      deckDots.forEach((dot) => {
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const targetIdx = parseInt(dot.getAttribute("data-idx"), 10);
+          scrollToCard(targetIdx);
+        });
+      });
+
+      // Keyboard Arrow Navigation
+      window.addEventListener("keydown", (e) => {
+        if (!deckScrollTrigger.isActive) return;
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+          if (currentActiveCard < totalCards - 1) scrollToCard(currentActiveCard + 1);
+        } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+          if (currentActiveCard > 0) scrollToCard(currentActiveCard - 1);
+        }
+      });
+
+      function scrollToCard(targetIdx) {
+        const start = deckScrollTrigger.start;
+        const end = deckScrollTrigger.end;
+        const targetScroll = start + (targetIdx / (totalCards - 1)) * (end - start);
+        if (lenis) {
+          lenis.scrollTo(targetScroll, { duration: 1.1 });
+        } else {
+          window.scrollTo({ top: targetScroll, behavior: "smooth" });
+        }
+      }
+
+      // ── 5. Materials Strip: Opposite Parallax Scrub ──
+      gsap.to(".mat-parallax-1", {
+        yPercent: -12,
+        ease: "none",
         scrollTrigger: {
-          trigger: '#s3',
-          start: 'top 70%',
-          end: 'top 35%',
+          trigger: "#materials-section",
+          start: "top bottom",
+          end: "bottom top",
           scrub: true
         }
       });
 
-      // Scene 3: Haven architectural suite reveal
-      gsap.from('.haven-sticky', {
-        autoAlpha: 0,
-        y: 40,
-        duration: 0.9,
-        ease: 'power2.out',
+      gsap.to(".mat-parallax-2", {
+        yPercent: 12,
+        ease: "none",
         scrollTrigger: {
-          trigger: '#s3',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse'
+          trigger: "#materials-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
         }
       });
 
-      gsap.utils.toArray('.haven-item').forEach(item => {
-        gsap.from(item, {
-          autoAlpha: 0,
-          y: 45,
-          duration: 0.85,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 88%',
-            toggleActions: 'play none none reverse'
-          }
-        });
-      });
-
-      // Scene 4: two big photos move outward, text in and out
-      gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#s4', start:'top top', end:'+=250%', pin:true, scrub:1}})
-        .fromTo('.bal-l', {xPercent:0, yPercent:30, scale:1}, {xPercent:-18, yPercent:0, scale:1.25, duration:2}, 0)
-        .fromTo('.bal-r', {xPercent:0, yPercent:30, scale:1}, {xPercent:18, yPercent:0, scale:1.25, duration:2}, 0)
-        .fromTo('.s4-t', {autoAlpha:0}, {autoAlpha:1, duration:.6}, .8)
-        .to('.s4-t', {autoAlpha:0, duration:.5}, 2.2);
-
-      // Selected Works: Horizontal Pinned Gallery on Desktop / Tablet (min-width: 821px)
-      if (window.innerWidth >= 821) {
-        const track = document.querySelector('.works-track');
-        if (track) {
-          const dist = () => track.scrollWidth - innerWidth + innerWidth * 0.06;
-          gsap.to(track, {
-            x: () => -dist(),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#works',
-              start: 'top top',
-              end: () => '+=' + dist(),
-              pin: true,
-              scrub: 1,
-              invalidateOnRefresh: true
-            }
-          });
-        }
-      }
+      window.addEventListener("load", () => ScrollTrigger.refresh());
     });
 
-    window.addEventListener('load', () => ScrollTrigger.refresh());
-
-    // Modal helpers for Consultation
+    // ── Consultation Modal Handlers ──
     function openModal(id) {
       const el = document.getElementById(id);
       if (el) {
@@ -1167,7 +1560,7 @@
     });
   </script>
 
-  <!-- SHARED ENGINE SCRIPTS (Loads components/header.html, components/footer.html & components/testimonials.html) -->
-  <script src="script.js?v=4.3" defer></script>
+  <!-- SHARED ENGINE SCRIPTS (Loads components/header.html & components/footer.html) -->
+  <script src="script.js?v=4.4" defer></script>
 </body>
 </html>
