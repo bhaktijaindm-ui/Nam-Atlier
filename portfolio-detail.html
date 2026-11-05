@@ -593,65 +593,30 @@
     }
 
     .curtain-outer-wrap {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .curtain-section-head {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto clamp(32px, 4.5vh, 52px);
-    }
-
-    .curtain-sec-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .curtain-sec-title {
-      font-family: var(--font-jost);
-      font-weight: 300;
-      font-size: clamp(24px, 3.2vw, 42px);
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 14px;
-      white-space: nowrap;
-    }
-
-    .curtain-sec-desc {
-      font-size: clamp(14px, 1.05vw, 16px);
-      color: var(--mute);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
     .curtain-stage-wrapper {
       width: 100%;
-      max-width: 960px;
+      max-width: 1140px;
       margin: 0 auto;
       position: relative;
     }
 
     .curtain-stage {
       position: relative;
-      height: 510px;
+      height: 520px;
       width: 100%;
-      overflow: hidden;
-      border-radius: 24px;
-      background: #111110;
+      overflow: visible;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       color: #f5f2eb;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -659,23 +624,17 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .curtain-stage:hover {
-      border-color: rgba(201, 174, 131, 0.3);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(201, 174, 131, 0.15);
     }
 
     .curtain-grid-pattern {
       pointer-events: none;
       position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(214, 211, 209, 0.12) 1px, transparent 1px);
+      inset: -20px 0;
+      background-image: radial-gradient(rgba(214, 211, 209, 0.08) 1px, transparent 1px);
       background-size: 24px 24px;
-      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 50%, transparent 100%);
-      mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 50%, transparent 100%);
-      opacity: 0.85;
+      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 45%, transparent 100%);
+      mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 45%, transparent 100%);
+      opacity: 0.7;
     }
 
     .curtain-headline-box {
@@ -686,49 +645,51 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
-      max-width: 420px;
+      padding: 0 16px;
+      max-width: 620px;
       will-change: transform, opacity;
-      transform: translate3d(0, 30px, 0);
-      opacity: 0;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
 
     .curtain-headline-eyebrow {
-      font-family: var(--font-jost, 'Jost', monospace);
-      font-size: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      letter-spacing: 0.3em;
-      color: #C9AE83;
-      font-weight: 500;
-      margin-bottom: 8px;
+      color: var(--brass);
+      margin-bottom: 12px;
+      display: block;
     }
 
     .curtain-headline-title {
-      font-family: var(--font-jost, 'Jost', serif);
-      font-size: clamp(26px, 3.4vw, 40px);
+      font-family: var(--font-jost);
       font-weight: 300;
-      letter-spacing: -0.015em;
-      line-height: 0.98;
-      color: #f5f2eb;
-      margin: 0;
+      font-size: clamp(22px, 2.4vw, 36px);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 14px;
+      max-width: 520px;
     }
 
     .curtain-headline-line {
-      margin: 16px auto;
+      margin: 0 auto 16px;
       height: 1px;
-      width: 60px;
+      width: 50px;
       background: rgba(201, 174, 131, 0.7);
       transform-origin: center;
-      transform: scaleX(0);
+      transform: scaleX(1);
       will-change: transform;
     }
 
     .curtain-headline-desc {
-      max-width: 34ch;
-      font-size: clamp(11px, 0.9vw, 13px);
+      max-width: 50ch;
+      font-size: clamp(13px, 1.05vw, 15px);
+      color: var(--mute);
+      line-height: 1.75;
       font-weight: 300;
-      color: #a8a29e;
-      line-height: 1.6;
       margin: 0;
     }
 
@@ -867,35 +828,32 @@
     }
 
     @media (max-width: 767px) {
-      .curtain-sec-title {
-        white-space: normal;
-        font-size: clamp(20px, 5.5vw, 28px);
-      }
       .curtain-headline-box {
-        max-width: 190px;
+        max-width: 210px;
         padding: 0 4px;
       }
       .curtain-headline-eyebrow {
         font-size: 8px;
-        letter-spacing: 0.22em;
-        margin-bottom: 4px;
+        letter-spacing: 0.2em;
+        margin-bottom: 6px;
       }
       .curtain-headline-title {
-        font-size: 20px;
-        line-height: 1.05;
+        white-space: normal;
+        font-size: clamp(16px, 4.5vw, 20px);
+        line-height: 1.15;
+        margin-bottom: 8px;
       }
       .curtain-headline-line {
-        margin: 8px auto;
+        margin: 0 auto 10px;
         width: 32px;
       }
       .curtain-headline-desc {
-        font-size: 9.5px;
-        line-height: 1.4;
-        max-width: 22ch;
+        font-size: 10px;
+        line-height: 1.45;
+        max-width: 24ch;
       }
       .curtain-stage {
-        height: 430px;
-        border-radius: 18px;
+        height: 440px;
       }
       .curtain-split-section {
         padding: 56px 16px 72px;
@@ -1825,13 +1783,6 @@
   <section class="curtain-split-section" id="curtain-split-section" aria-label="Curated Spatial Archive &amp; Architectural Monograph">
     <div class="curtain-outer-wrap">
 
-      <!-- Section Header -->
-      <div class="curtain-section-head">
-        <span class="curtain-sec-eyebrow">CURATED SPATIAL ARCHIVE</span>
-        <h2 class="curtain-sec-title">Bespoke Architectural Monograph</h2>
-        <p class="curtain-sec-desc">Unfold our signature portfolio through balanced bilateral symmetry. Explore private pavilions, penthouse suites, and artisanal interiors crafted by NAM Atelier.</p>
-      </div>
-
       <!-- Curtain Split Interactive Hero Stage -->
       <div class="curtain-stage-wrapper">
         <div class="curtain-stage" id="curtainStage" role="region" aria-label="Interactive Curtain Split Portfolio Showcase">
@@ -1839,12 +1790,12 @@
           <!-- Architectural Dot / Grid Pattern -->
           <div class="curtain-grid-pattern" aria-hidden="true"></div>
 
-          <!-- Center Editorial Headline -->
+          <!-- Center Editorial Headline (Replaced by main heading & text) -->
           <div class="curtain-headline-box" id="curtainHeadlineBox">
-            <span class="curtain-headline-eyebrow">Monograph No. 04</span>
-            <h2 class="curtain-headline-title">Architectural<br>Symmetry.</h2>
+            <span class="curtain-headline-eyebrow">CURATED SPATIAL ARCHIVE</span>
+            <h2 class="curtain-headline-title">BESPOKE ARCHITECTURAL<br>MONOGRAPH</h2>
             <div class="curtain-headline-line" id="curtainHeadlineLine"></div>
-            <p class="curtain-headline-desc">Unfolding spatial narratives through bespoke materiality, curated millwork, and balanced bilateral geometry.</p>
+            <p class="curtain-headline-desc">Unfold our signature portfolio through balanced bilateral symmetry. Explore private pavilions, penthouse suites, and artisanal interiors crafted by NAM Atelier.</p>
           </div>
 
           <!-- Bilateral Curtain Cards Layer -->
@@ -2690,8 +2641,8 @@
 
         // Target and physics spring state
         // Spring configuration: stiffness = 65, damping = 22, mass = 0.5
-        let targetP = 0;
-        let currentP = 0;
+        let targetP = 1;
+        let currentP = 1;
         let velP = 0;
 
         let targetPx = 0;
@@ -2774,20 +2725,9 @@
           }
 
           // Center Editorial Headline
-          // textY: [0.25, 0.85] -> [30, 0]
-          let textY = 30;
-          if (pClamped >= 0.85) textY = 0;
-          else if (pClamped > 0.25) textY = 30 * (1 - (pClamped - 0.25) / 0.60);
-
-          // textOpacity: [0.3, 0.8] -> [0, 1]
-          let textOpacity = 0;
-          if (pClamped >= 0.8) textOpacity = 1;
-          else if (pClamped > 0.3) textOpacity = (pClamped - 0.3) / 0.50;
-
-          // lineScale: [0.35, 0.85] -> [0, 1]
-          let lineScale = 0;
-          if (pClamped >= 0.85) lineScale = 1;
-          else if (pClamped > 0.35) lineScale = (pClamped - 0.35) / 0.50;
+          let textY = (1 - pClamped) * 16;
+          let textOpacity = Math.max(0.3, Math.min(1, 0.3 + pClamped * 0.7));
+          let lineScale = Math.max(0.2, Math.min(1, pClamped));
 
           if (headlineBox) {
             headlineBox.style.transform = `translate3d(0, ${textY.toFixed(2)}px, 0)`;
@@ -2810,7 +2750,7 @@
             const sideMult = isLeft ? -1 : 1;
 
             const archCurve = Math.cos(norm * Math.PI) * (stageWidth * 0.025);
-            const targetX = sideMult * (stageWidth * (isMobile ? 0.36 : 0.34) + archCurve);
+            const targetX = sideMult * (stageWidth * (isMobile ? 0.36 : 0.365) + archCurve);
             const targetY = norm * (stageHeight * 0.58);
             const targetRotate = sideMult * (norm * 18);
 
@@ -2979,7 +2919,7 @@
         }
 
         // Initial render
-        renderCurtain(0, 0, 0);
+        renderCurtain(1, 0, 0);
       }
 
       // ══════════════════════════════════════════════════════════════════════════
