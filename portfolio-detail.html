@@ -581,102 +581,336 @@
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
-       3. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
+       3. CURTAIN SPLIT INTERACTIVE ARCHIVE SECTION
        ══════════════════════════════════════════════════════════════════════════ */
-    .materials-section {
+    .curtain-split-section {
       position: relative;
       background: var(--surface);
-      padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px);
+      padding: clamp(64px, 8vh, 110px) clamp(20px, 4vw, 60px);
       z-index: 6;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
     }
 
-    .materials-inner {
-      max-width: 1540px;
+    .curtain-outer-wrap {
+      max-width: 1120px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .materials-head {
+    .curtain-section-head {
       text-align: center;
-      max-width: 640px;
-      margin: 0 auto clamp(48px, 8vh, 96px);
+      max-width: 680px;
+      margin: 0 auto clamp(32px, 4.5vh, 52px);
     }
 
-    .materials-eyebrow {
+    .curtain-sec-eyebrow {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--brass);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: block;
     }
 
-    .materials-title {
+    .curtain-sec-title {
       font-family: var(--font-jost);
       font-weight: 300;
-      font-size: clamp(32px, 4.4vw, 62px);
-      letter-spacing: 0.06em;
+      font-size: clamp(24px, 3.2vw, 42px);
+      letter-spacing: 0.04em;
       line-height: 1.15;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      white-space: nowrap;
     }
 
-    .materials-desc {
-      font-size: clamp(14px, 1.1vw, 16px);
+    .curtain-sec-desc {
+      font-size: clamp(14px, 1.05vw, 16px);
       color: var(--mute);
-      line-height: 1.8;
+      line-height: 1.75;
+      font-weight: 300;
     }
 
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(32px, 5vw, 80px);
-      align-items: start;
-    }
-
-    .material-card {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .material-card:nth-child(2) {
-      margin-top: clamp(0px, 6vh, 80px);
-    }
-
-    .material-img-wrap {
+    .curtain-stage-wrapper {
       width: 100%;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border-radius: 2px;
-      background: #111;
+      max-width: 960px;
+      margin: 0 auto;
       position: relative;
     }
 
-    .material-img-wrap img {
+    .curtain-stage {
+      position: relative;
+      height: 510px;
       width: 100%;
-      height: 116%;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #111110;
+      color: #f5f2eb;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .curtain-stage:hover {
+      border-color: rgba(201, 174, 131, 0.3);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(201, 174, 131, 0.15);
+    }
+
+    .curtain-grid-pattern {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(214, 211, 209, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 50%, transparent 100%);
+      mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 50%, transparent 100%);
+      opacity: 0.85;
+    }
+
+    .curtain-headline-box {
+      pointer-events: none;
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 420px;
+      will-change: transform, opacity;
+      transform: translate3d(0, 30px, 0);
+      opacity: 0;
+    }
+
+    .curtain-headline-eyebrow {
+      font-family: var(--font-jost, 'Jost', monospace);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: #C9AE83;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .curtain-headline-title {
+      font-family: var(--font-jost, 'Jost', serif);
+      font-size: clamp(26px, 3.4vw, 40px);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      line-height: 0.98;
+      color: #f5f2eb;
+      margin: 0;
+    }
+
+    .curtain-headline-line {
+      margin: 16px auto;
+      height: 1px;
+      width: 60px;
+      background: rgba(201, 174, 131, 0.7);
+      transform-origin: center;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+
+    .curtain-headline-desc {
+      max-width: 34ch;
+      font-size: clamp(11px, 0.9vw, 13px);
+      font-weight: 300;
+      color: #a8a29e;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .curtain-cards-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: auto;
+    }
+
+    .curtain-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      will-change: transform;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      text-decoration: none;
+      display: block;
+      transition: filter 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .curtain-card-inner {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #1f1e1c;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .curtain-card:hover .curtain-card-inner {
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 174, 131, 0.5);
+      border-color: rgba(201, 174, 131, 0.7);
+    }
+
+    .curtain-card img {
+      height: 100%;
+      width: 100%;
       object-fit: cover;
       display: block;
-      will-change: transform;
-      margin-top: -8%;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .material-caption h3 {
-      font-family: var(--font-jost);
+    .curtain-card:hover img {
+      transform: scale(1.12);
+    }
+
+    .curtain-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 6px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      text-align: center;
+    }
+
+    .curtain-card:hover .curtain-card-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .curtain-card-title {
+      font-family: var(--font-jost, 'Jost', sans-serif);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f5f2eb;
+      line-height: 1.1;
+      margin-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .curtain-card-action {
+      font-family: var(--font-jost, 'Jost', sans-serif);
+      font-size: 8px;
       font-weight: 400;
-      font-size: clamp(18px, 1.6vw, 24px);
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      margin-bottom: 6px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #C9AE83;
     }
 
-    .material-caption p {
-      font-size: 14px;
-      color: var(--mute);
-      line-height: 1.7;
+    .curtain-status-pill {
+      position: absolute;
+      bottom: 16px;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 9999px;
+      background: rgba(30, 28, 26, 0.88);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-family: var(--font-jost, 'Jost', sans-serif);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #d6d3d1;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .curtain-status-pill:hover {
+      background: rgba(45, 42, 39, 0.98);
+      border-color: rgba(201, 174, 131, 0.4);
+      transform: scale(1.02);
+    }
+
+    .curtain-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background-color: #f59e0b;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 767px) {
+      .curtain-sec-title {
+        white-space: normal;
+        font-size: clamp(20px, 5.5vw, 28px);
+      }
+      .curtain-headline-box {
+        max-width: 190px;
+        padding: 0 4px;
+      }
+      .curtain-headline-eyebrow {
+        font-size: 8px;
+        letter-spacing: 0.22em;
+        margin-bottom: 4px;
+      }
+      .curtain-headline-title {
+        font-size: 20px;
+        line-height: 1.05;
+      }
+      .curtain-headline-line {
+        margin: 8px auto;
+        width: 32px;
+      }
+      .curtain-headline-desc {
+        font-size: 9.5px;
+        line-height: 1.4;
+        max-width: 22ch;
+      }
+      .curtain-stage {
+        height: 430px;
+        border-radius: 18px;
+      }
+      .curtain-split-section {
+        padding: 56px 16px 72px;
+      }
+      .curtain-status-pill {
+        bottom: 12px;
+        font-size: 10px;
+        padding: 5px 12px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .curtain-stage {
+        height: 480px;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════════════════════
@@ -1039,16 +1273,6 @@
       }
     }
 
-    @media (max-width: 899px) {
-      .materials-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .material-card:nth-child(2) {
-        margin-top: 0;
-      }
-    }
 
     @media (max-width: 767px) {
       .circ-section {
@@ -1596,39 +1820,133 @@
   </section>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       3. MATERIALS STRIP SECTION (Opposite Parallax, Clean Luxury Grid)
+       3. CURTAIN SPLIT INTERACTIVE ARCHIVE SECTION
        ═════════════════════════════════════════════════════════════════════════ -->
-  <section class="materials-section" id="materials-section" aria-label="Materials we love">
-    <div class="materials-inner">
-      <div class="materials-head">
-        <span class="materials-eyebrow">Materiality &amp; Tactile Craft</span>
-        <h2 class="materials-title">Materials we love</h2>
-        <p class="materials-desc">We select unrepeatable natural stones, raw timbers, and warm metals that age with grace, grounding every private space in authenticity.</p>
+  <section class="curtain-split-section" id="curtain-split-section" aria-label="Curated Spatial Archive &amp; Architectural Monograph">
+    <div class="curtain-outer-wrap">
+
+      <!-- Section Header -->
+      <div class="curtain-section-head">
+        <span class="curtain-sec-eyebrow">CURATED SPATIAL ARCHIVE</span>
+        <h2 class="curtain-sec-title">Bespoke Architectural Monograph</h2>
+        <p class="curtain-sec-desc">Unfold our signature portfolio through balanced bilateral symmetry. Explore private pavilions, penthouse suites, and artisanal interiors crafted by NAM Atelier.</p>
       </div>
 
-      <div class="materials-grid">
-        <!-- Card 1 -->
-        <article class="material-card">
-          <div class="material-img-wrap">
-            <img src="images/portfolio/hero-material.webp" alt="Roman Travertine and raw stone architectural palette" class="mat-parallax-1" loading="lazy" decoding="async" width="1440" height="1800">
-          </div>
-          <div class="material-caption">
-            <h3>Roman Travertine &amp; Honed Limestone</h3>
-            <p>Quarried blocks selected personally from Tivoli and Rajasthan, cut with zero-joint precision and honed for soft natural light reflection.</p>
-          </div>
-        </article>
+      <!-- Curtain Split Interactive Hero Stage -->
+      <div class="curtain-stage-wrapper">
+        <div class="curtain-stage" id="curtainStage" role="region" aria-label="Interactive Curtain Split Portfolio Showcase">
 
-        <!-- Card 2 -->
-        <article class="material-card">
-          <div class="material-img-wrap">
-            <img src="images/portfolio/hero-spa.webp" alt="Smoked walnut joinery and patinated brass details" class="mat-parallax-2" loading="lazy" decoding="async" width="1440" height="1800">
+          <!-- Architectural Dot / Grid Pattern -->
+          <div class="curtain-grid-pattern" aria-hidden="true"></div>
+
+          <!-- Center Editorial Headline -->
+          <div class="curtain-headline-box" id="curtainHeadlineBox">
+            <span class="curtain-headline-eyebrow">Monograph No. 04</span>
+            <h2 class="curtain-headline-title">Architectural<br>Symmetry.</h2>
+            <div class="curtain-headline-line" id="curtainHeadlineLine"></div>
+            <p class="curtain-headline-desc">Unfolding spatial narratives through bespoke materiality, curated millwork, and balanced bilateral geometry.</p>
           </div>
-          <div class="material-caption">
-            <h3>Smoked Walnut &amp; Architectural Brass</h3>
-            <p>Hand-fluted timber slats with brushed patinated brass reveals and acoustic isolation, creating intimate, tactile warmth in master suites.</p>
+
+          <!-- Bilateral Curtain Cards Layer -->
+          <div class="curtain-cards-layer" id="curtainCardsLayer">
+            <!-- Card 0 (Left 0) -->
+            <a href="project.html?p=marble-residence" class="curtain-card" data-idx="0" aria-label="Explore The Marble Residence">
+              <div class="curtain-card-inner">
+                <img src="nam_living_render.jpg" alt="The Marble Residence" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Marble Residence</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 1 (Right 0) -->
+            <a href="project.html?p=chefs-kitchen" class="curtain-card" data-idx="1" aria-label="Explore The Chef’s Kitchen">
+              <div class="curtain-card-inner">
+                <img src="nam_kitchen_render.jpg" alt="The Chef’s Kitchen" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Chef’s Kitchen</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 (Left 1) -->
+            <a href="project.html?p=penthouse-suite" class="curtain-card" data-idx="2" aria-label="Explore Penthouse Suite">
+              <div class="curtain-card-inner">
+                <img src="nam_bedroom_render.jpg" alt="Penthouse Suite" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Penthouse Suite</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 (Right 1) -->
+            <a href="project.html?p=acoustic-theatre" class="curtain-card" data-idx="3" aria-label="Explore Private Acoustic Theatre">
+              <div class="curtain-card-inner">
+                <img src="nam_cinema_theatre.jpg" alt="Private Acoustic Theatre" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Acoustic Theatre</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 4 (Left 2) -->
+            <a href="project.html?p=grand-dining-salon" class="curtain-card" data-idx="4" aria-label="Explore The Grand Dining Salon">
+              <div class="curtain-card-inner">
+                <img src="nam_dining_interior.jpg" alt="The Grand Dining Salon" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Grand Dining</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 5 (Right 2) -->
+            <a href="project.html?p=executive-atelier" class="curtain-card" data-idx="5" aria-label="Explore Executive Atelier">
+              <div class="curtain-card-inner">
+                <img src="nam_office_interior.jpg" alt="Executive Atelier" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Executive Atelier</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 6 (Left 3) -->
+            <a href="project.html?p=sunken-courtyard" class="curtain-card" data-idx="6" aria-label="Explore Sunken Courtyard">
+              <div class="curtain-card-inner">
+                <img src="nam_landscaping_patio.jpg" alt="Sunken Courtyard" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Sunken Courtyard</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 7 (Right 3) -->
+            <a href="project.html?p=villa-sanctuary" class="curtain-card" data-idx="7" aria-label="Explore Villa Sanctuary">
+              <div class="curtain-card-inner">
+                <img src="nam_luxury_residence_exterior.jpg" alt="Villa Sanctuary" draggable="false" loading="lazy" width="800" height="1066">
+                <div class="curtain-card-overlay">
+                  <span class="curtain-card-title">Villa Sanctuary</span>
+                  <span class="curtain-card-action">View &rarr;</span>
+                </div>
+              </div>
+            </a>
           </div>
-        </article>
+
+          <!-- Bottom Status Pill Indicator -->
+          <div class="curtain-status-pill" id="curtainStatusPill" role="button" tabindex="0" aria-label="Toggle curtain open or closed">
+            <span class="curtain-status-dot" id="curtainStatusDot"></span>
+            <span class="curtain-status-text" id="curtainStatusText">Scroll down or click to unveil</span>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -2333,30 +2651,335 @@
       }
 
       // ══════════════════════════════════════════════════════════════════════════
-      // 3. MATERIALS STRIP OPPOSITE PARALLAX
+      // 3. CURTAIN SPLIT INTERACTIVE ARCHIVE ENGINE
       // ══════════════════════════════════════════════════════════════════════════
-      const matSec = document.getElementById("materials-section");
-      if (matSec && typeof ScrollTrigger !== "undefined") {
-        gsap.to(".mat-parallax-1", {
-          yPercent: 12,
-          ease: "none",
-          scrollTrigger: {
-            trigger: matSec,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
+      const curtainStage = document.getElementById("curtainStage");
+      if (curtainStage) {
+        const headlineBox = document.getElementById("curtainHeadlineBox");
+        const headlineLine = document.getElementById("curtainHeadlineLine");
+        const statusPill = document.getElementById("curtainStatusPill");
+        const statusDot = document.getElementById("curtainStatusDot");
+        const statusText = document.getElementById("curtainStatusText");
+        const cards = Array.from(curtainStage.querySelectorAll(".curtain-card"));
+
+        // Stage dimensions
+        let stageWidth = curtainStage.offsetWidth || 960;
+        let stageHeight = curtainStage.offsetHeight || 510;
+        let isMobile = stageWidth < 768;
+
+        const updateStageDimensions = () => {
+          const rect = curtainStage.getBoundingClientRect();
+          stageWidth = rect.width;
+          stageHeight = rect.height;
+          isMobile = stageWidth < 768;
+        };
+
+        if (window.ResizeObserver) {
+          const ro = new ResizeObserver(() => {
+            updateStageDimensions();
+            wakePhysics();
+          });
+          ro.observe(curtainStage);
+        } else {
+          window.addEventListener("resize", () => {
+            updateStageDimensions();
+            wakePhysics();
+          });
+        }
+        updateStageDimensions();
+
+        // Target and physics spring state
+        // Spring configuration: stiffness = 65, damping = 22, mass = 0.5
+        let targetP = 0;
+        let currentP = 0;
+        let velP = 0;
+
+        let targetPx = 0;
+        let currentPx = 0;
+        let velPx = 0;
+
+        let targetPy = 0;
+        let currentPy = 0;
+        let velPy = 0;
+
+        let isRunning = false;
+        let lastTimestamp = 0;
+
+        function wakePhysics() {
+          if (!isRunning) {
+            isRunning = true;
+            lastTimestamp = performance.now();
+            requestAnimationFrame(physicsStep);
           }
-        });
-        gsap.to(".mat-parallax-2", {
-          yPercent: -12,
-          ease: "none",
-          scrollTrigger: {
-            trigger: matSec,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
+        }
+
+        function physicsStep(now) {
+          let dt = (now - lastTimestamp) / 1000;
+          if (dt > 0.05) dt = 0.05;
+          if (dt < 0.001) dt = 0.016;
+          lastTimestamp = now;
+
+          // Spring physics: F = -k*(x - target) - c*v; a = F/m
+          const k = 65;
+          const c = 22;
+          const m = 0.5;
+
+          const fP = -k * (currentP - targetP) - c * velP;
+          velP += (fP / m) * dt;
+          currentP += velP * dt;
+
+          const fPx = -k * (currentPx - targetPx) - c * velPx;
+          velPx += (fPx / m) * dt;
+          currentPx += velPx * dt;
+
+          const fPy = -k * (currentPy - targetPy) - c * velPy;
+          velPy += (fPy / m) * dt;
+          currentPy += velPy * dt;
+
+          renderCurtain(currentP, currentPx, currentPy);
+
+          // Settle check
+          const settledP = Math.abs(currentP - targetP) < 0.0008 && Math.abs(velP) < 0.0008;
+          const settledPx = Math.abs(currentPx - targetPx) < 0.0008 && Math.abs(velPx) < 0.0008;
+          const settledPy = Math.abs(currentPy - targetPy) < 0.0008 && Math.abs(velPy) < 0.0008;
+
+          if (settledP && settledPx && settledPy) {
+            currentP = targetP;
+            currentPx = targetPx;
+            currentPy = targetPy;
+            velP = 0;
+            velPx = 0;
+            velPy = 0;
+            renderCurtain(currentP, currentPx, currentPy);
+            isRunning = false;
+          } else {
+            requestAnimationFrame(physicsStep);
           }
+        }
+
+        function renderCurtain(p, px, py) {
+          const pClamped = Math.max(0, Math.min(1, p));
+          const easeP = 1 - Math.pow(1 - pClamped, 3); // ease-out cubic
+          const isSpreadActive = pClamped > 0.65;
+
+          // Status Pill update
+          if (statusText && statusDot) {
+            if (isSpreadActive) {
+              statusDot.style.backgroundColor = "#10b981";
+              statusText.textContent = "Scroll up or click to close curtain";
+            } else {
+              statusDot.style.backgroundColor = "#f59e0b";
+              statusText.textContent = "Scroll down or click to unveil";
+            }
+          }
+
+          // Center Editorial Headline
+          // textY: [0.25, 0.85] -> [30, 0]
+          let textY = 30;
+          if (pClamped >= 0.85) textY = 0;
+          else if (pClamped > 0.25) textY = 30 * (1 - (pClamped - 0.25) / 0.60);
+
+          // textOpacity: [0.3, 0.8] -> [0, 1]
+          let textOpacity = 0;
+          if (pClamped >= 0.8) textOpacity = 1;
+          else if (pClamped > 0.3) textOpacity = (pClamped - 0.3) / 0.50;
+
+          // lineScale: [0.35, 0.85] -> [0, 1]
+          let lineScale = 0;
+          if (pClamped >= 0.85) lineScale = 1;
+          else if (pClamped > 0.35) lineScale = (pClamped - 0.35) / 0.50;
+
+          if (headlineBox) {
+            headlineBox.style.transform = `translate3d(0, ${textY.toFixed(2)}px, 0)`;
+            headlineBox.style.opacity = textOpacity.toFixed(3);
+          }
+          if (headlineLine) {
+            headlineLine.style.transform = `scaleX(${lineScale.toFixed(3)})`;
+          }
+
+          // Cards positioning
+          const total = cards.length;
+          const half = total / 2;
+          const cardW = isMobile ? 64 : 92;
+          const cardH = isMobile ? 88 : 124;
+
+          cards.forEach((card, index) => {
+            const isLeft = index % 2 === 0;
+            const wingIndex = Math.floor(index / 2); // 0 to 3
+            const norm = wingIndex / (half - 1) - 0.5; // -0.5 to 0.5
+            const sideMult = isLeft ? -1 : 1;
+
+            const archCurve = Math.cos(norm * Math.PI) * (stageWidth * 0.025);
+            const targetX = sideMult * (stageWidth * (isMobile ? 0.36 : 0.34) + archCurve);
+            const targetY = norm * (stageHeight * 0.58);
+            const targetRotate = sideMult * (norm * 18);
+
+            const initialX = sideMult * (wingIndex * 4);
+            const initialY = norm * 10;
+            const initialRotate = sideMult * (wingIndex * 2);
+
+            const tx = initialX + (targetX - initialX) * easeP;
+            const ty = initialY + (targetY - initialY) * easeP;
+
+            const maxParallaxX = isMobile ? 8 : 16;
+            const maxParallaxY = isMobile ? 6 : 14;
+
+            const dx = tx + px * (isLeft ? -maxParallaxX : maxParallaxX) * easeP;
+            const dy = ty + py * maxParallaxY * easeP;
+
+            // Rotation: [0, 0.45, 1] -> [initialRotate, isLeft ? -14 : 14, targetRotate]
+            let rot = initialRotate;
+            if (pClamped <= 0.45) {
+              const t = pClamped / 0.45;
+              const midRot = isLeft ? -14 : 14;
+              rot = initialRotate + (midRot - initialRotate) * t;
+            } else {
+              const t = (pClamped - 0.45) / 0.55;
+              const midRot = isLeft ? -14 : 14;
+              rot = midRot + (targetRotate - midRot) * t;
+            }
+
+            // Scale: [0, 0.5, 1] -> [1, 0.96, 0.92]
+            let sc = 1;
+            if (pClamped <= 0.5) {
+              sc = 1 - (pClamped / 0.5) * 0.04;
+            } else {
+              sc = 0.96 - ((pClamped - 0.5) / 0.5) * 0.04;
+            }
+
+            if (card.dataset.isHovered === "true" && isSpreadActive) {
+              card.style.transform = `translate3d(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px), 0) rotate(0deg) scale(1.08)`;
+              card.style.zIndex = "50";
+            } else {
+              card.style.transform = `translate3d(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px), 0) rotate(${rot.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+              card.style.zIndex = isLeft ? (index + 1) : (total - index);
+            }
+
+            card.style.width = `${cardW}px`;
+            card.style.height = `${cardH}px`;
+          });
+        }
+
+        // Pointer move / parallax on stage
+        curtainStage.addEventListener("pointermove", (e) => {
+          const rect = curtainStage.getBoundingClientRect();
+          targetPx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+          targetPy = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+          wakePhysics();
         });
+
+        curtainStage.addEventListener("pointerleave", () => {
+          targetPx = 0;
+          targetPy = 0;
+          wakePhysics();
+        });
+
+        // Wheel interaction: local smooth scrub
+        curtainStage.addEventListener("wheel", (e) => {
+          const current = targetP;
+          const delta = e.deltaY * 0.002;
+          const next = Math.max(0, Math.min(1, current + delta));
+
+          if ((e.deltaY > 0 && current < 1) || (e.deltaY < 0 && current > 0)) {
+            e.preventDefault();
+            targetP = next;
+            wakePhysics();
+          }
+        }, { passive: false });
+
+        // Toggle function
+        function toggleCurtain() {
+          targetP = targetP > 0.5 ? 0 : 1;
+          wakePhysics();
+        }
+
+        // Click on stage toggles curtain if clicked outside cards or when closed
+        curtainStage.addEventListener("click", (e) => {
+          // If clicked the status pill, pill click handler manages it
+          if (e.target.closest("#curtainStatusPill")) return;
+          // If clicked a card
+          const card = e.target.closest(".curtain-card");
+          if (card) {
+            if (currentP < 0.5) {
+              e.preventDefault();
+              toggleCurtain();
+            }
+            // If currentP >= 0.5, allow default link navigation to sub-page!
+            return;
+          }
+          toggleCurtain();
+        });
+
+        if (statusPill) {
+          statusPill.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleCurtain();
+          });
+          statusPill.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleCurtain();
+            }
+          });
+        }
+
+        // Card hover listeners
+        cards.forEach((card) => {
+          card.addEventListener("pointerenter", () => {
+            card.dataset.isHovered = "true";
+            wakePhysics();
+          });
+          card.addEventListener("pointerleave", () => {
+            card.dataset.isHovered = "false";
+            wakePhysics();
+          });
+        });
+
+        // Touch swipe support on mobile devices
+        let touchStartY = 0;
+        let touchStartP = 0;
+        let isTouching = false;
+        curtainStage.addEventListener("touchstart", (e) => {
+          if (e.touches.length === 1) {
+            touchStartY = e.touches[0].clientY;
+            touchStartP = targetP;
+            isTouching = true;
+          }
+        }, { passive: true });
+
+        curtainStage.addEventListener("touchmove", (e) => {
+          if (!isTouching || e.touches.length !== 1) return;
+          const dy = touchStartY - e.touches[0].clientY;
+          if (Math.abs(dy) > 10) {
+            const next = Math.max(0, Math.min(1, touchStartP + (dy / 250)));
+            targetP = next;
+            wakePhysics();
+          }
+        }, { passive: true });
+
+        curtainStage.addEventListener("touchend", () => {
+          isTouching = false;
+          targetP = targetP > 0.4 ? 1 : 0;
+          wakePhysics();
+        }, { passive: true });
+
+        // ScrollTrigger reveal when section comes into view
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.create({
+            trigger: "#curtain-split-section",
+            start: "top 65%",
+            once: true,
+            onEnter: () => {
+              if (targetP === 0) {
+                targetP = 1;
+                wakePhysics();
+              }
+            }
+          });
+        }
+
+        // Initial render
+        renderCurtain(0, 0, 0);
       }
 
       // ══════════════════════════════════════════════════════════════════════════
